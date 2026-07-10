@@ -1,0 +1,52 @@
+workflows:
+  ios_unsigned_check:
+    name: iOS unsigned build check
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      vars:
+        API_BASE_URL: https://glukotrack.com/api
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: "*"
+          include: true
+          source: true
+    scripts:
+      - name: Tool versions
+        script: |
+          set -euo pipefail
+          flutter --version
+          dart --version
+          xcodebuild -version
+          pod --version
+      - name: Clean and fetch Flutter packages
+        script: |
+          set -euo pipefail
+          flutter clean
+          flutter pub get
+      - name: Install CocoaPods
+        script: |
+          set -euo pipefail
+          cd ios
+          pod install --repo-update
+      - name: Static analysis
+        script: |
+          set -euo pipefail
+          flutter analyze
+      - name: Unit and widget tests
+        script: |
+          set -euo pipefail
+          flutter test
+      - name: Build unsigned iOS app
+        script: |
+          set -euo pipefail
+          flutter build ios --release --no-codesign --dart-define=API_BASE_URL="$API_BASE_URL"
+    artifacts:
+      - build/ios/iphoneos/Runner.app
+      - build/**/outputs/**/*.log
+      - flutter_drive.log

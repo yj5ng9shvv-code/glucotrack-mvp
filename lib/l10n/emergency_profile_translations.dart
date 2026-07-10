@@ -1,0 +1,276 @@
+final emergencyProfileTranslations = <String, List<String>>{
+  'en': [
+    'Show on lock screen',
+    'Prepare SMS for a loved one',
+    'Add location with permission',
+    'Auto-call a loved one',
+    'Save SOS profile',
+    'Saving...',
+    '4–8 digits'
+  ],
+  'de': [
+    'Auf Sperrbildschirm anzeigen',
+    'SMS für Angehörige vorbereiten',
+    'Standort mit Erlaubnis hinzufügen',
+    'Angehörige automatisch anrufen',
+    'SOS-Profil speichern',
+    'Speichern...',
+    '4–8 Ziffern'
+  ],
+  'fr': [
+    "Afficher sur l’écran verrouillé",
+    'Préparer un SMS pour un proche',
+    'Ajouter la position avec autorisation',
+    'Appeler automatiquement un proche',
+    'Enregistrer le profil SOS',
+    'Enregistrement...',
+    '4 à 8 chiffres'
+  ],
+  'es': [
+    'Mostrar en la pantalla de bloqueo',
+    'Preparar SMS para un familiar',
+    'Añadir ubicación con permiso',
+    'Llamar automáticamente a un familiar',
+    'Guardar perfil SOS',
+    'Guardando...',
+    '4–8 dígitos'
+  ],
+  'it': [
+    'Mostra nella schermata di blocco',
+    'Prepara SMS per un familiare',
+    'Aggiungi posizione con autorizzazione',
+    'Chiama automaticamente un familiare',
+    'Salva profilo SOS',
+    'Salvataggio...',
+    '4–8 cifre'
+  ],
+  'pl': [
+    'Pokaż na ekranie blokady',
+    'Przygotuj SMS do bliskiej osoby',
+    'Dodaj lokalizację za zgodą',
+    'Automatycznie zadzwoń do bliskiej osoby',
+    'Zapisz profil SOS',
+    'Zapisywanie...',
+    '4–8 cyfr'
+  ],
+  'uk': [
+    'Показувати на екрані блокування',
+    'Підготувати SMS близькій людині',
+    'Додати геолокацію з дозволу',
+    'Автодзвінок близькій людині',
+    'Зберегти SOS-профіль',
+    'Збереження...',
+    '4–8 цифр'
+  ],
+  'ru': [
+    'Показывать на экране блокировки',
+    'Подготовить SMS близкому',
+    'Добавлять геолокацию с разрешения',
+    'Автозвонок близкому',
+    'Сохранить SOS-профиль',
+    'Сохранение...',
+    '4–8 цифр'
+  ],
+  'pt': [
+    'Mostrar na tela de bloqueio',
+    'Preparar SMS para uma pessoa próxima',
+    'Adicionar localização com permissão',
+    'Ligar automaticamente para uma pessoa próxima',
+    'Salvar perfil SOS',
+    'Salvando...',
+    '4–8 dígitos'
+  ],
+  'nl': [
+    'Tonen op vergrendelscherm',
+    'Sms voor een naaste voorbereiden',
+    'Locatie toevoegen met toestemming',
+    'Een naaste automatisch bellen',
+    'SOS-profiel opslaan',
+    'Opslaan...',
+    '4–8 cijfers'
+  ],
+  'ro': [
+    'Afișează pe ecranul de blocare',
+    'Pregătește SMS pentru o persoană apropiată',
+    'Adaugă locația cu permisiune',
+    'Apelează automat o persoană apropiată',
+    'Salvează profilul SOS',
+    'Se salvează...',
+    '4–8 cifre'
+  ],
+  'cs': [
+    'Zobrazit na zamykací obrazovce',
+    'Připravit SMS pro blízkou osobu',
+    'Přidat polohu se svolením',
+    'Automaticky zavolat blízké osobě',
+    'Uložit profil SOS',
+    'Ukládání...',
+    '4–8 číslic'
+  ],
+  'sk': [
+    'Zobraziť na uzamknutej obrazovke',
+    'Pripraviť SMS pre blízku osobu',
+    'Pridať polohu s povolením',
+    'Automaticky zavolať blízkej osobe',
+    'Uložiť profil SOS',
+    'Ukladanie...',
+    '4–8 číslic'
+  ],
+  'hu': [
+    'Megjelenítés a zárolási képernyőn',
+    'SMS előkészítése hozzátartozónak',
+    'Helyzet hozzáadása engedéllyel',
+    'Hozzátartozó automatikus hívása',
+    'SOS-profil mentése',
+    'Mentés...',
+    '4–8 számjegy'
+  ],
+  'sv': [
+    'Visa på låsskärmen',
+    'Förbered SMS till närstående',
+    'Lägg till plats med tillstånd',
+    'Ring närstående automatiskt',
+    'Spara SOS-profil',
+    'Sparar...',
+    '4–8 siffror'
+  ],
+  'da': [
+    'Vis på låseskærmen',
+    'Forbered SMS til pårørende',
+    'Tilføj placering med tilladelse',
+    'Ring automatisk til pårørende',
+    'Gem SOS-profil',
+    'Gemmer...',
+    '4–8 cifre'
+  ],
+  'fi': [
+    'Näytä lukitusnäytöllä',
+    'Valmistele tekstiviesti läheiselle',
+    'Lisää sijainti luvalla',
+    'Soita läheiselle automaattisesti',
+    'Tallenna SOS-profiili',
+    'Tallennetaan...',
+    '4–8 numeroa'
+  ],
+  'no': [
+    'Vis på låseskjermen',
+    'Forbered SMS til pårørende',
+    'Legg til posisjon med tillatelse',
+    'Ring pårørende automatisk',
+    'Lagre SOS-profil',
+    'Lagrer...',
+    '4–8 sifre'
+  ],
+  'el': [
+    'Εμφάνιση στην οθόνη κλειδώματος',
+    'Προετοιμασία SMS για οικείο πρόσωπο',
+    'Προσθήκη τοποθεσίας με άδεια',
+    'Αυτόματη κλήση οικείου προσώπου',
+    'Αποθήκευση προφίλ SOS',
+    'Αποθήκευση...',
+    '4–8 ψηφία'
+  ],
+  'tr': [
+    'Kilit ekranında göster',
+    'Yakınınız için SMS hazırla',
+    'İzinle konum ekle',
+    'Yakınınızı otomatik ara',
+    'SOS profilini kaydet',
+    'Kaydediliyor...',
+    '4–8 rakam'
+  ],
+  'bg': [
+    'Показване на заключения екран',
+    'Подготвяне на SMS за близък',
+    'Добавяне на местоположение с разрешение',
+    'Автоматично обаждане на близък',
+    'Запазване на SOS профила',
+    'Запазване...',
+    '4–8 цифри'
+  ],
+  'hr': [
+    'Prikaži na zaključanom zaslonu',
+    'Pripremi SMS za blisku osobu',
+    'Dodaj lokaciju uz dopuštenje',
+    'Automatski nazovi blisku osobu',
+    'Spremi SOS profil',
+    'Spremanje...',
+    '4–8 znamenki'
+  ],
+  'sl': [
+    'Prikaži na zaklenjenem zaslonu',
+    'Pripravi SMS za bližnjo osebo',
+    'Dodaj lokacijo z dovoljenjem',
+    'Samodejno pokliči bližnjo osebo',
+    'Shrani profil SOS',
+    'Shranjevanje...',
+    '4–8 številk'
+  ],
+  'lt': [
+    'Rodyti užrakinimo ekrane',
+    'Paruošti SMS artimam žmogui',
+    'Pridėti vietą gavus leidimą',
+    'Automatiškai skambinti artimam žmogui',
+    'Išsaugoti SOS profilį',
+    'Išsaugoma...',
+    '4–8 skaitmenys'
+  ],
+  'lv': [
+    'Rādīt bloķēšanas ekrānā',
+    'Sagatavot SMS tuviniekam',
+    'Pievienot atrašanās vietu ar atļauju',
+    'Automātiski zvanīt tuviniekam',
+    'Saglabāt SOS profilu',
+    'Saglabā...',
+    '4–8 cipari'
+  ],
+  'et': [
+    'Kuva lukustuskuval',
+    'Valmista lähedasele SMS',
+    'Lisa asukoht loaga',
+    'Helista lähedasele automaatselt',
+    'Salvesta SOS-profiil',
+    'Salvestamine...',
+    '4–8 numbrit'
+  ],
+  'sr': [
+    'Прикажи на закључаном екрану',
+    'Припреми SMS за блиску особу',
+    'Додај локацију уз дозволу',
+    'Аутоматски позови блиску особу',
+    'Сачувај SOS профил',
+    'Чување...',
+    '4–8 цифара'
+  ],
+  'sq': [
+    'Shfaq në ekranin e kyçjes',
+    'Përgatit SMS për një të afërm',
+    'Shto vendndodhjen me leje',
+    'Telefono automatikisht një të afërm',
+    'Ruaj profilin SOS',
+    'Duke ruajtur...',
+    '4–8 shifra'
+  ],
+  'mk': [
+    'Прикажи на заклучениот екран',
+    'Подготви SMS за блиска личност',
+    'Додај локација со дозвола',
+    'Автоматски повикај блиска личност',
+    'Зачувај SOS профил',
+    'Зачувување...',
+    '4–8 цифри'
+  ],
+  'is': [
+    'Sýna á lásskjá',
+    'Undirbúa SMS til aðstandanda',
+    'Bæta við staðsetningu með leyfi',
+    'Hringja sjálfvirkt í aðstandanda',
+    'Vista SOS-snið',
+    'Vistar...',
+    '4–8 tölustafir'
+  ],
+};
+
+String emergencyProfileText(String languageCode, int index) =>
+    (emergencyProfileTranslations[languageCode] ??
+        emergencyProfileTranslations['en']!)[index];

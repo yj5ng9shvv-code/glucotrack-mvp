@@ -1,0 +1,11 @@
+{
+  "name": "glukotrack-i18n-audit",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "i18n:check": "node tool/i18n-check.mjs --check",
+    "i18n:scan": "node tool/i18n-check.mjs --scan",
+    "install:check": "node tool/install-check.mjs",
+    "test": "npm run i18n:check && npm run i18n:scan && npm run install:check"
+  }
+}

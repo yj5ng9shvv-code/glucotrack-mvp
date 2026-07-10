@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GlukoTrack</string>
+    <string name="voice_prompt">Ask AI</string>
+    <string name="voice_busy">Voice recognition is already active</string>
+    <string name="voice_unavailable">Speech recognition is unavailable</string>
+    <string name="sos">SOS</string>
+    <string name="patient">Patient</string>
+    <string name="glucose">Glucose</string>
+    <string name="diabetes">Diabetes</string>
+    <string name="blood_type">Blood type</string>
+    <string name="insulin">Insulin</string>
+    <string name="allergies">Allergies</string>
+    <string name="contact">Contact</string>
+    <string name="phone">Phone</string>
+    <string name="emergency_information">Emergency information</string>
+    <string name="emergency_instruction">If unconscious, call emergency services. Do not give insulin without checking glucose.</string>
+    <string name="call_112">Call 112</string>
+    <string name="call_contact">Call emergency contact</string>
+    <string name="send_sms">Send SMS with location</string>
+    <string name="close">Close</string>
+    <string name="network_error">The action could not be completed. Try again.</string>
+    <string name="location_permission">Location permission is required.</string>
+</resources>

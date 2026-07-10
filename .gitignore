@@ -1,0 +1,98 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.local
+*.secret
+secrets/
+
+# Node/backend generated dependencies and logs
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Apple signing secrets must stay in Codemagic or Apple portals only.
+*.p8
+*.p12
+*.mobileprovision
+*.cer
+*.key
+*.pem
+*.jks
+*.keystore
+google-services.json
+GoogleService-Info.plist
+AuthKey_*.p8
+ExportOptions.plist
+ios/fastlane/Appfile
+ios/fastlane/Matchfile
+
+# Local build archives, APKs, screenshots and temporary release bundles.
+*.apk
+*.aab
+*.ipa
+*.xcarchive
+*.dSYM.zip
+*.zip
+*.tar.gz
+*.7z
+*.rar
+*.png
+*.jpg
+*.jpeg
+*.webp
+release/
+*.tmp
+*.bak
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/app/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="GlukoTrack diabetes food and insulin assistant.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="GlukoTrack">
+  <meta name="theme-color" content="#075BBB">
+  <link rel="manifest" href="manifest.json">
+  <title>GlukoTrack</title>
+  <script>
+    (() => {
+      const supportedLanguages = new Set([
+        'en', 'de', 'fr', 'es', 'it', 'pl', 'uk', 'ru', 'pt', 'nl',
+        'ro', 'cs', 'sk', 'hu', 'sv', 'da', 'fi', 'no', 'el', 'tr',
+        'bg', 'hr', 'sl', 'lt', 'lv', 'et', 'sr', 'sq', 'mk', 'is'
+      ]);
+      const language = new URLSearchParams(window.location.search).get('lang');
+      if (language && supportedLanguages.has(language)) {
+        localStorage.setItem('flutter.languageCode', JSON.stringify(language));
+      }
+    })();
+  </script>
+</head>
+<body>
+  <script src="flutter_bootstrap.js?v=20260703-48" defer></script>
+</body>
+</html>

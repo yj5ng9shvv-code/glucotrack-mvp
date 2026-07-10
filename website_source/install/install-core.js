@@ -1,0 +1,1 @@
+window.GlucoTrackInstall={url(){return `${location.origin}/install`},qr(element,_lang,size=256){element.replaceChildren();element.style.background='#fff';return new QRCode(element,{text:this.url(),width:size,height:size,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.Q})}};
