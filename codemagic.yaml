@@ -11,9 +11,10 @@ workflows:
         API_BASE_URL: https://glukotrack.com/api
     triggering:
       events:
+        - push
         - pull_request
       branch_patterns:
-        - pattern: "*"
+        - pattern: "main"
           include: true
           source: true
     scripts:
