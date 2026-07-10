@@ -79,7 +79,7 @@ private final class EmergencyLocationProvider: NSObject, CLLocationManagerDelega
 
     pendingResult = result
 
-    switch manager.authorizationStatus {
+    switch currentAuthorizationStatus() {
     case .notDetermined:
       manager.requestWhenInUseAuthorization()
     case .authorizedAlways, .authorizedWhenInUse:
@@ -93,7 +93,7 @@ private final class EmergencyLocationProvider: NSObject, CLLocationManagerDelega
 
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
     guard pendingResult != nil else { return }
-    switch manager.authorizationStatus {
+    switch currentAuthorizationStatus() {
     case .authorizedAlways, .authorizedWhenInUse:
       manager.requestLocation()
     case .denied, .restricted:
@@ -123,6 +123,13 @@ private final class EmergencyLocationProvider: NSObject, CLLocationManagerDelega
     let result = pendingResult
     pendingResult = nil
     result?(value)
+  }
+
+  private func currentAuthorizationStatus() -> CLAuthorizationStatus {
+    if #available(iOS 14.0, *) {
+      return manager.authorizationStatus
+    }
+    return CLLocationManager.authorizationStatus()
   }
 }
 
