@@ -47,7 +47,34 @@ workflows:
         script: |
           set -euo pipefail
           flutter build ios --release --no-codesign --dart-define=API_BASE_URL="$API_BASE_URL"
+      - name: Package unsigned IPA for Sideloadly
+        script: |
+          set -euo pipefail
+
+          APP_PATH="$CM_BUILD_DIR/build/ios/iphoneos/Runner.app"
+          IPA_DIR="$CM_BUILD_DIR/build/ios/ipa"
+          PACKAGE_DIR="$CM_BUILD_DIR/build/ios/ipa_payload"
+          IPA_PATH="$IPA_DIR/GlukoTrack.ipa"
+
+          test -d "$APP_PATH"
+          rm -rf "$IPA_DIR" "$PACKAGE_DIR"
+          mkdir -p "$PACKAGE_DIR/Payload" "$IPA_DIR"
+          cp -R "$APP_PATH" "$PACKAGE_DIR/Payload/Runner.app"
+
+          (
+            cd "$PACKAGE_DIR"
+            /usr/bin/zip -qry "$IPA_PATH" Payload
+          )
+
+          test -f "$IPA_PATH"
+          test -f "$PACKAGE_DIR/Payload/Runner.app/Info.plist"
+          test -x "$PACKAGE_DIR/Payload/Runner.app/Runner"
+          /usr/bin/unzip -t "$IPA_PATH"
+          /usr/bin/unzip -l "$IPA_PATH" | grep -q "Payload/Runner.app/Info.plist"
+          /usr/bin/unzip -l "$IPA_PATH" | grep -q "Payload/Runner.app/Runner"
+
+          echo "Created unsigned IPA for Sideloadly: $IPA_PATH"
     artifacts:
-      - build/ios/iphoneos/Runner.app
+      - build/ios/ipa/GlukoTrack.ipa
       - build/**/outputs/**/*.log
       - flutter_drive.log

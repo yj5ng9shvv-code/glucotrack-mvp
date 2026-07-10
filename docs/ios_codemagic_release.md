@@ -1,8 +1,8 @@
 # GlukoTrack iOS unsigned check through Codemagic
 
-This stage is only an unsigned iOS compilation check. It does not require Apple
-Developer Program membership, App Store Connect, certificates, provisioning
-profiles, TestFlight, or a signed `.ipa`.
+This stage is an unsigned iOS compilation and IPA packaging check. It does not
+require Apple Developer Program membership, App Store Connect, certificates,
+provisioning profiles, TestFlight, or an Apple-signed `.ipa`.
 
 The goal is to prove that the Flutter project compiles on cloud macOS/Xcode:
 
@@ -12,6 +12,8 @@ flutter pub get
 flutter analyze
 flutter test
 flutter build ios --release --no-codesign
+# Then package build/ios/iphoneos/Runner.app as:
+# build/ios/ipa/GlukoTrack.ipa
 ```
 
 ## Current iOS project facts
@@ -59,8 +61,9 @@ method calls failing on iOS.
 
 ### `ios_unsigned_check`
 
-Runs on Codemagic macOS and checks whether the project compiles for iOS without
-code signing:
+Runs on Codemagic macOS, checks whether the project compiles for iOS without
+code signing, and packages the resulting app into an IPA archive that Sideloadly
+can open directly:
 
 ```bash
 flutter clean
@@ -69,10 +72,25 @@ cd ios && pod install --repo-update
 flutter analyze
 flutter test
 flutter build ios --release --no-codesign
+mkdir -p build/ios/ipa_payload/Payload build/ios/ipa
+cp -R build/ios/iphoneos/Runner.app build/ios/ipa_payload/Payload/Runner.app
+cd build/ios/ipa_payload
+zip -qry ../ipa/GlukoTrack.ipa Payload
 ```
 
 This workflow does not upload anything to TestFlight and does not publish to the
-App Store. Its output is an unsigned `Runner.app` artifact and build logs.
+App Store. Its primary output is `build/ios/ipa/GlukoTrack.ipa`, an unsigned IPA
+with this structure:
+
+```text
+Payload/
+  Runner.app/
+```
+
+Codemagic also validates the archive before publishing it as an artifact, so a
+build will fail if the IPA is missing `Payload/Runner.app/Info.plist` or the
+`Payload/Runner.app/Runner` executable. Codemagic should no longer publish only
+`Runner.app.zip`.
 
 ## Owner steps for this unsigned check
 
@@ -83,10 +101,18 @@ App Store. Its output is an unsigned `Runner.app` artifact and build logs.
 5. Choose workflow `ios_unsigned_check`.
 6. Start the build manually.
 7. Open the build log.
-8. If it fails, copy the failing log section and fix the project.
-9. Repeat until the workflow is green.
+8. Download the `GlukoTrack.ipa` artifact.
+9. Open `GlukoTrack.ipa` in Sideloadly directly.
+10. Install it to a real iPhone with the Apple ID/signing settings used by
+    Sideloadly.
+11. Confirm that the app launches on the phone.
+12. If the build or install fails, copy the failing log section and fix the
+    project.
+13. Repeat until the workflow is green and the IPA installs.
 
-No Apple Developer account is needed for this unsigned check.
+No Apple Developer account is needed for this unsigned build check itself.
+Sideloadly still needs its normal Apple ID based signing flow when installing
+the unsigned IPA onto a physical device.
 
 ## What cannot be verified from Windows
 
@@ -95,14 +121,18 @@ The following require Codemagic macOS:
 - `pod install` against the real macOS CocoaPods environment.
 - `flutter build ios --release --no-codesign`.
 - Xcode/iOS compiler errors.
+- Creating and validating the final unsigned `GlukoTrack.ipa` artifact from
+  `Runner.app`.
 
-The following are intentionally out of scope for this stage:
+The following cannot be completed from this Windows workspace and must be
+verified after the Codemagic artifact is downloaded:
 
-- Signed `.ipa`.
+- Opening `GlukoTrack.ipa` in Sideloadly.
+- Installing on a physical iPhone through Sideloadly.
+- Runtime launch verification on iPhone.
+
+The following remain out of scope for this unsigned workflow:
+
 - TestFlight upload.
 - App Store Connect.
-- Install on a physical iPhone.
-- Runtime verification on iPhone.
-
-Those require Apple Developer Program and a signed build, which is a later
-stage.
+- App Store signed distribution IPA.
