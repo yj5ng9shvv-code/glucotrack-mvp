@@ -71,9 +71,13 @@ class _AuthScreenState extends State<AuthScreen> {
     super.dispose();
   }
 
-  String _localizedError(Object error) => error is AuthException
-      ? context.l10n.t(error.message)
-      : context.l10n.t('networkUnavailable');
+  String _localizedError(Object error) {
+    if (error is! AuthException) return context.l10n.t('networkUnavailable');
+    final message = context.l10n.t(error.message);
+    final details = error.details?.trim();
+    if (details == null || details.isEmpty) return message;
+    return '$message\n$details';
+  }
 
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;

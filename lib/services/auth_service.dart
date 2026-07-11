@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -54,13 +55,11 @@ class AuthService {
     if (!isConfigured) {
       throw const AuthException('networkUnavailable');
     }
-    final response = await _client
-        .post(
-          _uri('/auth/password/forgot'),
-          headers: {'Content-Type': 'application/json'},
-          body: jsonEncode({'email': email.trim(), 'locale': locale}),
-        )
-        .timeout(const Duration(seconds: 20));
+    final response = await _postJson(
+      '/auth/password/forgot',
+      {'email': email.trim(), 'locale': locale},
+      timeout: const Duration(seconds: 20),
+    );
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw AuthException(
           _errorMessage(response.statusCode, _decode(response.body)));
@@ -103,13 +102,11 @@ class AuthService {
     }
     final device = await DeviceIdentityService.current();
     payload['device'] = device.toJson();
-    final response = await _client
-        .post(
-          _uri(path),
-          headers: {'Content-Type': 'application/json'},
-          body: jsonEncode(payload),
-        )
-        .timeout(const Duration(seconds: 20));
+    final response = await _postJson(
+      path,
+      payload,
+      timeout: const Duration(seconds: 20),
+    );
     final body = _decode(response.body);
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw AuthException(
@@ -163,6 +160,38 @@ class AuthService {
 
   Uri _uri(String path) =>
       Uri.parse('${apiBaseUrl.replaceFirst(RegExp(r'/$'), '')}$path');
+
+  Future<http.Response> _postJson(
+    String path,
+    Map<String, dynamic> payload, {
+    required Duration timeout,
+  }) async {
+    final uri = _uri(path);
+    try {
+      return await _client
+          .post(
+            uri,
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode(payload),
+          )
+          .timeout(timeout);
+    } on TimeoutException {
+      throw AuthException(
+        'networkUnavailable',
+        details: 'Timeout opening $uri',
+      );
+    } on http.ClientException catch (error) {
+      throw AuthException(
+        'networkUnavailable',
+        details: '$uri: ${error.message}',
+      );
+    } catch (error) {
+      throw AuthException(
+        'networkUnavailable',
+        details: '$uri: $error',
+      );
+    }
+  }
 
   Map<String, dynamic> _decode(String value) {
     try {
@@ -220,8 +249,14 @@ class AuthException implements Exception {
   final String message;
   final String? code;
   final String? managementToken;
+  final String? details;
 
-  const AuthException(this.message, {this.code, this.managementToken});
+  const AuthException(
+    this.message, {
+    this.code,
+    this.managementToken,
+    this.details,
+  });
 
   @override
   String toString() => message;

@@ -24,6 +24,21 @@
 	<string>GlukoTrack uses your photo library only when you choose a food or profile image.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>GlukoTrack uses speech recognition to convert your voice requests into text.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>glukotrack.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.2</string>
+			</dict>
+		</dict>
+	</dict>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
