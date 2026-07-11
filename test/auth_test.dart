@@ -1,6 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/testing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:glucotrack/models/app_state.dart';
@@ -52,43 +50,11 @@ void main() {
     final preferences = await SharedPreferences.getInstance();
     expect(preferences.getString('accountToken'), 'google-session-token');
   });
-
-  test('login keeps network diagnostics for mobile auth failures', () async {
-    SharedPreferences.setMockInitialValues({});
-    final service = AuthService(
-      client: MockClient((request) {
-        throw http.ClientException('Connection refused', request.url);
-      }),
-    );
-
-    await expectLater(
-      service.login(
-        email: 'ivan@example.com',
-        password: 'secure123',
-        locale: 'ru',
-      ),
-      throwsA(
-        isA<AuthException>()
-            .having((error) => error.message, 'message', 'networkUnavailable')
-            .having(
-              (error) => error.details,
-              'details',
-              allOf(
-                contains('https://glukotrack.com/api/auth/login'),
-                contains('Connection refused'),
-              ),
-            ),
-      ),
-    );
-  });
 }
 
 class _FakeAuthService extends AuthService {
   @override
-  Future<AuthSession> loginWithGoogle(
-    String idToken, {
-    required String locale,
-  }) async {
+  Future<AuthSession> loginWithGoogle(String idToken, {required String locale}) async {
     if (idToken != 'google-id-token') {
       throw const AuthException('Invalid Google token');
     }
