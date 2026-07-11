@@ -139,6 +139,7 @@ private final class IosSpeechProvider: NSObject {
   private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
   private var pendingResult: FlutterResult?
   private var timeoutTimer: Timer?
+  private var recognizedText = ""
 
   func listen(languageCode: String, result: @escaping FlutterResult) {
     if pendingResult != nil {
@@ -147,6 +148,7 @@ private final class IosSpeechProvider: NSObject {
     }
 
     pendingResult = result
+    recognizedText = ""
     requestPermissions { [weak self] granted in
       guard let self else { return }
       guard granted else {
@@ -182,7 +184,8 @@ private final class IosSpeechProvider: NSObject {
 
     let session = AVAudioSession.sharedInstance()
     do {
-      try session.setCategory(.record, mode: .measurement, options: .duckOthers)
+      try session.setCategory(.record, mode: .measurement, options: [.duckOthers, .allowBluetooth])
+      try session.setMode(.measurement)
       try session.setActive(true, options: .notifyOthersOnDeactivation)
     } catch {
       finish(errorCode: "unavailable")
@@ -190,7 +193,7 @@ private final class IosSpeechProvider: NSObject {
     }
 
     let request = SFSpeechAudioBufferRecognitionRequest()
-    request.shouldReportPartialResults = false
+    request.shouldReportPartialResults = true
     recognitionRequest = request
 
     let inputNode = audioEngine.inputNode
@@ -209,24 +212,34 @@ private final class IosSpeechProvider: NSObject {
     }
 
     timeoutTimer = Timer.scheduledTimer(withTimeInterval: 12, repeats: false) { [weak self] _ in
-      self?.finish(errorCode: "no_match")
+      self?.finishRecognizedOrNoMatch()
     }
 
     recognitionTask = recognizer.recognitionTask(with: request) { [weak self] speechResult, error in
       guard let self else { return }
-      if let speechResult, speechResult.isFinal {
+      if let speechResult {
         let text = speechResult.bestTranscription.formattedString.trimmingCharacters(in: .whitespacesAndNewlines)
-        if text.isEmpty {
-          self.finish(errorCode: "no_match")
-        } else {
-          self.finish(value: text)
+        if !text.isEmpty {
+          self.recognizedText = text
         }
-        return
+        if speechResult.isFinal {
+          self.finishRecognizedOrNoMatch()
+          return
+        }
       }
 
       if error != nil {
-        self.finish(errorCode: "no_match")
+        self.finishRecognizedOrNoMatch()
       }
+    }
+  }
+
+  private func finishRecognizedOrNoMatch() {
+    let text = recognizedText.trimmingCharacters(in: .whitespacesAndNewlines)
+    if text.isEmpty {
+      finish(errorCode: "no_match")
+    } else {
+      finish(value: text)
     }
   }
 
@@ -239,6 +252,7 @@ private final class IosSpeechProvider: NSObject {
     recognitionRequest = nil
     recognitionTask?.cancel()
     recognitionTask = nil
+    recognizedText = ""
 
     let result = pendingResult
     pendingResult = nil
