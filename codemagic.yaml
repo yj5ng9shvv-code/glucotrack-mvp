@@ -9,6 +9,9 @@ workflows:
       cocoapods: default
       vars:
         API_BASE_URL: https://glukotrack.com/api
+        GOOGLE_CLIENT_ID: 967750323381-32r09tkmqfkssusn75ukdjmqh8f0gbs0.apps.googleusercontent.com
+        GOOGLE_IOS_CLIENT_ID: 967750323381-32r09tkmqfkssusn75ukdjmqh8f0gbs0.apps.googleusercontent.com
+        GOOGLE_SERVER_CLIENT_ID: 967750323381-32r09tkmqfkssusn75ukdjmqh8f0gbs0.apps.googleusercontent.com
     triggering:
       events:
         - push
@@ -46,7 +49,11 @@ workflows:
       - name: Build unsigned iOS app
         script: |
           set -euo pipefail
-          flutter build ios --release --no-codesign --dart-define=API_BASE_URL="$API_BASE_URL"
+          flutter build ios --release --no-codesign \
+            --dart-define=API_BASE_URL="$API_BASE_URL" \
+            --dart-define=GOOGLE_CLIENT_ID="$GOOGLE_CLIENT_ID" \
+            --dart-define=GOOGLE_IOS_CLIENT_ID="$GOOGLE_IOS_CLIENT_ID" \
+            --dart-define=GOOGLE_SERVER_CLIENT_ID="$GOOGLE_SERVER_CLIENT_ID"
       - name: Package unsigned IPA for Sideloadly
         script: |
           set -euo pipefail

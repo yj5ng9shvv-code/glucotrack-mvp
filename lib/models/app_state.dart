@@ -442,7 +442,7 @@ class AppState extends ChangeNotifier {
     await prefs.setString('accountEmail', _accountEmail);
     await prefs.setString('accountToken', _accountToken);
     await prefs.setString('fullName', fullName);
-    await prefs.setString('email', this.email);
+    await prefs.setString('email', email);
   }
 
   Future<bool> login({required String email, required String password}) async {
@@ -477,6 +477,29 @@ class AppState extends ChangeNotifier {
     await prefs.setString('accountToken', _accountToken);
     await prefs.setString('fullName', fullName);
     await prefs.setString('email', email);
+  }
+
+  Future<void> loginWithApple(
+    String identityToken, {
+    String? email,
+    String? fullName,
+  }) async {
+    final session = await _authService.loginWithApple(
+      identityToken,
+      email: email,
+      fullName: fullName,
+      locale: languageCode,
+    );
+    _accountEmail = session.email;
+    _accountToken = session.token;
+    _authenticated = true;
+    _applyAuthSession(session);
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('accountEmail', _accountEmail);
+    await prefs.setString('accountToken', _accountToken);
+    await prefs.setString('fullName', this.fullName);
+    await prefs.setString('email', this.email);
   }
 
   Future<void> logout() async {

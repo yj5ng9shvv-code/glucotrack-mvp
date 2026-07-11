@@ -49,6 +49,20 @@ class AuthService {
         '/auth/google', {'idToken': idToken, 'locale': locale});
   }
 
+  Future<AuthSession> loginWithApple(
+    String identityToken, {
+    String? email,
+    String? fullName,
+    required String locale,
+  }) {
+    return _authenticate('/auth/apple', {
+      'identityToken': identityToken,
+      'email': email,
+      'fullName': fullName,
+      'locale': locale,
+    });
+  }
+
   Future<void> requestPasswordReset(String email,
       {required String locale}) async {
     if (!isConfigured) {

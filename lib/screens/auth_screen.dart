@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/app_state.dart';
+import '../services/apple_auth_service.dart';
 import '../services/auth_service.dart';
 import '../services/google_auth_service.dart';
 import '../widgets/google_web_button.dart';
@@ -130,6 +131,11 @@ class _AuthScreenState extends State<AuthScreen> {
     });
   }
 
+  bool get _supportsNativeAppleSignIn =>
+      !kIsWeb &&
+      (defaultTargetPlatform == TargetPlatform.iOS ||
+          defaultTargetPlatform == TargetPlatform.macOS);
+
   void _showSocialLoginNotice(String provider) {
     final message = context.l10n.t('socialLoginNotConfigured');
     ScaffoldMessenger.of(context).showSnackBar(
@@ -160,6 +166,29 @@ class _AuthScreenState extends State<AuthScreen> {
     });
     try {
       await context.read<AppState>().loginWithGoogle(idToken);
+      if (mounted) {
+        Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false);
+      }
+    } catch (error) {
+      if (mounted) setState(() => _error = _localizedError(error));
+    } finally {
+      if (mounted) setState(() => _submitting = false);
+    }
+  }
+
+  Future<void> _startAppleLogin() async {
+    setState(() {
+      _submitting = true;
+      _error = null;
+    });
+    final state = context.read<AppState>();
+    try {
+      final token = await AppleAuthService.instance.authenticate();
+      await state.loginWithApple(
+        token.identityToken,
+        email: token.email,
+        fullName: token.fullName,
+      );
       if (mounted) {
         Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false);
       }
@@ -297,7 +326,9 @@ class _AuthScreenState extends State<AuthScreen> {
                             FilledButton.icon(
                               onPressed: _submitting
                                   ? null
-                                  : () => _showSocialLoginNotice('Apple'),
+                                  : _supportsNativeAppleSignIn
+                                      ? _startAppleLogin
+                                      : () => _showSocialLoginNotice('Apple'),
                               icon: const Icon(Icons.apple),
                               label: Text(context.l10n.t('continueWithApple')),
                             ),
@@ -308,7 +339,8 @@ class _AuthScreenState extends State<AuthScreen> {
                           children: [
                             const Expanded(child: Divider()),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(context.l10n.t('email')),
                             ),
                             const Expanded(child: Divider()),

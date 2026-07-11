@@ -12,6 +12,15 @@ class GoogleAuthService {
     defaultValue:
         '967750323381-32r09tkmqfkssusn75ukdjmqh8f0gbs0.apps.googleusercontent.com',
   );
+  static const iosClientId = String.fromEnvironment(
+    'GOOGLE_IOS_CLIENT_ID',
+    defaultValue:
+        '967750323381-32r09tkmqfkssusn75ukdjmqh8f0gbs0.apps.googleusercontent.com',
+  );
+  static const serverClientId = String.fromEnvironment(
+    'GOOGLE_SERVER_CLIENT_ID',
+    defaultValue: clientId,
+  );
 
   final GoogleSignIn _signIn = GoogleSignIn.instance;
   final StreamController<String> _webTokens = StreamController.broadcast();
@@ -25,9 +34,13 @@ class GoogleAuthService {
     if (clientId.trim().isEmpty) {
       throw StateError('GOOGLE_CLIENT_ID is not configured');
     }
+    final nativeClientId = switch (defaultTargetPlatform) {
+      TargetPlatform.iOS || TargetPlatform.macOS => iosClientId,
+      _ => null,
+    };
     await _signIn.initialize(
-      clientId: kIsWeb ? clientId : null,
-      serverClientId: kIsWeb ? null : clientId,
+      clientId: kIsWeb ? clientId : nativeClientId,
+      serverClientId: kIsWeb ? null : serverClientId,
     );
     _signIn.authenticationEvents.listen((event) {
       if (!kIsWeb || event is! GoogleSignInAuthenticationEventSignIn) return;

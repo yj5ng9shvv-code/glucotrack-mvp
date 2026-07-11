@@ -14,6 +14,17 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>GlukoTrack</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.967750323381-32r09tkmqfkssusn75ukdjmqh8f0gbs0</string>
+			</array>
+		</dict>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>GlukoTrack uses the camera to scan food photos and update your profile picture when you choose this action.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

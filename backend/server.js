@@ -1,4 +1,4 @@
-import { createHash, randomBytes } from "node:crypto";
+import { createHash, createPublicKey, randomBytes } from "node:crypto";
 
 import bcrypt from "bcryptjs";
 import express from "express";
@@ -241,6 +241,106 @@ app.post("/auth/google", asyncHandler(async (req, res) => {
   } else {
     await pool.query(
       "UPDATE oauth_identities SET email = $1, last_login_at = UTC_TIMESTAMP() WHERE provider = 'google' AND provider_subject = $2",
+      [email, subject]
+    );
+  }
+
+  const registeredDevice = await registerAccountDevice(user.id, req.body?.device, { enforceLimit: true });
+  if (!registeredDevice) {
+    return res.status(409).json({
+      error: "device limit reached",
+      managementToken: authPayload(user).token
+    });
+  }
+  await registerTrialDevice(user.id, req.body?.device?.id);
+  res.json({ ...authPayload(user), device: registeredDevice });
+}));
+
+app.post("/auth/apple", asyncHandler(async (req, res) => {
+  const identityToken = typeof req.body?.identityToken === "string" ? req.body.identityToken.trim() : "";
+  if (!identityToken || identityToken.length > 10000) {
+    return res.status(400).json({ error: "apple_identity_token_required" });
+  }
+
+  let applePayload;
+  try {
+    applePayload = await verifyAppleIdentityToken(identityToken);
+  } catch {
+    return res.status(401).json({ error: "invalid_apple_token" });
+  }
+
+  const subject = cleanText(applePayload?.sub, 255);
+  const tokenEmail = normalizeEmail(applePayload?.email);
+  const requestEmail = normalizeEmail(req.body?.email);
+  const email = isEmail(tokenEmail) ? tokenEmail : requestEmail;
+  const fullName = cleanText(req.body?.fullName, 120) || (isEmail(email) ? email.split("@")[0] : "Apple User");
+  if (!subject || !isEmail(email)) {
+    return res.status(403).json({ error: "apple_email_required" });
+  }
+
+  const emailVerified = applePayload?.email_verified === true || applePayload?.email_verified === "true";
+  if (tokenEmail && !emailVerified) {
+    return res.status(403).json({ error: "apple_email_not_verified" });
+  }
+
+  let result = await pool.query(
+    `SELECT u.id, u.email, u.full_name, u.premium_status, u.premium_plan, u.premium_until,
+       u.subscription_status, u.subscription_expires_at, u.trial_started_at, u.trial_ends_at,
+       u.trial_used, u.email_verified, u.diabetes_type, u.glucose_unit
+     FROM oauth_identities o JOIN users u ON u.id = o.user_id
+     WHERE o.provider = 'apple' AND o.provider_subject = $1`,
+    [subject]
+  );
+  let user = result.rows[0];
+  if (!user) {
+    result = await pool.query(
+      `SELECT id, email, full_name, premium_status, premium_plan, premium_until,
+         subscription_status, subscription_expires_at, trial_started_at, trial_ends_at,
+         trial_used, email_verified, diabetes_type, glucose_unit FROM users WHERE email = $1`,
+      [email]
+    );
+    user = result.rows[0];
+    if (!user) {
+      const passwordHash = await bcrypt.hash(randomBytes(32).toString("base64url"), 12);
+      const inserted = await pool.query(
+        `INSERT INTO users(email, password_hash, full_name, premium_status, subscription_status,
+           premium_plan, premium_until, trial_used, email_verified)
+         VALUES($1, $2, $3, 'inactive', 'inactive', NULL, NULL, FALSE, TRUE)`,
+        [email, passwordHash, fullName]
+      );
+      result = await pool.query(
+        `SELECT id, email, full_name, premium_status, premium_plan, premium_until,
+           subscription_status, subscription_expires_at, trial_started_at, trial_ends_at,
+           trial_used, email_verified, diabetes_type, glucose_unit FROM users WHERE id = $1`,
+        [inserted.insertId]
+      );
+      user = result.rows[0];
+    } else if (!(user.email_verified === 1 || user.email_verified === true)) {
+      await pool.query("UPDATE users SET email_verified = TRUE WHERE id = $1", [user.id]);
+      user.email_verified = true;
+    }
+    try {
+      await pool.query(
+        `INSERT INTO oauth_identities(user_id, provider, provider_subject, email, last_login_at)
+         VALUES($1, 'apple', $2, $3, UTC_TIMESTAMP())`,
+        [user.id, subject, email]
+      );
+    } catch (error) {
+      if (error?.code !== "ER_DUP_ENTRY") throw error;
+      const linked = await pool.query(
+        `SELECT u.id, u.email, u.full_name, u.premium_status, u.premium_plan, u.premium_until,
+           u.subscription_status, u.subscription_expires_at, u.trial_started_at, u.trial_ends_at,
+           u.trial_used, u.email_verified, u.diabetes_type, u.glucose_unit
+         FROM oauth_identities o JOIN users u ON u.id = o.user_id
+         WHERE o.provider = 'apple' AND o.provider_subject = $1`,
+        [subject]
+      );
+      if (!linked.rows[0]) return res.status(409).json({ error: "apple_account_link_conflict" });
+      user = linked.rows[0];
+    }
+  } else {
+    await pool.query(
+      "UPDATE oauth_identities SET email = $1, last_login_at = UTC_TIMESTAMP() WHERE provider = 'apple' AND provider_subject = $2",
       [email, subject]
     );
   }
@@ -1754,6 +1854,7 @@ function transcriptionLanguage(languageCode) {
 }
 
 let googleVerifier;
+let appleKeysCache;
 
 function googleClientIds() {
   const clientIds = (process.env.GOOGLE_CLIENT_ID ?? "")
@@ -1767,6 +1868,45 @@ function googleClientIds() {
 function googleOAuthClient() {
   googleVerifier ??= new OAuth2Client();
   return googleVerifier;
+}
+
+function appleClientIds() {
+  const clientIds = (process.env.APPLE_CLIENT_ID ?? process.env.IOS_BUNDLE_ID ?? "com.example.glucotrack")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+  if (!clientIds.length) throw new Error("Missing required environment variable: APPLE_CLIENT_ID");
+  return clientIds;
+}
+
+async function verifyAppleIdentityToken(identityToken) {
+  const decoded = jwt.decode(identityToken, { complete: true });
+  const kid = decoded?.header?.kid;
+  const alg = decoded?.header?.alg;
+  if (!kid || alg !== "RS256") throw new Error("Invalid Apple token header");
+  const keys = await applePublicKeys();
+  const jwk = keys.find((key) => key.kid === kid);
+  if (!jwk) throw new Error("Apple public key not found");
+  const publicKey = createPublicKey({ key: jwk, format: "jwk" });
+  return jwt.verify(identityToken, publicKey, {
+    algorithms: ["RS256"],
+    issuer: "https://appleid.apple.com",
+    audience: appleClientIds()
+  });
+}
+
+async function applePublicKeys() {
+  const now = Date.now();
+  if (appleKeysCache && appleKeysCache.expiresAt > now) return appleKeysCache.keys;
+  const response = await fetch("https://appleid.apple.com/auth/keys");
+  if (!response.ok) throw new Error("Unable to fetch Apple public keys");
+  const body = await response.json();
+  const keys = Array.isArray(body?.keys) ? body.keys : [];
+  appleKeysCache = {
+    keys,
+    expiresAt: now + 60 * 60 * 1000
+  };
+  return keys;
 }
 
 function stripeClient() {
