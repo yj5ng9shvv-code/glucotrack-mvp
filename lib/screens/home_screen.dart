@@ -73,6 +73,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 onChanged: (value) {
                   if (value != null) state.setLanguage(value);
                 },
+                selectedItemBuilder: (context) => AppState.supportedLanguages
+                    .map(
+                      (language) => Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(language.flag),
+                      ),
+                    )
+                    .toList(),
                 items: AppState.supportedLanguages
                     .map(
                       (language) => DropdownMenuItem(
@@ -204,18 +212,72 @@ class _TrialEndingBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: const Color(0xFFFFF7E6),
-      child: ListTile(
-        dense: true,
-        leading:
-            const Icon(Icons.notifications_active, color: Color(0xFFF79009)),
-        title: Text(
-          l10n.t('trialEndsTomorrow'),
-          style: const TextStyle(fontWeight: FontWeight.w700),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final textScale = MediaQuery.textScalerOf(context).scale(1);
+            final needsStackedLayout =
+                constraints.maxWidth < (520 + (textScale - 1) * 620);
+            final title = _TrialEndingTitle(text: l10n.t('trialEndsTomorrow'));
+            final action = FilledButton(
+              onPressed: () => Navigator.pushNamed(context, '/subscription'),
+              child: Text(l10n.t('subscribeToContinue')),
+            );
+
+            if (needsStackedLayout) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.notifications_active,
+                        color: Color(0xFFF79009),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(child: title),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  action,
+                ],
+              );
+            }
+
+            return Row(
+              children: [
+                const Icon(
+                  Icons.notifications_active,
+                  color: Color(0xFFF79009),
+                ),
+                const SizedBox(width: 10),
+                Expanded(child: title),
+                const SizedBox(width: 12),
+                action,
+              ],
+            );
+          },
         ),
-        trailing: FilledButton(
-          onPressed: () => Navigator.pushNamed(context, '/subscription'),
-          child: Text(l10n.t('subscribeToContinue')),
-        ),
+      ),
+    );
+  }
+}
+
+class _TrialEndingTitle extends StatelessWidget {
+  const _TrialEndingTitle({required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontWeight: FontWeight.w700,
+        letterSpacing: 0,
+        wordSpacing: 0,
       ),
     );
   }
@@ -522,17 +584,15 @@ class _HomeSectionsGrid extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
+        final textScale = MediaQuery.textScalerOf(context).scale(1);
         final columns = width >= 920
             ? 3
             : width >= 560
                 ? 2
                 : 1;
-        final rows = (sections.length / columns).ceil();
-        final viewportHeight = MediaQuery.sizeOf(context).height;
-        final availableGridHeight =
-            (viewportHeight - 330).clamp(rows * 98.0, rows * 150.0);
+        final baseCellHeight = columns == 1 ? 116.0 : 128.0;
+        final cellHeight = baseCellHeight + ((textScale - 1) * 64);
         final cellWidth = (width - (columns - 1) * 8) / columns;
-        final cellHeight = (availableGridHeight - (rows - 1) * 8) / rows;
 
         return GridView.builder(
           shrinkWrap: true,
