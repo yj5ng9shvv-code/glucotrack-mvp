@@ -68,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: state.languageCode,
+                menuWidth: 210,
                 menuMaxHeight: 520,
                 borderRadius: BorderRadius.circular(14),
                 onChanged: (value) {
@@ -85,7 +86,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     .map(
                       (language) => DropdownMenuItem(
                         value: language.code,
-                        child: Text('${language.flag} ${language.label}'),
+                        child: SizedBox(
+                          width: 178,
+                          child: Text(
+                            '${language.flag} ${language.label}',
+                            maxLines: 1,
+                            softWrap: false,
+                          ),
+                        ),
                       ),
                     )
                     .toList(),
