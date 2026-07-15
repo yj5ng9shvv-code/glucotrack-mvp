@@ -19,6 +19,12 @@ void main() {
       'thisDevice',
       'deviceLastActive',
       'removeDevice',
+      'premiumScreenTitle',
+      'premiumActiveLabel',
+      'subscriptionPlanLabel',
+      'subscriptionPaidUntilLabel',
+      'monthPrice',
+      'yearPrice',
     };
 
     for (final language in AppState.supportedLanguages) {
@@ -39,6 +45,40 @@ void main() {
           AppLocalizations(language.code).t(key),
           isNot(key),
           reason: '${language.code}: $key',
+        );
+      }
+    }
+  });
+
+  test('premium copy is localized and not mojibake for all 30 languages', () {
+    final english = premiumTranslations['en']!;
+    final mojibake = RegExp(
+      r'в‚¬|Рџ|Рґ|Рµ|Р°|РЅ|Рё|Рѕ|Рє|Р»|Р№|Рћ|РЎ|Р‘|Р—|Р“|Р”',
+    );
+
+    for (final language in AppState.supportedLanguages) {
+      final translations = premiumTranslations[language.code]!;
+      for (final entry in translations.entries) {
+        expect(
+          entry.value,
+          isNot(contains(mojibake)),
+          reason: '${language.code}: ${entry.key}',
+        );
+      }
+
+      if (language.code == 'en') continue;
+      for (final key in {
+        'freeForeverTitle',
+        'premiumIncludesTitle',
+        'manageSubscription',
+        'changePlanTitle',
+        'premiumActiveLabel',
+        'subscriptionPaidUntilLabel',
+      }) {
+        expect(
+          translations[key],
+          isNot(english[key]),
+          reason: '${language.code}: $key must not fall back to English',
         );
       }
     }

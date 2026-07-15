@@ -145,7 +145,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
     final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(
-        title: const LocalizedText('ui.text.fa9b4ee785d7'),
+        title: Text(l10n.t('premiumScreenTitle')),
         actions: [
           IconButton(
             onPressed: _busy ? null : _refresh,
@@ -280,17 +280,20 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   _Feature(text: l10n.t('premiumRecommendations')),
                   const SizedBox(height: 20),
                   if (state.premium) ...[
-                    const ListTile(
+                    ListTile(
                       contentPadding: EdgeInsets.zero,
-                      leading: Icon(Icons.verified, color: Color(0xFF039855)),
-                      title: LocalizedText('ui.text.be447dcdbb3f'),
+                      leading: const Icon(
+                        Icons.verified,
+                        color: Color(0xFF039855),
+                      ),
+                      title: Text(l10n.t('premiumActiveLabel')),
                     ),
                     Text(
-                      '${l10n.t('ui.text.f23dc4f4fbb4')}: ${_planName(l10n, state.premiumPlan)}',
+                      '${l10n.t('subscriptionPlanLabel')}: ${_planName(l10n, state.premiumPlan)}',
                     ),
                     if (state.premiumUntil != null)
                       Text(
-                        '${l10n.t('ui.text.fe3c73ce5b52')}: ${state.premiumUntil!.toLocal()}',
+                        '${l10n.t('subscriptionPaidUntilLabel')}: ${l10n.formatDateTime(state.premiumUntil!)}',
                       ),
                     const SizedBox(height: 12),
                     OutlinedButton.icon(
