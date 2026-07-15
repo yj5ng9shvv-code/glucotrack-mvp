@@ -1,48 +1,35 @@
 {
-  "generatedAt": "2026-07-15T15:27:31.755Z",
+  "generatedAt": "2026-07-15T18:29:56.919Z",
   "root": "C:\\GLUKOTRACK\\glucotrack_mvp",
   "phase": "analysis-only",
   "deletionPerformed": false,
   "git": {
     "currentBranch": "main",
-    "currentHead": "463f96ed85187e61fe67f60bb86e397958638a21",
+    "currentHead": "6abca8ddf0252004e7471c00f2042cf1ff3a4336",
     "cleanupBranchExists": true,
     "beforeCleanupTagExists": true,
     "dirty": true,
     "statusShort": [
-      "M DEEP_PROJECT_CLEANUP_REPORT.md",
-      " M docs/localization-screen-inventory.md",
+      "M docs/localization-screen-inventory.md",
       " M reports/localization-failures.json",
       " M reports/localization-screen-matrix.html",
       " M reports/localization-static-audit.json",
-      " M reports/localization-static-audit.md",
-      " M reports/project-cleanup-audit.json",
-      " M reports/project-cleanup-audit.md",
-      "?? BACKUP_VERIFICATION_REPORT.md",
-      "?? BUILD_AND_TEST_RESULTS.md",
-      "?? DATABASE_CLEANUP_CANDIDATES.sql",
-      "?? DATABASE_CLEANUP_ROLLBACK.sql",
-      "?? DATABASE_DEEP_AUDIT_REPORT.md",
-      "?? DELETED_FILES_MANIFEST.txt",
-      "?? MANUAL_REVIEW_CANDIDATES.md",
-      "?? MODIFIED_FILES_MANIFEST.txt",
-      "?? PROJECT_ARCHITECTURE_MAP.md",
-      "?? RESIDUAL_RISKS.md"
+      " M reports/localization-static-audit.md"
     ]
   },
   "inventory": {
-    "totalEntries": 2334,
-    "files": 1921,
-    "directories": 413,
-    "totalBytes": 143471189,
+    "totalEntries": 2370,
+    "files": 1956,
+    "directories": 414,
+    "totalBytes": 143957414,
     "topDirectories": [
       {
         "directory": ".git",
-        "size": 91263321
+        "size": 91615825
       },
       {
         "directory": ".git/objects",
-        "size": 91184001
+        "size": 91534720
       },
       {
         "directory": "website_source",
@@ -66,7 +53,7 @@
       },
       {
         "directory": ".git/objects/8f",
-        "size": 5540396
+        "size": 5541782
       },
       {
         "directory": ".git/objects/dd",
@@ -82,7 +69,7 @@
       },
       {
         "directory": ".git/objects/90",
-        "size": 3710109
+        "size": 3711028
       },
       {
         "directory": ".git/objects/ad",
@@ -94,11 +81,11 @@
       },
       {
         "directory": ".git/objects/b9",
-        "size": 3617744
+        "size": 3618394
       },
       {
         "directory": "reports",
-        "size": 3491566
+        "size": 3493956
       },
       {
         "directory": ".git/objects/f4",
@@ -106,7 +93,7 @@
       },
       {
         "directory": ".git/objects/c8",
-        "size": 3179014
+        "size": 3184289
       },
       {
         "directory": ".git/objects/8e",
@@ -146,7 +133,7 @@
       },
       {
         "directory": ".git/objects/68",
-        "size": 1547940
+        "size": 1548733
       },
       {
         "directory": ".git/objects/00",
@@ -162,7 +149,7 @@
       },
       {
         "directory": ".git/objects/6a",
-        "size": 1513121
+        "size": 1513310
       },
       {
         "directory": ".git/objects/d6",
@@ -405,24 +392,35 @@
       "deleteAutomatically": false
     },
     {
+      "path": ".git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base, .git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base, .git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
       "path": ".git/refs/heads/audit/deep-cleanup-2026-07-15",
       "category": "DUPLICATE",
       "risk": "medium",
       "size": 41,
       "platform": "Project",
       "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: .git/refs/heads/audit/deep-cleanup-2026-07-15, .git/refs/heads/main, .git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": ".git/refs/heads/main",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 41,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: .git/refs/heads/audit/deep-cleanup-2026-07-15, .git/refs/heads/main, .git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
+      "evidence": "Duplicate group: .git/refs/heads/audit/deep-cleanup-2026-07-15, .git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
       "action": "candidate: keep canonical file only after reference/deploy check",
       "deleteAutomatically": false
     },
@@ -433,7 +431,7 @@
       "size": 41,
       "platform": "Project",
       "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: .git/refs/heads/audit/deep-cleanup-2026-07-15, .git/refs/heads/main, .git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
+      "evidence": "Duplicate group: .git/refs/heads/audit/deep-cleanup-2026-07-15, .git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
       "action": "candidate: keep canonical file only after reference/deploy check",
       "deleteAutomatically": false
     },
@@ -943,11 +941,18 @@
       ]
     },
     {
+      "key": "41:0b2242e82584f89c1736707070fc5caaf56e8a4fb2ccf55604b01d9c230426b5",
+      "size": 41,
+      "paths": [
+        ".git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base",
+        ".git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06"
+      ]
+    },
+    {
       "key": "41:ec952a0dea57a69cbe32f1430e7898d17da2d0ec4c52faac38808227c121a14b",
       "size": 41,
       "paths": [
         ".git/refs/heads/audit/deep-cleanup-2026-07-15",
-        ".git/refs/heads/main",
         ".git/refs/tags/before-deep-cleanup-2026-07-15-17-05"
       ]
     },

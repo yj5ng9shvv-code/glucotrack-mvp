@@ -1,6 +1,6 @@
 # GlukoTrack Localization Screen Inventory
 
-Generated: 2026-07-15T15:06:44.233Z
+Generated: 2026-07-15T18:29:53.839Z
 
 Scope: Flutter mobile app, Flutter web app, Windows desktop, macOS desktop, public website, public SOS/referral/help/about pages, backend-rendered documents/messages, and admin panel.
 

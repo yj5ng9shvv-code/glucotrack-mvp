@@ -1,6 +1,6 @@
 # GlukoTrack Project Cleanup Audit
 
-Generated: 2026-07-15T15:27:31.755Z
+Generated: 2026-07-15T18:29:56.919Z
 
 Phase: **analysis only**. No files were deleted.
 
@@ -11,7 +11,7 @@ The user required a full backup before audit. This report assumes the verified b
 ## Git State
 
 - Branch: `main`
-- HEAD: `463f96ed85187e61fe67f60bb86e397958638a21`
+- HEAD: `6abca8ddf0252004e7471c00f2042cf1ff3a4336`
 - Cleanup branch exists: true
 - `before-full-cleanup` tag exists: true
 - Working tree dirty: true
@@ -20,22 +20,22 @@ The user required a full backup before audit. This report assumes the verified b
 
 ## Inventory
 
-- Files: 1921
-- Directories: 413
-- Total file size: 136.82 MB
+- Files: 1956
+- Directories: 414
+- Total file size: 137.29 MB
 
 ## Largest Directories
 
 | Directory | Size |
 |---|---:|
-| `.git` | 87.04 MB |
-| `.git/objects` | 86.96 MB |
+| `.git` | 87.37 MB |
+| `.git/objects` | 87.29 MB |
 | `website_source` | 32.28 MB |
 | `website_source/app` | 31.91 MB |
 | `website_source/app/canvaskit` | 26.18 MB |
 | `website_source/app/canvaskit/chromium` | 6.73 MB |
 | `.git/objects/70` | 5.56 MB |
-| `.git/objects/8f` | 5.28 MB |
+| `.git/objects/8f` | 5.29 MB |
 | `.git/objects/dd` | 4.51 MB |
 | `.git/objects/a5` | 4.19 MB |
 | `.git/objects/42` | 3.97 MB |
@@ -45,7 +45,7 @@ The user required a full backup before audit. This report assumes the verified b
 | `.git/objects/b9` | 3.45 MB |
 | `reports` | 3.33 MB |
 | `.git/objects/f4` | 3.09 MB |
-| `.git/objects/c8` | 3.03 MB |
+| `.git/objects/c8` | 3.04 MB |
 | `.git/objects/8e` | 2.39 MB |
 | `.git/objects/85` | 2.37 MB |
 | `.git/objects/08` | 2.36 MB |
@@ -82,8 +82,9 @@ These are candidates only. Nothing in this table is approved for deletion until 
 | `tools/fix_mojibake_literals.mjs` | DUPLICATE_OR_OBSOLETE_NAME | medium | 0.00 MB | Filename/path contains old/copy/backup/temp/fixed/final style marker. | review before deletion |
 | `.git/objects/0f/6330ea3e6d5184b2e0f7fda0c741c870e0f9c4` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/objects/0f/tmp_obj_YWiM8J` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
+| `.git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
+| `.git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/refs/heads/audit/deep-cleanup-2026-07-15` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `.git/refs/heads/main` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/refs/tags/before-deep-cleanup-2026-07-15-17-05` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/refs/heads/chore/full-project-cleanup` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/refs/remotes/origin/main` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
@@ -134,7 +135,8 @@ These are candidates only. Nothing in this table is approved for deletion until 
 ## Duplicate Content Groups
 
 - 0.00 MB: `.git/objects/0f/6330ea3e6d5184b2e0f7fda0c741c870e0f9c4`, `.git/objects/0f/tmp_obj_YWiM8J`
-- 0.00 MB: `.git/refs/heads/audit/deep-cleanup-2026-07-15`, `.git/refs/heads/main`, `.git/refs/tags/before-deep-cleanup-2026-07-15-17-05`
+- 0.00 MB: `.git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base`, `.git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06`
+- 0.00 MB: `.git/refs/heads/audit/deep-cleanup-2026-07-15`, `.git/refs/tags/before-deep-cleanup-2026-07-15-17-05`
 - 0.00 MB: `.git/refs/heads/chore/full-project-cleanup`, `.git/refs/remotes/origin/main`, `.git/refs/tags/before-full-cleanup`
 - 0.00 MB: `android/app/src/debug/AndroidManifest.xml`, `android/app/src/profile/AndroidManifest.xml`
 - 0.09 MB: `assets/translations/core.json`, `website_source/app/assets/assets/translations/core.json`

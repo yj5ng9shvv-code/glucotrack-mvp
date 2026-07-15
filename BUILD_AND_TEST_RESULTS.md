@@ -46,3 +46,20 @@ The following generated artifacts were removed after tests/builds:
 - `.dart_tool`
 - `build`
 - `android/.gradle`
+2026-07-15 cleanup audit pass:
+
+- Local backup verification: passed, 1951 source files and 1951 backup files, byte count matched.
+- `npm test`: passed.
+- Public API health: passed, HTTP 200.
+- `node tools/project_cleanup_audit.mjs`: passed and generated reports.
+- `node tools/localization_audit.mjs`: passed and generated reports; content-quality findings remain.
+
+Not run in this pass:
+- Full Flutter build matrix.
+- Android APK/appbundle release builds.
+- Server/backend integration tests on production host.
+- DB restore test.
+- Phone/ADB storage smoke test.
+
+Reason:
+- This pass stopped before destructive cleanup because server/DB backups were blocked by rejected SSH credentials and user approval is still required for local deletion candidates.

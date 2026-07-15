@@ -1,0 +1,9 @@
+GlukoTrack Server Deleted Files Manifest
+Generated: 2026-07-15 20:30 Europe/Warsaw
+
+No server files were deleted.
+
+Reason:
+- SSH credentials were rejected.
+- Server backup was not created or verified in this pass.
+- Cleanup is forbidden until backup and rollback are verified.

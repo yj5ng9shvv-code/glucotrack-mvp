@@ -38,3 +38,15 @@ Potential candidates requiring manual DBA review:
 ## Risk
 
 Deleting SQL files without deployment/DB ownership review can remove the only local recovery or install path.
+2026-07-15 database audit pass:
+
+Verified through public health endpoint:
+- API health returned HTTP 200.
+- Database reported ready.
+- Database name: ODESSA_glukotrack.
+- Schema version: 20.
+
+Blocked:
+- Direct table inventory, dump creation, restore test, orphan scan, index scan, and cleanup SQL generation were blocked because SSH credentials were rejected.
+
+No database rows, tables, or schemas were modified.

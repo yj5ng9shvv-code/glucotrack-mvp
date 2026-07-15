@@ -47,3 +47,12 @@ Required environment:
 
 Risk:
 - Removing it may break current hosting if production serves this directory directly.
+2026-07-15 cleanup audit residual risks:
+
+- Server backup was not created because SSH credentials were rejected.
+- Database dump and restore test were not created because SSH/database access was unavailable.
+- Phone storage was not inspected or cleaned because no active device/ADB storage session was available.
+- `website_source/app` is a tracked release build; removing it could break deployment unless the deployment pipeline is changed.
+- Root phone/debug screenshots and XML are likely removable, but require user approval.
+- Localization static audit still reports English fallback/content-quality findings in non-English locales; no mojibake was found.
+- Secret review findings require human review and possible rotation plan; no secret values were printed.

@@ -23,3 +23,12 @@ Verification: Android build reached Gradle release signing gate.
 Restore: Gradle/Flutter Android build regenerates it.
 
 No risky files, SQL files, secrets, production configs, migrations, platform manifests, or deployment configs were deleted.
+2026-07-15 cleanup audit pass:
+
+No files were deleted in this pass.
+
+Reason:
+- The task requires backup and explicit approval before cleanup.
+- Local backup was created and verified.
+- Server/DB backups were blocked by rejected SSH credentials.
+- Candidate lists were generated for review only.
