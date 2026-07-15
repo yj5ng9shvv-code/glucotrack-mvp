@@ -22,8 +22,8 @@ class AiService {
   }) async {
     final question = message.trim();
     if (question.isEmpty) {
-      return voiceAssistantTranslations[appState.languageCode]?
-              ['voiceAnyQuestion'] ??
+      return voiceAssistantTranslations[appState.languageCode]
+              ?['voiceAnyQuestion'] ??
           voiceAssistantTranslations['en']!['voiceAnyQuestion']!;
     }
 
@@ -39,8 +39,7 @@ class AiService {
   }
 
   String _networkError(String languageCode) =>
-      networkErrorTranslations[languageCode] ??
-      networkErrorTranslations['en']!;
+      networkErrorTranslations[languageCode] ?? networkErrorTranslations['en']!;
 
   Future<String> _sendBackend(String question, AppState appState) async {
     if (!appState.isAuthenticated || appState.accountToken.isEmpty) {
@@ -52,7 +51,7 @@ class AiService {
           Uri.parse('$baseUrl/ai/chat'),
           headers: {
             'Authorization': 'Bearer ${appState.accountToken}',
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
           },
           body: jsonEncode({
             'message': question,

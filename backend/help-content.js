@@ -1,0 +1,232 @@
+export const HELP_LOCALES = [
+  "en", "ru", "pl", "de", "fr", "es", "it", "uk", "pt", "nl",
+  "sv", "no", "da", "fi", "cs", "sk", "ro", "bg", "hu", "tr",
+  "el", "he", "ar", "hi", "id", "vi", "th", "zh", "ja", "ko"
+];
+
+export const HELP_CATEGORY_TRANSLATIONS = {
+  en: ["Getting started","Account and profile","Glucose diary","Insulin and doses","Food and carbohydrates","AI assistant","SOS card","Family monitoring","Devices and sync","Premium","Privacy and data","Troubleshooting"],
+  ru: ["Начало работы","Аккаунт и профиль","Дневник глюкозы","Инсулин и дозировки","Питание и углеводы","ИИ-помощник","SOS-карточка","Семейный мониторинг","Устройства и синхронизация","Premium","Конфиденциальность и данные","Решение проблем"],
+  pl: ["Pierwsze kroki","Konto i profil","Dziennik glukozy","Insulina i dawki","Jedzenie i węglowodany","Asystent AI","Karta SOS","Monitoring rodzinny","Urządzenia i synchronizacja","Premium","Prywatność i dane","Rozwiązywanie problemów"],
+  de: ["Erste Schritte","Konto und Profil","Glukose-Tagebuch","Insulin und Dosierungen","Essen und Kohlenhydrate","KI-Assistent","SOS-Karte","Familienüberwachung","Geräte und Synchronisierung","Premium","Datenschutz und Daten","Fehlerbehebung"],
+  fr: ["Premiers pas","Compte et profil","Journal de glycémie","Insuline et doses","Alimentation et glucides","Assistant IA","Carte SOS","Suivi familial","Appareils et synchronisation","Premium","Confidentialité et données","Dépannage"],
+  es: ["Primeros pasos","Cuenta y perfil","Diario de glucosa","Insulina y dosis","Comida y carbohidratos","Asistente de IA","Tarjeta SOS","Monitoreo familiar","Dispositivos y sincronización","Premium","Privacidad y datos","Solución de problemas"],
+  it: ["Primi passi","Account e profilo","Diario glicemia","Insulina e dosi","Cibo e carboidrati","Assistente IA","Scheda SOS","Monitoraggio familiare","Dispositivi e sincronizzazione","Premium","Privacy e dati","Risoluzione problemi"],
+  uk: ["Початок роботи","Акаунт і профіль","Щоденник глюкози","Інсулін і дозування","Їжа та вуглеводи","ШІ-помічник","SOS-картка","Сімейний моніторинг","Пристрої та синхронізація","Premium","Конфіденційність і дані","Вирішення проблем"],
+  pt: ["Primeiros passos","Conta e perfil","Diário de glicose","Insulina e doses","Alimentos e carboidratos","Assistente de IA","Cartão SOS","Monitoramento familiar","Dispositivos e sincronização","Premium","Privacidade e dados","Solução de problemas"],
+  nl: ["Aan de slag","Account en profiel","Glucosedagboek","Insuline en doseringen","Voeding en koolhydraten","AI-assistent","SOS-kaart","Gezinsmonitoring","Apparaten en synchronisatie","Premium","Privacy en gegevens","Probleemoplossing"],
+  sv: ["Kom igång","Konto och profil","Glukosdagbok","Insulin och doser","Mat och kolhydrater","AI-assistent","SOS-kort","Familjeövervakning","Enheter och synkronisering","Premium","Integritet och data","Felsökning"],
+  no: ["Kom i gang","Konto og profil","Glukosedagbok","Insulin og doser","Mat og karbohydrater","AI-assistent","SOS-kort","Familieovervåking","Enheter og synkronisering","Premium","Personvern og data","Feilsøking"],
+  da: ["Kom i gang","Konto og profil","Glukosedagbog","Insulin og doser","Mad og kulhydrater","AI-assistent","SOS-kort","Familieovervågning","Enheder og synkronisering","Premium","Privatliv og data","Fejlfinding"],
+  fi: ["Aloittaminen","Tili ja profiili","Glukoosipäiväkirja","Insuliini ja annokset","Ruoka ja hiilihydraatit","AI-avustaja","SOS-kortti","Perheseuranta","Laitteet ja synkronointi","Premium","Tietosuoja ja tiedot","Vianmääritys"],
+  cs: ["Začínáme","Účet a profil","Deník glukózy","Inzulín a dávky","Jídlo a sacharidy","AI asistent","SOS karta","Rodinné sledování","Zařízení a synchronizace","Premium","Soukromí a data","Řešení problémů"],
+  sk: ["Začíname","Účet a profil","Denník glukózy","Inzulín a dávky","Jedlo a sacharidy","AI asistent","SOS karta","Rodinné monitorovanie","Zariadenia a synchronizácia","Premium","Súkromie a údaje","Riešenie problémov"],
+  ro: ["Noțiuni de bază","Cont și profil","Jurnal de glucoză","Insulină și doze","Alimente și carbohidrați","Asistent AI","Card SOS","Monitorizare familială","Dispozitive și sincronizare","Premium","Confidențialitate și date","Depanare"],
+  bg: ["Първи стъпки","Акаунт и профил","Дневник на глюкозата","Инсулин и дози","Храна и въглехидрати","AI асистент","SOS карта","Семеен мониторинг","Устройства и синхронизация","Premium","Поверителност и данни","Отстраняване на проблеми"],
+  hu: ["Első lépések","Fiók és profil","Glükóznapló","Inzulin és adagok","Étel és szénhidrátok","AI-asszisztens","SOS-kártya","Családi megfigyelés","Eszközök és szinkronizálás","Premium","Adatvédelem és adatok","Hibaelhárítás"],
+  tr: ["Başlarken","Hesap ve profil","Glikoz günlüğü","İnsülin ve dozlar","Yemek ve karbonhidratlar","Yapay zeka asistanı","SOS kartı","Aile takibi","Cihazlar ve senkronizasyon","Premium","Gizlilik ve veriler","Sorun giderme"],
+  el: ["Ξεκίνημα","Λογαριασμός και προφίλ","Ημερολόγιο γλυκόζης","Ινσουλίνη και δόσεις","Τροφή και υδατάνθρακες","Βοηθός AI","Κάρτα SOS","Οικογενειακή παρακολούθηση","Συσκευές και συγχρονισμός","Premium","Απόρρητο και δεδομένα","Αντιμετώπιση προβλημάτων"],
+  he: ["תחילת עבודה","חשבון ופרופיל","יומן גלוקוז","אינסולין ומינונים","מזון ופחמימות","עוזר AI","כרטיס SOS","מעקב משפחתי","מכשירים וסנכרון","Premium","פרטיות ונתונים","פתרון בעיות"],
+  ar: ["البدء","الحساب والملف الشخصي","يوميات الغلوكوز","الأنسولين والجرعات","الطعام والكربوهيدرات","مساعد الذكاء الاصطناعي","بطاقة SOS","المراقبة العائلية","الأجهزة والمزامنة","Premium","الخصوصية والبيانات","استكشاف الأخطاء"],
+  hi: ["शुरुआत","खाता और प्रोफ़ाइल","ग्लूकोज़ डायरी","इंसुलिन और खुराक","भोजन और कार्बोहाइड्रेट","AI सहायक","SOS कार्ड","परिवार निगरानी","डिवाइस और सिंक","Premium","गोपनीयता और डेटा","समस्या समाधान"],
+  id: ["Memulai","Akun dan profil","Buku harian glukosa","Insulin dan dosis","Makanan dan karbohidrat","Asisten AI","Kartu SOS","Pemantauan keluarga","Perangkat dan sinkronisasi","Premium","Privasi dan data","Pemecahan masalah"],
+  vi: ["Bắt đầu","Tài khoản và hồ sơ","Nhật ký glucose","Insulin và liều dùng","Thức ăn và carbohydrate","Trợ lý AI","Thẻ SOS","Theo dõi gia đình","Thiết bị và đồng bộ","Premium","Quyền riêng tư và dữ liệu","Khắc phục sự cố"],
+  th: ["เริ่มต้นใช้งาน","บัญชีและโปรไฟล์","บันทึกกลูโคส","อินซูลินและขนาดยา","อาหารและคาร์โบไฮเดรต","ผู้ช่วย AI","การ์ด SOS","การติดตามครอบครัว","อุปกรณ์และการซิงค์","Premium","ความเป็นส่วนตัวและข้อมูล","การแก้ปัญหา"],
+  zh: ["入门","账户和个人资料","血糖日记","胰岛素和剂量","食物和碳水","AI 助手","SOS 卡","家庭监测","设备和同步","Premium","隐私和数据","故障排除"],
+  ja: ["はじめに","アカウントとプロフィール","血糖日記","インスリンと投与量","食事と炭水化物","AIアシスタント","SOSカード","家族モニタリング","デバイスと同期","Premium","プライバシーとデータ","トラブルシューティング"],
+  ko: ["시작하기","계정 및 프로필","혈당 일지","인슐린과 용량","음식과 탄수화물","AI 도우미","SOS 카드","가족 모니터링","기기 및 동기화","Premium","개인정보 및 데이터","문제 해결"]
+};
+
+export const HELP_LOCALE_PHRASES = {
+  en: { description: "Guides and answers for this GlukoTrack section.", article: "This Help Center article explains how to use this GlukoTrack feature safely across web, Android, iOS and desktop. Follow your medical plan and contact support if something is unclear.", summary: "Localized GlukoTrack help article." },
+  ru: { description: "Инструкции и ответы по этому разделу GlukoTrack.", article: "Эта статья справочного центра объясняет, как безопасно использовать функцию GlukoTrack в вебе, Android, iOS и desktop. Следуйте своему медицинскому плану и обращайтесь в поддержку, если что-то непонятно.", summary: "Локализованная статья справки GlukoTrack." },
+  pl: { description: "Instrukcje i odpowiedzi dla tej części GlukoTrack.", article: "Ten artykuł pomocy wyjaśnia, jak bezpiecznie używać tej funkcji GlukoTrack w wersji web, Android, iOS i desktop. Postępuj zgodnie ze swoim planem medycznym i skontaktuj się ze wsparciem, jeśli coś jest niejasne.", summary: "Zlokalizowany artykuł pomocy GlukoTrack." },
+  de: { description: "Anleitungen und Antworten für diesen GlukoTrack-Bereich.", article: "Dieser Hilfeartikel erklärt, wie du diese GlukoTrack-Funktion sicher im Web, auf Android, iOS und Desktop nutzt. Befolge deinen medizinischen Plan und kontaktiere den Support, wenn etwas unklar ist.", summary: "Lokalisierter GlukoTrack-Hilfeartikel." },
+  fr: { description: "Guides et réponses pour cette section GlukoTrack.", article: "Cet article d’aide explique comment utiliser cette fonction GlukoTrack en sécurité sur le web, Android, iOS et ordinateur. Suivez votre plan médical et contactez le support si quelque chose n’est pas clair.", summary: "Article d’aide GlukoTrack localisé." },
+  es: { description: "Guías y respuestas para esta sección de GlukoTrack.", article: "Este artículo de ayuda explica cómo usar esta función de GlukoTrack de forma segura en web, Android, iOS y escritorio. Sigue tu plan médico y contacta con soporte si algo no está claro.", summary: "Artículo de ayuda localizado de GlukoTrack." },
+  it: { description: "Guide e risposte per questa sezione di GlukoTrack.", article: "Questo articolo spiega come usare in sicurezza questa funzione di GlukoTrack su web, Android, iOS e desktop. Segui il tuo piano medico e contatta il supporto se qualcosa non è chiaro.", summary: "Articolo di assistenza GlukoTrack localizzato." },
+  uk: { description: "Інструкції та відповіді для цього розділу GlukoTrack.", article: "Ця стаття довідки пояснює, як безпечно користуватися цією функцією GlukoTrack у вебі, Android, iOS і desktop. Дотримуйтесь свого медичного плану й звертайтеся до підтримки, якщо щось незрозуміло.", summary: "Локалізована стаття довідки GlukoTrack." },
+  pt: { description: "Guias e respostas para esta seção do GlukoTrack.", article: "Este artigo explica como usar esta função do GlukoTrack com segurança na web, Android, iOS e desktop. Siga o seu plano médico e contacte o suporte se algo não estiver claro.", summary: "Artigo de ajuda localizado do GlukoTrack." },
+  nl: { description: "Gidsen en antwoorden voor dit GlukoTrack-onderdeel.", article: "Dit helpartikel legt uit hoe je deze GlukoTrack-functie veilig gebruikt op web, Android, iOS en desktop. Volg je medische plan en neem contact op met support als iets onduidelijk is.", summary: "Gelokaliseerd GlukoTrack-helpartikel." },
+  sv: { description: "Guider och svar för den här GlukoTrack-delen.", article: "Den här hjälpartikeln förklarar hur du använder denna GlukoTrack-funktion säkert på webben, Android, iOS och dator. Följ din medicinska plan och kontakta supporten om något är oklart.", summary: "Lokaliserad GlukoTrack-hjälpartikel." },
+  no: { description: "Veiledninger og svar for denne GlukoTrack-delen.", article: "Denne hjelpeartikkelen forklarer hvordan du bruker denne GlukoTrack-funksjonen trygt på web, Android, iOS og desktop. Følg din medisinske plan og kontakt support hvis noe er uklart.", summary: "Lokalisert GlukoTrack-hjelpeartikkel." },
+  da: { description: "Vejledninger og svar til denne GlukoTrack-del.", article: "Denne hjælpeartikel forklarer, hvordan du bruger denne GlukoTrack-funktion sikkert på web, Android, iOS og desktop. Følg din medicinske plan og kontakt support, hvis noget er uklart.", summary: "Lokaliseret GlukoTrack-hjælpeartikel." },
+  fi: { description: "Ohjeet ja vastaukset tähän GlukoTrack-osioon.", article: "Tämä ohjeartikkeli kertoo, miten tätä GlukoTrack-toimintoa käytetään turvallisesti webissä, Androidissa, iOS:ssä ja työpöydällä. Noudata hoitosuunnitelmaasi ja ota yhteyttä tukeen, jos jokin on epäselvää.", summary: "Lokalisoitu GlukoTrack-ohjeartikkeli." },
+  cs: { description: "Návody a odpovědi pro tuto část GlukoTrack.", article: "Tento článek nápovědy vysvětluje, jak bezpečně používat tuto funkci GlukoTrack na webu, Androidu, iOS a desktopu. Dodržujte svůj lékařský plán a kontaktujte podporu, pokud je něco nejasné.", summary: "Lokalizovaný článek nápovědy GlukoTrack." },
+  sk: { description: "Návody a odpovede pre túto časť GlukoTrack.", article: "Tento článok pomoci vysvetľuje, ako bezpečne používať túto funkciu GlukoTrack na webe, Androide, iOS a desktope. Dodržiavajte svoj lekársky plán a kontaktujte podporu, ak je niečo nejasné.", summary: "Lokalizovaný článok pomoci GlukoTrack." },
+  ro: { description: "Ghiduri și răspunsuri pentru această secțiune GlukoTrack.", article: "Acest articol explică modul de utilizare în siguranță a acestei funcții GlukoTrack pe web, Android, iOS și desktop. Urmați planul medical și contactați suportul dacă ceva nu este clar.", summary: "Articol de ajutor GlukoTrack localizat." },
+  bg: { description: "Ръководства и отговори за този раздел на GlukoTrack.", article: "Тази помощна статия обяснява как безопасно да използвате тази функция на GlukoTrack в уеб, Android, iOS и desktop. Следвайте медицинския си план и се свържете с поддръжката, ако нещо не е ясно.", summary: "Локализирана помощна статия на GlukoTrack." },
+  hu: { description: "Útmutatók és válaszok ehhez a GlukoTrack részhez.", article: "Ez a súgócikk elmagyarázza, hogyan használhatod biztonságosan ezt a GlukoTrack-funkciót weben, Androidon, iOS-en és asztali gépen. Kövesd az orvosi tervedet, és keresd a támogatást, ha valami nem egyértelmű.", summary: "Lokalizált GlukoTrack súgócikk." },
+  tr: { description: "Bu GlukoTrack bölümü için kılavuzlar ve yanıtlar.", article: "Bu yardım makalesi, bu GlukoTrack özelliğini web, Android, iOS ve masaüstünde güvenli şekilde nasıl kullanacağınızı açıklar. Tıbbi planınıza uyun ve bir şey belirsizse destekle iletişime geçin.", summary: "Yerelleştirilmiş GlukoTrack yardım makalesi." },
+  el: { description: "Οδηγοί και απαντήσεις για αυτή την ενότητα GlukoTrack.", article: "Αυτό το άρθρο βοήθειας εξηγεί πώς να χρησιμοποιείτε με ασφάλεια αυτή τη λειτουργία GlukoTrack σε web, Android, iOS και desktop. Ακολουθήστε το ιατρικό σας πλάνο και επικοινωνήστε με την υποστήριξη αν κάτι δεν είναι σαφές.", summary: "Τοπικοποιημένο άρθρο βοήθειας GlukoTrack." },
+  he: { description: "מדריכים ותשובות עבור חלק זה של GlukoTrack.", article: "מאמר עזרה זה מסביר כיצד להשתמש בבטחה בתכונה זו של GlukoTrack באינטרנט, Android, iOS ושולחן עבודה. פעל לפי התוכנית הרפואית שלך ופנה לתמיכה אם משהו אינו ברור.", summary: "מאמר עזרה מקומי של GlukoTrack." },
+  ar: { description: "أدلة وإجابات لهذا القسم من GlukoTrack.", article: "توضح مقالة المساعدة هذه كيفية استخدام هذه الميزة في GlukoTrack بأمان على الويب وAndroid وiOS وسطح المكتب. اتبع خطتك الطبية واتصل بالدعم إذا كان هناك شيء غير واضح.", summary: "مقالة مساعدة مترجمة من GlukoTrack." },
+  hi: { description: "GlukoTrack के इस अनुभाग के लिए मार्गदर्शिकाएँ और उत्तर.", article: "यह सहायता लेख बताता है कि इस GlukoTrack सुविधा का वेब, Android, iOS और desktop पर सुरक्षित उपयोग कैसे करें। अपनी चिकित्सा योजना का पालन करें और कुछ स्पष्ट न हो तो सहायता से संपर्क करें।", summary: "स्थानीयकृत GlukoTrack सहायता लेख." },
+  id: { description: "Panduan dan jawaban untuk bagian GlukoTrack ini.", article: "Artikel bantuan ini menjelaskan cara menggunakan fitur GlukoTrack ini dengan aman di web, Android, iOS, dan desktop. Ikuti rencana medis Anda dan hubungi dukungan jika ada yang tidak jelas.", summary: "Artikel bantuan GlukoTrack yang dilokalkan." },
+  vi: { description: "Hướng dẫn và câu trả lời cho phần GlukoTrack này.", article: "Bài viết trợ giúp này giải thích cách sử dụng an toàn tính năng GlukoTrack này trên web, Android, iOS và desktop. Hãy theo kế hoạch y tế của bạn và liên hệ hỗ trợ nếu có điều chưa rõ.", summary: "Bài viết trợ giúp GlukoTrack đã bản địa hóa." },
+  th: { description: "คู่มือและคำตอบสำหรับส่วนนี้ของ GlukoTrack", article: "บทความช่วยเหลือนี้อธิบายวิธีใช้ฟีเจอร์ GlukoTrack นี้อย่างปลอดภัยบนเว็บ Android iOS และเดสก์ท็อป โปรดปฏิบัติตามแผนการรักษาของคุณและติดต่อฝ่ายสนับสนุนหากมีสิ่งใดไม่ชัดเจน", summary: "บทความช่วยเหลือ GlukoTrack ที่แปลเป็นภาษาท้องถิ่น" },
+  zh: { description: "此 GlukoTrack 部分的指南和答案。", article: "本文说明如何在 Web、Android、iOS 和桌面端安全使用此 GlukoTrack 功能。请遵循你的医疗计划，如有不清楚之处请联系支持。", summary: "本地化的 GlukoTrack 帮助文章。" },
+  ja: { description: "この GlukoTrack セクションのガイドと回答。", article: "このヘルプ記事では、Web、Android、iOS、デスクトップでこの GlukoTrack 機能を安全に使う方法を説明します。医療計画に従い、不明な点があればサポートに連絡してください。", summary: "ローカライズされた GlukoTrack ヘルプ記事。" },
+  ko: { description: "이 GlukoTrack 섹션의 안내와 답변입니다.", article: "이 도움말 문서는 웹, Android, iOS 및 데스크톱에서 이 GlukoTrack 기능을 안전하게 사용하는 방법을 설명합니다. 의료 계획을 따르고 불명확한 부분은 지원팀에 문의하세요.", summary: "현지화된 GlukoTrack 도움말 문서." }
+};
+
+export const HELP_CATEGORY_SEEDS = [
+  ["getting_started", "sparkles", 10, "Getting started", "Basics for your first day with GlukoTrack", "Начало работы", "Базовые шаги для первого дня в GlukoTrack"],
+  ["account", "user", 20, "Account and profile", "Sign in, profile, password and account settings", "Аккаунт и профиль", "Вход, профиль, пароль и настройки аккаунта"],
+  ["glucose_diary", "activity", 30, "Glucose diary", "Readings, units, history and trends", "Дневник глюкозы", "Измерения, единицы, история и тренды"],
+  ["insulin", "syringe", 40, "Insulin and doses", "Log insulin safely and review dose history", "Инсулин и дозировки", "Безопасный журнал инсулина и история доз"],
+  ["food", "utensils", 50, "Food and carbohydrates", "Meals, carbs and food recognition", "Питание и углеводы", "Еда, углеводы и распознавание питания"],
+  ["ai_assistant", "bot", 60, "AI assistant", "Voice control, analysis and safe AI answers", "ИИ-помощник", "Голосовое управление, анализ и безопасные ответы ИИ"],
+  ["sos_card", "shield", 70, "SOS card", "Emergency profile, QR card and privacy", "SOS-карточка", "Экстренный профиль, QR-карта и приватность"],
+  ["family_monitoring", "users", 80, "Family monitoring", "Invite relatives and control access", "Семейный мониторинг", "Приглашения родственников и управление доступом"],
+  ["devices", "smartphone", 90, "Devices and sync", "Android, iOS, web, desktop and data sync", "Устройства и синхронизация", "Android, iOS, веб, desktop и синхронизация"],
+  ["premium", "star", 100, "Premium", "Plans, trial, payments and benefits", "Premium", "Тарифы, trial, платежи и преимущества"],
+  ["privacy", "lock", 110, "Privacy and data", "Data security, export and deletion", "Конфиденциальность и данные", "Безопасность данных, экспорт и удаление"],
+  ["troubleshooting", "wrench", 120, "Troubleshooting", "Fix common sign-in, sync and app problems", "Решение проблем", "Исправление проблем входа, синхронизации и приложения"]
+];
+
+export const HELP_ARTICLE_SEEDS = [
+  {
+    slug: "what-is-glukotrack",
+    category: "getting_started",
+    featured: true,
+    titleEn: "What is GlukoTrack?",
+    summaryEn: "A quick overview of the diary, AI assistant, SOS card and Premium tools.",
+    contentEn: `<p>GlukoTrack is a diabetes self-management service for glucose readings, meals, insulin, medicine, reports, SOS information and family access.</p><p>The app helps you keep one record across web, Android, iOS, Windows and macOS. It does not replace a doctor. AI answers are informational and should be checked against your medical plan.</p>`,
+    titleRu: "Что такое GlukoTrack?",
+    summaryRu: "Коротко о дневнике, ИИ-помощнике, SOS-карте и Premium.",
+    contentRu: `<p>GlukoTrack — сервис самоконтроля диабета для записей глюкозы, питания, инсулина, лекарств, отчётов, SOS-информации и семейного доступа.</p><p>Приложение помогает вести единый дневник в вебе, Android, iOS, Windows и macOS. Оно не заменяет врача. Ответы ИИ носят информационный характер и должны сверяться с вашим медицинским планом.</p>`
+  },
+  {
+    slug: "how-to-create-account",
+    category: "account",
+    featured: true,
+    titleEn: "How to create an account",
+    summaryEn: "Register with email/password or supported social sign-in.",
+    contentEn: `<p>Open the app, choose registration, enter your email and password, then confirm your email if the app asks for it.</p><p>After sign-in, complete your profile: preferred language, glucose unit, diabetes type and safety details. These settings improve diary calculations and SOS data.</p>`,
+    titleRu: "Как создать аккаунт",
+    summaryRu: "Регистрация через email/пароль или поддерживаемый социальный вход.",
+    contentRu: `<p>Откройте приложение, выберите регистрацию, укажите email и пароль, затем подтвердите email, если приложение попросит это сделать.</p><p>После входа заполните профиль: язык, единицы глюкозы, тип диабета и экстренные данные. Эти настройки улучшают расчёты дневника и SOS-карту.</p>`
+  },
+  {
+    slug: "how-to-reset-password",
+    category: "account",
+    featured: false,
+    titleEn: "How to reset your password",
+    summaryEn: "Use the password recovery link on the sign-in screen.",
+    contentEn: `<p>On the sign-in screen choose password recovery, enter the email used for your account and follow the link from the email message.</p><p>If you do not receive the email, check spam and confirm that you used the same email address.</p>`,
+    titleRu: "Как восстановить пароль",
+    summaryRu: "Используйте восстановление пароля на экране входа.",
+    contentRu: `<p>На экране входа выберите восстановление пароля, укажите email аккаунта и перейдите по ссылке из письма.</p><p>Если письмо не пришло, проверьте спам и убедитесь, что указан тот же email.</p>`
+  },
+  {
+    slug: "how-to-add-glucose-reading",
+    category: "glucose_diary",
+    featured: true,
+    titleEn: "How to add a glucose reading",
+    summaryEn: "Save manual readings with time, note and source.",
+    contentEn: `<p>Open Diary or the quick glucose card, enter the value, check the unit and tap Save. You can add a note such as before meal, after meal, exercise or feeling unwell.</p><p>Use the same unit consistently. GlukoTrack can display mmol/L or mg/dL based on profile settings.</p>`,
+    titleRu: "Как добавить измерение глюкозы",
+    summaryRu: "Сохраните ручное измерение со временем, заметкой и источником.",
+    contentRu: `<p>Откройте дневник или быструю карточку глюкозы, введите значение, проверьте единицу измерения и нажмите сохранение. Можно добавить заметку: до еды, после еды, тренировка или плохое самочувствие.</p><p>Используйте одну систему единиц. GlukoTrack показывает mmol/L или mg/dL согласно настройкам профиля.</p>`
+  },
+  {
+    slug: "change-glucose-units",
+    category: "glucose_diary",
+    featured: false,
+    titleEn: "How to change glucose units",
+    summaryEn: "Switch between mmol/L and mg/dL in profile settings.",
+    contentEn: `<p>Open Profile, find glucose unit and select mmol/L or mg/dL. Existing diary values are stored internally and shown in the selected unit.</p><p>If a value looks unusual, verify the unit before saving a new reading.</p>`,
+    titleRu: "Как изменить единицы глюкозы",
+    summaryRu: "Переключение mmol/L и mg/dL в настройках профиля.",
+    contentRu: `<p>Откройте профиль, найдите единицу глюкозы и выберите mmol/L или mg/dL. Существующие значения дневника хранятся внутри системы и показываются в выбранной единице.</p><p>Если значение выглядит необычно, проверьте единицу перед сохранением нового измерения.</p>`
+  },
+  {
+    slug: "how-to-log-insulin",
+    category: "insulin",
+    featured: true,
+    titleEn: "How to log insulin",
+    summaryEn: "Record units, insulin type and time.",
+    contentEn: `<p>Open the diary insulin action, enter the number of units, choose the insulin type if needed and save the record.</p><p>Always follow your clinician's dosing instructions. GlukoTrack stores your history but does not prescribe insulin.</p>`,
+    titleRu: "Как записать инсулин",
+    summaryRu: "Укажите единицы, тип инсулина и время.",
+    contentRu: `<p>Откройте действие инсулина в дневнике, введите количество единиц, при необходимости выберите тип инсулина и сохраните запись.</p><p>Всегда следуйте назначениям врача. GlukoTrack хранит историю, но не назначает дозы инсулина.</p>`
+  },
+  {
+    slug: "how-to-log-carbohydrates",
+    category: "food",
+    featured: false,
+    titleEn: "How to log carbohydrates",
+    summaryEn: "Save meals and carb grams for later analysis.",
+    contentEn: `<p>Open Food or Diary, enter the meal name and carbohydrate amount, then save. Premium tools can help recognize food and estimate nutrition.</p><p>Carbohydrate values are estimates unless taken from a verified label or clinician-approved plan.</p>`,
+    titleRu: "Как записать углеводы",
+    summaryRu: "Сохраняйте блюда и граммы углеводов для анализа.",
+    contentRu: `<p>Откройте питание или дневник, укажите название блюда и количество углеводов, затем сохраните. Premium-инструменты помогают распознавать еду и оценивать состав.</p><p>Значения углеводов являются оценкой, если они не взяты с проверенной этикетки или из плана врача.</p>`
+  },
+  {
+    slug: "how-to-use-voice-input",
+    category: "ai_assistant",
+    featured: true,
+    titleEn: "How to use voice input",
+    summaryEn: "Tell GlukoTrack what to add or ask the AI assistant.",
+    contentEn: `<p>Open Voice control and AI, allow microphone access and speak naturally. For example: add glucose 6.8, log 45 grams of carbs, or ask for a diary summary.</p><p>The assistant checks the request and either saves a diary entry or returns an explanation.</p>`,
+    titleRu: "Как использовать голосовой ввод",
+    summaryRu: "Скажите GlukoTrack, что добавить, или задайте вопрос ИИ.",
+    contentRu: `<p>Откройте голосовое управление и ИИ, разрешите доступ к микрофону и говорите обычными словами. Например: добавить глюкозу 6.8, записать 45 грамм углеводов или показать сводку дневника.</p><p>Помощник проверяет запрос и сохраняет запись либо возвращает объяснение.</p>`
+  },
+  {
+    slug: "ai-assistant-command-failed",
+    category: "ai_assistant",
+    featured: false,
+    titleEn: "Why an AI command may fail",
+    summaryEn: "Common reasons for failed voice or AI requests.",
+    contentEn: `<p>A command can fail if the microphone is blocked, the request is unclear, the internet connection is unavailable or the value is medically unsafe.</p><p>Try shorter wording and include the number, unit and action. If needed, add the diary entry manually.</p>`,
+    titleRu: "Почему команда ИИ может не выполниться",
+    summaryRu: "Частые причины ошибок голосовых и ИИ-запросов.",
+    contentRu: `<p>Команда может не выполниться, если микрофон заблокирован, запрос непонятен, нет интернета или значение выглядит небезопасным.</p><p>Попробуйте короткую формулировку с числом, единицей и действием. При необходимости добавьте запись вручную.</p>`
+  },
+  {
+    slug: "what-is-sos-card",
+    category: "sos_card",
+    featured: true,
+    titleEn: "What is the SOS card?",
+    summaryEn: "A public emergency profile available by QR code.",
+    contentEn: `<p>The SOS card is a public emergency page with information you choose to share: name, language, diabetes type, emergency contact, allergies, medications and instructions.</p><p>You control what is visible. Sensitive fields can be hidden or protected according to your settings.</p>`,
+    titleRu: "Что такое SOS-карточка",
+    summaryRu: "Публичный экстренный профиль, доступный по QR-коду.",
+    contentRu: `<p>SOS-карточка — публичная экстренная страница с информацией, которую вы разрешили показывать: имя, язык, тип диабета, экстренный контакт, аллергии, лекарства и инструкции.</p><p>Вы управляете видимостью. Чувствительные поля можно скрыть или защитить настройками.</p>`
+  },
+  {
+    slug: "how-to-configure-sos-card",
+    category: "sos_card",
+    featured: false,
+    titleEn: "How to configure the SOS card",
+    summaryEn: "Fill emergency profile and verify the QR page.",
+    contentEn: `<p>Open Profile, choose Emergency profile and fill the fields that may help responders. Then open the SOS card and scan the QR code from another device to verify the page.</p><p>Keep emergency contacts and medication information current.</p>`,
+    titleRu: "Как настроить SOS-карточку",
+    summaryRu: "Заполните экстренный профиль и проверьте QR-страницу.",
+    contentRu: `<p>Откройте профиль, выберите экстренный профиль и заполните поля, которые могут помочь спасателям. Затем откройте SOS-карточку и проверьте QR-код с другого устройства.</p><p>Поддерживайте контакты и лекарства в актуальном состоянии.</p>`
+  },
+  {
+    slug: "how-family-monitoring-works",
+    category: "family_monitoring",
+    featured: false,
+    titleEn: "How family monitoring works",
+    summaryEn: "Invite trusted people and manage their access.",
+    contentEn: `<p>Family monitoring lets a trusted person help review your account when you grant access. Invitations are controlled from the Family section.</p><p>Only invite people you trust. You can revoke access later.</p>`,
+    titleRu: "Как работает семейный мониторинг",
+    summaryRu: "Приглашайте доверенных людей и управляйте доступом.",
+    contentRu: `<p>Семейный мониторинг позволяет доверенному человеку помогать с наблюдением за аккаунтом после вашего разрешения. Приглашения управляются в разделе Семья.</p><p>Приглашайте только тех, кому доверяете. Доступ можно отозвать.</p>`
+  },
+  {
+    slug: "privacy-and-data-export",
+    category: "privacy",
+    featured: false,
+    titleEn: "Privacy and data export",
+    summaryEn: "How your health data is handled and exported.",
+    contentEn: `<p>GlukoTrack stores account and diary data to provide sync, reports and support. Administrative medical-data access is audited and limited.</p><p>You can request export or deletion through support. Do not share public SOS links unless you understand what is visible.</p>`,
+    titleRu: "Приватность и экспорт данных",
+    summaryRu: "Как обрабатываются и экспортируются медицинские данные.",
+    contentRu: `<p>GlukoTrack хранит данные аккаунта и дневника для синхронизации, отчётов и поддержки. Админский доступ к медицинским данным ограничен и аудируется.</p><p>Экспорт или удаление можно запросить через поддержку. Не делитесь публичными SOS-ссылками, если не понимаете, что на них видно.</p>`
+  }
+];

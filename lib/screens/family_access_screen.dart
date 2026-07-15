@@ -117,7 +117,10 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
       if (mounted) setState(() => _message = successMessage);
     } catch (error) {
       if (mounted) {
-        setState(() => _message = l10n.t('networkUnavailable'));
+        final messageKey = error is FamilyAccessException
+            ? error.message
+            : 'networkUnavailable';
+        setState(() => _message = l10n.t(messageKey));
       }
     } finally {
       if (mounted) setState(() => _busy = false);

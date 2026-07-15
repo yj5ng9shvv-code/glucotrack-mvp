@@ -10,6 +10,7 @@ import 'device_translations.dart';
 import 'diary_voice_translations.dart';
 import 'email_verification_translations.dart' as bundled_email_verification;
 import 'family_access_translations.dart';
+import 'home_screen_translations.dart';
 import 'network_error_translations.dart' as bundled_network_errors;
 import 'navigation_translations.dart';
 import 'patient_card_translations.dart';
@@ -58,6 +59,19 @@ class AppLocalizations {
       final aliased = t(alias);
       if (aliased != alias) return aliased;
     }
+    if (key == 'currentGlucose') {
+      final local = _strings[languageCode]?[key];
+      if (local != null) return local;
+      final family =
+          familyAccessTranslations[languageCode]?['family.currentGlucose'];
+      if (family != null) return family;
+    }
+    final homeScreen = homeScreenTranslations[languageCode]?[key] ??
+        homeScreenTranslations[_fallback]?[key];
+    if (homeScreen != null) return homeScreen;
+    final homeCommon = homeCommonTranslations[languageCode]?[key] ??
+        homeCommonTranslations[_fallback]?[key];
+    if (homeCommon != null) return homeCommon;
     if (key == 'kcal') {
       final translated = coreTranslation(
         languageCode,

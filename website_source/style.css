@@ -81,7 +81,10 @@ a{text-decoration:none;color:inherit}
 .card p{color:var(--muted)}
 .app-section{background:#eef6ff}
 .app-box{text-align:center;padding:28px}
-iframe{width:100%;height:600px;border:1px solid #e5e7eb;border-radius:18px;margin-top:22px;background:#f8fafc}
+.app-actions{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;margin:0 auto 18px}
+.app-actions .btn{min-width:260px;text-align:center}
+.app-actions .btn-outline{border-color:rgba(37,99,235,.35);color:var(--blue);background:#fff}
+iframe{width:100%;height:760px;border:1px solid #e5e7eb;border-radius:18px;margin-top:22px;background:#f8fafc}
 .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .price-card{padding:30px}
 .price-card.featured{border:2px solid var(--blue);transform:scale(1.02)}
@@ -92,7 +95,7 @@ iframe{width:100%;height:600px;border:1px solid #e5e7eb;border-radius:18px;margi
 .contact-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:26px}
 footer{background:#020617;color:#cbd5e1;text-align:center;padding:28px 20px}
 @media(max-width:900px){
-  .hero{min-height:auto}.hero-grid,.contact-grid{grid-template-columns:1fr}.cards,.pricing,.marketing-grid{grid-template-columns:1fr}.nav-links{display:none}.language-select{max-width:145px}iframe{height:620px}
+  .hero{min-height:auto}.hero-grid,.contact-grid{grid-template-columns:1fr}.cards,.pricing,.marketing-grid{grid-template-columns:1fr}.nav-links{display:none}.language-select{max-width:145px}iframe{height:760px}
   .feature-dialog.about-dialog{width:calc(100% - 18px);height:94vh;padding:22px 20px}
   .about-dialog .dialog-copy{column-count:2;column-gap:18px}
   .about-dialog .dialog-copy p{font-size:11px;line-height:1.28;margin-bottom:8px}

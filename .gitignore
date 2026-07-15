@@ -89,10 +89,12 @@ ios/fastlane/Matchfile
 *.jpeg
 *.webp
 release/
+.apkcheck*/
 *.tmp
 *.bak
 
 # Android Studio will place build artifacts here
+/android/build/
 /android/app/debug
 /android/app/profile
 /android/app/release

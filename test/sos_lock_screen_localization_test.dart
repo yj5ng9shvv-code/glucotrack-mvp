@@ -225,5 +225,9 @@ void _expectEnglishLockScreenPayload(Map<dynamic, dynamic> payload) {
 
 class _OfflineAuthService extends AuthService {
   @override
-  Future<AuthSession?> restoreSession(String token) async => null;
+  Future<AuthSession?> restoreSession(
+    String token, {
+    String? refreshToken,
+  }) async =>
+      null;
 }

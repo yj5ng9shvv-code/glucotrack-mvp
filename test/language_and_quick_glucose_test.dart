@@ -123,5 +123,9 @@ void main() {
 
 class _OfflineAuthService extends AuthService {
   @override
-  Future<AuthSession?> restoreSession(String token) async => null;
+  Future<AuthSession?> restoreSession(
+    String token, {
+    String? refreshToken,
+  }) async =>
+      null;
 }

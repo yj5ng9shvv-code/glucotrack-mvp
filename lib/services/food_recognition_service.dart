@@ -102,7 +102,14 @@ class FoodRecognitionService {
   }
 
   Map<String, dynamic> _decodeJson(List<int> bodyBytes) {
-    final decoded = jsonDecode(utf8.decode(bodyBytes));
+    final Object? decoded;
+    try {
+      decoded = jsonDecode(utf8.decode(bodyBytes));
+    } catch (_) {
+      throw const FoodRecognitionException(
+        'Service returned an unexpected response format.',
+      );
+    }
     if (decoded is! Map<String, dynamic>) {
       throw const FoodRecognitionException(
         'Service returned an unexpected response format.',

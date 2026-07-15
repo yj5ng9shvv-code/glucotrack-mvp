@@ -5,11 +5,8 @@ import 'yuwell_adapter.dart';
 
 export 'sensor_adapter.dart';
 
-class MockSensorAdapter implements SensorAdapter {
-  MockSensorAdapter(this.brand);
-
-  final SensorIntegrationService _mockService =
-      const SensorIntegrationService();
+class UnavailableSensorAdapter implements SensorAdapter {
+  UnavailableSensorAdapter(this.brand);
 
   @override
   final SensorBrand brand;
@@ -49,7 +46,8 @@ class MockSensorAdapter implements SensorAdapter {
   bool get requiresBackend => switch (brand) {
         SensorBrand.dexcom ||
         SensorBrand.freestyleLibre ||
-        SensorBrand.medtronicGuardian =>
+        SensorBrand.medtronicGuardian ||
+        SensorBrand.yuwellAnytime =>
           true,
         _ => false,
       };
@@ -58,9 +56,8 @@ class MockSensorAdapter implements SensorAdapter {
   Future<List<SensorReading>> fetchReadings({
     required double currentGlucoseMmol,
   }) {
-    return _mockService.syncMockReadings(
-      brand: brand,
-      currentGlucose: currentGlucoseMmol,
+    throw SensorIntegrationException(
+      'Provider "${brand.name}" is not implemented yet for production sync.',
     );
   }
 }
@@ -73,7 +70,7 @@ class SensorAdapterRegistry {
   SensorAdapter adapterFor(SensorBrand brand) =>
       brand == SensorBrand.yuwellAnytime
           ? YuwellAdapter(client: yuwellClient)
-          : MockSensorAdapter(brand);
+          : UnavailableSensorAdapter(brand);
 
   List<SensorAdapter> get adapters => SensorIntegrationService.supportedBrands
       .map((brand) => adapterFor(brand))

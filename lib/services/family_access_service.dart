@@ -69,14 +69,14 @@ class FamilyAccessService {
     Map<String, dynamic>? payload,
   ) async {
     if (_baseUrl.trim().isEmpty) {
-      throw const FamilyAccessException('NETWORK_ERROR');
+      throw const FamilyAccessException('networkUnavailable');
     }
     final uri = Uri.parse(
       '${_baseUrl.replaceFirst(RegExp(r'/$'), '')}$path',
     );
     final headers = {
       'Authorization': 'Bearer $token',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
     };
     final response = switch (method) {
       'GET' => await _client.get(uri, headers: headers),
@@ -89,11 +89,34 @@ class FamilyAccessService {
     };
     final body = _decode(response.body);
     if (response.statusCode < 200 || response.statusCode >= 300) {
-      throw const FamilyAccessException(
-        'NETWORK_ERROR',
+      throw FamilyAccessException(
+        _errorMessage(body),
       );
     }
     return body;
+  }
+
+  String _errorMessage(Map<String, dynamic> body) {
+    final code = _normalizeErrorCode(
+      body['code']?.toString() ?? body['error']?.toString(),
+    );
+    return switch (code) {
+      'FAMILY_SUBSCRIPTION_REQUIRED' =>
+        'family.error.familySubscriptionRequired',
+      'FAMILY_MEMBER_LIMIT_REACHED' => 'family.error.memberLimitReached',
+      'INVALID_INVITATION_CODE' => 'family.error.invalidInvitationCode',
+      _ => 'networkUnavailable',
+    };
+  }
+
+  static String? _normalizeErrorCode(Object? value) {
+    final source = value?.toString().trim();
+    if (source == null || source.isEmpty) return null;
+    final normalized = source.toUpperCase().replaceAll(
+          RegExp(r'[^A-Z0-9]+'),
+          '_',
+        );
+    return normalized.replaceAll(RegExp(r'^_+|_+$'), '');
   }
 
   Map<String, dynamic> _decode(String source) {

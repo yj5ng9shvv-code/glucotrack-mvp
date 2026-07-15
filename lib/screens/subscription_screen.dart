@@ -264,15 +264,43 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                       title: LocalizedText('ui.text.be447dcdbb3f'),
                     ),
                     Text(
-                        '${l10n.t('ui.text.f23dc4f4fbb4')}: ${state.premiumPlan ?? 'subscription'}'),
+                      '${l10n.t('ui.text.f23dc4f4fbb4')}: ${_planName(l10n, state.premiumPlan)}',
+                    ),
                     if (state.premiumUntil != null)
                       Text(
                           '${l10n.t('ui.text.fe3c73ce5b52')}: ${state.premiumUntil!.toLocal()}'),
                     const SizedBox(height: 12),
-                    OutlinedButton(
+                    OutlinedButton.icon(
                       onPressed: _busy ? null : _portal,
-                      child: const LocalizedText('ui.text.537f95d8b61c'),
+                      icon: const Icon(Icons.manage_accounts),
+                      label: Text(l10n.t('manageSubscription')),
                     ),
+                    const SizedBox(height: 16),
+                    Text(
+                      l10n.t('changePlanTitle'),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    if (state.premiumPlan != 'family')
+                      _PlanOption(
+                        icon: Icons.family_restroom,
+                        title: l10n.t('changeToFamilyPlan'),
+                        price: l10n.t('familyPrice'),
+                        description: l10n.t('familyPlanDescription'),
+                        primary: true,
+                        onPressed: _busy ? null : _portal,
+                      )
+                    else
+                      _PlanOption(
+                        icon: Icons.person,
+                        title: l10n.t('changePersonalPlan'),
+                        price: l10n.t('monthPrice'),
+                        description: l10n.t('personalPlanDescription'),
+                        onPressed: _busy ? null : _portal,
+                      ),
                   ] else ...[
                     _PlanOption(
                       icon: Icons.calendar_month,
@@ -481,8 +509,18 @@ class _PlanOption extends StatelessWidget {
 
 IconData _deviceIcon(String platform) {
   return switch (platform) {
-    'android' || 'iOS' => Icons.smartphone,
+    'android' || 'ios' => Icons.smartphone,
     'web' => Icons.language,
     _ => Icons.computer,
+  };
+}
+
+String _planName(AppLocalizations l10n, String? plan) {
+  return switch (plan) {
+    'monthly' => l10n.t('personalMonthlyPlan'),
+    'yearly' => l10n.t('personalYearlyPlan'),
+    'family' => l10n.t('familyPlan'),
+    'trial' => l10n.t('premiumTrialTitle'),
+    _ => l10n.t('premium'),
   };
 }

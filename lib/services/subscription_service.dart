@@ -58,7 +58,7 @@ class SubscriptionService {
     );
     final response = await _client.post(
       uri,
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json; charset=utf-8'},
       body: jsonEncode({'email': email, 'locale': locale}),
     );
     if (response.statusCode < 200 || response.statusCode >= 300) {
@@ -115,7 +115,7 @@ class SubscriptionService {
     );
     final headers = {
       'Authorization': 'Bearer $token',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
       if (deviceId != null) 'X-Device-ID': deviceId,
     };
     final response = method == 'GET'
@@ -129,18 +129,28 @@ class SubscriptionService {
               );
     final body = _decode(response.body);
     if (response.statusCode < 200 || response.statusCode >= 300) {
-      final error = body['code']?.toString();
+      final error = _normalizeErrorCode(
+        body['code']?.toString() ?? body['error']?.toString(),
+      );
       throw SubscriptionException(
         switch (error) {
-          'EMAIL_NOT_VERIFIED' =>
-            'ui.text.a7ac75be7b72',
-          'TRIAL_ALREADY_USED' =>
-            'trialEndsTomorrow',
+          'EMAIL_NOT_VERIFIED' => 'ui.text.a7ac75be7b72',
+          'TRIAL_ALREADY_USED' => 'trialEndsTomorrow',
           _ => 'networkUnavailable',
         },
       );
     }
     return body;
+  }
+
+  static String? _normalizeErrorCode(Object? value) {
+    final source = value?.toString().trim();
+    if (source == null || source.isEmpty) return null;
+    final normalized = source.toUpperCase().replaceAll(
+          RegExp(r'[^A-Z0-9]+'),
+          '_',
+        );
+    return normalized.replaceAll(RegExp(r'^_+|_+$'), '');
   }
 
   Map<String, dynamic> _decode(String value) {

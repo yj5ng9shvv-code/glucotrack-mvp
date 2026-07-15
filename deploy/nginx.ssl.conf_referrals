@@ -1,0 +1,6 @@
+location ~ "^/r/(GT[A-Za-z0-9]{4,10})/?$" {
+    root /home/ODESSA/web/glukotrack.com/public_html;
+    try_files /r/index.html =404;
+    expires -1;
+    add_header Cache-Control "no-cache, no-store, must-revalidate" always;
+}

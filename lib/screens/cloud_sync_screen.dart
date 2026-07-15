@@ -25,24 +25,28 @@ class _CloudSyncScreenState extends State<CloudSyncScreen> {
 
   Future<void> _push() async {
     setState(() => _busy = true);
-    final result = await _service.push(context.read<AppState>());
+    final state = context.read<AppState>();
+    final l10n = context.l10n;
+    final result = await _service.push(state);
     if (!mounted) return;
     if (result.ok) {
-      await context.read<AppState>().setCloudSyncEnabled(true);
+      await state.setCloudSyncEnabled(true);
     }
     setState(() {
       _busy = false;
-      _status = context.l10n.t(result.messageKey);
+      _status = l10n.t(result.messageKey);
     });
   }
 
   Future<void> _pull() async {
     setState(() => _busy = true);
-    final result = await _service.pull(context.read<AppState>());
+    final state = context.read<AppState>();
+    final l10n = context.l10n;
+    final result = await _service.pull(state);
     if (!mounted) return;
     setState(() {
       _busy = false;
-      _status = context.l10n.t(result.messageKey);
+      _status = l10n.t(result.messageKey);
     });
   }
 

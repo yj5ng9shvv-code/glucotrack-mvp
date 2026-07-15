@@ -20,8 +20,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Future<void> _finish() async {
     final state = context.read<AppState>();
     await state.completeOnboarding(_diabetesType, _unitPreference, _accepted);
-    if (!mounted) return;
-    Navigator.pushReplacementNamed(context, '/');
   }
 
   @override

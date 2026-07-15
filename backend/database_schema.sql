@@ -28,6 +28,8 @@ CREATE TABLE IF NOT EXISTS users (
   email_verification_expires_at DATETIME NULL,
   stripe_customer_id VARCHAR(255) NULL,
   stripe_subscription_id VARCHAR(255) NULL,
+  stripe_event_created_at DATETIME NULL,
+  token_version INT UNSIGNED NOT NULL DEFAULT 0,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -47,9 +49,23 @@ CREATE TABLE IF NOT EXISTS trial_devices (
 CREATE TABLE IF NOT EXISTS health_snapshots (
   user_id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
   payload JSON NOT NULL,
+  schema_version INT UNSIGNED NOT NULL DEFAULT 1,
+  revision BIGINT UNSIGNED NOT NULL DEFAULT 0,
   updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT health_snapshots_user_fk
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS sync_changes (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT UNSIGNED NOT NULL,
+  revision BIGINT UNSIGNED NOT NULL,
+  base_revision BIGINT UNSIGNED NOT NULL,
+  payload JSON NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY sync_changes_user_revision_unique (user_id, revision),
+  KEY sync_changes_user_time_idx (user_id, created_at),
+  CONSTRAINT sync_changes_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS account_devices (
@@ -69,6 +85,26 @@ CREATE TABLE IF NOT EXISTS account_devices (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS refresh_tokens (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT UNSIGNED NOT NULL,
+  token_hash VARCHAR(128) NOT NULL UNIQUE,
+  device_id VARCHAR(128) NOT NULL,
+  device_name VARCHAR(120) NOT NULL,
+  platform VARCHAR(32) NOT NULL,
+  fingerprint_hash VARCHAR(64) NULL,
+  token_version INT UNSIGNED NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  last_used_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  expires_at DATETIME NOT NULL,
+  revoked_at DATETIME NULL,
+  UNIQUE KEY refresh_tokens_user_device_unique (user_id, device_id),
+  KEY refresh_tokens_user_active_idx (user_id, revoked_at, expires_at),
+  KEY refresh_tokens_expires_idx (expires_at),
+  CONSTRAINT refresh_tokens_user_fk
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE IF NOT EXISTS family_links (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   owner_user_id BIGINT UNSIGNED NOT NULL,
@@ -76,7 +112,7 @@ CREATE TABLE IF NOT EXISTS family_links (
   invite_email VARCHAR(255) NOT NULL,
   invite_code VARCHAR(255) NOT NULL UNIQUE,
   permissions JSON NOT NULL,
-  status ENUM('pending', 'accepted', 'revoked') NOT NULL DEFAULT 'pending',
+  status ENUM('pending', 'accepted', 'suspended', 'revoked') NOT NULL DEFAULT 'pending',
   expires_at DATETIME NOT NULL,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   accepted_at DATETIME NULL,
@@ -130,9 +166,37 @@ CREATE TABLE IF NOT EXISTS sos_scans (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS sos_pin_attempts (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT UNSIGNED NOT NULL,
+  public_token VARCHAR(64) NOT NULL,
+  ip_address VARCHAR(64) NOT NULL,
+  user_agent VARCHAR(512) NULL,
+  success BOOLEAN NOT NULL DEFAULT FALSE,
+  attempted_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  locked_until DATETIME NULL,
+  KEY sos_pin_attempts_lookup_idx (public_token, ip_address, attempted_at),
+  KEY sos_pin_attempts_lock_idx (public_token, ip_address, locked_until),
+  KEY sos_pin_attempts_user_time_idx (user_id, attempted_at),
+  CONSTRAINT sos_pin_attempts_user_fk
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 INSERT IGNORE INTO schema_migrations(version, description)
 VALUES(1, 'Initial GlucoTrack MySQL schema with SOS support');
 INSERT IGNORE INTO schema_migrations(version, description)
 VALUES(2, 'Family subscriptions and multi-device account access');
 INSERT IGNORE INTO schema_migrations(version, description)
 VALUES(3, 'Server-authoritative one-time trial and email verification');
+INSERT IGNORE INTO schema_migrations(version, description)
+VALUES(8, 'Suspend family access whenever the owner family subscription is inactive');
+INSERT IGNORE INTO schema_migrations(version, description)
+VALUES(9, 'Authoritative ordered Stripe subscription state');
+INSERT IGNORE INTO schema_migrations(version, description)
+VALUES(10, 'Versioned conflict-aware health snapshot synchronization');
+INSERT IGNORE INTO schema_migrations(version, description)
+VALUES(11, 'Refresh-token rotation and persistent session refresh flow');
+INSERT IGNORE INTO schema_migrations(version, description)
+VALUES(12, 'Refresh tokens now track token version for user-wide revocation');
+INSERT IGNORE INTO schema_migrations(version, description)
+VALUES(13, 'SOS PIN unlock attempt journal and brute-force lockout');

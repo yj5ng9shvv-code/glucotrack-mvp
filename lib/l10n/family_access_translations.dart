@@ -16,6 +16,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Copy code',
     'family.revokeAccess': 'Revoke access',
     'family.monitoredPeople': 'People under my care',
+    'family.error.familySubscriptionRequired':
+        'Family plan is required for family access.',
+    'family.error.memberLimitReached': 'Family member limit reached.',
+    'family.error.invalidInvitationCode': 'Invalid invitation code.',
   },
   'de': {
     'family.title': 'Familienzugriff',
@@ -34,6 +38,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Code kopieren',
     'family.revokeAccess': 'Zugriff widerrufen',
     'family.monitoredPeople': 'Personen unter meiner Betreuung',
+    'family.error.familySubscriptionRequired':
+        'Für den Familienzugriff ist ein Family-Tarif erforderlich.',
+    'family.error.memberLimitReached': 'Limit für Familienmitglieder erreicht.',
+    'family.error.invalidInvitationCode': 'Ungültiger Einladungscode.',
   },
   'fr': {
     'family.title': 'Accès familial',
@@ -52,6 +60,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Copier le code',
     'family.revokeAccess': 'Révoquer l’accès',
     'family.monitoredPeople': 'Personnes sous ma surveillance',
+    'family.error.familySubscriptionRequired':
+        'Le forfait Family est requis pour l’accès familial.',
+    'family.error.memberLimitReached': 'Limite de membres de la famille atteinte.',
+    'family.error.invalidInvitationCode': 'Code d’invitation invalide.',
   },
   'es': {
     'family.title': 'Acceso familiar',
@@ -70,6 +82,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Copiar código',
     'family.revokeAccess': 'Revocar acceso',
     'family.monitoredPeople': 'Personas bajo mi cuidado',
+    'family.error.familySubscriptionRequired':
+        'Se requiere el plan Family para el acceso familiar.',
+    'family.error.memberLimitReached': 'Se alcanzó el límite de miembros familiares.',
+    'family.error.invalidInvitationCode': 'Código de invitación no válido.',
   },
   'it': {
     'family.title': 'Accesso familiare',
@@ -88,6 +104,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Copia codice',
     'family.revokeAccess': 'Revoca accesso',
     'family.monitoredPeople': 'Persone sotto la mia cura',
+    'family.error.familySubscriptionRequired':
+        'Per l’accesso familiare è richiesto il piano Family.',
+    'family.error.memberLimitReached': 'Limite dei membri familiari raggiunto.',
+    'family.error.invalidInvitationCode': 'Codice di invito non valido.',
   },
   'pl': {
     'family.title': 'Dostęp rodzinny',
@@ -106,6 +126,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Skopiuj kod',
     'family.revokeAccess': 'Cofnij dostęp',
     'family.monitoredPeople': 'Osoby pod moją opieką',
+    'family.error.familySubscriptionRequired':
+        'Dostęp rodzinny wymaga planu Family.',
+    'family.error.memberLimitReached': 'Osiągnięto limit członków rodziny.',
+    'family.error.invalidInvitationCode': 'Nieprawidłowy kod zaproszenia.',
   },
   'uk': {
     'family.title': 'Контроль близьких',
@@ -124,6 +148,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Скопіювати код',
     'family.revokeAccess': 'Відкликати доступ',
     'family.monitoredPeople': 'Люди під моїм наглядом',
+    'family.error.familySubscriptionRequired':
+        'Для сімейного доступу потрібен тариф Family.',
+    'family.error.memberLimitReached': 'Досягнуто ліміт членів сім’ї.',
+    'family.error.invalidInvitationCode': 'Недійсний код запрошення.',
   },
   'ru': {
     'family.title': 'Контроль близких',
@@ -142,6 +170,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Скопировать код',
     'family.revokeAccess': 'Отозвать доступ',
     'family.monitoredPeople': 'Люди под моим контролем',
+    'family.error.familySubscriptionRequired':
+        'Для семейного доступа нужен тариф Family.',
+    'family.error.memberLimitReached': 'Достигнут лимит участников семьи.',
+    'family.error.invalidInvitationCode': 'Неверный код приглашения.',
   },
   'pt': {
     'family.title': 'Acesso familiar',
@@ -160,6 +192,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Copiar código',
     'family.revokeAccess': 'Revogar acesso',
     'family.monitoredPeople': 'Pessoas sob os meus cuidados',
+    'family.error.familySubscriptionRequired':
+        'O plano Family é necessário para o acesso familiar.',
+    'family.error.memberLimitReached': 'Limite de membros da família atingido.',
+    'family.error.invalidInvitationCode': 'Código de convite inválido.',
   },
   'nl': {
     'family.title': 'Familietoegang',
@@ -178,6 +214,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Code kopiëren',
     'family.revokeAccess': 'Toegang intrekken',
     'family.monitoredPeople': 'Mensen onder mijn zorg',
+    'family.error.familySubscriptionRequired':
+        'Voor gezinstoegang is het Family-abonnement vereist.',
+    'family.error.memberLimitReached': 'Limiet voor gezinsleden bereikt.',
+    'family.error.invalidInvitationCode': 'Ongeldige uitnodigingscode.',
   },
   'ro': {
     'family.title': 'Acces pentru familie',
@@ -196,6 +236,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Copiază codul',
     'family.revokeAccess': 'Revocă accesul',
     'family.monitoredPeople': 'Persoane aflate în grija mea',
+    'family.error.familySubscriptionRequired':
+        'Planul Family este necesar pentru accesul familiei.',
+    'family.error.memberLimitReached': 'Limita membrilor familiei a fost atinsă.',
+    'family.error.invalidInvitationCode': 'Cod de invitație nevalid.',
   },
   'cs': {
     'family.title': 'Rodinný přístup',
@@ -214,6 +258,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopírovat kód',
     'family.revokeAccess': 'Odvolat přístup',
     'family.monitoredPeople': 'Osoby v mé péči',
+    'family.error.familySubscriptionRequired':
+        'Pro rodinný přístup je vyžadován tarif Family.',
+    'family.error.memberLimitReached': 'Byl dosažen limit členů rodiny.',
+    'family.error.invalidInvitationCode': 'Neplatný kód pozvánky.',
   },
   'sk': {
     'family.title': 'Rodinný prístup',
@@ -232,6 +280,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopírovať kód',
     'family.revokeAccess': 'Odvolať prístup',
     'family.monitoredPeople': 'Osoby v mojej starostlivosti',
+    'family.error.familySubscriptionRequired':
+        'Na rodinný prístup je potrebný plán Family.',
+    'family.error.memberLimitReached': 'Bol dosiahnutý limit členov rodiny.',
+    'family.error.invalidInvitationCode': 'Neplatný kód pozvánky.',
   },
   'hu': {
     'family.title': 'Családi hozzáférés',
@@ -250,6 +302,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kód másolása',
     'family.revokeAccess': 'Hozzáférés visszavonása',
     'family.monitoredPeople': 'Gondozott személyek',
+    'family.error.familySubscriptionRequired':
+        'A családi hozzáféréshez Family csomag szükséges.',
+    'family.error.memberLimitReached': 'Elérte a családtagok számának korlátját.',
+    'family.error.invalidInvitationCode': 'Érvénytelen meghívókód.',
   },
   'sv': {
     'family.title': 'Familjeåtkomst',
@@ -268,6 +324,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopiera kod',
     'family.revokeAccess': 'Återkalla åtkomst',
     'family.monitoredPeople': 'Personer under min vård',
+    'family.error.familySubscriptionRequired':
+        'Family-plan krävs för familjeåtkomst.',
+    'family.error.memberLimitReached': 'Gränsen för familjemedlemmar har nåtts.',
+    'family.error.invalidInvitationCode': 'Ogiltig inbjudningskod.',
   },
   'da': {
     'family.title': 'Familieadgang',
@@ -286,6 +346,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopiér kode',
     'family.revokeAccess': 'Tilbagekald adgang',
     'family.monitoredPeople': 'Personer under min omsorg',
+    'family.error.familySubscriptionRequired':
+        'Family-plan kræves for familieadgang.',
+    'family.error.memberLimitReached': 'Grænsen for familiemedlemmer er nået.',
+    'family.error.invalidInvitationCode': 'Ugyldig invitationskode.',
   },
   'fi': {
     'family.title': 'Perheen käyttöoikeus',
@@ -304,6 +368,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopioi koodi',
     'family.revokeAccess': 'Peruuta käyttöoikeus',
     'family.monitoredPeople': 'Hoidossani olevat henkilöt',
+    'family.error.familySubscriptionRequired':
+        'Perhekäyttö edellyttää Family-tilausta.',
+    'family.error.memberLimitReached': 'Perheenjäsenten raja on saavutettu.',
+    'family.error.invalidInvitationCode': 'Virheellinen kutsukoodi.',
   },
   'no': {
     'family.title': 'Familietilgang',
@@ -322,6 +390,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopier kode',
     'family.revokeAccess': 'Trekk tilbake tilgang',
     'family.monitoredPeople': 'Personer under min omsorg',
+    'family.error.familySubscriptionRequired':
+        'Family-abonnement kreves for familietilgang.',
+    'family.error.memberLimitReached': 'Grensen for familiemedlemmer er nådd.',
+    'family.error.invalidInvitationCode': 'Ugyldig invitasjonskode.',
   },
   'el': {
     'family.title': 'Οικογενειακή πρόσβαση',
@@ -340,6 +412,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Αντιγραφή κωδικού',
     'family.revokeAccess': 'Ανάκληση πρόσβασης',
     'family.monitoredPeople': 'Άτομα υπό τη φροντίδα μου',
+    'family.error.familySubscriptionRequired':
+        'Απαιτείται πρόγραμμα Family για οικογενειακή πρόσβαση.',
+    'family.error.memberLimitReached': 'Έχει συμπληρωθεί το όριο μελών οικογένειας.',
+    'family.error.invalidInvitationCode': 'Μη έγκυρος κωδικός πρόσκλησης.',
   },
   'tr': {
     'family.title': 'Aile erişimi',
@@ -358,6 +434,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kodu kopyala',
     'family.revokeAccess': 'Erişimi iptal et',
     'family.monitoredPeople': 'Bakımımdaki kişiler',
+    'family.error.familySubscriptionRequired':
+        'Aile erişimi için Family planı gereklidir.',
+    'family.error.memberLimitReached': 'Aile üyesi sınırına ulaşıldı.',
+    'family.error.invalidInvitationCode': 'Geçersiz davet kodu.',
   },
   'bg': {
     'family.title': 'Семеен достъп',
@@ -376,6 +456,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Копиране на код',
     'family.revokeAccess': 'Оттегляне на достъп',
     'family.monitoredPeople': 'Хора под моя грижа',
+    'family.error.familySubscriptionRequired':
+        'За семеен достъп е необходим план Family.',
+    'family.error.memberLimitReached': 'Достигнат е лимитът за членове на семейството.',
+    'family.error.invalidInvitationCode': 'Невалиден код за покана.',
   },
   'hr': {
     'family.title': 'Obiteljski pristup',
@@ -394,6 +478,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopiraj kod',
     'family.revokeAccess': 'Opozovi pristup',
     'family.monitoredPeople': 'Osobe pod mojom skrbi',
+    'family.error.familySubscriptionRequired':
+        'Za obiteljski pristup potreban je Family paket.',
+    'family.error.memberLimitReached': 'Dosegnuto je ograničenje članova obitelji.',
+    'family.error.invalidInvitationCode': 'Nevažeći pozivni kod.',
   },
   'sl': {
     'family.title': 'Družinski dostop',
@@ -412,6 +500,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopiraj kodo',
     'family.revokeAccess': 'Prekliči dostop',
     'family.monitoredPeople': 'Osebe pod mojo oskrbo',
+    'family.error.familySubscriptionRequired':
+        'Za družinski dostop je potreben paket Family.',
+    'family.error.memberLimitReached': 'Dosežena je omejitev družinskih članov.',
+    'family.error.invalidInvitationCode': 'Neveljavna koda povabila.',
   },
   'lt': {
     'family.title': 'Šeimos prieiga',
@@ -430,6 +522,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopijuoti kodą',
     'family.revokeAccess': 'Atšaukti prieigą',
     'family.monitoredPeople': 'Mano prižiūrimi žmonės',
+    'family.error.familySubscriptionRequired':
+        'Šeimos prieigai reikalingas Family planas.',
+    'family.error.memberLimitReached': 'Pasiektas šeimos narių limitas.',
+    'family.error.invalidInvitationCode': 'Neteisingas kvietimo kodas.',
   },
   'lv': {
     'family.title': 'Ģimenes piekļuve',
@@ -448,6 +544,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopēt kodu',
     'family.revokeAccess': 'Atsaukt piekļuvi',
     'family.monitoredPeople': 'Cilvēki manā aprūpē',
+    'family.error.familySubscriptionRequired':
+        'Ģimenes piekļuvei nepieciešams Family plāns.',
+    'family.error.memberLimitReached': 'Sasniegts ģimenes locekļu limits.',
+    'family.error.invalidInvitationCode': 'Nederīgs uzaicinājuma kods.',
   },
   'et': {
     'family.title': 'Pere juurdepääs',
@@ -466,6 +566,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopeeri kood',
     'family.revokeAccess': 'Tühista juurdepääs',
     'family.monitoredPeople': 'Minu hoole all olevad inimesed',
+    'family.error.familySubscriptionRequired':
+        'Pere juurdepääsuks on vaja Family paketti.',
+    'family.error.memberLimitReached': 'Pereliikmete limiit on täis.',
+    'family.error.invalidInvitationCode': 'Vigane kutsekood.',
   },
   'sr': {
     'family.title': 'Породични приступ',
@@ -484,6 +588,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Копирај код',
     'family.revokeAccess': 'Опозови приступ',
     'family.monitoredPeople': 'Особе под мојом негом',
+    'family.error.familySubscriptionRequired':
+        'За породични приступ потребан је Family пакет.',
+    'family.error.memberLimitReached': 'Достигнут је лимит чланова породице.',
+    'family.error.invalidInvitationCode': 'Неважећи код позивнице.',
   },
   'sq': {
     'family.title': 'Qasje familjare',
@@ -502,6 +610,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Kopjo kodin',
     'family.revokeAccess': 'Revoko qasjen',
     'family.monitoredPeople': 'Personat nën kujdesin tim',
+    'family.error.familySubscriptionRequired':
+        'Për akses familjar kërkohet plani Family.',
+    'family.error.memberLimitReached': 'U arrit kufiri i anëtarëve të familjes.',
+    'family.error.invalidInvitationCode': 'Kod ftese i pavlefshëm.',
   },
   'mk': {
     'family.title': 'Семеен пристап',
@@ -520,6 +632,10 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Копирај код',
     'family.revokeAccess': 'Повлечи пристап',
     'family.monitoredPeople': 'Лица под моја грижа',
+    'family.error.familySubscriptionRequired':
+        'За семеен пристап е потребен Family пакет.',
+    'family.error.memberLimitReached': 'Достигнат е лимитот на членови на семејството.',
+    'family.error.invalidInvitationCode': 'Невалиден код за покана.',
   },
   'is': {
     'family.title': 'Fjölskylduaðgangur',
@@ -538,5 +654,9 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.copyCode': 'Afrita kóða',
     'family.revokeAccess': 'Afturkalla aðgang',
     'family.monitoredPeople': 'Fólk í minni umsjá',
+    'family.error.familySubscriptionRequired':
+        'Family áskrift þarf fyrir fjölskylduaðgang.',
+    'family.error.memberLimitReached': 'Hámarki fjölskyldumeðlima hefur verið náð.',
+    'family.error.invalidInvitationCode': 'Ógildur boðskóði.',
   },
 };

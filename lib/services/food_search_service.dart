@@ -72,7 +72,7 @@ class FoodSearchService {
           Uri.parse('$baseUrl/ai/search-food'),
           headers: {
             'Authorization': 'Bearer $token',
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
           },
           body: jsonEncode({
             'query': query,
@@ -80,10 +80,10 @@ class FoodSearchService {
           }),
         )
         .timeout(const Duration(seconds: 30));
-    final decoded = jsonDecode(utf8.decode(response.bodyBytes));
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw Exception('NETWORK_ERROR');
     }
+    final decoded = jsonDecode(utf8.decode(response.bodyBytes));
     final map = decoded is Map
         ? decoded.map((key, value) => MapEntry(key.toString(), value))
         : <String, dynamic>{};

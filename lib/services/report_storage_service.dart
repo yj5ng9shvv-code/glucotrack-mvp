@@ -54,13 +54,12 @@ class ReportStorageService {
 
   Map<String, String> _headers(String token) => {
         'Authorization': 'Bearer $token',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
       };
 
   String _error(http.Response response) {
     try {
-      return jsonDecode(response.body)['code']?.toString() ??
-          'NETWORK_ERROR';
+      return jsonDecode(response.body)['code']?.toString() ?? 'NETWORK_ERROR';
     } catch (_) {
       return 'NETWORK_ERROR';
     }

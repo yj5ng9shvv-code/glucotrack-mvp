@@ -52,7 +52,7 @@ class DeviceIdentityService {
       id = '${DateTime.now().microsecondsSinceEpoch}-$entropy';
       await preferences.setString(_storageKey, id);
     }
-    final platform = kIsWeb ? 'web' : defaultTargetPlatform.name;
+    final platform = kIsWeb ? 'web' : defaultTargetPlatform.name.toLowerCase();
     final fingerprintSource = kIsWeb ? browserFingerprintSource() : id;
     return DeviceIdentity(
       id: id,
@@ -81,8 +81,8 @@ class DeviceIdentityService {
   static String _deviceName(String platform) {
     return switch (platform) {
       'android' => 'Android device',
-      'iOS' => 'iPhone or iPad',
-      'macOS' => 'Mac',
+      'ios' => 'iPhone or iPad',
+      'macos' => 'Mac',
       'windows' => 'Windows device',
       'linux' => 'Linux device',
       'web' => 'Web browser',

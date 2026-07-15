@@ -5,7 +5,7 @@
 // the current executable after each deployment.
 for (const build of _flutter.buildConfig.builds) {
   if (build.mainJsPath === 'main.dart.js') {
-    build.mainJsPath = 'main.dart.js?v=20260709-allergy-status-3';
+    build.mainJsPath = 'main.dart.js?v=20260715-l10n-fix-1';
   }
 }
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'models/app_state.dart';
+import 'navigation/app_navigator.dart';
 import 'l10n/app_localizations.dart';
 import 'l10n/translation_loader.dart';
 import 'screens/home_screen.dart';
@@ -11,18 +12,22 @@ import 'screens/auth_screen.dart';
 import 'screens/family_access_screen.dart';
 import 'screens/ai_assistant_screen.dart';
 import 'screens/ai_doctor_screen.dart';
+import 'screens/about_screen.dart';
 import 'screens/calculator_screen.dart';
 import 'screens/cloud_sync_screen.dart';
 import 'screens/diary_screen.dart';
 import 'screens/food_catalog_screen.dart';
 import 'screens/food_scanner_screen.dart';
+import 'screens/help_center_screen.dart';
 import 'screens/diary_analysis_screen.dart';
 import 'screens/doctor_report_screen.dart';
 import 'screens/emergency_card_screen.dart';
 import 'screens/emergency_profile_screen.dart';
 import 'screens/export_screen.dart';
 import 'screens/onboarding_screen.dart';
+import 'screens/notifications_screen.dart';
 import 'screens/profile_screen.dart';
+import 'screens/referral_screen.dart';
 import 'screens/sensors_screen.dart';
 import 'screens/subscription_screen.dart';
 import 'screens/sos_screen.dart';
@@ -54,12 +59,14 @@ class GlukoTrackApp extends StatelessWidget {
           initialState ??
           AppState(emergencyCardUpdater: emergencyService.updateLockScreenCard),
       child: AppStateLoader(
-        child: Consumer<AppState>(
-          builder: (context, state, _) {
+        child: Selector<AppState, Locale>(
+          selector: (_, state) => state.locale,
+          builder: (context, locale, _) {
             return MaterialApp(
+              navigatorKey: AppNavigator.key,
               debugShowCheckedModeBanner: false,
               title: 'GlukoTrack',
-              locale: state.locale,
+              locale: locale,
               supportedLocales: AppState.supportedLanguages
                   .map((language) => language.locale),
               localizationsDelegates: const [
@@ -130,9 +137,17 @@ class GlukoTrackApp extends StatelessWidget {
                       child: PremiumGate2(child: FamilyAccessScreen()),
                     ),
                 '/onboarding': (_) => const OnboardingScreen(),
-                '/diary': (_) => const AppPageWithFooter(child: DiaryScreen()),
-                '/trends': (_) =>
-                    const AppPageWithFooter(child: TrendsScreen()),
+                '/notifications': (_) => const AppPageWithFooter(
+                      child: NotificationsScreen(),
+                    ),
+                '/diary': (_) => const AppPageWithFooter(
+                      selectedIndex: 1,
+                      child: DiaryScreen(),
+                    ),
+                '/trends': (_) => const AppPageWithFooter(
+                      selectedIndex: 3,
+                      child: TrendsScreen(),
+                    ),
                 '/export': (_) => const AppPageWithFooter(
                       child: PremiumGate2(child: ExportScreen()),
                     ),
@@ -147,9 +162,11 @@ class GlukoTrackApp extends StatelessWidget {
                       child: PremiumGate2(child: FoodScannerScreen()),
                     ),
                 '/diary-analysis': (_) => const AppPageWithFooter(
+                      selectedIndex: 3,
                       child: PremiumGate2(child: DiaryAnalysisScreen()),
                     ),
                 '/doctor-report': (_) => const AppPageWithFooter(
+                      selectedIndex: 3,
                       child: PremiumGate2(child: DoctorReportScreen()),
                     ),
                 '/emergency-profile': (_) => const AppPageWithFooter(
@@ -160,20 +177,32 @@ class GlukoTrackApp extends StatelessWidget {
                     ),
                 '/sos': (_) => const AppPageWithFooter(child: SosScreen()),
                 '/ai-assistant': (_) => const AppPageWithFooter(
-                      selectedIndex: 1,
+                      selectedIndex: 2,
                       child: PremiumGate2(child: AiAssistantScreen()),
                     ),
                 '/ai-doctor': (_) => const AppPageWithFooter(
-                      selectedIndex: 1,
+                      selectedIndex: 2,
                       child: PremiumGate2(child: AiDoctorScreen()),
                     ),
                 '/chat': (_) => const AppPageWithFooter(
-                      selectedIndex: 1,
+                      selectedIndex: 2,
                       child: PremiumGate2(child: AiAssistantScreen()),
                     ),
                 '/profile': (_) => const AppPageWithFooter(
-                      selectedIndex: 2,
+                      selectedIndex: 4,
                       child: ProfileScreen(),
+                    ),
+                '/referrals': (_) => const AppPageWithFooter(
+                      selectedIndex: 4,
+                      child: ReferralScreen(),
+                    ),
+                '/help': (_) => const AppPageWithFooter(
+                      selectedIndex: 4,
+                      child: HelpCenterScreen(),
+                    ),
+                '/about': (_) => const AppPageWithFooter(
+                      selectedIndex: 4,
+                      child: AboutScreen(),
                     ),
                 '/sensors': (_) => const AppPageWithFooter(
                       child: PremiumGate2(child: SensorsScreen()),
@@ -183,8 +212,10 @@ class GlukoTrackApp extends StatelessWidget {
                     ),
                 '/emergency': (_) =>
                     const AppPageWithFooter(child: EmergencyScreen()),
-                '/voice-assistant': (_) =>
-                    const PremiumGate2(child: VoiceAssistantScreen()),
+                '/voice-assistant': (_) => const AppPageWithFooter(
+                      selectedIndex: 2,
+                      child: PremiumGate2(child: VoiceAssistantScreen()),
+                    ),
               },
             );
           },
@@ -215,31 +246,43 @@ class AppPageWithFooter extends StatelessWidget {
           selectedIndex: selectedIndex,
           destinations: [
             NavigationDestination(
-              icon: const Icon(Icons.home),
+              icon: const Icon(Icons.home_rounded),
               label: l10n.t('navigation.home'),
             ),
             NavigationDestination(
+              icon: const Icon(Icons.edit_note_rounded),
+              label: l10n.t('navigation.diary'),
+            ),
+            NavigationDestination(
               icon: const PulsingVoiceButton(
-                size: 44,
-                iconSize: 23,
+                size: 42,
+                iconSize: 22,
               ),
               label: l10n.t('navigation.askAi'),
             ),
             NavigationDestination(
-              icon: const Icon(Icons.person),
+              icon: const Icon(Icons.bar_chart_rounded),
+              label: l10n.t('navigation.analytics'),
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.person_rounded),
               label: l10n.t('navigation.profile'),
             ),
           ],
           onDestinationSelected: (index) {
             if (index == 0) {
-              Navigator.of(context).pushNamedAndRemoveUntil(
+              AppNavigator.pushNamedAndRemoveUntil(
                 '/home',
                 (route) => false,
               );
-            } else if (index == 1) {
-              Navigator.of(context).pushNamed('/voice-assistant');
+            } else if (index == 1 && selectedIndex != 1) {
+              AppNavigator.pushReplacementNamed('/diary');
             } else if (index == 2 && selectedIndex != 2) {
-              Navigator.of(context).pushReplacementNamed('/profile');
+              AppNavigator.pushReplacementNamed('/ai-assistant');
+            } else if (index == 3 && selectedIndex != 3) {
+              AppNavigator.pushReplacementNamed('/trends');
+            } else if (index == 4 && selectedIndex != 4) {
+              AppNavigator.pushReplacementNamed('/profile');
             }
           },
         ),
@@ -295,8 +338,7 @@ class PremiumGate extends StatelessWidget {
                     ),
                     const SizedBox(height: 18),
                     FilledButton.icon(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/subscription'),
+                      onPressed: () => AppNavigator.pushNamed('/subscription'),
                       icon: const Icon(Icons.lock_open),
                       label: const LocalizedText('ui.text.af2a3e117208'),
                     ),
@@ -532,7 +574,7 @@ class _PremiumGate2State extends State<PremiumGate2> {
                         ] else
                           FilledButton.icon(
                             onPressed: () =>
-                                Navigator.pushNamed(context, '/subscription'),
+                                AppNavigator.pushNamed('/subscription'),
                             icon: const Icon(Icons.lock_open),
                             label: Text(l10n.t('subscribeToContinue')),
                           ),

@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "db:install": "node install-db.js",
-    "start": "node server.js"
+    "admin:create": "node create-admin.js",
+    "start": "node server.js",
+    "test": "node --test"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",

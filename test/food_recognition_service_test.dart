@@ -74,6 +74,34 @@ void main() {
     expect(result.foods.single.name, 'Apple');
     expect(result.totalCarbsGrams, 14.4);
   });
+
+  test('food recognition maps invalid JSON to service exception', () async {
+    SharedPreferences.setMockInitialValues({});
+    final appState = AppState(authService: _FoodAuthService());
+    await appState.load();
+    await appState.login(email: 'food@example.com', password: 'secure123');
+
+    final service = FoodRecognitionService(
+      client: MockClient(
+        (request) async => http.Response('not-json', 200),
+      ),
+    );
+
+    expect(
+      () => service.recognizeFood(
+        imageBytes: Uint8List.fromList(const [1, 2, 3, 4]),
+        mimeType: 'image/jpeg',
+        appState: appState,
+      ),
+      throwsA(
+        isA<FoodRecognitionException>().having(
+          (error) => error.message,
+          'message',
+          'Service returned an unexpected response format.',
+        ),
+      ),
+    );
+  });
 }
 
 class _FoodAuthService extends AuthService {
@@ -94,5 +122,9 @@ class _FoodAuthService extends AuthService {
   }
 
   @override
-  Future<AuthSession?> restoreSession(String token) async => null;
+  Future<AuthSession?> restoreSession(
+    String token, {
+    String? refreshToken,
+  }) async =>
+      null;
 }

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Cache-Control" content="no-store">
+  <title>GlucoTrack Admin</title>
+  <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+  <div id="app" class="admin-shell">
+    <aside class="sidebar" aria-label="Admin navigation">
+      <div class="brand">
+        <span class="brand-mark">G</span>
+        <div>
+          <strong>GlucoTrack</strong>
+          <small data-i18n="adminPanel">Admin panel</small>
+        </div>
+      </div>
+      <nav id="nav" class="nav"></nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <button id="menuButton" class="icon-button mobile-only" type="button" aria-label="Menu">☰</button>
+        <div>
+          <h1 id="pageTitle">Dashboard</h1>
+          <p id="pageHint" class="muted"></p>
+        </div>
+        <div class="topbar-actions">
+          <label class="search">
+            <span>⌕</span>
+            <input id="globalSearch" type="search" data-i18n-placeholder="search" placeholder="Search">
+          </label>
+          <select id="languageSelect" class="select" aria-label="Language">
+            <option value="ru">RU</option>
+            <option value="en">EN</option>
+          </select>
+          <button id="themeButton" class="icon-button" type="button" aria-label="Theme">◐</button>
+          <button id="logoutButton" class="button ghost" type="button" data-i18n="logout">Logout</button>
+        </div>
+      </header>
+
+      <section id="notice" class="notice hidden" role="status"></section>
+      <section id="content" class="content"></section>
+    </main>
+  </div>
+
+  <section id="loginView" class="login-view hidden">
+    <form id="loginForm" class="login-panel">
+      <div class="brand login-brand">
+        <span class="brand-mark">G</span>
+        <div>
+          <strong>GlucoTrack</strong>
+          <small data-i18n="secureAdmin">Secure admin access</small>
+        </div>
+      </div>
+      <label>
+        <span data-i18n="email">Email</span>
+        <input name="email" type="email" autocomplete="username" required>
+      </label>
+      <label>
+        <span data-i18n="password">Password</span>
+        <input name="password" type="password" autocomplete="current-password" required>
+      </label>
+      <label id="codeField" class="hidden">
+        <span data-i18n="twoFactorCode">2FA code</span>
+        <input name="code" inputmode="numeric" autocomplete="one-time-code">
+      </label>
+      <button class="button primary" type="submit" data-i18n="signIn">Sign in</button>
+      <p id="loginError" class="error-text"></p>
+    </form>
+  </section>
+
+  <div id="modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal">
+      <button id="modalClose" class="icon-button modal-close" type="button" aria-label="Close">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="./admin.js" defer></script>
+</body>
+</html>

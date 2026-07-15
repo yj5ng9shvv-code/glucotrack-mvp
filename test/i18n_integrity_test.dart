@@ -326,6 +326,7 @@ void main() {
       'callRelative',
       'callRelativeWithName',
       'sendSms',
+      'geoConsent',
       'sensitiveHidden',
       'pinPrompt',
       'open',
