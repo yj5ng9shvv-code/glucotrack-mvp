@@ -284,7 +284,7 @@
       installLink.setAttribute('aria-label', installCopy[0]);
       document.getElementById('hero-install-hint').textContent = installCopy[3];
       window.GlucoTrackInstall.qr(document.getElementById('hero-install-qr'), code, 180);
-      const appUrl = `/app/?lang=${encodeURIComponent(code)}&v=20260715-l10n-fix-1`;
+      const appUrl = `/app/?lang=${encodeURIComponent(code)}&v=20260715-l10n-fix-2`;
       webAppLink.href = appUrl;
       if (webAppFrame.getAttribute('src') !== appUrl) webAppFrame.src = appUrl;
       window.currentSiteCopy = copy;
