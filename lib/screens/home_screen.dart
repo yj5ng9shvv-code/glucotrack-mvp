@@ -223,9 +223,7 @@ class _NotificationBell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final count = unreadCount > 99 ? '99+' : unreadCount.toString();
-    final language = context.watch<AppState>().languageCode;
-    final notificationTooltip =
-        language == 'ru' ? 'Уведомления' : 'Notifications';
+    final notificationTooltip = context.l10n.t('notifications.title');
     return Padding(
       padding: const EdgeInsets.only(right: 4),
       child: Stack(

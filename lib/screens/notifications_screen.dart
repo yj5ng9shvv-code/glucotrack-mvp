@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/app_state.dart';
 import '../services/notification_service.dart';
 
@@ -174,27 +175,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   }
 
   String _label(String key) {
-    final ru = context.read<AppState>().languageCode == 'ru';
-    const values = {
-      'title': ['Уведомления', 'Notifications'],
-      'refresh': ['Обновить', 'Refresh'],
-      'close': ['Закрыть', 'Close'],
-      'delete': ['Удалить', 'Delete'],
-      'deleted': ['Уведомление удалено', 'Notification deleted'],
-      'retry': ['Повторить', 'Retry'],
-      'errorTitle': ['Не удалось загрузить', 'Could not load'],
-      'errorText': [
-        'Проверьте интернет и попробуйте снова.',
-        'Check the connection and try again.',
-      ],
-      'emptyTitle': ['Уведомлений нет', 'No notifications'],
-      'emptyText': [
-        'Здесь появятся сообщения от GlukoTrack.',
-        'Messages from GlukoTrack will appear here.',
-      ],
-    };
-    final pair = values[key] ?? [key, key];
-    return ru ? pair[0] : pair[1];
+    return context.l10n.t('notifications.$key');
   }
 }
 

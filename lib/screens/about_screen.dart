@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/app_state.dart';
 import '../navigation/app_navigator.dart';
 import '../services/about_service.dart';
@@ -38,10 +39,10 @@ class _AboutScreenState extends State<AboutScreen> {
           }
           if (snapshot.hasError || !snapshot.hasData) {
             return _ErrorView(
-                onRetry: () {
-                  setState(() => _future = _service.content(_locale));
-                },
-                locale: _locale);
+              onRetry: () {
+                setState(() => _future = _service.content(_locale));
+              },
+            );
           }
           final content = snapshot.data!;
           return RefreshIndicator(
@@ -261,7 +262,7 @@ class _Links extends StatelessWidget {
   void _showSupportDialog(BuildContext context) {
     final state = context.read<AppState>();
     final locale = state.languageCode;
-    final copy = _supportCopy(locale);
+    final l10n = context.l10n;
     final emailController = TextEditingController(text: state.email);
     final subjectController = TextEditingController();
     final messageController = TextEditingController();
@@ -271,7 +272,7 @@ class _Links extends StatelessWidget {
       context: context,
       builder: (dialogContext) => StatefulBuilder(
         builder: (context, setState) => AlertDialog(
-          title: Text(content.links['support'] ?? copy.title),
+          title: Text(content.links['support'] ?? l10n.t('about.support.title')),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -279,19 +280,25 @@ class _Links extends StatelessWidget {
                 TextField(
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(labelText: copy.email),
+                  decoration: InputDecoration(
+                    labelText: l10n.t('about.support.email'),
+                  ),
                 ),
                 const SizedBox(height: 10),
                 TextField(
                   controller: subjectController,
-                  decoration: InputDecoration(labelText: copy.subject),
+                  decoration: InputDecoration(
+                    labelText: l10n.t('about.support.subject'),
+                  ),
                 ),
                 const SizedBox(height: 10),
                 TextField(
                   controller: messageController,
                   minLines: 4,
                   maxLines: 6,
-                  decoration: InputDecoration(labelText: copy.message),
+                  decoration: InputDecoration(
+                    labelText: l10n.t('about.support.message'),
+                  ),
                 ),
               ],
             ),
@@ -300,7 +307,7 @@ class _Links extends StatelessWidget {
             TextButton(
               onPressed:
                   sending ? null : () => Navigator.of(dialogContext).pop(),
-              child: Text(copy.close),
+              child: Text(l10n.t('about.support.close')),
             ),
             FilledButton(
               onPressed: sending
@@ -318,7 +325,9 @@ class _Links extends StatelessWidget {
                           Navigator.of(dialogContext).pop();
                           WidgetsBinding.instance.addPostFrameCallback((_) {
                             messenger.showSnackBar(
-                              SnackBar(content: Text(copy.sent)),
+                              SnackBar(
+                                content: Text(l10n.t('about.support.sent')),
+                              ),
                             );
                           });
                         }
@@ -326,7 +335,9 @@ class _Links extends StatelessWidget {
                         if (dialogContext.mounted) {
                           setState(() => sending = false);
                           messenger.showSnackBar(
-                            SnackBar(content: Text(copy.error)),
+                            SnackBar(
+                              content: Text(l10n.t('about.support.error')),
+                            ),
                           );
                         }
                       }
@@ -337,7 +348,7 @@ class _Links extends StatelessWidget {
                       height: 18,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : Text(copy.send),
+                  : Text(l10n.t('about.support.send')),
             ),
           ],
         ),
@@ -349,73 +360,16 @@ class _Links extends StatelessWidget {
     });
   }
 
-  _SupportCopy _supportCopy(String locale) {
-    return switch (locale.split('-').first) {
-      'ru' => const _SupportCopy(
-          title: 'Связаться с поддержкой',
-          email: 'Email',
-          subject: 'Тема',
-          message: 'Сообщение',
-          send: 'Отправить',
-          sent: 'Сообщение отправлено',
-          error: 'Не удалось отправить. Попробуйте ещё раз.',
-          close: 'Закрыть',
-        ),
-      'pl' => const _SupportCopy(
-          title: 'Kontakt z pomocą',
-          email: 'Email',
-          subject: 'Temat',
-          message: 'Wiadomość',
-          send: 'Wyślij',
-          sent: 'Wiadomość wysłana',
-          error: 'Nie udało się wysłać.',
-          close: 'Zamknij',
-        ),
-      _ => const _SupportCopy(
-          title: 'Contact support',
-          email: 'Email',
-          subject: 'Subject',
-          message: 'Message',
-          send: 'Send',
-          sent: 'Message sent',
-          error: 'Could not send. Try again.',
-          close: 'Close',
-        ),
-    };
-  }
-}
-
-class _SupportCopy {
-  const _SupportCopy({
-    required this.title,
-    required this.email,
-    required this.subject,
-    required this.message,
-    required this.send,
-    required this.sent,
-    required this.error,
-    required this.close,
-  });
-
-  final String title;
-  final String email;
-  final String subject;
-  final String message;
-  final String send;
-  final String sent;
-  final String error;
-  final String close;
 }
 
 class _ErrorView extends StatelessWidget {
-  const _ErrorView({required this.onRetry, required this.locale});
+  const _ErrorView({required this.onRetry});
 
   final VoidCallback onRetry;
-  final String locale;
 
   @override
   Widget build(BuildContext context) {
-    final copy = _errorCopy(locale);
+    final l10n = context.l10n;
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(24),
@@ -424,42 +378,15 @@ class _ErrorView extends StatelessWidget {
           children: [
             const Icon(Icons.wifi_off, size: 42),
             const SizedBox(height: 12),
-            Text(copy.$1, textAlign: TextAlign.center),
+            Text(l10n.t('about.offline'), textAlign: TextAlign.center),
             const SizedBox(height: 12),
-            FilledButton(onPressed: onRetry, child: Text(copy.$2)),
+            FilledButton(
+              onPressed: onRetry,
+              child: Text(l10n.t('about.retry')),
+            ),
           ],
         ),
       ),
     );
-  }
-
-  (String, String) _errorCopy(String locale) {
-    return switch (locale.split('-').first) {
-      'ru' => ('Раздел «О GlukoTrack» пока недоступен офлайн.', 'Повторить'),
-      'pl' => (
-          'Sekcja O GlukoTrack nie jest jeszcze dostępna offline.',
-          'Ponów'
-        ),
-      'de' => (
-          'Über GlukoTrack ist offline noch nicht verfügbar.',
-          'Erneut versuchen'
-        ),
-      'fr' => (
-          'À propos de GlukoTrack n’est pas encore disponible hors ligne.',
-          'Réessayer'
-        ),
-      'es' => (
-          'Acerca de GlukoTrack aún no está disponible sin conexión.',
-          'Reintentar'
-        ),
-      'it' => (
-          'Informazioni su GlukoTrack non è ancora disponibile offline.',
-          'Riprova'
-        ),
-      'uk' => ('Розділ Про GlukoTrack поки недоступний офлайн.', 'Повторити'),
-      'ar' => ('قسم حول GlukoTrack غير متاح دون اتصال بعد.', 'إعادة المحاولة'),
-      'he' => ('העמוד על GlukoTrack עדיין לא זמין במצב לא מקוון.', 'נסה שוב'),
-      _ => ('About GlukoTrack is not available offline yet.', 'Retry'),
-    };
   }
 }

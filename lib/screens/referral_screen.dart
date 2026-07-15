@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/app_state.dart';
 import '../services/referral_service.dart';
 
@@ -26,10 +27,9 @@ class _ReferralScreenState extends State<ReferralScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final language = context.watch<AppState>().languageCode;
-    final ru = language == 'ru' || language == 'uk';
+    final l10n = context.l10n;
     return Scaffold(
-      appBar: AppBar(title: Text(_referralLabel(ru, 'title'))),
+      appBar: AppBar(title: Text(l10n.t('referral.title'))),
       body: FutureBuilder<ReferralOverview>(
         future: _future,
         builder: (context, snapshot) {
@@ -38,14 +38,14 @@ class _ReferralScreenState extends State<ReferralScreen> {
           }
           if (snapshot.hasError || !snapshot.hasData) {
             return _Message(
-              text: _referralLabel(ru, 'loadError'),
-              retryLabel: _referralLabel(ru, 'retry'),
+              text: l10n.t('referral.loadError'),
+              retryLabel: l10n.t('referral.retry'),
               onRetry: _reload,
             );
           }
           return _ReferralContent(
             overview: snapshot.data!,
-            ru: ru,
+            l10n: l10n,
             onRefresh: _reload,
           );
         },
@@ -62,12 +62,12 @@ class _ReferralScreenState extends State<ReferralScreen> {
 class _ReferralContent extends StatelessWidget {
   const _ReferralContent({
     required this.overview,
-    required this.ru,
+    required this.l10n,
     required this.onRefresh,
   });
 
   final ReferralOverview overview;
-  final bool ru;
+  final AppLocalizations l10n;
   final VoidCallback onRefresh;
 
   @override
@@ -85,7 +85,7 @@ class _ReferralContent extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    _referralLabel(ru, 'inviteCode'),
+                    l10n.t('referral.inviteCode'),
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(height: 10),
@@ -121,18 +121,18 @@ class _ReferralContent extends StatelessWidget {
                       FilledButton.icon(
                         onPressed: () => _copy(context, overview.link),
                         icon: const Icon(Icons.link),
-                        label: Text(_referralLabel(ru, 'copyLink')),
+                        label: Text(l10n.t('referral.copyLink')),
                       ),
                       OutlinedButton.icon(
                         onPressed: () => _copy(context, overview.code),
                         icon: const Icon(Icons.pin),
-                        label: Text(_referralLabel(ru, 'copyCode')),
+                        label: Text(l10n.t('referral.copyCode')),
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    _referralLabel(ru, 'rewardNote'),
+                    l10n.t('referral.rewardNote'),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
@@ -145,37 +145,37 @@ class _ReferralContent extends StatelessWidget {
             children: [
               Expanded(
                   child: _Stat(
-                      label: _referralLabel(ru, 'total'), value: stats.total)),
+                      label: l10n.t('referral.total'), value: stats.total)),
               const SizedBox(width: 8),
               Expanded(
                   child: _Stat(
-                      label: _referralLabel(ru, 'rewards'),
+                      label: l10n.t('referral.rewards'),
                       value: stats.rewarded)),
               const SizedBox(width: 8),
               Expanded(
                   child: _Stat(
-                      label: _referralLabel(ru, 'review'),
+                      label: l10n.t('referral.review'),
                       value: stats.manualReview)),
             ],
           ),
           const SizedBox(height: 12),
           Text(
-            _referralLabel(ru, 'history'),
+            l10n.t('referral.history'),
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 8),
           if (overview.history.isEmpty)
-            _Empty(text: _referralLabel(ru, 'empty'))
+            _Empty(text: l10n.t('referral.empty'))
           else
             ...overview.history.map((item) => Card(
                   child: ListTile(
                     leading: const Icon(Icons.person_add_alt_1),
-                    title: Text(_statusLabel(item.status, ru)),
+                    title: Text(_statusLabel(item.status, l10n)),
                     subtitle: Text([
                       if (item.registeredAt != null) _date(item.registeredAt!),
                       if ((item.rejectionReason ?? '').isNotEmpty)
                         item.rejectionReason!,
-                    ].join(' · ')),
+                    ].join(' - ')),
                     trailing: Text(
                       _rewardDays(item.grantedDays),
                       style: const TextStyle(fontWeight: FontWeight.w800),
@@ -191,7 +191,7 @@ class _ReferralContent extends StatelessWidget {
     await Clipboard.setData(ClipboardData(text: value));
     if (!context.mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(_referralLabel(_isRu(context), 'copied'))),
+      SnackBar(content: Text(context.l10n.t('referral.copied'))),
     );
   }
 
@@ -202,19 +202,9 @@ class _ReferralContent extends StatelessWidget {
 
   static String _rewardDays(int days) => '+$days';
 
-  static String _statusLabel(String status, bool ru) {
-    if (!ru) return status;
-    return {
-          'email_pending': 'Ожидает подтверждения email',
-          'awaiting_payment': 'Ожидает оплату',
-          'payment_pending': 'Ожидает начисления',
-          'qualified': 'Условия выполнены',
-          'manual_review': 'На проверке',
-          'rewarded': 'Награда начислена',
-          'rejected': 'Отклонено',
-          'revoked': 'Отозвано',
-        }[status] ??
-        status;
+  static String _statusLabel(String status, AppLocalizations l10n) {
+    final translated = l10n.t('referral.status.$status');
+    return translated == 'referral.status.$status' ? status : translated;
   }
 }
 
@@ -271,47 +261,6 @@ class _Message extends StatelessWidget {
       ),
     );
   }
-}
-
-bool _isRu(BuildContext context) {
-  final language = context.read<AppState>().languageCode;
-  return language == 'ru' || language == 'uk';
-}
-
-String _referralLabel(bool ru, String key) {
-  const en = {
-    'title': 'Referral program',
-    'loadError': 'Could not load referral data.',
-    'retry': 'Retry',
-    'inviteCode': 'Your invite code',
-    'copyLink': 'Copy link',
-    'copyCode': 'Copy code',
-    'rewardNote':
-        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
-    'total': 'Total',
-    'rewards': 'Rewards',
-    'review': 'Review',
-    'history': 'History',
-    'empty': 'No referrals yet.',
-    'copied': 'Copied',
-  };
-  const ruText = {
-    'title': 'Реферальная программа',
-    'loadError': 'Не удалось загрузить реферальные данные.',
-    'retry': 'Повторить',
-    'inviteCode': 'Ваш код приглашения',
-    'copyLink': 'Скопировать ссылку',
-    'copyCode': 'Скопировать код',
-    'rewardNote':
-        'Награда начисляется после подтверждения email и первой реальной оплаты Premium приглашенным пользователем.',
-    'total': 'Всего',
-    'rewards': 'Наград',
-    'review': 'Проверка',
-    'history': 'История',
-    'empty': 'Приглашений пока нет.',
-    'copied': 'Скопировано',
-  };
-  return ru ? (ruText[key] ?? en[key] ?? key) : (en[key] ?? key);
 }
 
 class _Empty extends StatelessWidget {
