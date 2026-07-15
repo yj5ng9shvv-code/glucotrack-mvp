@@ -62,7 +62,7 @@ const _premiumRu = <String, String>{
       'Полный доступ GlukoTrack для одного пользователя.',
   'yearlyPlanDescription': 'Лучшее решение для долгосрочного наблюдения.',
   'familyPlan': 'Семейный план',
-  'familyPrice': 'Семейная цена',
+  'familyPrice': '€9.99 / месяц',
   'familyPlanDescription': 'Откройте мониторинг доверенным членам семьи.',
   'connectedDevices': 'Подключенные устройства',
   'deviceUsage': 'Использование устройств',

@@ -28,7 +28,7 @@ const navigationTranslations = <String, Map<String, String>>{
     'navigation.profile': 'Perfil',
   },
   'it': {
-    'navigation.home': 'Home',
+    'navigation.home': 'Inizio',
     'navigation.diary': 'Diario',
     'navigation.askAi': 'Chiedi all AI',
     'navigation.analytics': 'Analisi',

@@ -35,7 +35,7 @@ android {
 
     defaultConfig {
         // Stable production id. Keep release signing/OAuth/Play Console configured for this package.
-        applicationId = "com.example.glucotrack"
+        applicationId = "com.glukotrack.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
