@@ -44,16 +44,21 @@ class AuthService {
     required String password,
     required String locale,
   }) {
-    return _authenticate(
-      '/auth/login',
-      {'email': email, 'password': password, 'locale': locale},
-    );
+    return _authenticate('/auth/login', {
+      'email': email,
+      'password': password,
+      'locale': locale,
+    });
   }
 
-  Future<AuthSession> loginWithGoogle(String idToken,
-      {required String locale}) {
-    return _authenticate(
-        '/auth/google', {'idToken': idToken, 'locale': locale});
+  Future<AuthSession> loginWithGoogle(
+    String idToken, {
+    required String locale,
+  }) {
+    return _authenticate('/auth/google', {
+      'idToken': idToken,
+      'locale': locale,
+    });
   }
 
   Future<AuthSession> loginWithApple(
@@ -70,8 +75,10 @@ class AuthService {
     });
   }
 
-  Future<void> requestPasswordReset(String email,
-      {required String locale}) async {
+  Future<void> requestPasswordReset(
+    String email, {
+    required String locale,
+  }) async {
     if (!isConfigured) {
       throw const AuthException('networkUnavailable');
     }
@@ -84,7 +91,8 @@ class AuthService {
         .timeout(const Duration(seconds: 20));
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw AuthException(
-          _errorMessage(response.statusCode, _decode(response.body)));
+        _errorMessage(response.statusCode, _decode(response.body)),
+      );
     }
   }
 
@@ -92,10 +100,7 @@ class AuthService {
     return await restoreSession(token) != null;
   }
 
-  Future<void> logout(
-    String token, {
-    String? refreshToken,
-  }) async {
+  Future<void> logout(String token, {String? refreshToken}) async {
     if (token.isEmpty) return;
     final body = <String, dynamic>{};
     if (refreshToken != null && refreshToken.isNotEmpty) {
@@ -106,7 +111,7 @@ class AuthService {
           _uri('/auth/logout'),
           headers: {
             'Authorization': 'Bearer $token',
-            'Content-Type': 'application/json; charset=utf-8'
+            'Content-Type': 'application/json; charset=utf-8',
           },
           body: body.isEmpty ? null : jsonEncode(body),
         )
@@ -146,9 +151,7 @@ class AuthService {
     return refreshed;
   }
 
-  Future<AuthSession?> refresh({
-    required String refreshToken,
-  }) async {
+  Future<AuthSession?> refresh({required String refreshToken}) async {
     try {
       if (!isConfigured) return null;
       final device = await DeviceIdentityService.current();
@@ -156,8 +159,10 @@ class AuthService {
           .post(
             _uri('/auth/refresh'),
             headers: {'Content-Type': 'application/json; charset=utf-8'},
-            body: jsonEncode(
-                {'refreshToken': refreshToken, 'device': device.toJson()}),
+            body: jsonEncode({
+              'refreshToken': refreshToken,
+              'device': device.toJson(),
+            }),
           )
           .timeout(const Duration(seconds: 20));
       if (response.statusCode != 200) return null;
@@ -167,8 +172,11 @@ class AuthService {
       if (user is! Map || token is! String || token.isEmpty) {
         return null;
       }
-      return _sessionFromUser(token, user,
-          refreshToken: body['refreshToken']?.toString());
+      return _sessionFromUser(
+        token,
+        user,
+        refreshToken: body['refreshToken']?.toString(),
+      );
     } catch (_) {
       return null;
     }
@@ -180,9 +188,7 @@ class AuthService {
     void Function()? onSuccess,
   }) async {
     if (!isConfigured) {
-      throw const AuthException(
-        'networkUnavailable',
-      );
+      throw const AuthException('networkUnavailable');
     }
     final device = await DeviceIdentityService.current();
     payload['device'] = device.toJson();
@@ -213,12 +219,18 @@ class AuthService {
       (body['device'] as Map?)?['id']?.toString(),
     );
     onSuccess?.call();
-    return _sessionFromUser(token, user,
-        refreshToken: body['refreshToken']?.toString());
+    return _sessionFromUser(
+      token,
+      user,
+      refreshToken: body['refreshToken']?.toString(),
+    );
   }
 
-  AuthSession _sessionFromUser(String token, Map user,
-          {String? refreshToken}) =>
+  AuthSession _sessionFromUser(
+    String token,
+    Map user, {
+    String? refreshToken,
+  }) =>
       AuthSession(
         token: token,
         refreshToken: refreshToken,
@@ -235,7 +247,10 @@ class AuthService {
       );
 
   Future<void> saveOnboardingProfile(
-      String token, String diabetesType, String glucoseUnit) async {
+    String token,
+    String diabetesType,
+    String glucoseUnit,
+  ) async {
     final response = await _client.put(
       _uri('/auth/profile'),
       headers: {
@@ -284,8 +299,10 @@ class AuthService {
   static String? _normalizeErrorCode(Object? value) {
     final source = value?.toString().trim();
     if (source == null || source.isEmpty) return null;
-    final normalized =
-        source.toUpperCase().replaceAll(RegExp(r'[^A-Z0-9]+'), '_');
+    final normalized = source.toUpperCase().replaceAll(
+          RegExp(r'[^A-Z0-9]+'),
+          '_',
+        );
     return normalized.replaceAll(RegExp(r'^_+|_+$'), '');
   }
 }

@@ -13,8 +13,10 @@ class DoctorReportService {
   }) {
     final l10n = AppLocalizations(appState.languageCode);
     final totalCarbs = entries.fold<int>(0, (sum, entry) => sum + entry.carbs);
-    final totalInsulin =
-        entries.fold<double>(0, (sum, entry) => sum + entry.insulinUnits);
+    final totalInsulin = entries.fold<double>(
+      0,
+      (sum, entry) => sum + entry.insulinUnits,
+    );
     final period = _periodLabel(entries, l10n);
 
     final lines = <String>[

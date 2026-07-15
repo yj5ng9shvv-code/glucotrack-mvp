@@ -139,8 +139,9 @@ class AndroidEmergencyService implements EmergencyService {
       'contactLabel': labels['contactLabel']!,
       'phoneLabel': labels['phoneLabel']!,
       'instructionTitle': labels['instructionTitle']!,
-      'instructionText':
-          lockScreenSosEnglishEmergencyInstruction(state.emergencyInstructions),
+      'instructionText': lockScreenSosEnglishEmergencyInstruction(
+        state.emergencyInstructions,
+      ),
       'call112Label': labels['call112Label']!,
       'myLocationLabel': labels['myLocationLabel']!,
       'callContactLabel': labels['callContactLabel']!,

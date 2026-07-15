@@ -59,9 +59,9 @@ class _AboutScreenState extends State<AboutScreen> {
                 const SizedBox(height: 14),
                 Text(
                   content.advantagesTitle,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w800,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(height: 10),
                 ...content.advantages.map(_AdvantageCard.new),
@@ -94,10 +94,7 @@ class _Hero extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            content.title,
-            style: const TextStyle(color: Colors.white70),
-          ),
+          Text(content.title, style: const TextStyle(color: Colors.white70)),
           const SizedBox(height: 8),
           Text(
             content.heroTitle,
@@ -132,15 +129,17 @@ class _TextSection extends StatelessWidget {
           children: [
             Text(
               content.whatIsTitle,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 10),
-            ...content.paragraphs.map((paragraph) => Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Text(paragraph, style: const TextStyle(height: 1.45)),
-                )),
+            ...content.paragraphs.map(
+              (paragraph) => Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Text(paragraph, style: const TextStyle(height: 1.45)),
+              ),
+            ),
           ],
         ),
       ),
@@ -235,10 +234,12 @@ class _Links extends StatelessWidget {
       runSpacing: 8,
       children: content.links.entries
           .where((entry) => entry.value.isNotEmpty)
-          .map((entry) => ActionChip(
-                label: Text(entry.value),
-                onPressed: () => _open(context, entry.key),
-              ))
+          .map(
+            (entry) => ActionChip(
+              label: Text(entry.value),
+              onPressed: () => _open(context, entry.key),
+            ),
+          )
           .toList(),
     );
   }
@@ -272,7 +273,9 @@ class _Links extends StatelessWidget {
       context: context,
       builder: (dialogContext) => StatefulBuilder(
         builder: (context, setState) => AlertDialog(
-          title: Text(content.links['support'] ?? l10n.t('about.support.title')),
+          title: Text(
+            content.links['support'] ?? l10n.t('about.support.title'),
+          ),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -359,7 +362,6 @@ class _Links extends StatelessWidget {
       messageController.dispose();
     });
   }
-
 }
 
 class _ErrorView extends StatelessWidget {

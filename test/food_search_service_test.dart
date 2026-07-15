@@ -13,11 +13,7 @@ void main() {
     );
 
     expect(
-      () => service.search(
-        query: 'apple',
-        languageCode: 'en',
-        token: 'token',
-      ),
+      () => service.search(query: 'apple', languageCode: 'en', token: 'token'),
       throwsA(
         isA<Exception>().having(
           (error) => error.toString(),

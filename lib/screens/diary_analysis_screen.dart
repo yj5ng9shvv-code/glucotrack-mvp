@@ -18,17 +18,22 @@ class DiaryAnalysisScreen extends StatelessWidget {
     final state = context.watch<AppState>();
     final cutoff = DateTime.now().subtract(const Duration(days: 7));
     final entries = state.diaryEntries
-        .where((entry) => entry.time.isAfter(cutoff) && entry.glucoseMmol > 0)
-        .map((entry) => DiaryEntry(
-              time: entry.time,
-              glucoseMmol: entry.glucoseMmol,
-              type: DiaryEntryType.beforeMeal,
-              carbs: entry.carbs,
-              insulinUnits: entry.insulinUnits,
-              note: [entry.title, entry.note]
-                  .where((value) => value.trim().isNotEmpty)
-                  .join(' — '),
-            ))
+        .where(
+          (entry) => entry.time.isAfter(cutoff) && entry.glucoseMmol > 0,
+        )
+        .map(
+          (entry) => DiaryEntry(
+            time: entry.time,
+            glucoseMmol: entry.glucoseMmol,
+            type: DiaryEntryType.beforeMeal,
+            carbs: entry.carbs,
+            insulinUnits: entry.insulinUnits,
+            note: [
+              entry.title,
+              entry.note,
+            ].where((value) => value.trim().isNotEmpty).join(' — '),
+          ),
+        )
         .toList()
       ..sort((a, b) => b.time.compareTo(a.time));
     final analysis = service.analyze(entries);
@@ -55,9 +60,7 @@ class DiaryAnalysisScreen extends StatelessWidget {
           _SectionCard(
             title: l10n.t('discussWithDoctor'),
             icon: Icons.medical_information,
-            children: [
-              _BulletText(text: l10n.t('doctorRecommendation')),
-            ],
+            children: [_BulletText(text: l10n.t('doctorRecommendation'))],
           ),
           const SizedBox(height: 12),
           _EntriesCard(entries: entries, state: state),
@@ -255,9 +258,7 @@ class _EntriesCard extends StatelessWidget {
                   _entryIcon(entry.type),
                   color: _glucoseColor(entry.glucoseMmol),
                 ),
-                title: Text(
-                  state.formatGlucose(entry.glucoseMmol),
-                ),
+                title: Text(state.formatGlucose(entry.glucoseMmol)),
                 subtitle: Text(_entryTypeLabel(context, entry.type)),
                 trailing: Text(
                   entry.carbs > 0

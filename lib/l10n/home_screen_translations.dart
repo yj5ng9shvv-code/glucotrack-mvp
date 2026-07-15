@@ -586,151 +586,151 @@ const homeCommonTranslations = <String, Map<String, String>>{
   'en': {
     'referrals': 'Referrals',
     'helpTitle': 'Help Center',
-    'about.title': 'About GlukoTrack'
+    'about.title': 'About GlukoTrack',
   },
   'de': {
     'referrals': 'Empfehlungen',
     'helpTitle': 'Hilfezentrum',
-    'about.title': 'Ueber GlukoTrack'
+    'about.title': 'Ueber GlukoTrack',
   },
   'fr': {
     'referrals': 'Parrainages',
     'helpTitle': 'Centre d aide',
-    'about.title': 'A propos de GlukoTrack'
+    'about.title': 'A propos de GlukoTrack',
   },
   'es': {
     'referrals': 'Referidos',
     'helpTitle': 'Centro de ayuda',
-    'about.title': 'Acerca de GlukoTrack'
+    'about.title': 'Acerca de GlukoTrack',
   },
   'it': {
     'referrals': 'Inviti',
     'helpTitle': 'Centro assistenza',
-    'about.title': 'Informazioni su GlukoTrack'
+    'about.title': 'Informazioni su GlukoTrack',
   },
   'pl': {
     'referrals': 'Polecenia',
     'helpTitle': 'Centrum pomocy',
-    'about.title': 'O GlukoTrack'
+    'about.title': 'O GlukoTrack',
   },
   'uk': {
     'referrals': 'Реферали',
     'helpTitle': 'Довідковий центр',
-    'about.title': 'Про GlukoTrack'
+    'about.title': 'Про GlukoTrack',
   },
   'ru': {
     'referrals': 'Рефералы',
     'helpTitle': 'Справочный центр',
-    'about.title': 'О GlukoTrack'
+    'about.title': 'О GlukoTrack',
   },
   'pt': {
     'referrals': 'Indicacoes',
     'helpTitle': 'Centro de ajuda',
-    'about.title': 'Sobre o GlukoTrack'
+    'about.title': 'Sobre o GlukoTrack',
   },
   'nl': {
     'referrals': 'Verwijzingen',
     'helpTitle': 'Helpcentrum',
-    'about.title': 'Over GlukoTrack'
+    'about.title': 'Over GlukoTrack',
   },
   'ro': {
     'referrals': 'Recomandari',
     'helpTitle': 'Centru de ajutor',
-    'about.title': 'Despre GlukoTrack'
+    'about.title': 'Despre GlukoTrack',
   },
   'cs': {
     'referrals': 'Doporuceni',
     'helpTitle': 'Centrum napovedy',
-    'about.title': 'O GlukoTrack'
+    'about.title': 'O GlukoTrack',
   },
   'sk': {
     'referrals': 'Odporucania',
     'helpTitle': 'Centrum pomoci',
-    'about.title': 'O GlukoTrack'
+    'about.title': 'O GlukoTrack',
   },
   'hu': {
     'referrals': 'Ajanlasok',
     'helpTitle': 'Sugo kozpont',
-    'about.title': 'A GlukoTrackrol'
+    'about.title': 'A GlukoTrackrol',
   },
   'sv': {
     'referrals': 'Rekommendationer',
     'helpTitle': 'Hjalpcenter',
-    'about.title': 'Om GlukoTrack'
+    'about.title': 'Om GlukoTrack',
   },
   'da': {
     'referrals': 'Henvisninger',
     'helpTitle': 'Hjaelpecenter',
-    'about.title': 'Om GlukoTrack'
+    'about.title': 'Om GlukoTrack',
   },
   'fi': {
     'referrals': 'Suosittelut',
     'helpTitle': 'Ohjekeskus',
-    'about.title': 'Tietoja GlukoTrackista'
+    'about.title': 'Tietoja GlukoTrackista',
   },
   'no': {
     'referrals': 'Henvisninger',
     'helpTitle': 'Hjelpesenter',
-    'about.title': 'Om GlukoTrack'
+    'about.title': 'Om GlukoTrack',
   },
   'el': {
     'referrals': 'Παραπομπές',
     'helpTitle': 'Κέντρο βοήθειας',
-    'about.title': 'Σχετικά με το GlukoTrack'
+    'about.title': 'Σχετικά με το GlukoTrack',
   },
   'tr': {
     'referrals': 'Referanslar',
     'helpTitle': 'Yardim merkezi',
-    'about.title': 'GlukoTrack hakkinda'
+    'about.title': 'GlukoTrack hakkinda',
   },
   'bg': {
     'referrals': 'Препоръки',
     'helpTitle': 'Помощен център',
-    'about.title': 'За GlukoTrack'
+    'about.title': 'За GlukoTrack',
   },
   'hr': {
     'referrals': 'Preporuke',
     'helpTitle': 'Centar za pomoc',
-    'about.title': 'O GlukoTracku'
+    'about.title': 'O GlukoTracku',
   },
   'sl': {
     'referrals': 'Priporocila',
     'helpTitle': 'Center za pomoc',
-    'about.title': 'O GlukoTrack'
+    'about.title': 'O GlukoTrack',
   },
   'lt': {
     'referrals': 'Rekomendacijos',
     'helpTitle': 'Pagalbos centras',
-    'about.title': 'Apie GlukoTrack'
+    'about.title': 'Apie GlukoTrack',
   },
   'lv': {
     'referrals': 'Ieteikumi',
     'helpTitle': 'Palidzibas centrs',
-    'about.title': 'Par GlukoTrack'
+    'about.title': 'Par GlukoTrack',
   },
   'et': {
     'referrals': 'Soovitused',
     'helpTitle': 'Abikeskus',
-    'about.title': 'GlukoTrackist'
+    'about.title': 'GlukoTrackist',
   },
   'sr': {
     'referrals': 'Препоруке',
     'helpTitle': 'Центар за помоћ',
-    'about.title': 'О GlukoTrack'
+    'about.title': 'О GlukoTrack',
   },
   'sq': {
     'referrals': 'Referime',
     'helpTitle': 'Qendra e ndihmes',
-    'about.title': 'Rreth GlukoTrack'
+    'about.title': 'Rreth GlukoTrack',
   },
   'mk': {
     'referrals': 'Препораки',
     'helpTitle': 'Центар за помош',
-    'about.title': 'За GlukoTrack'
+    'about.title': 'За GlukoTrack',
   },
   'is': {
     'referrals': 'Tilvisanir',
     'helpTitle': 'Hjalparmidstod',
-    'about.title': 'Um GlukoTrack'
+    'about.title': 'Um GlukoTrack',
   },
 };

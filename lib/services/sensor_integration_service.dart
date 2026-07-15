@@ -21,5 +21,4 @@ class SensorIntegrationService {
       note: 'Manual entry',
     );
   }
-
 }

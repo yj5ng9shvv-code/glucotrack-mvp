@@ -30,7 +30,8 @@ class HelpCenterService {
       final cached = prefs.getString(cacheKey);
       if (cached != null) {
         return HelpHomeData.fromJson(
-            jsonDecode(cached) as Map<String, dynamic>);
+          jsonDecode(cached) as Map<String, dynamic>,
+        );
       }
       rethrow;
     }
@@ -42,9 +43,10 @@ class HelpCenterService {
     );
     return (json['rows'] as List? ?? [])
         .whereType<Map>()
-        .map((item) => HelpArticleListItem.fromJson(
-              Map<String, dynamic>.from(item),
-            ))
+        .map(
+          (item) =>
+              HelpArticleListItem.fromJson(Map<String, dynamic>.from(item)),
+        )
         .toList();
   }
 
@@ -52,9 +54,10 @@ class HelpCenterService {
     final json = await _get('/help/categories/$slug?locale=$locale');
     return (json['articles'] as List? ?? [])
         .whereType<Map>()
-        .map((item) => HelpArticleListItem.fromJson(
-              Map<String, dynamic>.from(item),
-            ))
+        .map(
+          (item) =>
+              HelpArticleListItem.fromJson(Map<String, dynamic>.from(item)),
+        )
         .toList();
   }
 
@@ -104,8 +107,9 @@ class HelpCenterService {
   }
 
   Future<Map<String, dynamic>> _get(String path) async {
-    final response =
-        await _client.get(Uri.parse('${AuthService.apiBaseUrl}$path'));
+    final response = await _client.get(
+      Uri.parse('${AuthService.apiBaseUrl}$path'),
+    );
     return _decode(response);
   }
 
@@ -124,9 +128,11 @@ class HelpCenterService {
   Map<String, dynamic> _decode(http.Response response) {
     final json = jsonDecode(response.body.isEmpty ? '{}' : response.body);
     if (response.statusCode < 200 || response.statusCode >= 300) {
-      throw StateError(json is Map && json['code'] != null
-          ? json['code'].toString()
-          : 'HELP_REQUEST_FAILED');
+      throw StateError(
+        json is Map && json['code'] != null
+            ? json['code'].toString()
+            : 'HELP_REQUEST_FAILED',
+      );
     }
     return Map<String, dynamic>.from(json as Map);
   }
@@ -151,13 +157,17 @@ class HelpHomeData {
             .toList(),
         popular: (json['popular'] as List? ?? [])
             .whereType<Map>()
-            .map((item) =>
-                HelpArticleListItem.fromJson(Map<String, dynamic>.from(item)))
+            .map(
+              (item) =>
+                  HelpArticleListItem.fromJson(Map<String, dynamic>.from(item)),
+            )
             .toList(),
         recent: (json['recent'] as List? ?? [])
             .whereType<Map>()
-            .map((item) =>
-                HelpArticleListItem.fromJson(Map<String, dynamic>.from(item)))
+            .map(
+              (item) =>
+                  HelpArticleListItem.fromJson(Map<String, dynamic>.from(item)),
+            )
             .toList(),
       );
 
@@ -245,8 +255,5 @@ class HelpArticle extends HelpArticleListItem {
       );
 
   @override
-  Map<String, dynamic> toJson() => {
-        ...super.toJson(),
-        'content': content,
-      };
+  Map<String, dynamic> toJson() => {...super.toJson(), 'content': content};
 }

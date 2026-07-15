@@ -34,24 +34,15 @@ class FamilyAccessService {
     required String email,
     required FamilyPermissions permissions,
   }) async {
-    final body = await _send(
-      'POST',
-      '/family/invitations',
-      token,
-      {'email': email, 'permissions': permissions.toJson()},
-    );
-    return FamilyMember.fromJson(
-      _stringMap(body['invitation'] as Map? ?? {}),
-    );
+    final body = await _send('POST', '/family/invitations', token, {
+      'email': email,
+      'permissions': permissions.toJson(),
+    });
+    return FamilyMember.fromJson(_stringMap(body['invitation'] as Map? ?? {}));
   }
 
   Future<void> accept({required String token, required String code}) async {
-    await _send(
-      'POST',
-      '/family/invitations/accept',
-      token,
-      {'code': code},
-    );
+    await _send('POST', '/family/invitations/accept', token, {'code': code});
   }
 
   Future<void> revoke({required String token, required String id}) async {
@@ -71,9 +62,7 @@ class FamilyAccessService {
     if (_baseUrl.trim().isEmpty) {
       throw const FamilyAccessException('networkUnavailable');
     }
-    final uri = Uri.parse(
-      '${_baseUrl.replaceFirst(RegExp(r'/$'), '')}$path',
-    );
+    final uri = Uri.parse('${_baseUrl.replaceFirst(RegExp(r'/$'), '')}$path');
     final headers = {
       'Authorization': 'Bearer $token',
       'Content-Type': 'application/json; charset=utf-8',
@@ -89,9 +78,7 @@ class FamilyAccessService {
     };
     final body = _decode(response.body);
     if (response.statusCode < 200 || response.statusCode >= 300) {
-      throw FamilyAccessException(
-        _errorMessage(body),
-      );
+      throw FamilyAccessException(_errorMessage(body));
     }
     return body;
   }
@@ -190,8 +177,9 @@ class FamilyMember {
       status: json['status']?.toString() ?? 'pending',
       inviteCode: json['inviteCode']?.toString(),
       permissions: FamilyPermissions.fromJson(
-        (json['permissions'] as Map? ?? {})
-            .map((key, value) => MapEntry(key.toString(), value)),
+        (json['permissions'] as Map? ?? {}).map(
+          (key, value) => MapEntry(key.toString(), value),
+        ),
       ),
     );
   }
@@ -222,8 +210,9 @@ class MonitoredPatient {
       glucoseMmol: (json['glucoseMmol'] as num?)?.toDouble(),
       updatedAt: DateTime.tryParse(json['updatedAt']?.toString() ?? ''),
       permissions: FamilyPermissions.fromJson(
-        (json['permissions'] as Map? ?? {})
-            .map((key, value) => MapEntry(key.toString(), value)),
+        (json['permissions'] as Map? ?? {}).map(
+          (key, value) => MapEntry(key.toString(), value),
+        ),
       ),
     );
   }

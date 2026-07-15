@@ -31,15 +31,19 @@ class ReportStorageService {
   }
 
   Future<List<StoredReport>> list(String token) async {
-    final response =
-        await _client.get(_uri('/reports'), headers: _headers(token));
+    final response = await _client.get(
+      _uri('/reports'),
+      headers: _headers(token),
+    );
     if (response.statusCode != 200) throw Exception(_error(response));
     final body = jsonDecode(response.body);
     return (body['reports'] as List? ?? [])
         .whereType<Map>()
-        .map((item) => StoredReport.fromJson(
-              item.map((key, value) => MapEntry(key.toString(), value)),
-            ))
+        .map(
+          (item) => StoredReport.fromJson(
+            item.map((key, value) => MapEntry(key.toString(), value)),
+          ),
+        )
         .toList();
   }
 

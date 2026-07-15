@@ -62,7 +62,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Personnes sous ma surveillance',
     'family.error.familySubscriptionRequired':
         'Le forfait Family est requis pour l’accès familial.',
-    'family.error.memberLimitReached': 'Limite de membres de la famille atteinte.',
+    'family.error.memberLimitReached':
+        'Limite de membres de la famille atteinte.',
     'family.error.invalidInvitationCode': 'Code d’invitation invalide.',
   },
   'es': {
@@ -84,7 +85,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Personas bajo mi cuidado',
     'family.error.familySubscriptionRequired':
         'Se requiere el plan Family para el acceso familiar.',
-    'family.error.memberLimitReached': 'Se alcanzó el límite de miembros familiares.',
+    'family.error.memberLimitReached':
+        'Se alcanzó el límite de miembros familiares.',
     'family.error.invalidInvitationCode': 'Código de invitación no válido.',
   },
   'it': {
@@ -238,7 +240,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Persoane aflate în grija mea',
     'family.error.familySubscriptionRequired':
         'Planul Family este necesar pentru accesul familiei.',
-    'family.error.memberLimitReached': 'Limita membrilor familiei a fost atinsă.',
+    'family.error.memberLimitReached':
+        'Limita membrilor familiei a fost atinsă.',
     'family.error.invalidInvitationCode': 'Cod de invitație nevalid.',
   },
   'cs': {
@@ -304,7 +307,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Gondozott személyek',
     'family.error.familySubscriptionRequired':
         'A családi hozzáféréshez Family csomag szükséges.',
-    'family.error.memberLimitReached': 'Elérte a családtagok számának korlátját.',
+    'family.error.memberLimitReached':
+        'Elérte a családtagok számának korlátját.',
     'family.error.invalidInvitationCode': 'Érvénytelen meghívókód.',
   },
   'sv': {
@@ -326,7 +330,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Personer under min vård',
     'family.error.familySubscriptionRequired':
         'Family-plan krävs för familjeåtkomst.',
-    'family.error.memberLimitReached': 'Gränsen för familjemedlemmar har nåtts.',
+    'family.error.memberLimitReached':
+        'Gränsen för familjemedlemmar har nåtts.',
     'family.error.invalidInvitationCode': 'Ogiltig inbjudningskod.',
   },
   'da': {
@@ -414,7 +419,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Άτομα υπό τη φροντίδα μου',
     'family.error.familySubscriptionRequired':
         'Απαιτείται πρόγραμμα Family για οικογενειακή πρόσβαση.',
-    'family.error.memberLimitReached': 'Έχει συμπληρωθεί το όριο μελών οικογένειας.',
+    'family.error.memberLimitReached':
+        'Έχει συμπληρωθεί το όριο μελών οικογένειας.',
     'family.error.invalidInvitationCode': 'Μη έγκυρος κωδικός πρόσκλησης.',
   },
   'tr': {
@@ -458,7 +464,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Хора под моя грижа',
     'family.error.familySubscriptionRequired':
         'За семеен достъп е необходим план Family.',
-    'family.error.memberLimitReached': 'Достигнат е лимитът за членове на семейството.',
+    'family.error.memberLimitReached':
+        'Достигнат е лимитът за членове на семейството.',
     'family.error.invalidInvitationCode': 'Невалиден код за покана.',
   },
   'hr': {
@@ -480,7 +487,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Osobe pod mojom skrbi',
     'family.error.familySubscriptionRequired':
         'Za obiteljski pristup potreban je Family paket.',
-    'family.error.memberLimitReached': 'Dosegnuto je ograničenje članova obitelji.',
+    'family.error.memberLimitReached':
+        'Dosegnuto je ograničenje članova obitelji.',
     'family.error.invalidInvitationCode': 'Nevažeći pozivni kod.',
   },
   'sl': {
@@ -502,7 +510,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Osebe pod mojo oskrbo',
     'family.error.familySubscriptionRequired':
         'Za družinski dostop je potreben paket Family.',
-    'family.error.memberLimitReached': 'Dosežena je omejitev družinskih članov.',
+    'family.error.memberLimitReached':
+        'Dosežena je omejitev družinskih članov.',
     'family.error.invalidInvitationCode': 'Neveljavna koda povabila.',
   },
   'lt': {
@@ -612,7 +621,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Personat nën kujdesin tim',
     'family.error.familySubscriptionRequired':
         'Për akses familjar kërkohet plani Family.',
-    'family.error.memberLimitReached': 'U arrit kufiri i anëtarëve të familjes.',
+    'family.error.memberLimitReached':
+        'U arrit kufiri i anëtarëve të familjes.',
     'family.error.invalidInvitationCode': 'Kod ftese i pavlefshëm.',
   },
   'mk': {
@@ -634,7 +644,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Лица под моја грижа',
     'family.error.familySubscriptionRequired':
         'За семеен пристап е потребен Family пакет.',
-    'family.error.memberLimitReached': 'Достигнат е лимитот на членови на семејството.',
+    'family.error.memberLimitReached':
+        'Достигнат е лимитот на членови на семејството.',
     'family.error.invalidInvitationCode': 'Невалиден код за покана.',
   },
   'is': {
@@ -656,7 +667,8 @@ const Map<String, Map<String, String>> familyAccessTranslations = {
     'family.monitoredPeople': 'Fólk í minni umsjá',
     'family.error.familySubscriptionRequired':
         'Family áskrift þarf fyrir fjölskylduaðgang.',
-    'family.error.memberLimitReached': 'Hámarki fjölskyldumeðlima hefur verið náð.',
+    'family.error.memberLimitReached':
+        'Hámarki fjölskyldumeðlima hefur verið náð.',
     'family.error.invalidInvitationCode': 'Ógildur boðskóði.',
   },
 };

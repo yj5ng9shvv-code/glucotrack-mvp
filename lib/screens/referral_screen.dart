@@ -144,18 +144,25 @@ class _ReferralContent extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                  child: _Stat(
-                      label: l10n.t('referral.total'), value: stats.total)),
+                child: _Stat(
+                  label: l10n.t('referral.total'),
+                  value: stats.total,
+                ),
+              ),
               const SizedBox(width: 8),
               Expanded(
-                  child: _Stat(
-                      label: l10n.t('referral.rewards'),
-                      value: stats.rewarded)),
+                child: _Stat(
+                  label: l10n.t('referral.rewards'),
+                  value: stats.rewarded,
+                ),
+              ),
               const SizedBox(width: 8),
               Expanded(
-                  child: _Stat(
-                      label: l10n.t('referral.review'),
-                      value: stats.manualReview)),
+                child: _Stat(
+                  label: l10n.t('referral.review'),
+                  value: stats.manualReview,
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 12),
@@ -167,21 +174,25 @@ class _ReferralContent extends StatelessWidget {
           if (overview.history.isEmpty)
             _Empty(text: l10n.t('referral.empty'))
           else
-            ...overview.history.map((item) => Card(
-                  child: ListTile(
-                    leading: const Icon(Icons.person_add_alt_1),
-                    title: Text(_statusLabel(item.status, l10n)),
-                    subtitle: Text([
+            ...overview.history.map(
+              (item) => Card(
+                child: ListTile(
+                  leading: const Icon(Icons.person_add_alt_1),
+                  title: Text(_statusLabel(item.status, l10n)),
+                  subtitle: Text(
+                    [
                       if (item.registeredAt != null) _date(item.registeredAt!),
                       if ((item.rejectionReason ?? '').isNotEmpty)
                         item.rejectionReason!,
-                    ].join(' - ')),
-                    trailing: Text(
-                      _rewardDays(item.grantedDays),
-                      style: const TextStyle(fontWeight: FontWeight.w800),
-                    ),
+                    ].join(' - '),
                   ),
-                )),
+                  trailing: Text(
+                    _rewardDays(item.grantedDays),
+                    style: const TextStyle(fontWeight: FontWeight.w800),
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );
@@ -190,9 +201,9 @@ class _ReferralContent extends StatelessWidget {
   static Future<void> _copy(BuildContext context, String value) async {
     await Clipboard.setData(ClipboardData(text: value));
     if (!context.mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(context.l10n.t('referral.copied'))),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(context.l10n.t('referral.copied'))));
   }
 
   static String _date(DateTime value) {
@@ -225,10 +236,9 @@ class _Stat extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               value.toString(),
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge
-                  ?.copyWith(fontWeight: FontWeight.w800),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
             ),
           ],
         ),

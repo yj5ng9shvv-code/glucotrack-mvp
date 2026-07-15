@@ -81,15 +81,9 @@ void main() {
         locale: 'en',
       ),
       throwsA(
-        isA<AuthException>().having(
-          (e) => e.message,
-          'message',
-          'deviceLimitReached',
-        ).having(
-          (e) => e.code,
-          'code',
-          'DEVICE_LIMIT_REACHED',
-        ),
+        isA<AuthException>()
+            .having((e) => e.message, 'message', 'deviceLimitReached')
+            .having((e) => e.code, 'code', 'DEVICE_LIMIT_REACHED'),
       ),
     );
   });
@@ -119,15 +113,9 @@ void main() {
         locale: 'en',
       ),
       throwsA(
-        isA<AuthException>().having(
-          (e) => e.message,
-          'message',
-          'deviceLimitReached',
-        ).having(
-          (e) => e.code,
-          'code',
-          'DEVICE_LIMIT_REACHED',
-        ),
+        isA<AuthException>()
+            .having((e) => e.message, 'message', 'deviceLimitReached')
+            .having((e) => e.code, 'code', 'DEVICE_LIMIT_REACHED'),
       ),
     );
   });
@@ -135,7 +123,10 @@ void main() {
 
 class _FakeAuthService extends AuthService {
   @override
-  Future<AuthSession> loginWithGoogle(String idToken, {required String locale}) async {
+  Future<AuthSession> loginWithGoogle(
+    String idToken, {
+    required String locale,
+  }) async {
     if (idToken != 'google-id-token') {
       throw const AuthException('Invalid Google token');
     }

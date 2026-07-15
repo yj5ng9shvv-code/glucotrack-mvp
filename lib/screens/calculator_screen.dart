@@ -145,18 +145,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       label: l10n.t('insulinCalculator.calmDay'),
                       icon: Icons.sentiment_satisfied_alt,
                       selected: _activityLevel == ActivityLevel.none,
-                      onTap: () => setState(
-                        () => _activityLevel = ActivityLevel.none,
-                      ),
+                      onTap: () =>
+                          setState(() => _activityLevel = ActivityLevel.none),
                     ),
                     const SizedBox(height: 8),
                     _ActivityOptionButton(
                       label: l10n.t('insulinCalculator.walk'),
                       icon: Icons.directions_walk,
                       selected: _activityLevel == ActivityLevel.light,
-                      onTap: () => setState(
-                        () => _activityLevel = ActivityLevel.light,
-                      ),
+                      onTap: () =>
+                          setState(() => _activityLevel = ActivityLevel.light),
                     ),
                     const SizedBox(height: 8),
                     _ActivityOptionButton(
@@ -273,10 +271,7 @@ class _InputCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: child,
-      ),
+      child: Padding(padding: const EdgeInsets.all(16), child: child),
     );
   }
 }

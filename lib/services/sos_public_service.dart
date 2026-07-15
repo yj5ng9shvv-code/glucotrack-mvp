@@ -42,9 +42,7 @@ class SosPublicService {
 
   Future<String> publish(AppState state) async {
     if (!state.isAuthenticated || AuthService.apiBaseUrl.isEmpty) {
-      throw const SosPublishException(
-        'AUTH_REQUIRED',
-      );
+      throw const SosPublishException('AUTH_REQUIRED');
     }
     final l10n = AppLocalizations(state.languageCode);
     final glucoseMmol = state.latestSosGlucoseMmol;
@@ -107,8 +105,9 @@ class SosPublicService {
                   {'number': '112'},
                 ),
                 'callRelative': l10n.t('sosPublicCard.callRelative'),
-                'callRelativeWithName':
-                    l10n.t('sosPublicCard.callRelativeWithName'),
+                'callRelativeWithName': l10n.t(
+                  'sosPublicCard.callRelativeWithName',
+                ),
                 'sendSms': l10n.t('sosPublicCard.sendSosSmsWithLocation'),
                 'geoConsent': l10n.t('sos.locationPermissionRequired'),
                 'sensitiveHidden': l10n.t('sos.sensitive_hidden'),

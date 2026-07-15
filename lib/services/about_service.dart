@@ -86,8 +86,10 @@ class AboutContent {
       title: (json['title'] ?? 'About GlukoTrack').toString(),
       tagline: (json['tagline'] ?? '').toString(),
       shortDescription: (json['shortDescription'] ?? '').toString(),
-      heroTitle: (hero['title'] ?? json['title'] ?? 'About GlukoTrack').toString(),
-      heroSubtitle: (hero['subtitle'] ?? json['shortDescription'] ?? '').toString(),
+      heroTitle:
+          (hero['title'] ?? json['title'] ?? 'About GlukoTrack').toString(),
+      heroSubtitle:
+          (hero['subtitle'] ?? json['shortDescription'] ?? '').toString(),
       whatIsTitle: (whatIs['title'] ?? '').toString(),
       paragraphs: (whatIs['paragraphs'] as List? ?? [])
           .map((item) => item.toString())
@@ -96,7 +98,9 @@ class AboutContent {
       advantagesTitle: (json['advantagesTitle'] ?? '').toString(),
       advantages: (json['advantages'] as List? ?? [])
           .whereType<Map>()
-          .map((item) => AboutAdvantage.fromJson(Map<String, dynamic>.from(item)))
+          .map(
+            (item) => AboutAdvantage.fromJson(Map<String, dynamic>.from(item)),
+          )
           .where((item) => item.isActive)
           .toList(),
       disclaimerTitle: (disclaimer['title'] ?? '').toString(),
@@ -114,10 +118,7 @@ class AboutContent {
         'whatIs': {'title': whatIsTitle, 'paragraphs': paragraphs},
         'advantagesTitle': advantagesTitle,
         'advantages': advantages.map((item) => item.toJson()).toList(),
-        'medicalDisclaimer': {
-          'title': disclaimerTitle,
-          'text': disclaimerText,
-        },
+        'medicalDisclaimer': {'title': disclaimerTitle, 'text': disclaimerText},
         'links': links,
       };
 }

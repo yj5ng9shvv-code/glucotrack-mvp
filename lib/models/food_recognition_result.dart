@@ -70,9 +70,11 @@ class FoodRecognitionResult {
     final foods = foodsJson is List
         ? foodsJson
             .whereType<Map>()
-            .map((item) => RecognizedFood.fromJson(
-                  item.map((key, value) => MapEntry(key.toString(), value)),
-                ))
+            .map(
+              (item) => RecognizedFood.fromJson(
+                item.map((key, value) => MapEntry(key.toString(), value)),
+              ),
+            )
             .toList()
         : <RecognizedFood>[];
 

@@ -27,10 +27,8 @@ class ResponsiveTwoColumnList extends StatelessWidget {
         }
 
         final content = children.where((child) => child is! SizedBox).toList();
-        Widget spaced(Widget child) => Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: child,
-            );
+        Widget spaced(Widget child) =>
+            Padding(padding: const EdgeInsets.only(bottom: 8), child: child);
         final hasLastChildLayout = wideLastChildOnRight && content.length > 1;
         final hasCustomOrder = wideLeftOrder != null && wideRightOrder != null;
         final left = hasCustomOrder

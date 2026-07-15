@@ -149,8 +149,10 @@ class _GdprDetailsScreenState extends State<_GdprDetailsScreen> {
     _future = _load();
   }
 
-  Future<GdprDetails> _load() =>
-      widget.service.getRequest(context.read<AppState>().accountToken, widget.publicId);
+  Future<GdprDetails> _load() => widget.service.getRequest(
+        context.read<AppState>().accountToken,
+        widget.publicId,
+      );
 
   void _reload() {
     setState(() {
@@ -184,7 +186,9 @@ class _GdprDetailsScreenState extends State<_GdprDetailsScreen> {
           final details = snapshot.data!;
           final request = details.request;
           final canCancel = !_terminalStatuses.contains(request.status);
-          final hasExport = details.files.any((file) => file.originalName.isNotEmpty);
+          final hasExport = details.files.any(
+            (file) => file.originalName.isNotEmpty,
+          );
           return ListView(
             padding: const EdgeInsets.all(12),
             children: [
@@ -272,17 +276,14 @@ class _GdprDetailsScreenState extends State<_GdprDetailsScreen> {
     );
     if (confirmed != true) return;
     try {
-      await widget.service.cancelRequest(
-        token,
-        widget.publicId,
-      );
+      await widget.service.cancelRequest(token, widget.publicId);
       if (!mounted) return;
       Navigator.pop(context, true);
     } catch (error) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(_localizedError(l10n, error))),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(_localizedError(l10n, error))));
     }
   }
 }
@@ -293,7 +294,8 @@ class _CreateGdprRequestSheet extends StatefulWidget {
   final GdprService service;
 
   @override
-  State<_CreateGdprRequestSheet> createState() => _CreateGdprRequestSheetState();
+  State<_CreateGdprRequestSheet> createState() =>
+      _CreateGdprRequestSheetState();
 }
 
 class _CreateGdprRequestSheetState extends State<_CreateGdprRequestSheet> {
@@ -352,17 +354,21 @@ class _CreateGdprRequestSheetState extends State<_CreateGdprRequestSheet> {
               controller: _subjectController,
               decoration: InputDecoration(labelText: l10n.t('gdpr.subject')),
               maxLength: 120,
-              validator: (value) =>
-                  (value == null || value.trim().length < 3) ? l10n.t('gdpr.required') : null,
+              validator: (value) => (value == null || value.trim().length < 3)
+                  ? l10n.t('gdpr.required')
+                  : null,
             ),
             TextFormField(
               controller: _descriptionController,
-              decoration: InputDecoration(labelText: l10n.t('gdpr.description')),
+              decoration: InputDecoration(
+                labelText: l10n.t('gdpr.description'),
+              ),
               minLines: 4,
               maxLines: 7,
               maxLength: 2000,
-              validator: (value) =>
-                  (value == null || value.trim().length < 10) ? l10n.t('gdpr.required') : null,
+              validator: (value) => (value == null || value.trim().length < 10)
+                  ? l10n.t('gdpr.required')
+                  : null,
             ),
             const SizedBox(height: 8),
             FilledButton.icon(
@@ -374,7 +380,9 @@ class _CreateGdprRequestSheetState extends State<_CreateGdprRequestSheet> {
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
                   : const Icon(Icons.send),
-              label: Text(_saving ? l10n.t('gdpr.sending') : l10n.t('gdpr.submit')),
+              label: Text(
+                _saving ? l10n.t('gdpr.sending') : l10n.t('gdpr.submit'),
+              ),
             ),
           ],
         ),
@@ -399,9 +407,9 @@ class _CreateGdprRequestSheetState extends State<_CreateGdprRequestSheet> {
       Navigator.pop(context, true);
     } catch (error) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(_localizedError(l10n, error))),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(_localizedError(l10n, error))));
       setState(() => _saving = false);
     }
   }
@@ -435,7 +443,9 @@ class _GdprRequestCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 4),
-            Text('${request.publicId} • ${_requestTypeLabel(l10n, request.requestType)}'),
+            Text(
+              '${request.publicId} • ${_requestTypeLabel(l10n, request.requestType)}',
+            ),
             if (request.dueAt != null)
               Text(
                 l10n
@@ -510,10 +520,7 @@ class _MessageState extends StatelessWidget {
             Text(title, style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 8),
             Text(body, textAlign: TextAlign.center),
-            if (action != null) ...[
-              const SizedBox(height: 16),
-              action!,
-            ],
+            if (action != null) ...[const SizedBox(height: 16), action!],
           ],
         ),
       ),
@@ -534,26 +541,27 @@ const _requestTypes = [
   'other',
 ];
 
-const _terminalStatuses = {
-  'completed',
-  'cancelled',
-  'expired',
-  'rejected',
-};
+const _terminalStatuses = {'completed', 'cancelled', 'expired', 'rejected'};
 
 String _requestTypeLabel(AppLocalizations l10n, String type) {
   final translated = l10n.t('gdpr.type.$type');
-  return translated == 'gdpr.type.$type' ? type.replaceAll('_', ' ') : translated;
+  return translated == 'gdpr.type.$type'
+      ? type.replaceAll('_', ' ')
+      : translated;
 }
 
 String _statusLabel(AppLocalizations l10n, String status) {
   final translated = l10n.t('gdpr.status.$status');
-  return translated == 'gdpr.status.$status' ? status.replaceAll('_', ' ') : translated;
+  return translated == 'gdpr.status.$status'
+      ? status.replaceAll('_', ' ')
+      : translated;
 }
 
 String _eventLabel(AppLocalizations l10n, String event) {
   final translated = l10n.t('gdpr.event.$event');
-  return translated == 'gdpr.event.$event' ? event.replaceAll('_', ' ') : translated;
+  return translated == 'gdpr.event.$event'
+      ? event.replaceAll('_', ' ')
+      : translated;
 }
 
 Color _statusColor(String status) {

@@ -51,8 +51,9 @@ class DoctorReportScreen extends StatelessWidget {
             tooltip: l10n.t('doctorReportHistory'),
             onPressed: () async {
               try {
-                final reports =
-                    await ReportStorageService().list(appState.accountToken);
+                final reports = await ReportStorageService().list(
+                  appState.accountToken,
+                );
                 if (!context.mounted) return;
                 await showDialog<void>(
                   context: context,
@@ -125,7 +126,9 @@ class DoctorReportScreen extends StatelessWidget {
                     value: '${analysis.inRangePercent.toStringAsFixed(0)}%',
                   ),
                   _ReportRow(
-                      label: l10n.t('low'), value: '${analysis.lowCount}'),
+                    label: l10n.t('low'),
+                    value: '${analysis.lowCount}',
+                  ),
                   _ReportRow(
                     label: l10n.t('highValues'),
                     value: '${analysis.highCount}',
@@ -156,7 +159,8 @@ class DoctorReportScreen extends StatelessWidget {
                 if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                      content: Text(context.l10n.t('reportSavedToServer'))),
+                    content: Text(context.l10n.t('reportSavedToServer')),
+                  ),
                 );
               } catch (error) {
                 if (!context.mounted) return;
@@ -175,9 +179,9 @@ class DoctorReportScreen extends StatelessWidget {
               if (!context.mounted) {
                 return;
               }
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(l10n.t('reportCopied'))),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(l10n.t('reportCopied'))));
             },
             icon: const Icon(Icons.copy),
             label: Text(l10n.t('copyReport')),

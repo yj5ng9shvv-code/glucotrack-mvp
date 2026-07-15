@@ -98,9 +98,11 @@ class _SosScreenState extends State<SosScreen>
       }
     });
     if (showMessage) {
-      _message(_l10n.t(
-        result == null ? 'sos.locationUnavailable' : 'sos.locationReady',
-      ));
+      _message(
+        _l10n.t(
+          result == null ? 'sos.locationUnavailable' : 'sos.locationReady',
+        ),
+      );
     }
     return result;
   }

@@ -13,8 +13,9 @@ class TrendsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
     final readings = [
-      ...state.sensorReadings
-          .map((reading) => (reading.time, reading.glucoseMmol)),
+      ...state.sensorReadings.map(
+        (reading) => (reading.time, reading.glucoseMmol),
+      ),
       ...state.diaryEntries
           .where((entry) => entry.glucoseMmol > 0)
           .map((entry) => (entry.time, entry.glucoseMmol)),
@@ -47,7 +48,8 @@ class TrendsScreen extends StatelessWidget {
                     height: 260,
                     child: spots.length < 2
                         ? const Center(
-                            child: LocalizedText('ui.text.a6567ab58d2d'))
+                            child: LocalizedText('ui.text.a6567ab58d2d'),
+                          )
                         : LineChart(
                             LineChartData(
                               minY: state.glucoseUnit == GlucoseUnit.mgDl
@@ -100,7 +102,9 @@ class TrendsScreen extends StatelessWidget {
                           ),
                   ),
                   const SizedBox(height: 8),
-                  Text('${context.l10n.t('ui.text.e66be3ccdf73')}: ${state.glucoseUnitLabel}'),
+                  Text(
+                    '${context.l10n.t('ui.text.e66be3ccdf73')}: ${state.glucoseUnitLabel}',
+                  ),
                 ],
               ),
             ),
@@ -146,9 +150,9 @@ class _StatsCard extends StatelessWidget {
               value: state.formatGlucose(average),
             ),
             _Metric(
-                label: context.l10n.t('inRange'),
-                value:
-                    '${(inRange / values.length * 100).toStringAsFixed(0)}%'),
+              label: context.l10n.t('inRange'),
+              value: '${(inRange / values.length * 100).toStringAsFixed(0)}%',
+            ),
             _Metric(label: context.l10n.t('low'), value: '$low'),
             _Metric(label: context.l10n.t('highValues'), value: '$high'),
           ],
@@ -180,9 +184,13 @@ class _Metric extends StatelessWidget {
             children: [
               Text(label, style: const TextStyle(color: Color(0xFF64748B))),
               const SizedBox(height: 6),
-              Text(value,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold)),
+              Text(
+                value,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
         ),

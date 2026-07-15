@@ -60,41 +60,49 @@ void main() {
     final dashboard = await service.load('jwt-token');
 
     expect(
-        requestedPaths, containsAll(['/family/members', '/family/patients']));
+      requestedPaths,
+      containsAll(['/family/members', '/family/patients']),
+    );
     expect(dashboard.members.single.email, 'caregiver@example.com');
     expect(dashboard.members.single.permissions.emergency, isTrue);
     expect(dashboard.patients.single.fullName, 'Анна');
     expect(dashboard.patients.single.glucoseMmol, 5.8);
   });
 
-  test('returns no cached patients after server suspends family access',
-      () async {
-    final service = FamilyAccessService(
-      baseUrl: 'https://api.example.com',
-      client: MockClient((request) async => http.Response(
+  test(
+    'returns no cached patients after server suspends family access',
+    () async {
+      final service = FamilyAccessService(
+        baseUrl: 'https://api.example.com',
+        client: MockClient(
+          (request) async => http.Response(
             jsonEncode({
               if (request.url.path == '/family/members') 'members': [],
               if (request.url.path == '/family/patients') 'patients': [],
             }),
             200,
             headers: {'content-type': 'application/json; charset=utf-8'},
-          )),
-    );
+          ),
+        ),
+      );
 
-    final dashboard = await service.load('jwt-token');
+      final dashboard = await service.load('jwt-token');
 
-    expect(dashboard.members, isEmpty);
-    expect(dashboard.patients, isEmpty);
-  });
+      expect(dashboard.members, isEmpty);
+      expect(dashboard.patients, isEmpty);
+    },
+  );
 
   test('maps missing family subscription error to a localized key', () async {
     final service = FamilyAccessService(
       baseUrl: 'https://api.example.com',
-      client: MockClient((request) async => http.Response(
-            jsonEncode({'error': 'family subscription required'}),
-            403,
-            headers: {'content-type': 'application/json; charset=utf-8'},
-          )),
+      client: MockClient(
+        (request) async => http.Response(
+          jsonEncode({'error': 'family subscription required'}),
+          403,
+          headers: {'content-type': 'application/json; charset=utf-8'},
+        ),
+      ),
     );
 
     expect(
@@ -120,11 +128,13 @@ void main() {
   test('maps invalid invitation code error to a localized key', () async {
     final service = FamilyAccessService(
       baseUrl: 'https://api.example.com',
-      client: MockClient((request) async => http.Response(
-            jsonEncode({'error': 'invalid invitation code'}),
-            400,
-            headers: {'content-type': 'application/json; charset=utf-8'},
-          )),
+      client: MockClient(
+        (request) async => http.Response(
+          jsonEncode({'error': 'invalid invitation code'}),
+          400,
+          headers: {'content-type': 'application/json; charset=utf-8'},
+        ),
+      ),
     );
 
     expect(
@@ -142,11 +152,13 @@ void main() {
   test('maps family member limit error to a localized key', () async {
     final service = FamilyAccessService(
       baseUrl: 'https://api.example.com',
-      client: MockClient((request) async => http.Response(
-            jsonEncode({'error': 'family member limit reached'}),
-            409,
-            headers: {'content-type': 'application/json; charset=utf-8'},
-          )),
+      client: MockClient(
+        (request) async => http.Response(
+          jsonEncode({'error': 'family member limit reached'}),
+          409,
+          headers: {'content-type': 'application/json; charset=utf-8'},
+        ),
+      ),
     );
 
     expect(

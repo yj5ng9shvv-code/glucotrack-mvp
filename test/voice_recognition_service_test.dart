@@ -64,16 +64,18 @@ void main() {
     expect(result.error, VoiceListenError.busy);
   });
 
-  test('maps empty recognition result separately from unavailable microphone',
-      () async {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMethodCallHandler(channel, (_) async => '');
+  test(
+    'maps empty recognition result separately from unavailable microphone',
+    () async {
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(channel, (_) async => '');
 
-    final result = await service.listen('en', prompt: 'Ask AI');
+      final result = await service.listen('en', prompt: 'Ask AI');
 
-    expect(result.text, isNull);
-    expect(result.error, VoiceListenError.noMatch);
-  });
+      expect(result.text, isNull);
+      expect(result.error, VoiceListenError.noMatch);
+    },
+  );
 
   test('maps no speech recognition result', () async {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
@@ -87,21 +89,26 @@ void main() {
     expect(result.error, VoiceListenError.noMatch);
   });
 
-  test('microphone permission messages resolve in every supported language',
-      () {
-    for (final language in AppState.supportedLanguages) {
-      final l10n = AppLocalizations(language.code);
-      for (final key in const [
-        'voiceMicPermissionDenied',
-        'voiceMicPermanentlyDenied',
-        'voiceOpenSettings',
-        'voiceRecognizerBusy',
-        'voiceNoSpeechRecognized',
-      ]) {
-        expect(l10n.t(key), isNot(key), reason: '${language.code}: $key');
-        expect(l10n.t(key).trim(), isNotEmpty,
-            reason: '${language.code}: $key');
+  test(
+    'microphone permission messages resolve in every supported language',
+    () {
+      for (final language in AppState.supportedLanguages) {
+        final l10n = AppLocalizations(language.code);
+        for (final key in const [
+          'voiceMicPermissionDenied',
+          'voiceMicPermanentlyDenied',
+          'voiceOpenSettings',
+          'voiceRecognizerBusy',
+          'voiceNoSpeechRecognized',
+        ]) {
+          expect(l10n.t(key), isNot(key), reason: '${language.code}: $key');
+          expect(
+            l10n.t(key).trim(),
+            isNotEmpty,
+            reason: '${language.code}: $key',
+          );
+        }
       }
-    }
-  });
+    },
+  );
 }

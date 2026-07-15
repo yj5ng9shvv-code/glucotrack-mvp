@@ -31,12 +31,13 @@ class SubscriptionService {
   Future<ServerSubscription> startTrial(String token) async {
     final device = await DeviceIdentityService.current();
     final body = await _request(
-      'POST',
-      '/trial/start',
-      token,
-      {'deviceHash': device.id},
-      device.id,
-    );
+        'POST',
+        '/trial/start',
+        token,
+        {
+          'deviceHash': device.id,
+        },
+        device.id);
     final value = body['subscription'];
     return ServerSubscription.fromJson(
       value is Map
@@ -78,12 +79,9 @@ class SubscriptionService {
   }
 
   Future<Uri> createCheckout(String token, String plan) async {
-    final body = await _request(
-      'POST',
-      '/billing/checkout',
-      token,
-      {'plan': plan},
-    );
+    final body = await _request('POST', '/billing/checkout', token, {
+      'plan': plan,
+    });
     final url = Uri.tryParse(body['checkoutUrl']?.toString() ?? '');
     if (url == null || !url.hasScheme) {
       throw const SubscriptionException('networkUnavailable');
@@ -132,13 +130,11 @@ class SubscriptionService {
       final error = _normalizeErrorCode(
         body['code']?.toString() ?? body['error']?.toString(),
       );
-      throw SubscriptionException(
-        switch (error) {
-          'EMAIL_NOT_VERIFIED' => 'ui.text.a7ac75be7b72',
-          'TRIAL_ALREADY_USED' => 'trialEndsTomorrow',
-          _ => 'networkUnavailable',
-        },
-      );
+      throw SubscriptionException(switch (error) {
+        'EMAIL_NOT_VERIFIED' => 'ui.text.a7ac75be7b72',
+        'TRIAL_ALREADY_USED' => 'trialEndsTomorrow',
+        _ => 'networkUnavailable',
+      });
     }
     return body;
   }
@@ -204,15 +200,18 @@ class ServerSubscription {
       deviceLimit: int.tryParse(json['deviceLimit']?.toString() ?? '') ?? 3,
       devices: (json['devices'] is List ? json['devices'] as List : const [])
           .whereType<Map>()
-          .map((item) => SubscriptionDevice.fromJson(
-                item.map((key, value) => MapEntry(key.toString(), value)),
-              ))
+          .map(
+            (item) => SubscriptionDevice.fromJson(
+              item.map((key, value) => MapEntry(key.toString(), value)),
+            ),
+          )
           .toList(),
       accessStatus: json['accessStatus']?.toString() ?? 'free',
       trialUsed: json['trialUsed'] == true,
       emailVerified: json['emailVerified'] == true,
-      trialStartedAt:
-          DateTime.tryParse(json['trialStartedAt']?.toString() ?? ''),
+      trialStartedAt: DateTime.tryParse(
+        json['trialStartedAt']?.toString() ?? '',
+      ),
       trialEndsAt: DateTime.tryParse(json['trialEndsAt']?.toString() ?? ''),
       serverTime:
           serverTime ?? DateTime.tryParse(json['serverTime']?.toString() ?? ''),

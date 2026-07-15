@@ -135,9 +135,9 @@ class _AuthScreenState extends State<AuthScreen> {
 
   void _showSocialLoginNotice(String provider) {
     final message = _readL10n().t('socialLoginNotConfigured');
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('$provider: $message')),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text('$provider: $message')));
   }
 
   bool _isDeviceLimitError(AuthException error) =>
@@ -262,14 +262,11 @@ class _AuthScreenState extends State<AuthScreen> {
     if (email == null || email.trim().isEmpty || !mounted) return;
     setState(() => _submitting = true);
     try {
-      await AuthService().requestPasswordReset(
-        email,
-        locale: languageCode,
-      );
+      await AuthService().requestPasswordReset(email, locale: languageCode);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10n.t('resetEmailSent'))),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.t('resetEmailSent'))));
       }
     } catch (error) {
       if (mounted) {
@@ -348,33 +345,33 @@ class _AuthScreenState extends State<AuthScreen> {
                             key: _formKey,
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
                                 Icon(
                                   Icons.monitor_heart,
                                   size: iconSize,
                                   color: const Color(0xFF075BBB),
                                 ),
                                 SizedBox(height: dense ? 4 : 8),
-                        Text(
-                          context.l10n.t(
-                            _registerMode
-                                ? 'auth.action.signUp'
-                                : 'auth.action.login',
-                          ),
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context)
-                              .textTheme
-                                    .titleLarge
-                              ?.copyWith(fontWeight: FontWeight.w700),
-                        ),
+                                Text(
+                                  context.l10n.t(
+                                    _registerMode
+                                        ? 'auth.action.signUp'
+                                        : 'auth.action.login',
+                                  ),
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.copyWith(fontWeight: FontWeight.w700),
+                                ),
                                 if (!dense) ...[
                                   const SizedBox(height: 6),
                                   Text(
                                     _registerMode
-                                        ? context
-                                            .l10n
-                                            .t('auth.registration_hint')
+                                        ? context.l10n.t(
+                                            'auth.registration_hint',
+                                          )
                                         : context.l10n.t('auth.login_hint'),
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
@@ -383,8 +380,8 @@ class _AuthScreenState extends State<AuthScreen> {
                                   ),
                                 ],
                                 SizedBox(height: sectionGap),
-                        if (!hasAccount)
-                          SegmentedButton<bool>(
+                                if (!hasAccount)
+                                  SegmentedButton<bool>(
                                     style: ButtonStyle(
                                       visualDensity: dense
                                           ? VisualDensity.compact
@@ -392,147 +389,174 @@ class _AuthScreenState extends State<AuthScreen> {
                                       tapTargetSize:
                                           MaterialTapTargetSize.shrinkWrap,
                                     ),
-                            segments: [
-                              ButtonSegment(
-                                value: true,
-                                label: Text(
-                                  context.l10n.t('auth.action.signUp'),
-                                ),
-                              ),
-                              ButtonSegment(
-                                value: false,
-                                label: Text(
-                                  context.l10n.t('auth.action.login'),
-                                ),
-                              ),
-                            ],
-                            selected: {_registerMode},
-                            onSelectionChanged: (value) =>
-                                _switchMode(value.first),
-                          ),
+                                    segments: [
+                                      ButtonSegment(
+                                        value: true,
+                                        label: Text(
+                                          context.l10n.t('auth.action.signUp'),
+                                        ),
+                                      ),
+                                      ButtonSegment(
+                                        value: false,
+                                        label: Text(
+                                          context.l10n.t('auth.action.login'),
+                                        ),
+                                      ),
+                                    ],
+                                    selected: {_registerMode},
+                                    onSelectionChanged: (value) =>
+                                        _switchMode(value.first),
+                                  ),
                                 if (!hasAccount) SizedBox(height: fieldGap),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            if (kIsWeb && _googleWebReady)
-                              Center(child: buildGoogleWebButton())
-                            else if (!kIsWeb)
-                              FilledButton.icon(
-                                onPressed:
-                                    _submitting ? null : _startGoogleLogin,
-                                icon: const Icon(Icons.g_mobiledata, size: 28),
-                              label:
-                                    Text(context.l10n.t('continueWithGoogle')),
-                              ),
+                                Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    if (kIsWeb && _googleWebReady)
+                                      Center(child: buildGoogleWebButton())
+                                    else if (!kIsWeb)
+                                      FilledButton.icon(
+                                        onPressed: _submitting
+                                            ? null
+                                            : _startGoogleLogin,
+                                        icon: const Icon(
+                                          Icons.g_mobiledata,
+                                          size: 28,
+                                        ),
+                                        label: Text(
+                                          context.l10n.t('continueWithGoogle'),
+                                        ),
+                                      ),
                                     SizedBox(height: dense ? 6 : 10),
-                            FilledButton.icon(
-                              onPressed: _submitting
-                                  ? null
-                                  : _supportsNativeAppleSignIn
-                                      ? _startAppleLogin
-                                      : () => _showSocialLoginNotice('Apple'),
-                              icon: const Icon(Icons.apple),
-                              label: Text(context.l10n.t('continueWithApple')),
-                            ),
-                          ],
-                        ),
+                                    FilledButton.icon(
+                                      onPressed: _submitting
+                                          ? null
+                                          : _supportsNativeAppleSignIn
+                                              ? _startAppleLogin
+                                              : () => _showSocialLoginNotice(
+                                                  'Apple'),
+                                      icon: const Icon(Icons.apple),
+                                      label: Text(
+                                        context.l10n.t('continueWithApple'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                                 SizedBox(height: fieldGap),
-                        Row(
-                          children: [
-                            const Expanded(child: Divider()),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: Text(context.l10n.t('email')),
-                            ),
-                            const Expanded(child: Divider()),
-                          ],
-                        ),
+                                Row(
+                                  children: [
+                                    const Expanded(child: Divider()),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                      ),
+                                      child: Text(context.l10n.t('email')),
+                                    ),
+                                    const Expanded(child: Divider()),
+                                  ],
+                                ),
                                 SizedBox(height: fieldGap),
-                        if (_registerMode)
-                          TextFormField(
-                            controller: _nameController,
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                              labelText: context.l10n.t('auth.name'),
-                              prefixIcon: const Icon(Icons.person_outline),
-                            ),
-                            validator: (value) =>
-                                value == null || value.trim().length < 2
-                                    ? context.l10n.t('auth.nameInvalid')
-                                    : null,
-                          ),
+                                if (_registerMode)
+                                  TextFormField(
+                                    controller: _nameController,
+                                    textInputAction: TextInputAction.next,
+                                    decoration: InputDecoration(
+                                      labelText: context.l10n.t('auth.name'),
+                                      prefixIcon: const Icon(
+                                        Icons.person_outline,
+                                      ),
+                                    ),
+                                    validator: (value) =>
+                                        value == null || value.trim().length < 2
+                                            ? context.l10n.t('auth.nameInvalid')
+                                            : null,
+                                  ),
                                 if (_registerMode) SizedBox(height: fieldGap),
-                        TextFormField(
-                          controller: _emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          textInputAction: TextInputAction.next,
-                          decoration: InputDecoration(
-                            labelText: context.l10n.t('auth.email'),
-                            prefixIcon: const Icon(Icons.email_outlined),
-                          ),
-                          validator: (value) {
-                            final email = value?.trim() ?? '';
-                            return RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
-                                    .hasMatch(email)
-                                ? null
-                                : context.l10n.t('auth.emailInvalid');
-                          },
-                        ),
-                        if (!_registerMode)
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: TextButton(
-                              onPressed:
-                                  _submitting ? null : _showPasswordRecovery,
-                              child: Text(context.l10n.t('forgotPassword')),
-                            ),
-                          ),
+                                TextFormField(
+                                  controller: _emailController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    labelText: context.l10n.t('auth.email'),
+                                    prefixIcon: const Icon(
+                                      Icons.email_outlined,
+                                    ),
+                                  ),
+                                  validator: (value) {
+                                    final email = value?.trim() ?? '';
+                                    return RegExp(
+                                      r'^[^@\s]+@[^@\s]+\.[^@\s]+$',
+                                    ).hasMatch(email)
+                                        ? null
+                                        : context.l10n.t('auth.emailInvalid');
+                                  },
+                                ),
+                                if (!_registerMode)
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: TextButton(
+                                      onPressed: _submitting
+                                          ? null
+                                          : _showPasswordRecovery,
+                                      child: Text(
+                                        context.l10n.t('forgotPassword'),
+                                      ),
+                                    ),
+                                  ),
                                 SizedBox(height: fieldGap),
-                        TextFormField(
-                          controller: _passwordController,
-                          obscureText: _obscurePassword,
-                          textInputAction: _registerMode
-                              ? TextInputAction.next
-                              : TextInputAction.done,
-                          onFieldSubmitted: (_) {
-                            if (!_registerMode) _submit();
-                          },
-                          decoration: InputDecoration(
-                            labelText: context.l10n.t('auth.password'),
+                                TextFormField(
+                                  controller: _passwordController,
+                                  obscureText: _obscurePassword,
+                                  textInputAction: _registerMode
+                                      ? TextInputAction.next
+                                      : TextInputAction.done,
+                                  onFieldSubmitted: (_) {
+                                    if (!_registerMode) _submit();
+                                  },
+                                  decoration: InputDecoration(
+                                    labelText: context.l10n.t('auth.password'),
                                     helperText: dense
                                         ? null
                                         : context.l10n.t('auth.passwordHelp'),
-                            prefixIcon: const Icon(Icons.lock_outline),
-                            suffixIcon: IconButton(
-                              onPressed: () => setState(
-                                () => _obscurePassword = !_obscurePassword,
-                              ),
-                              icon: Icon(_obscurePassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
-                            ),
-                          ),
-                          validator: (value) => (value?.length ?? 0) < 8
-                              ? context.l10n.t('auth.passwordInvalid')
-                              : null,
-                        ),
+                                    prefixIcon: const Icon(Icons.lock_outline),
+                                    suffixIcon: IconButton(
+                                      onPressed: () => setState(
+                                        () => _obscurePassword =
+                                            !_obscurePassword,
+                                      ),
+                                      icon: Icon(
+                                        _obscurePassword
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                      ),
+                                    ),
+                                  ),
+                                  validator: (value) => (value?.length ?? 0) < 8
+                                      ? context.l10n.t('auth.passwordInvalid')
+                                      : null,
+                                ),
                                 if (_registerMode) SizedBox(height: fieldGap),
-                        if (_registerMode)
-                          TextFormField(
-                            controller: _confirmController,
-                            obscureText: _obscurePassword,
-                            textInputAction: TextInputAction.done,
-                            decoration: InputDecoration(
-                              labelText: context.l10n.t('auth.confirmPassword'),
-                              prefixIcon: const Icon(Icons.lock_outline),
-                            ),
-                            validator: (value) =>
-                                value != _passwordController.text
-                                    ? context.l10n.t('auth.passwordMismatch')
-                                    : null,
-                          ),
-                        if (_registerMode)
+                                if (_registerMode)
+                                  TextFormField(
+                                    controller: _confirmController,
+                                    obscureText: _obscurePassword,
+                                    textInputAction: TextInputAction.done,
+                                    decoration: InputDecoration(
+                                      labelText: context.l10n.t(
+                                        'auth.confirmPassword',
+                                      ),
+                                      prefixIcon: const Icon(
+                                        Icons.lock_outline,
+                                      ),
+                                    ),
+                                    validator: (value) =>
+                                        value != _passwordController.text
+                                            ? context.l10n.t(
+                                                'auth.passwordMismatch',
+                                              )
+                                            : null,
+                                  ),
+                                if (_registerMode)
                                   SizedBox(
                                     height: dense ? 36 : 44,
                                     child: CheckboxListTile(
@@ -541,7 +565,8 @@ class _AuthScreenState extends State<AuthScreen> {
                                       visualDensity: VisualDensity.compact,
                                       value: _accepted,
                                       onChanged: (value) => setState(
-                                          () => _accepted = value ?? false),
+                                        () => _accepted = value ?? false,
+                                      ),
                                       title: Text(
                                         context.l10n.t('auth.acceptTerms'),
                                         maxLines: 1,
@@ -553,58 +578,71 @@ class _AuthScreenState extends State<AuthScreen> {
                                       controlAffinity:
                                           ListTileControlAffinity.trailing,
                                     ),
-                            ),
-                        if (_error != null)
-                          Padding(
-                                  padding: EdgeInsets.only(bottom: fieldGap),
-                            child: Text(
-                              _error!,
-                              style: const TextStyle(color: Color(0xFFB42318)),
-                            ),
-                          ),
-                        if (_deviceLimitReached)
-                          TextButton.icon(
-                            onPressed: _deviceManagementToken == null
-                                ? null
-                                : () async {
-                                    final state = context.read<AppState>();
-                                    await state.useDeviceManagementToken(
-                                      _deviceManagementToken!,
-                                    );
-                                    if (context.mounted) {
-                                      AppNavigator.pushNamed('/subscription');
-                                    }
-                                  },
-                            icon: const Icon(Icons.devices),
-                            label: Text(context.l10n.t('manageDevices')),
-                          ),
-                        FilledButton.icon(
-                          onPressed: _submitting ? null : _submit,
-                          icon: _submitting
-                              ? const SizedBox(
-                                  width: 18,
-                                  height: 18,
-                                  child:
-                                      CircularProgressIndicator(strokeWidth: 2),
-                                )
-                              : Icon(_registerMode
-                                  ? Icons.person_add_alt_1
-                                  : Icons.login),
-                          label: Text(
-                            _registerMode
-                                ? context.l10n.t('auth.action.signUp')
-                                : context.l10n.t('auth.action.login'),
-                          ),
-                        ),
-                        if (hasAccount) ...[
-                          const SizedBox(height: 10),
-                          Text(
-                            context.l10n.t('auth.accountStoredNotice'),
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                color: Color(0xFF667085), fontSize: 12),
-                          ),
-                        ],
+                                  ),
+                                if (_error != null)
+                                  Padding(
+                                    padding: EdgeInsets.only(bottom: fieldGap),
+                                    child: Text(
+                                      _error!,
+                                      style: const TextStyle(
+                                        color: Color(0xFFB42318),
+                                      ),
+                                    ),
+                                  ),
+                                if (_deviceLimitReached)
+                                  TextButton.icon(
+                                    onPressed: _deviceManagementToken == null
+                                        ? null
+                                        : () async {
+                                            final state =
+                                                context.read<AppState>();
+                                            await state
+                                                .useDeviceManagementToken(
+                                              _deviceManagementToken!,
+                                            );
+                                            if (context.mounted) {
+                                              AppNavigator.pushNamed(
+                                                '/subscription',
+                                              );
+                                            }
+                                          },
+                                    icon: const Icon(Icons.devices),
+                                    label: Text(
+                                      context.l10n.t('manageDevices'),
+                                    ),
+                                  ),
+                                FilledButton.icon(
+                                  onPressed: _submitting ? null : _submit,
+                                  icon: _submitting
+                                      ? const SizedBox(
+                                          width: 18,
+                                          height: 18,
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 2,
+                                          ),
+                                        )
+                                      : Icon(
+                                          _registerMode
+                                              ? Icons.person_add_alt_1
+                                              : Icons.login,
+                                        ),
+                                  label: Text(
+                                    _registerMode
+                                        ? context.l10n.t('auth.action.signUp')
+                                        : context.l10n.t('auth.action.login'),
+                                  ),
+                                ),
+                                if (hasAccount) ...[
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    context.l10n.t('auth.accountStoredNotice'),
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Color(0xFF667085),
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
                               ],
                             ),
                           ),

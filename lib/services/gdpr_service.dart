@@ -235,8 +235,10 @@ class GdprEvent {
             json['eventType']?.toString() ??
             '',
         comment: json['comment']?.toString() ?? '',
-        oldStatus: json['old_status']?.toString() ?? json['oldStatus']?.toString(),
-        newStatus: json['new_status']?.toString() ?? json['newStatus']?.toString(),
+        oldStatus:
+            json['old_status']?.toString() ?? json['oldStatus']?.toString(),
+        newStatus:
+            json['new_status']?.toString() ?? json['newStatus']?.toString(),
         createdAt: _dateValue(json['created_at'] ?? json['createdAt']),
       );
 }
@@ -256,8 +258,9 @@ class GdprFile {
 
   factory GdprFile.fromJson(Map json) => GdprFile(
         id: json['id']?.toString() ?? '',
-        originalName:
-            json['original_name']?.toString() ?? json['originalName']?.toString() ?? '',
+        originalName: json['original_name']?.toString() ??
+            json['originalName']?.toString() ??
+            '',
         sizeBytes: _intValue(json['size_bytes'] ?? json['sizeBytes']),
         expiresAt: _dateValue(json['expires_at'] ?? json['expiresAt']),
       );

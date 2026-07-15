@@ -64,23 +64,27 @@ class AiService {
               'correction_factor': appState.correctionFactor,
               'sensor_readings': appState.sensorReadings
                   .take(96)
-                  .map((item) => {
-                        'time': item.time.toIso8601String(),
-                        'glucose_mmol': item.glucoseMmol,
-                        'trend': item.trend.name,
-                      })
+                  .map(
+                    (item) => {
+                      'time': item.time.toIso8601String(),
+                      'glucose_mmol': item.glucoseMmol,
+                      'trend': item.trend.name,
+                    },
+                  )
                   .toList(),
               'diary_entries': appState.diaryEntries
                   .take(50)
-                  .map((item) => {
-                        'time': item.time.toIso8601String(),
-                        'type': item.type.name,
-                        'glucose_mmol': item.glucoseMmol,
-                        'carbs': item.carbs,
-                        'insulin_units': item.insulinUnits,
-                        'title': item.title,
-                        'note': item.note,
-                      })
+                  .map(
+                    (item) => {
+                      'time': item.time.toIso8601String(),
+                      'type': item.type.name,
+                      'glucose_mmol': item.glucoseMmol,
+                      'carbs': item.carbs,
+                      'insulin_units': item.insulinUnits,
+                      'title': item.title,
+                      'note': item.note,
+                    },
+                  )
                   .toList(),
             },
           }),

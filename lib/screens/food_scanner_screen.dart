@@ -88,9 +88,7 @@ class _FoodScannerScreenState extends State<FoodScannerScreen> {
     } on FoodRecognitionException catch (error) {
       _showAnalyzeError(error.message);
     } on Exception {
-      _showAnalyzeError(
-        context.l10n.t('photoAnalyzeError'),
-      );
+      _showAnalyzeError(context.l10n.t('photoAnalyzeError'));
     }
   }
 
@@ -301,10 +299,7 @@ class _RecognitionResultCard extends StatelessWidget {
   final FoodRecognitionResult result;
   final AppState appState;
 
-  const _RecognitionResultCard({
-    required this.result,
-    required this.appState,
-  });
+  const _RecognitionResultCard({required this.result, required this.appState});
 
   @override
   Widget build(BuildContext context) {

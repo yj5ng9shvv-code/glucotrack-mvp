@@ -47,14 +47,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             items: const [
               DropdownMenuItem(
-                  value: DiabetesType.type1,
-                  child: LocalizedText('ui.text.a5c918604521')),
+                value: DiabetesType.type1,
+                child: LocalizedText('ui.text.a5c918604521'),
+              ),
               DropdownMenuItem(
-                  value: DiabetesType.type2,
-                  child: LocalizedText('ui.text.db6138718c9a')),
+                value: DiabetesType.type2,
+                child: LocalizedText('ui.text.db6138718c9a'),
+              ),
               DropdownMenuItem(
-                  value: DiabetesType.gestational,
-                  child: LocalizedText('ui.text.995ea19354df')),
+                value: DiabetesType.gestational,
+                child: LocalizedText('ui.text.995ea19354df'),
+              ),
             ],
             onChanged: (value) {
               if (value != null) {
@@ -71,14 +74,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             items: const [
               DropdownMenuItem(
-                  value: GlucoseUnitPreference.auto,
-                  child: LocalizedText('ui.text.1c1921ef109b')),
+                value: GlucoseUnitPreference.auto,
+                child: LocalizedText('ui.text.1c1921ef109b'),
+              ),
               DropdownMenuItem(
-                  value: GlucoseUnitPreference.mmolL,
-                  child: LocalizedText('ui.text.d6a79b500727')),
+                value: GlucoseUnitPreference.mmolL,
+                child: LocalizedText('ui.text.d6a79b500727'),
+              ),
               DropdownMenuItem(
-                  value: GlucoseUnitPreference.mgDl,
-                  child: LocalizedText('ui.text.699731e8953c')),
+                value: GlucoseUnitPreference.mgDl,
+                child: LocalizedText('ui.text.699731e8953c'),
+              ),
             ],
             onChanged: (value) {
               if (value != null) {
@@ -91,9 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             value: _accepted,
             onChanged: (value) => setState(() => _accepted = value ?? false),
             title: const LocalizedText('ui.text.e611839cd13c'),
-            subtitle: const LocalizedText(
-              'ui.text.8e912253dde0',
-            ),
+            subtitle: const LocalizedText('ui.text.8e912253dde0'),
           ),
           const SizedBox(height: 16),
           FilledButton(

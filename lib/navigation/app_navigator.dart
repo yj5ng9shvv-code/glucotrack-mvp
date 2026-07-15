@@ -18,10 +18,7 @@ class AppNavigator {
     TO? result,
   }) {
     return _runGuarded(
-      () => _navigator?.pushReplacementNamed<T, TO>(
-        routeName,
-        result: result,
-      ),
+      () => _navigator?.pushReplacementNamed<T, TO>(routeName, result: result),
     );
   }
 

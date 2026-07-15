@@ -2,7 +2,8 @@ import 'package:web/web.dart' as web;
 
 String browserFingerprintSource() {
   final navigator = web.window.navigator;
-  final raw = '${navigator.userAgent}|${navigator.language}|${navigator.platform}';
+  final raw =
+      '${navigator.userAgent}|${navigator.language}|${navigator.platform}';
   final sanitized = raw
       .replaceAll(RegExp(r'[^A-Za-z0-9:_-]'), '_')
       .replaceAll(RegExp(r'_+'), '_')

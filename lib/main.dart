@@ -67,16 +67,18 @@ class GlukoTrackApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'GlukoTrack',
               locale: locale,
-              supportedLocales: AppState.supportedLanguages
-                  .map((language) => language.locale),
+              supportedLocales: AppState.supportedLanguages.map(
+                (language) => language.locale,
+              ),
               localizationsDelegates: const [
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
               theme: ThemeData(
-                colorScheme:
-                    ColorScheme.fromSeed(seedColor: const Color(0xFF075BBB)),
+                colorScheme: ColorScheme.fromSeed(
+                  seedColor: const Color(0xFF075BBB),
+                ),
                 scaffoldBackgroundColor: const Color(0xFFF4F8FC),
                 useMaterial3: true,
                 appBarTheme: const AppBarTheme(centerTitle: true),
@@ -91,8 +93,10 @@ class GlukoTrackApp extends StatelessWidget {
                 cardTheme: const CardThemeData(
                   margin: EdgeInsets.symmetric(vertical: 4),
                 ),
-                visualDensity:
-                    const VisualDensity(horizontal: -2, vertical: -3),
+                visualDensity: const VisualDensity(
+                  horizontal: -2,
+                  vertical: -3,
+                ),
                 listTileTheme: const ListTileThemeData(
                   dense: true,
                   minVerticalPadding: 6,
@@ -137,9 +141,8 @@ class GlukoTrackApp extends StatelessWidget {
                       child: PremiumGate2(child: FamilyAccessScreen()),
                     ),
                 '/onboarding': (_) => const OnboardingScreen(),
-                '/notifications': (_) => const AppPageWithFooter(
-                      child: NotificationsScreen(),
-                    ),
+                '/notifications': (_) =>
+                    const AppPageWithFooter(child: NotificationsScreen()),
                 '/diary': (_) => const AppPageWithFooter(
                       selectedIndex: 1,
                       child: DiaryScreen(),
@@ -169,12 +172,10 @@ class GlukoTrackApp extends StatelessWidget {
                       selectedIndex: 3,
                       child: PremiumGate2(child: DoctorReportScreen()),
                     ),
-                '/emergency-profile': (_) => const AppPageWithFooter(
-                      child: EmergencyProfileScreen(),
-                    ),
-                '/emergency-card': (_) => const AppPageWithFooter(
-                      child: EmergencyCardScreen(),
-                    ),
+                '/emergency-profile': (_) =>
+                    const AppPageWithFooter(child: EmergencyProfileScreen()),
+                '/emergency-card': (_) =>
+                    const AppPageWithFooter(child: EmergencyCardScreen()),
                 '/sos': (_) => const AppPageWithFooter(child: SosScreen()),
                 '/ai-assistant': (_) => const AppPageWithFooter(
                       selectedIndex: 2,
@@ -207,9 +208,8 @@ class GlukoTrackApp extends StatelessWidget {
                 '/sensors': (_) => const AppPageWithFooter(
                       child: PremiumGate2(child: SensorsScreen()),
                     ),
-                '/subscription': (_) => const AppPageWithFooter(
-                      child: SubscriptionScreen(),
-                    ),
+                '/subscription': (_) =>
+                    const AppPageWithFooter(child: SubscriptionScreen()),
                 '/emergency': (_) =>
                     const AppPageWithFooter(child: EmergencyScreen()),
                 '/voice-assistant': (_) => const AppPageWithFooter(
@@ -254,10 +254,7 @@ class AppPageWithFooter extends StatelessWidget {
               label: l10n.t('navigation.diary'),
             ),
             NavigationDestination(
-              icon: const PulsingVoiceButton(
-                size: 42,
-                iconSize: 22,
-              ),
+              icon: const PulsingVoiceButton(size: 42, iconSize: 22),
               label: l10n.t('navigation.askAi'),
             ),
             NavigationDestination(
@@ -271,10 +268,7 @@ class AppPageWithFooter extends StatelessWidget {
           ],
           onDestinationSelected: (index) {
             if (index == 0) {
-              AppNavigator.pushNamedAndRemoveUntil(
-                '/home',
-                (route) => false,
-              );
+              AppNavigator.pushNamedAndRemoveUntil('/home', (route) => false);
             } else if (index == 1 && selectedIndex != 1) {
               AppNavigator.pushReplacementNamed('/diary');
             } else if (index == 2 && selectedIndex != 2) {
@@ -322,14 +316,19 @@ class PremiumGate extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.workspace_premium,
-                        size: 64, color: Color(0xFFF79009)),
+                    const Icon(
+                      Icons.workspace_premium,
+                      size: 64,
+                      color: Color(0xFFF79009),
+                    ),
                     const SizedBox(height: 12),
                     const LocalizedText(
                       'ui.text.b460edcb71ae',
                       textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                     const SizedBox(height: 8),
                     const LocalizedText(
@@ -383,8 +382,9 @@ class _PremiumGate2State extends State<PremiumGate2> {
       if (subscription.emailVerified &&
           !subscription.trialUsed &&
           !subscription.active) {
-        subscription =
-            await SubscriptionService().startTrial(state.accountToken);
+        subscription = await SubscriptionService().startTrial(
+          state.accountToken,
+        );
       }
       state.updateServerSubscription(
         active: subscription.active,
@@ -416,8 +416,9 @@ class _PremiumGate2State extends State<PremiumGate2> {
       _verificationTimer?.cancel();
       _verificationTimer = null;
       if (!subscription.trialUsed && !subscription.active) {
-        subscription =
-            await SubscriptionService().startTrial(state.accountToken);
+        subscription = await SubscriptionService().startTrial(
+          state.accountToken,
+        );
       }
       state.updateServerSubscription(
         active: subscription.active,
@@ -470,8 +471,9 @@ class _PremiumGate2State extends State<PremiumGate2> {
     });
     try {
       final state = context.read<AppState>();
-      final subscription =
-          await SubscriptionService().startTrial(state.accountToken);
+      final subscription = await SubscriptionService().startTrial(
+        state.accountToken,
+      );
       state.updateServerSubscription(
         active: subscription.active,
         status: subscription.status,
@@ -507,8 +509,11 @@ class _PremiumGate2State extends State<PremiumGate2> {
     );
   }
 
-  Widget _locked(BuildContext context, AppLocalizations l10n,
-      ServerSubscription? subscription) {
+  Widget _locked(
+    BuildContext context,
+    AppLocalizations l10n,
+    ServerSubscription? subscription,
+  ) {
     return Scaffold(
       appBar: AppBar(title: Text(context.l10n.t('premium'))),
       body: Center(
@@ -524,14 +529,19 @@ class _PremiumGate2State extends State<PremiumGate2> {
                     padding: const EdgeInsets.all(22),
                     child: Column(
                       children: [
-                        const Icon(Icons.workspace_premium,
-                            size: 60, color: Color(0xFFF79009)),
+                        const Icon(
+                          Icons.workspace_premium,
+                          size: 60,
+                          color: Color(0xFFF79009),
+                        ),
                         const SizedBox(height: 12),
                         Text(
                           l10n.t('premiumLockedTitle'),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                              fontSize: 23, fontWeight: FontWeight.w800),
+                            fontSize: 23,
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
                         const SizedBox(height: 8),
                         Text(
@@ -642,11 +652,7 @@ class _PremiumInfoGrid extends StatelessWidget {
         ];
         if (constraints.maxWidth < 520) {
           return Column(
-            children: [
-              cards[0],
-              const SizedBox(height: 10),
-              cards[1],
-            ],
+            children: [cards[0], const SizedBox(height: 10), cards[1]],
           );
         }
         return Row(
@@ -726,9 +732,7 @@ class StartupGate extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
     if (!state.loaded) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
     if (!state.isAuthenticated) return const AuthScreen();
     return state.onboardingCompleted

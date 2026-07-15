@@ -86,30 +86,33 @@ void main() {
   });
 
   test(
-      'parses spoken insulin dose words and does not treat bare units as glucose',
-      () {
-    const service = DiaryCommandService();
-    final state = AppState();
+    'parses spoken insulin dose words and does not treat bare units as glucose',
+    () {
+      const service = DiaryCommandService();
+      final state = AppState();
 
-    final insulin = service
-        .parse('Запиши инсулин шесть единиц')!
-        .toEntry(state, DateTime(2026, 7, 9));
+      final insulin = service
+          .parse('Запиши инсулин шесть единиц')!
+          .toEntry(state, DateTime(2026, 7, 9));
 
-    expect(insulin.type, DiaryLogType.insulin);
-    expect(insulin.insulinUnits, 6);
-    expect(service.parse('Запиши 145 единиц'), isNull);
-    expect(
-      service.clarificationKey('Запиши 145 единиц'),
-      'diaryVoiceAskInsulinDose',
-    );
-  });
+      expect(insulin.type, DiaryLogType.insulin);
+      expect(insulin.insulinUnits, 6);
+      expect(service.parse('Запиши 145 единиц'), isNull);
+      expect(
+        service.clarificationKey('Запиши 145 единиц'),
+        'diaryVoiceAskInsulinDose',
+      );
+    },
+  );
 
   test('parses relative time phrases', () {
     const service = DiaryCommandService();
     final now = DateTime(2026, 7, 9, 12, 30);
 
-    final yesterdayEvening =
-        service.parse('вчера вечером инсулин 6 единиц', now: now)!;
+    final yesterdayEvening = service.parse(
+      'вчера вечером инсулин 6 единиц',
+      now: now,
+    )!;
     final todayMorning = service.parse('сегодня утром сахар 6.1', now: now)!;
 
     expect(yesterdayEvening.entryTime, DateTime(2026, 7, 8, 19));

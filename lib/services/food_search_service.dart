@@ -74,10 +74,7 @@ class FoodSearchService {
             'Authorization': 'Bearer $token',
             'Content-Type': 'application/json; charset=utf-8',
           },
-          body: jsonEncode({
-            'query': query,
-            'language_code': languageCode,
-          }),
+          body: jsonEncode({'query': query, 'language_code': languageCode}),
         )
         .timeout(const Duration(seconds: 30));
     if (response.statusCode < 200 || response.statusCode >= 300) {
@@ -92,9 +89,11 @@ class FoodSearchService {
       items: items is List
           ? items
               .whereType<Map>()
-              .map((item) => AiFoodItem.fromJson(
-                    item.map((key, value) => MapEntry(key.toString(), value)),
-                  ))
+              .map(
+                (item) => AiFoodItem.fromJson(
+                  item.map((key, value) => MapEntry(key.toString(), value)),
+                ),
+              )
               .where((item) => item.name.isNotEmpty)
               .toList()
           : const [],

@@ -54,9 +54,11 @@ class NotificationService {
     if (raw is! List) return const [];
     return raw
         .whereType<Map>()
-        .map((item) => AppNotification.fromJson(
-              item.map((key, value) => MapEntry(key.toString(), value)),
-            ))
+        .map(
+          (item) => AppNotification.fromJson(
+            item.map((key, value) => MapEntry(key.toString(), value)),
+          ),
+        )
         .toList();
   }
 

@@ -45,14 +45,20 @@ class DiaryLogEntry {
           DateTime.now().microsecondsSinceEpoch.toString(),
       time: DateTime.tryParse(json['time']?.toString() ?? '') ?? DateTime.now(),
       type: _enumValue(
-          DiaryLogType.values, json['type']?.toString(), DiaryLogType.note),
+        DiaryLogType.values,
+        json['type']?.toString(),
+        DiaryLogType.note,
+      ),
       glucoseMmol: _doubleValue(json['glucoseMmol']),
       carbs: _intValue(json['carbs']),
       insulinUnits: _doubleValue(json['insulinUnits']),
       title: json['title']?.toString() ?? '',
       note: json['note']?.toString() ?? '',
       source: _enumValue(
-          SensorBrand.values, json['source']?.toString(), SensorBrand.manual),
+        SensorBrand.values,
+        json['source']?.toString(),
+        SensorBrand.manual,
+      ),
     );
   }
 
@@ -77,7 +83,10 @@ class DiaryLogEntry {
   }
 
   static T _enumValue<T extends Enum>(
-      List<T> values, String? name, T fallback) {
+    List<T> values,
+    String? name,
+    T fallback,
+  ) {
     for (final value in values) {
       if (value.name == name) {
         return value;

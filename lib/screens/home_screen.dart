@@ -212,10 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _NotificationBell extends StatelessWidget {
-  const _NotificationBell({
-    required this.unreadCount,
-    required this.onPressed,
-  });
+  const _NotificationBell({required this.unreadCount, required this.onPressed});
 
   final int unreadCount;
   final VoidCallback onPressed;
@@ -442,8 +439,9 @@ class _GlucoseHeader extends StatelessWidget {
                 width: 116,
                 child: TextField(
                   controller: controller,
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
+                  keyboardType: const TextInputType.numberWithOptions(
+                    decimal: true,
+                  ),
                   textInputAction: TextInputAction.done,
                   onSubmitted: (_) => onSave(),
                   style: const TextStyle(
@@ -510,17 +508,10 @@ class _EmergencyStrip extends StatelessWidget {
       child: ListTile(
         minLeadingWidth: 24,
         visualDensity: const VisualDensity(vertical: -3),
-        leading: const Icon(
-          Icons.sos,
-          color: Color(0xFFB42318),
-          size: 22,
-        ),
+        leading: const Icon(Icons.sos, color: Color(0xFFB42318), size: 22),
         title: Text(
           l10n.t('emergencyInfo'),
-          style: const TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 12.5,
-          ),
+          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12.5),
         ),
         subtitle: Text(
           l10n.t('emergencySubtitle'),
@@ -716,9 +707,8 @@ class _HomeSectionsGrid extends StatelessWidget {
             childAspectRatio: cellWidth / cellHeight,
           ),
           itemCount: sections.length,
-          itemBuilder: (context, index) => _SectionCard(
-            section: sections[index],
-          ),
+          itemBuilder: (context, index) =>
+              _SectionCard(section: sections[index]),
         );
       },
     );
@@ -744,11 +734,7 @@ class _HomeSection {
 }
 
 class _SectionEntry {
-  const _SectionEntry({
-    required this.title,
-    required this.icon,
-    this.route,
-  });
+  const _SectionEntry({required this.title, required this.icon, this.route});
 
   final String title;
   final IconData icon;

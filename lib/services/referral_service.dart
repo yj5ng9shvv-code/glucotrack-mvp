@@ -10,10 +10,9 @@ class ReferralService {
   final http.Client _client;
 
   Future<ReferralOverview> overview(String token) async {
-    final response = await _client.get(
-      _uri('/referrals/me'),
-      headers: {'Authorization': 'Bearer $token'},
-    ).timeout(const Duration(seconds: 20));
+    final response = await _client.get(_uri('/referrals/me'), headers: {
+      'Authorization': 'Bearer $token'
+    }).timeout(const Duration(seconds: 20));
     final body = _decode(response.body);
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw ReferralException(body['code']?.toString() ?? 'referral_failed');
@@ -22,7 +21,8 @@ class ReferralService {
   }
 
   Uri _uri(String path) => Uri.parse(
-      '${AuthService.apiBaseUrl.replaceFirst(RegExp(r'/$'), '')}$path');
+        '${AuthService.apiBaseUrl.replaceFirst(RegExp(r'/$'), '')}$path',
+      );
 
   Map<String, dynamic> _decode(String value) {
     try {
@@ -56,7 +56,8 @@ class ReferralOverview {
       link: code['link']?.toString() ?? '',
       active: code['active'] != false,
       stats: ReferralStats.fromJson(
-          json['stats'] is Map ? json['stats'] as Map : const {}),
+        json['stats'] is Map ? json['stats'] as Map : const {},
+      ),
       history: (json['history'] is List ? json['history'] as List : const [])
           .whereType<Map>()
           .map(ReferralHistoryItem.fromJson)

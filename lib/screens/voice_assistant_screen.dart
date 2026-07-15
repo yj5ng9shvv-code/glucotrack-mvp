@@ -153,11 +153,7 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(context.l10n.t('diary')),
-        content: Text(command.confirmationText(
-          state,
-          now,
-          l10n: context.l10n,
-        )),
+        content: Text(command.confirmationText(state, now, l10n: context.l10n)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, _DiarySaveDecision.cancel),
@@ -201,8 +197,9 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
     final messenger = ScaffoldMessenger.of(context);
     final message = switch (error) {
       VoiceListenError.permissionDenied => l10n.t('voiceMicPermissionDenied'),
-      VoiceListenError.permissionPermanentlyDenied =>
-        l10n.t('voiceMicPermanentlyDenied'),
+      VoiceListenError.permissionPermanentlyDenied => l10n.t(
+          'voiceMicPermanentlyDenied',
+        ),
       VoiceListenError.busy => l10n.t('voiceRecognizerBusy'),
       VoiceListenError.noMatch => l10n.t('voiceNoSpeechRecognized'),
       VoiceListenError.unavailable => l10n.t('voiceMicUnavailable'),
@@ -254,8 +251,11 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                     ),
                     child: Column(
                       children: [
-                        const Icon(Icons.workspace_premium,
-                            size: 36, color: Color(0xFFF79009)),
+                        const Icon(
+                          Icons.workspace_premium,
+                          size: 36,
+                          color: Color(0xFFF79009),
+                        ),
                         const SizedBox(height: 8),
                         const LocalizedText(
                           'ui.text.4d12726f93d5',
@@ -287,7 +287,9 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                   state.formatGlucose(state.glucoseMmol),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                      fontSize: 34, fontWeight: FontWeight.w800),
+                    fontSize: 34,
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 Center(
@@ -312,7 +314,9 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                       : l10n.t('voiceTapPrompt'),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w700),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
                 const SizedBox(height: 18),
                 TextField(
@@ -344,8 +348,10 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                       border: Border.all(color: const Color(0xFFD7E3F0)),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Text(_answer!,
-                        style: const TextStyle(fontSize: 17, height: 1.45)),
+                    child: Text(
+                      _answer!,
+                      style: const TextStyle(fontSize: 17, height: 1.45),
+                    ),
                   ),
                 ],
               ],

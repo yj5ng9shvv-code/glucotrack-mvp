@@ -21,19 +21,21 @@ class CloudSyncService {
 
   Future<CloudSyncResult> push(AppState state) async {
     if (!isConfigured) {
-      return const CloudSyncResult(
-        ok: false,
-        messageKey: 'networkUnavailable',
-      );
+      return const CloudSyncResult(ok: false, messageKey: 'networkUnavailable');
     }
 
-    final uri =
-        Uri.parse('${_endpoint.replaceFirst(RegExp(r'/$'), '')}/sync/push');
+    final uri = Uri.parse(
+      '${_endpoint.replaceFirst(RegExp(r'/$'), '')}/sync/push',
+    );
     final preferences = await SharedPreferences.getInstance();
     final localPayload = _payload(state);
     final baseRevision = preferences.getInt('cloudSyncRevision') ?? 0;
-    var response =
-        await _pushRequest(uri, state.accountToken, localPayload, baseRevision);
+    var response = await _pushRequest(
+      uri,
+      state.accountToken,
+      localPayload,
+      baseRevision,
+    );
 
     if (response.statusCode == 409) {
       final conflict = _decodeBody(response.body);
@@ -45,8 +47,12 @@ class CloudSyncService {
           serverPayload.map((key, value) => MapEntry(key.toString(), value)),
           localPayload,
         );
-        response =
-            await _pushRequest(uri, state.accountToken, merged, serverRevision);
+        response = await _pushRequest(
+          uri,
+          state.accountToken,
+          merged,
+          serverRevision,
+        );
         if (response.statusCode >= 200 && response.statusCode < 300) {
           await state.applyServerSnapshot(merged);
         }
@@ -54,10 +60,7 @@ class CloudSyncService {
     }
 
     if (response.statusCode < 200 || response.statusCode >= 300) {
-      return const CloudSyncResult(
-        ok: false,
-        messageKey: 'networkUnavailable',
-      );
+      return const CloudSyncResult(ok: false, messageKey: 'networkUnavailable');
     }
 
     final decoded = _decodeBody(response.body);
@@ -70,23 +73,18 @@ class CloudSyncService {
 
   Future<CloudSyncResult> pull(AppState state) async {
     if (!isConfigured) {
-      return const CloudSyncResult(
-        ok: false,
-        messageKey: 'networkUnavailable',
-      );
+      return const CloudSyncResult(ok: false, messageKey: 'networkUnavailable');
     }
 
-    final uri =
-        Uri.parse('${_endpoint.replaceFirst(RegExp(r'/$'), '')}/sync/pull');
+    final uri = Uri.parse(
+      '${_endpoint.replaceFirst(RegExp(r'/$'), '')}/sync/pull',
+    );
     final response = await _client
         .post(uri, headers: _headers(state.accountToken), body: jsonEncode({}))
         .timeout(const Duration(seconds: 20));
 
     if (response.statusCode < 200 || response.statusCode >= 300) {
-      return const CloudSyncResult(
-        ok: false,
-        messageKey: 'networkUnavailable',
-      );
+      return const CloudSyncResult(ok: false, messageKey: 'networkUnavailable');
     }
 
     final decoded = jsonDecode(response.body);
@@ -103,10 +101,7 @@ class CloudSyncService {
       }
     }
 
-    return const CloudSyncResult(
-      ok: true,
-      messageKey: 'settingsSaved',
-    );
+    return const CloudSyncResult(ok: true, messageKey: 'settingsSaved');
   }
 
   Map<String, String> _headers(String token) {
@@ -244,8 +239,10 @@ class CloudSyncService {
       }
     }
     final result = byKey.values.toList();
-    result.sort((a, b) =>
-        (b['time']?.toString() ?? '').compareTo(a['time']?.toString() ?? ''));
+    result.sort(
+      (a, b) =>
+          (b['time']?.toString() ?? '').compareTo(a['time']?.toString() ?? ''),
+    );
     return result;
   }
 

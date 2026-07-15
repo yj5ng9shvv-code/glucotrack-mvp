@@ -24,9 +24,7 @@ class AiDoctorService {
     }
 
     final request = http.MultipartRequest(
-      'POST',
-      Uri.parse('$_baseUrl/ai/lab-analysis'),
-    )
+        'POST', Uri.parse('$_baseUrl/ai/lab-analysis'))
       ..headers['Authorization'] = 'Bearer ${state.accountToken}'
       ..fields['language_code'] = state.languageCode
       ..files.add(

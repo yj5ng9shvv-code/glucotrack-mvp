@@ -111,11 +111,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
     await state.updateMedicalSettings(
       diabetesType: _diabetesType,
-      targetGlucose:
-          state.glucoseFromDisplay(_parseDouble(_targetController.text)),
+      targetGlucose: state.glucoseFromDisplay(
+        _parseDouble(_targetController.text),
+      ),
       insulinToCarbRatio: _parseDouble(_ratioController.text),
-      correctionFactor:
-          state.glucoseFromDisplay(_parseDouble(_correctionController.text)),
+      correctionFactor: state.glucoseFromDisplay(
+        _parseDouble(_correctionController.text),
+      ),
     );
     await state.updateAllergyProfile(
       hasAllergies: _hasAllergies,
@@ -290,10 +292,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     final correction = unit == GlucoseUnit.mgDl
                         ? state.correctionFactor * 18.0182
                         : state.correctionFactor;
-                    _targetController.text = target
-                        .toStringAsFixed(unit == GlucoseUnit.mgDl ? 0 : 1);
-                    _correctionController.text = correction
-                        .toStringAsFixed(unit == GlucoseUnit.mgDl ? 0 : 1);
+                    _targetController.text = target.toStringAsFixed(
+                      unit == GlucoseUnit.mgDl ? 0 : 1,
+                    );
+                    _correctionController.text = correction.toStringAsFixed(
+                      unit == GlucoseUnit.mgDl ? 0 : 1,
+                    );
                   },
                 ),
                 const SizedBox(height: 10),
@@ -377,8 +381,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   l10n
                       .t('profile.selectedLanguage')
                       .replaceAll('{language}', state.languageLabel),
-                  style:
-                      const TextStyle(color: Color(0xFF64748B), fontSize: 13),
+                  style: const TextStyle(
+                    color: Color(0xFF64748B),
+                    fontSize: 13,
+                  ),
                 ),
               ],
             ),
@@ -430,9 +436,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: Text(l10n.t('gdpr.profileTitle')),
                 subtitle: Text(l10n.t('gdpr.profileSubtitle')),
                 trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => GdprScreen()),
-                ),
+                onTap: () => Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (_) => GdprScreen())),
               ),
             ),
             const SizedBox(height: 16),

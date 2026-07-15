@@ -53,15 +53,18 @@ class YuwellAdapter implements SensorAdapter {
 
     final payloads = await api.fetchReadings();
     final readings = payloads
-        .where((payload) =>
-            payload.glucoseMgDl.isFinite &&
-            payload.glucoseMgDl >= 20 &&
-            payload.glucoseMgDl <= 600)
+        .where(
+          (payload) =>
+              payload.glucoseMgDl.isFinite &&
+              payload.glucoseMgDl >= 20 &&
+              payload.glucoseMgDl <= 600,
+        )
         .map(
           (payload) => SensorReading(
             time: payload.recordedAt,
-            glucoseMmol:
-                double.parse((payload.glucoseMgDl / 18.0).toStringAsFixed(1)),
+            glucoseMmol: double.parse(
+              (payload.glucoseMgDl / 18.0).toStringAsFixed(1),
+            ),
             brand: SensorBrand.yuwellAnytime,
             trend: _trend(payload.trendCode),
             sourceId: 'yuwell-${payload.id}',

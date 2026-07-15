@@ -61,10 +61,8 @@ class _EmergencyCardScreenState extends State<EmergencyCardScreen> {
             child: Text(context.l10n.t('patientCard.cancel')),
           ),
           FilledButton(
-            onPressed: () => Navigator.pop(
-              context,
-              controller.text == state.sosAccessPin,
-            ),
+            onPressed: () =>
+                Navigator.pop(context, controller.text == state.sosAccessPin),
             child: Text(context.l10n.t('patientCard.open')),
           ),
         ],
@@ -96,8 +94,9 @@ class _EmergencyCardScreenState extends State<EmergencyCardScreen> {
     }
     final patientLabel = context.l10n.t('patientCard.patient');
     final savedLabel = context.l10n.t('patientCard.settingsSaved');
-    final networkUnavailableLabel =
-        context.l10n.t('patientCard.networkUnavailable');
+    final networkUnavailableLabel = context.l10n.t(
+      'patientCard.networkUnavailable',
+    );
     final accepted = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -189,10 +188,9 @@ class _EmergencyCardScreenState extends State<EmergencyCardScreen> {
       'doctor': l10n.t('patientCard.doctorClinic'),
       'otherContacts': l10n.t('patientCard.otherRelatives'),
       'hidden': l10n.t('patientCard.sensitiveHidden'),
-      'call112': l10n.format(
-        'sosPublicCard.callEmergencyWithNumber',
-        {'number': '112'},
-      ),
+      'call112': l10n.format('sosPublicCard.callEmergencyWithNumber', {
+        'number': '112',
+      }),
       'callClose': l10n.t('sosPublicCard.callRelative'),
     };
     final sensitiveVisible =
@@ -300,33 +298,18 @@ class _EmergencyCardScreenState extends State<EmergencyCardScreen> {
             text['treatment']!,
             _localizedTreatment(cardLanguage, state.diabetesTreatment),
           ),
-          _row(
-            text['blood']!,
-            state.bloodType,
-          ),
-          _row(
-            text['languages']!,
-            state.communicationLanguages,
-          ),
+          _row(text['blood']!, state.bloodType),
+          _row(text['languages']!, state.communicationLanguages),
           if (sensitiveVisible) ...[
             _row(text['diagnoses']!, state.importantDiagnoses),
-            _row(
-              text['insulin']!,
-              state.insulinName,
-            ),
+            _row(text['insulin']!, state.insulinName),
             _row(
               text['allergyStatus']!,
               state.hasAllergies ? text['yes']! : text['no']!,
             ),
             if (state.hasAllergies)
-              _row(
-                text['allergyDetails']!,
-                state.allergies,
-              ),
-            _row(
-              text['medications']!,
-              state.medications,
-            ),
+              _row(text['allergyDetails']!, state.allergies),
+            _row(text['medications']!, state.medications),
             _row(text['doctor']!, state.doctorContact),
             _row(text['otherContacts']!, state.additionalEmergencyContacts),
           ] else
@@ -359,10 +342,9 @@ class _EmergencyCardScreenState extends State<EmergencyCardScreen> {
               label: Text(
                 state.emergencyContactName.trim().isEmpty
                     ? text['callClose']!
-                    : l10n.format(
-                        'sosPublicCard.callRelativeWithName',
-                        {'name': state.emergencyContactName.trim()},
-                      ),
+                    : l10n.format('sosPublicCard.callRelativeWithName', {
+                        'name': state.emergencyContactName.trim(),
+                      }),
               ),
             ),
             const SizedBox(height: 8),
@@ -379,8 +361,9 @@ class _EmergencyCardScreenState extends State<EmergencyCardScreen> {
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
                   : const Icon(Icons.my_location),
-              label:
-                  Text(context.l10n.t('sosPublicCard.sendSosSmsWithLocation')),
+              label: Text(
+                context.l10n.t('sosPublicCard.sendSosSmsWithLocation'),
+              ),
             ),
           ],
           const SizedBox(height: 16),

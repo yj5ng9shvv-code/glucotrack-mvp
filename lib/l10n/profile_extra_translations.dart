@@ -39,7 +39,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -110,7 +111,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -166,7 +168,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -237,7 +240,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -293,7 +297,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -364,7 +369,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -420,7 +426,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -491,7 +498,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -547,7 +555,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -618,7 +627,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -674,7 +684,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -745,7 +756,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -801,7 +813,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -872,7 +885,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -1001,7 +1015,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Ваш код приглашения',
     'referral.copyLink': 'Скопировать ссылку',
     'referral.copyCode': 'Скопировать код',
-    'referral.rewardNote': 'Награда начисляется после подтверждения email и первой реальной оплаты Premium приглашенным пользователем.',
+    'referral.rewardNote':
+        'Награда начисляется после подтверждения email и первой реальной оплаты Premium приглашенным пользователем.',
     'referral.total': 'Всего',
     'referral.rewards': 'Наград',
     'referral.review': 'Проверка',
@@ -1057,7 +1072,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -1128,7 +1144,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -1184,7 +1201,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -1255,7 +1273,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -1311,7 +1330,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -1382,7 +1402,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -1438,7 +1459,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -1509,7 +1531,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -1565,7 +1588,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -1636,7 +1660,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -1692,7 +1717,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -1763,7 +1789,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -1819,7 +1846,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -1890,7 +1918,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -1945,7 +1974,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -2016,7 +2046,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -2072,7 +2103,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -2143,7 +2175,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -2198,7 +2231,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -2269,7 +2303,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -2325,7 +2360,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -2396,7 +2432,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -2452,7 +2489,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -2523,7 +2561,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -2579,7 +2618,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -2650,7 +2690,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -2706,7 +2747,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -2777,7 +2819,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -2833,7 +2876,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -2904,7 +2948,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -2960,7 +3005,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -3031,7 +3077,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -3087,7 +3134,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -3158,7 +3206,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -3213,7 +3262,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -3284,7 +3334,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -3340,7 +3391,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -3411,7 +3463,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -3467,7 +3520,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -3538,7 +3592,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -3594,7 +3649,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -3665,7 +3721,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',
@@ -3720,7 +3777,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'gdpr.errorTitle': 'Could not load requests',
     'gdpr.retry': 'Try again',
     'gdpr.emptyTitle': 'No privacy requests',
-    'gdpr.emptyText': 'Create a request to export, correct or delete your data.',
+    'gdpr.emptyText':
+        'Create a request to export, correct or delete your data.',
     'gdpr.type': 'Request type',
     'gdpr.subject': 'Subject',
     'gdpr.description': 'Description',
@@ -3791,7 +3849,8 @@ const profileExtraTranslations = <String, Map<String, String>>{
     'referral.inviteCode': 'Your invite code',
     'referral.copyLink': 'Copy link',
     'referral.copyCode': 'Copy code',
-    'referral.rewardNote': 'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
+    'referral.rewardNote':
+        'Reward is granted after the invited user verifies email and completes the first real Premium payment.',
     'referral.total': 'Total',
     'referral.rewards': 'Rewards',
     'referral.review': 'Review',

@@ -51,10 +51,10 @@ class VoiceRecognitionService {
     }
 
     try {
-      final result = await _channel.invokeMethod<String>(
-        'listen',
-        {'language': languageCode, 'prompt': prompt},
-      );
+      final result = await _channel.invokeMethod<String>('listen', {
+        'language': languageCode,
+        'prompt': prompt,
+      });
       if (result == null || result.trim().isEmpty) {
         return const VoiceListenResult.error(VoiceListenError.noMatch);
       }

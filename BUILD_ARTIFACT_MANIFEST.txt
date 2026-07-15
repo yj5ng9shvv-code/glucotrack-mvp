@@ -1,0 +1,34 @@
+Build date: 2026-07-15
+Web build directory: build\web
+Web release archive: C:\tmp\glukotrack_web_release_2026-07-15_2057.zip
+Archive size: 11168144 bytes
+
+.last_build_id	32
+assets\AssetManifest.bin	190
+assets\AssetManifest.bin.json	258
+assets\assets\translations\core.json	97380
+assets\FontManifest.json	208
+assets\fonts\MaterialIcons-Regular.otf	24396
+assets\NOTICES	1353110
+assets\packages\cupertino_icons\assets\CupertinoIcons.ttf	1472
+assets\shaders\ink_sparkle.frag	8867
+assets\shaders\stretch_effect.frag	6714
+canvaskit\canvaskit.js	86619
+canvaskit\canvaskit.js.symbols	1341680
+canvaskit\canvaskit.wasm	7083768
+canvaskit\chromium\canvaskit.js	86256
+canvaskit\chromium\canvaskit.js.symbols	1263564
+canvaskit\chromium\canvaskit.wasm	5708955
+canvaskit\skwasm.js	60657
+canvaskit\skwasm.js.symbols	1519144
+canvaskit\skwasm.wasm	3551820
+canvaskit\skwasm_heavy.js	60770
+canvaskit\skwasm_heavy.js.symbols	1638235
+canvaskit\skwasm_heavy.wasm	5047312
+flutter.js	9412
+flutter_bootstrap.js	9958
+flutter_service_worker.js	8240
+index.html	1655
+main.dart.js	4533215
+manifest.json	363
+version.json	90

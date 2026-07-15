@@ -26,7 +26,8 @@ final profileTranslations = <String, Map<String, String>>{
     'profile.allergyStatusNo': 'Nein',
     'profile.allergyDetails': 'Wogegen sind Sie allergisch',
     'profile.sosProfileTitle': 'SOS-Profil',
-    'profile.sosProfileSubtitle': 'Medizinische Informationen und Notfallkontakt',
+    'profile.sosProfileSubtitle':
+        'Medizinische Informationen und Notfallkontakt',
     'profile.emergencyCardTitle': 'Notfallkarte',
     'profile.emergencyCardSubtitle': 'Daten für den Sperrbildschirm anzeigen',
     'profile.sensorsTitle': 'Sensoren',
@@ -62,7 +63,8 @@ final profileTranslations = <String, Map<String, String>>{
     'profile.sosProfileTitle': 'Perfil SOS',
     'profile.sosProfileSubtitle': 'Información médica y contacto de emergencia',
     'profile.emergencyCardTitle': 'Tarjeta de emergencia',
-    'profile.emergencyCardSubtitle': 'Vista previa de datos para la pantalla bloqueada',
+    'profile.emergencyCardSubtitle':
+        'Vista previa de datos para la pantalla bloqueada',
     'profile.sensorsTitle': 'Sensores',
     'profile.sensorsSubtitle': 'Apple Health y Android Health Connect',
     'profile.logout': 'Cerrar sesión',
@@ -77,7 +79,8 @@ final profileTranslations = <String, Map<String, String>>{
     'profile.allergyStatusNo': 'No',
     'profile.allergyDetails': 'A cosa sei allergico',
     'profile.sosProfileTitle': 'Profilo SOS',
-    'profile.sosProfileSubtitle': 'Informazioni mediche e contatto di emergenza',
+    'profile.sosProfileSubtitle':
+        'Informazioni mediche e contatto di emergenza',
     'profile.emergencyCardTitle': 'Scheda di emergenza',
     'profile.emergencyCardSubtitle': 'Anteprima dati per schermata di blocco',
     'profile.sensorsTitle': 'Sensori',
@@ -147,7 +150,8 @@ final profileTranslations = <String, Map<String, String>>{
     'profile.sosProfileTitle': 'Perfil SOS',
     'profile.sosProfileSubtitle': 'Informação médica e contacto de emergência',
     'profile.emergencyCardTitle': 'Cartão de emergência',
-    'profile.emergencyCardSubtitle': 'Pré-visualização dos dados do ecrã bloqueado',
+    'profile.emergencyCardSubtitle':
+        'Pré-visualização dos dados do ecrã bloqueado',
     'profile.sensorsTitle': 'Sensores',
     'profile.sensorsSubtitle': 'Apple Health e Android Health Connect',
     'profile.logout': 'Terminar sessão',
@@ -164,7 +168,8 @@ final profileTranslations = <String, Map<String, String>>{
     'profile.sosProfileTitle': 'SOS-profiel',
     'profile.sosProfileSubtitle': 'Medische informatie en noodcontact',
     'profile.emergencyCardTitle': 'Noodkaart',
-    'profile.emergencyCardSubtitle': 'Voorbeeld van gegevens voor vergrendelscherm',
+    'profile.emergencyCardSubtitle':
+        'Voorbeeld van gegevens voor vergrendelscherm',
     'profile.sensorsTitle': 'Sensoren',
     'profile.sensorsSubtitle': 'Apple Health en Android Health Connect',
     'profile.logout': 'Uitloggen',
@@ -181,7 +186,8 @@ final profileTranslations = <String, Map<String, String>>{
     'profile.sosProfileTitle': 'Profil SOS',
     'profile.sosProfileSubtitle': 'Informații medicale și contact de urgență',
     'profile.emergencyCardTitle': 'Card de urgență',
-    'profile.emergencyCardSubtitle': 'Previzualizare date pentru ecranul blocat',
+    'profile.emergencyCardSubtitle':
+        'Previzualizare date pentru ecranul blocat',
     'profile.sensorsTitle': 'Senzori',
     'profile.sensorsSubtitle': 'Apple Health și Android Health Connect',
     'profile.logout': 'Deconectare',
@@ -315,9 +321,11 @@ final profileTranslations = <String, Map<String, String>>{
     'profile.allergyStatusNo': 'Όχι',
     'profile.allergyDetails': 'Σε τι έχετε αλλεργία',
     'profile.sosProfileTitle': 'Προφίλ SOS',
-    'profile.sosProfileSubtitle': 'Ιατρικές πληροφορίες και επαφή έκτακτης ανάγκης',
+    'profile.sosProfileSubtitle':
+        'Ιατρικές πληροφορίες και επαφή έκτακτης ανάγκης',
     'profile.emergencyCardTitle': 'Κάρτα έκτακτης ανάγκης',
-    'profile.emergencyCardSubtitle': 'Προεπισκόπηση δεδομένων οθόνης κλειδώματος',
+    'profile.emergencyCardSubtitle':
+        'Προεπισκόπηση δεδομένων οθόνης κλειδώματος',
     'profile.sensorsTitle': 'Αισθητήρες',
     'profile.sensorsSubtitle': 'Apple Health και Android Health Connect',
     'profile.logout': 'Αποσύνδεση',
@@ -417,7 +425,8 @@ final profileTranslations = <String, Map<String, String>>{
     'profile.allergyStatusNo': 'Nē',
     'profile.allergyDetails': 'Pret ko ir alerģija',
     'profile.sosProfileTitle': 'SOS profils',
-    'profile.sosProfileSubtitle': 'Medicīniskā informācija un ārkārtas kontakts',
+    'profile.sosProfileSubtitle':
+        'Medicīniskā informācija un ārkārtas kontakts',
     'profile.emergencyCardTitle': 'Ārkārtas karte',
     'profile.emergencyCardSubtitle': 'Bloķēšanas ekrāna datu priekšskatījums',
     'profile.sensorsTitle': 'Sensori',
@@ -470,7 +479,8 @@ final profileTranslations = <String, Map<String, String>>{
     'profile.sosProfileTitle': 'Profili SOS',
     'profile.sosProfileSubtitle': 'Informacion mjekësor dhe kontakt urgjence',
     'profile.emergencyCardTitle': 'Kartë urgjence',
-    'profile.emergencyCardSubtitle': 'Paraqitje e të dhënave për ekranin e bllokuar',
+    'profile.emergencyCardSubtitle':
+        'Paraqitje e të dhënave për ekranin e bllokuar',
     'profile.sensorsTitle': 'Sensorët',
     'profile.sensorsSubtitle': 'Apple Health dhe Android Health Connect',
     'profile.logout': 'Dil nga llogaria',

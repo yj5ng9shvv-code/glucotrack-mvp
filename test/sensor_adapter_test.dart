@@ -4,8 +4,9 @@ import 'package:glucotrack/services/sensor_adapters.dart';
 
 void main() {
   test('unsupported sensor adapter does not return mocked data', () async {
-    final adapter =
-        const SensorAdapterRegistry().adapterFor(SensorBrand.dexcom);
+    final adapter = const SensorAdapterRegistry().adapterFor(
+      SensorBrand.dexcom,
+    );
 
     await expectLater(
       () => adapter.fetchReadings(currentGlucoseMmol: 6.1),

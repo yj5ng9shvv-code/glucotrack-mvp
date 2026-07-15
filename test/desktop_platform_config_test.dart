@@ -15,15 +15,15 @@ void main() {
 
   test('macOS desktop runner has production identity and network access', () {
     expect(Directory('macos').existsSync(), isTrue);
-    final appInfo = File('macos/Runner/Configs/AppInfo.xcconfig').readAsStringSync();
-    final releaseEntitlements =
-        File('macos/Runner/Release.entitlements').readAsStringSync();
+    final appInfo = File(
+      'macos/Runner/Configs/AppInfo.xcconfig',
+    ).readAsStringSync();
+    final releaseEntitlements = File(
+      'macos/Runner/Release.entitlements',
+    ).readAsStringSync();
 
     expect(appInfo, contains('PRODUCT_NAME = GlukoTrack'));
     expect(appInfo, contains('PRODUCT_BUNDLE_IDENTIFIER = com.glukotrack.app'));
-    expect(
-      releaseEntitlements,
-      contains('com.apple.security.network.client'),
-    );
+    expect(releaseEntitlements, contains('com.apple.security.network.client'));
   });
 }

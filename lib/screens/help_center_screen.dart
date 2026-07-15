@@ -82,7 +82,7 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
                             width: 18,
                             height: 18,
                             child: CircularProgressIndicator(strokeWidth: 2),
-                          )
+                          ),
                         ]
                       : null,
                   onSubmitted: _search,
@@ -156,9 +156,9 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
       _subjectController.clear();
       _messageController.clear();
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(text.label('sent'))),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(text.label('sent'))));
       }
     } finally {
       if (mounted) setState(() => _contactSending = false);
@@ -212,11 +212,15 @@ class _HelpArticleScreenState extends State<HelpArticleScreen> {
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 28),
             children: [
-              Text(article.categoryTitle,
-                  style: Theme.of(context).textTheme.labelLarge),
+              Text(
+                article.categoryTitle,
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
               const SizedBox(height: 8),
-              Text(article.title,
-                  style: Theme.of(context).textTheme.headlineSmall),
+              Text(
+                article.title,
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
               if (article.summary.isNotEmpty) ...[
                 const SizedBox(height: 8),
                 Text(article.summary),
@@ -287,15 +291,15 @@ class _HelpArticleScreenState extends State<HelpArticleScreen> {
       );
       if (mounted) {
         setState(() => _feedbackSaved = true);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(text.label('sent'))),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(text.label('sent'))));
       }
     } catch (error) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(error.toString())),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(error.toString())));
       }
     } finally {
       if (mounted) setState(() => _sendingFeedback = false);
@@ -324,9 +328,9 @@ class _ArticleTile extends StatelessWidget {
       child: ListTile(
         leading: const Icon(Icons.article_outlined),
         title: Text(article.title),
-        subtitle: Text(article.summary.isNotEmpty
-            ? article.summary
-            : article.categoryTitle),
+        subtitle: Text(
+          article.summary.isNotEmpty ? article.summary : article.categoryTitle,
+        ),
         trailing: const Icon(Icons.chevron_right),
         onTap: () => Navigator.push(
           context,
@@ -362,10 +366,12 @@ class _CategoryTile extends StatelessWidget {
             children: [
               const Icon(Icons.help_outline),
               const SizedBox(height: 8),
-              Text(category.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleSmall),
+              Text(
+                category.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
               const Spacer(),
               Text(
                 '${category.articleCount}',
@@ -451,8 +457,10 @@ class _ContactCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(text.label('contact'),
-                style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              text.label('contact'),
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: 10),
             TextField(
               controller: emailController,

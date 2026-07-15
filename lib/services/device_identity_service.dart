@@ -58,8 +58,9 @@ class DeviceIdentityService {
       id: id,
       name: _deviceName(platform),
       platform: platform,
-      fingerprint:
-          _stableHash('$platform|${_deviceName(platform)}|$fingerprintSource'),
+      fingerprint: _stableHash(
+        '$platform|${_deviceName(platform)}|$fingerprintSource',
+      ),
     );
   }
 
