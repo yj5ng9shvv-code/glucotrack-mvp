@@ -41,3 +41,18 @@ Modified/generated report files:
 - RESTORE_INSTRUCTIONS.md
 
 Runtime source code was not changed in this pass.
+
+2026-07-15 approved safe cleanup pass:
+
+Deleted runtime-unrelated diagnostic artifacts:
+- 38 root phone/browser diagnostic `.png/.xml` files.
+- `android/build`.
+
+Updated audit/report files:
+- `DELETED_FILES_MANIFEST.txt`
+- `MODIFIED_FILES_MANIFEST.txt`
+- `BUILD_AND_TEST_RESULTS.md`
+- `reports/project-cleanup-audit.json`
+- `reports/project-cleanup-audit.md`
+
+Runtime source code was not changed.

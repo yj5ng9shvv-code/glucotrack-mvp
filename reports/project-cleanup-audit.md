@@ -1,6 +1,6 @@
 # GlukoTrack Project Cleanup Audit
 
-Generated: 2026-07-15T18:29:56.919Z
+Generated: 2026-07-15T18:47:36.960Z
 
 Phase: **analysis only**. No files were deleted.
 
@@ -11,7 +11,7 @@ The user required a full backup before audit. This report assumes the verified b
 ## Git State
 
 - Branch: `main`
-- HEAD: `6abca8ddf0252004e7471c00f2042cf1ff3a4336`
+- HEAD: `59a8c094069d307ab75143ff674df793d6dbb450`
 - Cleanup branch exists: true
 - `before-full-cleanup` tag exists: true
 - Working tree dirty: true
@@ -20,16 +20,16 @@ The user required a full backup before audit. This report assumes the verified b
 
 ## Inventory
 
-- Files: 1956
-- Directories: 414
-- Total file size: 137.29 MB
+- Files: 1957
+- Directories: 412
+- Total file size: 126.26 MB
 
 ## Largest Directories
 
 | Directory | Size |
 |---|---:|
-| `.git` | 87.37 MB |
-| `.git/objects` | 87.29 MB |
+| `.git` | 87.68 MB |
+| `.git/objects` | 87.60 MB |
 | `website_source` | 32.28 MB |
 | `website_source/app` | 31.91 MB |
 | `website_source/app/canvaskit` | 26.18 MB |
@@ -43,7 +43,7 @@ The user required a full backup before audit. This report assumes the verified b
 | `.git/objects/ad` | 3.54 MB |
 | `.git/objects/40` | 3.45 MB |
 | `.git/objects/b9` | 3.45 MB |
-| `reports` | 3.33 MB |
+| `reports` | 3.42 MB |
 | `.git/objects/f4` | 3.09 MB |
 | `.git/objects/c8` | 3.04 MB |
 | `.git/objects/8e` | 2.39 MB |
@@ -69,7 +69,6 @@ These are candidates only. Nothing in this table is approved for deletion until 
 | `.git/objects/0f/tmp_obj_YWiM8J` | DUPLICATE_OR_OBSOLETE_NAME | medium | 0.00 MB | Filename/path contains old/copy/backup/temp/fixed/final style marker. | review before deletion |
 | `.git/objects/12/tmp_obj_Xtlqeh` | DUPLICATE_OR_OBSOLETE_NAME | medium | 0.00 MB | Filename/path contains old/copy/backup/temp/fixed/final style marker. | review before deletion |
 | `.git/refs/tags/backup-before-deep-cleanup-2026-07-15` | DUPLICATE_OR_OBSOLETE_NAME | medium | 0.00 MB | Filename/path contains old/copy/backup/temp/fixed/final style marker. | review before deletion |
-| `android/build` | GENERATED | low | 0.00 MB | Directory name matches common generated/local workspace output. | candidate: add/confirm gitignore, remove only after approval |
 | `backend/.env` | SECRET_REVIEW | high | 0.00 MB | Filename matches secret/credential pattern. | candidate: move to env/secure storage only after rotation plan |
 | `backend/database_schema.sql` | ARCHIVE_OR_RELEASE_ARTIFACT | high | 0.01 MB | Archive/release/database dump extension found. | review before deletion |
 | `backend/phpmyadmin_import.sql` | ARCHIVE_OR_RELEASE_ARTIFACT | high | 0.01 MB | Archive/release/database dump extension found. | review before deletion |
@@ -77,13 +76,13 @@ These are candidates only. Nothing in this table is approved for deletion until 
 | `backend_proxy_sample/database_schema.sql` | ARCHIVE_OR_RELEASE_ARTIFACT | high | 0.00 MB | Archive/release/database dump extension found. | review before deletion |
 | `BACKUP_VERIFICATION_REPORT.md` | DUPLICATE_OR_OBSOLETE_NAME | medium | 0.00 MB | Filename/path contains old/copy/backup/temp/fixed/final style marker. | review before deletion |
 | `DATABASE_CLEANUP_CANDIDATES.sql` | ARCHIVE_OR_RELEASE_ARTIFACT | high | 0.00 MB | Archive/release/database dump extension found. | review before deletion |
+| `DATABASE_CLEANUP_PLAN.sql` | ARCHIVE_OR_RELEASE_ARTIFACT | high | 0.00 MB | Archive/release/database dump extension found. | review before deletion |
 | `DATABASE_CLEANUP_ROLLBACK.sql` | ARCHIVE_OR_RELEASE_ARTIFACT | high | 0.00 MB | Archive/release/database dump extension found. | review before deletion |
-| `glucotrack_voice_final.png` | DUPLICATE_OR_OBSOLETE_NAME | medium | 0.38 MB | Filename/path contains old/copy/backup/temp/fixed/final style marker. | review before deletion |
 | `tools/fix_mojibake_literals.mjs` | DUPLICATE_OR_OBSOLETE_NAME | medium | 0.00 MB | Filename/path contains old/copy/backup/temp/fixed/final style marker. | review before deletion |
 | `.git/objects/0f/6330ea3e6d5184b2e0f7fda0c741c870e0f9c4` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/objects/0f/tmp_obj_YWiM8J` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `.git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `.git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
+| `.git/refs/codex/turn-diffs/captures/1784141196369/6ecb2996-c1f8-4f5a-a5f2-53a228b73ea5/base` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
+| `.git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/f48865260e7a91e6be66945c8282dfdab1da9cbd040e0550f95aee523944fd15/1784140916760/7638af22-5b95-4efb-8aa7-65ef51df137c` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/refs/heads/audit/deep-cleanup-2026-07-15` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/refs/tags/before-deep-cleanup-2026-07-15-17-05` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/refs/heads/chore/full-project-cleanup` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
@@ -99,10 +98,6 @@ These are candidates only. Nothing in this table is approved for deletion until 
 | `backend_proxy_sample/install-db.js` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `backend/nginx-glukotrack-api.conf.example` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `backend_proxy_sample/nginx-glukotrack-api.conf.example` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `current_phone_screen.png` | DUPLICATE | medium | 0.03 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `phone_after_audit_open.png` | DUPLICATE | medium | 0.03 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `phone_after_web_cachebust.png` | DUPLICATE | medium | 0.03 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `phone_after_web_cachebust2.png` | DUPLICATE | medium | 0.03 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `ios/Flutter/Debug.xcconfig` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `ios/Flutter/Release.xcconfig` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
@@ -122,20 +117,13 @@ These are candidates only. Nothing in this table is approved for deletion until 
 | `macos/Runner.xcworkspace/contents.xcworkspacedata` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `macos/Flutter/Flutter-Debug.xcconfig` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `macos/Flutter/Flutter-Release.xcconfig` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `phone_after_audit_open2.png` | DUPLICATE | medium | 0.01 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `phone_after_audit_open_pull.png` | DUPLICATE | medium | 0.01 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `phone_after_audit_tap_icon.png` | DUPLICATE | medium | 0.01 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `phone_after_web_cachebust5.png` | DUPLICATE | medium | 0.01 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `phone_after_web_cachebust6.png` | DUPLICATE | medium | 0.01 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `phone_chrome_direct.png` | DUPLICATE | medium | 0.01 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `phone_chrome_stayon.png` | DUPLICATE | medium | 0.01 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `web/manifest.json` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `website_source/app/manifest.json` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 
 ## Duplicate Content Groups
 
 - 0.00 MB: `.git/objects/0f/6330ea3e6d5184b2e0f7fda0c741c870e0f9c4`, `.git/objects/0f/tmp_obj_YWiM8J`
-- 0.00 MB: `.git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base`, `.git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06`
+- 0.00 MB: `.git/refs/codex/turn-diffs/captures/1784141196369/6ecb2996-c1f8-4f5a-a5f2-53a228b73ea5/base`, `.git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/f48865260e7a91e6be66945c8282dfdab1da9cbd040e0550f95aee523944fd15/1784140916760/7638af22-5b95-4efb-8aa7-65ef51df137c`
 - 0.00 MB: `.git/refs/heads/audit/deep-cleanup-2026-07-15`, `.git/refs/tags/before-deep-cleanup-2026-07-15-17-05`
 - 0.00 MB: `.git/refs/heads/chore/full-project-cleanup`, `.git/refs/remotes/origin/main`, `.git/refs/tags/before-full-cleanup`
 - 0.00 MB: `android/app/src/debug/AndroidManifest.xml`, `android/app/src/profile/AndroidManifest.xml`
@@ -143,7 +131,6 @@ These are candidates only. Nothing in this table is approved for deletion until 
 - 0.00 MB: `backend/DB_SETUP_RU.md`, `backend_proxy_sample/DB_SETUP_RU.md`
 - 0.00 MB: `backend/install-db.js`, `backend_proxy_sample/install-db.js`
 - 0.00 MB: `backend/nginx-glukotrack-api.conf.example`, `backend_proxy_sample/nginx-glukotrack-api.conf.example`
-- 0.03 MB: `current_phone_screen.png`, `phone_after_audit_open.png`, `phone_after_web_cachebust.png`, `phone_after_web_cachebust2.png`
 - 0.00 MB: `ios/Flutter/Debug.xcconfig`, `ios/Flutter/Release.xcconfig`
 - 0.00 MB: `ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png`, `ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png`
 - 0.00 MB: `ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png`, `ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png`
@@ -152,7 +139,6 @@ These are candidates only. Nothing in this table is approved for deletion until 
 - 0.00 MB: `ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings`, `ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings`
 - 0.00 MB: `ios/Runner.xcworkspace/contents.xcworkspacedata`, `macos/Runner.xcworkspace/contents.xcworkspacedata`
 - 0.00 MB: `macos/Flutter/Flutter-Debug.xcconfig`, `macos/Flutter/Flutter-Release.xcconfig`
-- 0.01 MB: `phone_after_audit_open2.png`, `phone_after_audit_open_pull.png`, `phone_after_audit_tap_icon.png`, `phone_after_web_cachebust5.png`, `phone_after_web_cachebust6.png`, `phone_chrome_direct.png`, `phone_chrome_stayon.png`
 - 0.00 MB: `web/manifest.json`, `website_source/app/manifest.json`
 
 ## Secret Review Findings
@@ -171,7 +157,7 @@ Values are intentionally not printed.
 
 ## Generated Directory Policy
 
-- `android/build`: Generated/local workspace output. Remove only after backup and approval; ensure .gitignore covers it.
+No generated directories matched the configured policy list.
 
 ## Next Step
 

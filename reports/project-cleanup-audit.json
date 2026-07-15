@@ -1,35 +1,33 @@
 {
-  "generatedAt": "2026-07-15T18:29:56.919Z",
+  "generatedAt": "2026-07-15T18:47:36.960Z",
   "root": "C:\\GLUKOTRACK\\glucotrack_mvp",
   "phase": "analysis-only",
   "deletionPerformed": false,
   "git": {
     "currentBranch": "main",
-    "currentHead": "6abca8ddf0252004e7471c00f2042cf1ff3a4336",
+    "currentHead": "59a8c094069d307ab75143ff674df793d6dbb450",
     "cleanupBranchExists": true,
     "beforeCleanupTagExists": true,
     "dirty": true,
     "statusShort": [
-      "M docs/localization-screen-inventory.md",
-      " M reports/localization-failures.json",
-      " M reports/localization-screen-matrix.html",
-      " M reports/localization-static-audit.json",
-      " M reports/localization-static-audit.md"
+      "D phone_window.xml",
+      " D phone_window2.xml",
+      " D phone_window3.xml"
     ]
   },
   "inventory": {
-    "totalEntries": 2370,
-    "files": 1956,
-    "directories": 414,
-    "totalBytes": 143957414,
+    "totalEntries": 2369,
+    "files": 1957,
+    "directories": 412,
+    "totalBytes": 132388276,
     "topDirectories": [
       {
         "directory": ".git",
-        "size": 91615825
+        "size": 91934185
       },
       {
         "directory": ".git/objects",
-        "size": 91534720
+        "size": 91851642
       },
       {
         "directory": "website_source",
@@ -49,7 +47,7 @@
       },
       {
         "directory": ".git/objects/70",
-        "size": 5828014
+        "size": 5828221
       },
       {
         "directory": ".git/objects/8f",
@@ -65,7 +63,7 @@
       },
       {
         "directory": ".git/objects/42",
-        "size": 4165531
+        "size": 4166383
       },
       {
         "directory": ".git/objects/90",
@@ -85,11 +83,11 @@
       },
       {
         "directory": "reports",
-        "size": 3493956
+        "size": 3587903
       },
       {
         "directory": ".git/objects/f4",
-        "size": 3238269
+        "size": 3239414
       },
       {
         "directory": ".git/objects/c8",
@@ -136,12 +134,12 @@
         "size": 1548733
       },
       {
-        "directory": ".git/objects/00",
-        "size": 1541126
+        "directory": ".git/objects/96",
+        "size": 1542476
       },
       {
-        "directory": ".git/objects/96",
-        "size": 1540415
+        "directory": ".git/objects/00",
+        "size": 1541126
       },
       {
         "directory": ".git/objects/bf",
@@ -173,7 +171,7 @@
       },
       {
         "directory": ".git/objects/2e",
-        "size": 1478281
+        "size": 1479266
       },
       {
         "directory": ".git/objects/02",
@@ -246,17 +244,6 @@
       "reason": "Filename/path contains old/copy/backup/temp/fixed/final style marker.",
       "evidence": "Name-based signal only; imports/routes/build references still need manual proof.",
       "action": "review before deletion",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "android/build",
-      "category": "GENERATED",
-      "risk": "low",
-      "size": 0,
-      "platform": "Android",
-      "reason": "Directory name matches common generated/local workspace output.",
-      "evidence": "Must verify platform build/deploy does not depend on checked-in output before removal.",
-      "action": "candidate: add/confirm gitignore, remove only after approval",
       "deleteAutomatically": false
     },
     {
@@ -337,10 +324,10 @@
       "deleteAutomatically": false
     },
     {
-      "path": "DATABASE_CLEANUP_ROLLBACK.sql",
+      "path": "DATABASE_CLEANUP_PLAN.sql",
       "category": "ARCHIVE_OR_RELEASE_ARTIFACT",
       "risk": "high",
-      "size": 357,
+      "size": 808,
       "platform": "Project",
       "reason": "Archive/release/database dump extension found.",
       "evidence": "Could be current public release or backup; verify website links, deployment, and secrets before moving/removal.",
@@ -348,13 +335,13 @@
       "deleteAutomatically": false
     },
     {
-      "path": "glucotrack_voice_final.png",
-      "category": "DUPLICATE_OR_OBSOLETE_NAME",
-      "risk": "medium",
-      "size": 398385,
+      "path": "DATABASE_CLEANUP_ROLLBACK.sql",
+      "category": "ARCHIVE_OR_RELEASE_ARTIFACT",
+      "risk": "high",
+      "size": 564,
       "platform": "Project",
-      "reason": "Filename/path contains old/copy/backup/temp/fixed/final style marker.",
-      "evidence": "Name-based signal only; imports/routes/build references still need manual proof.",
+      "reason": "Archive/release/database dump extension found.",
+      "evidence": "Could be current public release or backup; verify website links, deployment, and secrets before moving/removal.",
       "action": "review before deletion",
       "deleteAutomatically": false
     },
@@ -392,24 +379,24 @@
       "deleteAutomatically": false
     },
     {
-      "path": ".git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base",
+      "path": ".git/refs/codex/turn-diffs/captures/1784141196369/6ecb2996-c1f8-4f5a-a5f2-53a228b73ea5/base",
       "category": "DUPLICATE",
       "risk": "medium",
       "size": 41,
       "platform": "Project",
       "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: .git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base, .git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06",
+      "evidence": "Duplicate group: .git/refs/codex/turn-diffs/captures/1784141196369/6ecb2996-c1f8-4f5a-a5f2-53a228b73ea5/base, .git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/f48865260e7a91e6be66945c8282dfdab1da9cbd040e0550f95aee523944fd15/1784140916760/7638af22-5b95-4efb-8aa7-65ef51df137c",
       "action": "candidate: keep canonical file only after reference/deploy check",
       "deleteAutomatically": false
     },
     {
-      "path": ".git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06",
+      "path": ".git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/f48865260e7a91e6be66945c8282dfdab1da9cbd040e0550f95aee523944fd15/1784140916760/7638af22-5b95-4efb-8aa7-65ef51df137c",
       "category": "DUPLICATE",
       "risk": "medium",
       "size": 41,
       "platform": "Project",
       "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: .git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base, .git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06",
+      "evidence": "Duplicate group: .git/refs/codex/turn-diffs/captures/1784141196369/6ecb2996-c1f8-4f5a-a5f2-53a228b73ea5/base, .git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/f48865260e7a91e6be66945c8282dfdab1da9cbd040e0550f95aee523944fd15/1784140916760/7638af22-5b95-4efb-8aa7-65ef51df137c",
       "action": "candidate: keep canonical file only after reference/deploy check",
       "deleteAutomatically": false
     },
@@ -575,50 +562,6 @@
       "platform": "Project",
       "reason": "Same byte size and SHA-256 hash as another file.",
       "evidence": "Duplicate group: backend/nginx-glukotrack-api.conf.example, backend_proxy_sample/nginx-glukotrack-api.conf.example",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "current_phone_screen.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 30394,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: current_phone_screen.png, phone_after_audit_open.png, phone_after_web_cachebust.png, phone_after_web_cachebust2.png",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "phone_after_audit_open.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 30394,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: current_phone_screen.png, phone_after_audit_open.png, phone_after_web_cachebust.png, phone_after_web_cachebust2.png",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "phone_after_web_cachebust.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 30394,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: current_phone_screen.png, phone_after_audit_open.png, phone_after_web_cachebust.png, phone_after_web_cachebust2.png",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "phone_after_web_cachebust2.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 30394,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: current_phone_screen.png, phone_after_audit_open.png, phone_after_web_cachebust.png, phone_after_web_cachebust2.png",
       "action": "candidate: keep canonical file only after reference/deploy check",
       "deleteAutomatically": false
     },
@@ -832,83 +775,6 @@
       "deleteAutomatically": false
     },
     {
-      "path": "phone_after_audit_open2.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 15197,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: phone_after_audit_open2.png, phone_after_audit_open_pull.png, phone_after_audit_tap_icon.png, phone_after_web_cachebust5.png, phone_after_web_cachebust6.png, phone_chrome_direct.png, phone_chrome_stayon.png",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "phone_after_audit_open_pull.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 15197,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: phone_after_audit_open2.png, phone_after_audit_open_pull.png, phone_after_audit_tap_icon.png, phone_after_web_cachebust5.png, phone_after_web_cachebust6.png, phone_chrome_direct.png, phone_chrome_stayon.png",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "phone_after_audit_tap_icon.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 15197,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: phone_after_audit_open2.png, phone_after_audit_open_pull.png, phone_after_audit_tap_icon.png, phone_after_web_cachebust5.png, phone_after_web_cachebust6.png, phone_chrome_direct.png, phone_chrome_stayon.png",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "phone_after_web_cachebust5.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 15197,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: phone_after_audit_open2.png, phone_after_audit_open_pull.png, phone_after_audit_tap_icon.png, phone_after_web_cachebust5.png, phone_after_web_cachebust6.png, phone_chrome_direct.png, phone_chrome_stayon.png",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "phone_after_web_cachebust6.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 15197,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: phone_after_audit_open2.png, phone_after_audit_open_pull.png, phone_after_audit_tap_icon.png, phone_after_web_cachebust5.png, phone_after_web_cachebust6.png, phone_chrome_direct.png, phone_chrome_stayon.png",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "phone_chrome_direct.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 15197,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: phone_after_audit_open2.png, phone_after_audit_open_pull.png, phone_after_audit_tap_icon.png, phone_after_web_cachebust5.png, phone_after_web_cachebust6.png, phone_chrome_direct.png, phone_chrome_stayon.png",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": "phone_chrome_stayon.png",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 15197,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: phone_after_audit_open2.png, phone_after_audit_open_pull.png, phone_after_audit_tap_icon.png, phone_after_web_cachebust5.png, phone_after_web_cachebust6.png, phone_chrome_direct.png, phone_chrome_stayon.png",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
       "path": "web/manifest.json",
       "category": "DUPLICATE",
       "risk": "medium",
@@ -941,11 +807,11 @@
       ]
     },
     {
-      "key": "41:0b2242e82584f89c1736707070fc5caaf56e8a4fb2ccf55604b01d9c230426b5",
+      "key": "41:d3cbc8ed4e7bd086bc8b72dca67c78756cd9f01dbb59a6686b3c5c90a0d24b2b",
       "size": 41,
       "paths": [
-        ".git/refs/codex/turn-diffs/captures/1784140008746/c559f710-3b53-40dd-9174-9c155bc6fd02/base",
-        ".git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/7f7de3049fc93667338eb6427031f59362f306b7874455cf16a0ed7ac907a2b7/1784131307880/50aef7f3-c00d-485c-924a-08ca94a1cf06"
+        ".git/refs/codex/turn-diffs/captures/1784141196369/6ecb2996-c1f8-4f5a-a5f2-53a228b73ea5/base",
+        ".git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/f48865260e7a91e6be66945c8282dfdab1da9cbd040e0550f95aee523944fd15/1784140916760/7638af22-5b95-4efb-8aa7-65ef51df137c"
       ]
     },
     {
@@ -1003,16 +869,6 @@
       "paths": [
         "backend/nginx-glukotrack-api.conf.example",
         "backend_proxy_sample/nginx-glukotrack-api.conf.example"
-      ]
-    },
-    {
-      "key": "30394:d8516f4c890318015605b2a7d59cd2013984e0161dda08398c54644f79015125",
-      "size": 30394,
-      "paths": [
-        "current_phone_screen.png",
-        "phone_after_audit_open.png",
-        "phone_after_web_cachebust.png",
-        "phone_after_web_cachebust2.png"
       ]
     },
     {
@@ -1083,19 +939,6 @@
       ]
     },
     {
-      "key": "15197:ca2e7ef708be4e086e78c6921ab25cbd9b871744c1c983089c7de250f7104528",
-      "size": 15197,
-      "paths": [
-        "phone_after_audit_open2.png",
-        "phone_after_audit_open_pull.png",
-        "phone_after_audit_tap_icon.png",
-        "phone_after_web_cachebust5.png",
-        "phone_after_web_cachebust6.png",
-        "phone_chrome_direct.png",
-        "phone_chrome_stayon.png"
-      ]
-    },
-    {
       "key": "363:1b00d29cf6a091a9851cd4f8083e7db82aac763418d8fbc50ca07f1cf9e474ea",
       "size": 363,
       "paths": [
@@ -1155,13 +998,7 @@
       "rotationRequired": true
     }
   ],
-  "generatedPolicy": [
-    {
-      "path": "android/build",
-      "shouldStoreInGit": false,
-      "policy": "Generated/local workspace output. Remove only after backup and approval; ensure .gitignore covers it."
-    }
-  ],
+  "generatedPolicy": [],
   "blockers": [
     "Working tree contains uncommitted changes; cleanup/deletion is blocked until user confirms preservation strategy."
   ],

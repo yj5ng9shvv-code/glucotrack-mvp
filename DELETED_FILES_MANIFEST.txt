@@ -32,3 +32,28 @@ Reason:
 - Local backup was created and verified.
 - Server/DB backups were blocked by rejected SSH credentials.
 - Candidate lists were generated for review only.
+
+2026-07-15 approved safe cleanup pass:
+
+Deleted locally after backup and user cleanup approval:
+- Root diagnostic `.png` screenshots matching `phone_*`, `glucotrack_*.png`, and `current_phone_screen.png`.
+- Root diagnostic XML dumps: `phone_window.xml`, `phone_window2.xml`, `phone_window3.xml`.
+- Generated local directory: `android/build`.
+
+Deleted on server:
+- `/tmp/glukotrack_server_tar_list.txt` - temporary tar listing created during backup verification.
+
+Not deleted:
+- production server code;
+- production database rows/tables;
+- server backup archives;
+- database dump;
+- `.env` files;
+- SQL schema/import files;
+- `website_source/app`;
+- audit/restore reports.
+
+Local deletion result:
+- Removed targets: 39
+- Removed bytes: 11,996,323
+- Removed MB: 11.44

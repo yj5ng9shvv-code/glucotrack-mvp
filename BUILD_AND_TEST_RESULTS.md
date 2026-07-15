@@ -57,6 +57,13 @@ The following generated artifacts were removed after tests/builds:
 - `node tools/project_cleanup_audit.mjs`: passed and generated reports.
 - `node tools/localization_audit.mjs`: passed and generated reports; content-quality findings remain.
 
+2026-07-15 approved safe cleanup pass:
+
+- Deleted safe local diagnostic/generated artifacts: 39 targets, 11.44 MB.
+- Deleted server temp verification file: `/tmp/glukotrack_server_tar_list.txt`.
+- `node tools/project_cleanup_audit.mjs`: passed after cleanup, 53 candidates remain, 18 duplicate groups remain.
+- `npm test`: passed after cleanup.
+
 Not run in this pass:
 - Full Flutter build matrix.
 - Android APK/appbundle release builds.
