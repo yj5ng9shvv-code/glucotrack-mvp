@@ -49,8 +49,8 @@ Risk:
 - Removing it may break current hosting if production serves this directory directly.
 2026-07-15 cleanup audit residual risks:
 
-- Server backup was not created because SSH credentials were rejected.
-- Database dump and restore test were not created because SSH/database access was unavailable.
+- Server backup was created and verified, but server cleanup candidates still need read-only inventory and user approval.
+- Database dump was created and gzip-verified, but restore into an isolated test database was not performed yet.
 - Phone storage was not inspected or cleaned because no active device/ADB storage session was available.
 - `website_source/app` is a tracked release build; removing it could break deployment unless the deployment pipeline is changed.
 - Root phone/debug screenshots and XML are likely removable, but require user approval.

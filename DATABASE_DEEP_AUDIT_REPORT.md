@@ -47,6 +47,18 @@ Verified through public health endpoint:
 - Schema version: 20.
 
 Blocked:
-- Direct table inventory, dump creation, restore test, orphan scan, index scan, and cleanup SQL generation were blocked because SSH credentials were rejected.
+- Restore into an isolated test database, orphan scan, index scan, and cleanup SQL generation were not performed yet.
+
+Backup created on server:
+
+```text
+/root/glukotrack_backups/GLUKOTRACK_SERVER_DB_BACKUP_2026-07-15_18-38/GLUKOTRACK_DB_BEFORE_CLEANUP_2026-07-15_18-38.sql.gz
+```
+
+Verification:
+- gzip integrity test: passed.
+- Size: 6,410,234 bytes.
+- `CREATE TABLE` statements found: 75.
+- SHA256: `32436f5156858acfad6c1c6fe00f3cade0ad9df9884d5ad2cfcc2ec916c8d7b0`.
 
 No database rows, tables, or schemas were modified.

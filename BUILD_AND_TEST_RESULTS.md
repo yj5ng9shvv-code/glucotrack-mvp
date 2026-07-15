@@ -51,6 +51,9 @@ The following generated artifacts were removed after tests/builds:
 - Local backup verification: passed, 1951 source files and 1951 backup files, byte count matched.
 - `npm test`: passed.
 - Public API health: passed, HTTP 200.
+- SSH server access: passed after updated credentials were provided.
+- Server archive backup: created and verified with `tar -tzf`, 9248 entries, 171,972,902 bytes.
+- DB dump backup: created and verified with `gzip -t`, 75 tables, 6,410,234 bytes.
 - `node tools/project_cleanup_audit.mjs`: passed and generated reports.
 - `node tools/localization_audit.mjs`: passed and generated reports; content-quality findings remain.
 
@@ -58,8 +61,8 @@ Not run in this pass:
 - Full Flutter build matrix.
 - Android APK/appbundle release builds.
 - Server/backend integration tests on production host.
-- DB restore test.
+- DB restore test into isolated database.
 - Phone/ADB storage smoke test.
 
 Reason:
-- This pass stopped before destructive cleanup because server/DB backups were blocked by rejected SSH credentials and user approval is still required for local deletion candidates.
+- This pass stopped before destructive cleanup because user approval is still required for local/server/DB cleanup candidates and the DB restore test has not yet been executed.

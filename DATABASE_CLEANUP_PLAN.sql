@@ -10,5 +10,9 @@
 -- 4. Run application smoke tests against restored copy.
 -- 5. Produce table-by-table cleanup candidates with rollback SQL.
 
--- Blocker:
--- SSH/database access was rejected, so no dump or table audit was performed.
+-- Backup now exists:
+-- /root/glukotrack_backups/GLUKOTRACK_SERVER_DB_BACKUP_2026-07-15_18-38/GLUKOTRACK_DB_BEFORE_CLEANUP_2026-07-15_18-38.sql.gz
+-- gzip test passed; 75 CREATE TABLE statements found.
+
+-- Remaining blocker:
+-- Restore test and table-by-table cleanup candidate review have not been performed.

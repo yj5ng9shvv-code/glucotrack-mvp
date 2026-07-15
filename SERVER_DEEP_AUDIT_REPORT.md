@@ -10,25 +10,39 @@ Mode: read-only checks only. No server cleanup was executed.
 - Result: HTTP 200
 - Backend response: service `glucotrack-backend`, database ready, database `ODESSA_glukotrack`, schemaVersion `20`.
 
-## Blocked
+## Server Backup
 
-SSH login to `root@185.23.16.16` with stored credentials was rejected:
+Created on server, outside public web folders:
 
 ```text
-Access denied
-FATAL ERROR: Configured password was not accepted
+/root/glukotrack_backups/GLUKOTRACK_SERVER_DB_BACKUP_2026-07-15_18-38
 ```
 
-Because of that, this pass could not safely create or verify:
+Files:
 
-- production server archive;
-- nginx/apache config inventory;
-- production filesystem inventory;
-- PM2/systemd status;
-- cron inventory;
-- server disk/inode/log rotation report;
-- production release cleanup candidates;
-- server-side rollback archive.
+| File | Size | Verification |
+|---|---:|---|
+| `SERVER_BACKUP_BEFORE_CLEANUP_2026-07-15_18-38.tar.gz` | 171,972,902 bytes | `tar -tzf` passed, 9248 entries |
+| `SHA256SUMS.txt` | 378 bytes | contains server archive and DB dump hashes |
+| `server_tar_warnings.log` | 0 bytes | no tar warnings |
+
+Server archive SHA256:
+
+```text
+17ae85acae2add27d81ca19100c5e368a5527c351c165d7b41b5c15f2a7a8948
+```
+
+Included:
+
+- `/home/ODESSA/web/glukotrack.com`
+- `/etc/nginx`
+- `/etc/cron.d`
+- `/etc/crontab`
+- `/etc/systemd/system`
+
+## Still Not Cleaned
+
+No production filesystem cleanup was executed. Old releases, logs, caches, cron, and systemd targets still require a separate read-only inventory and user approval before removal.
 
 ## Server Cleanup Status
 
@@ -36,4 +50,4 @@ No server files were deleted.
 
 ## Required User Decision
 
-Provide current SSH/database access or run a server-side backup manually before any server cleanup can continue.
+Approve exact server cleanup candidates after the next server inventory report. The backup exists, but deletion is still blocked until candidate-by-candidate approval.
