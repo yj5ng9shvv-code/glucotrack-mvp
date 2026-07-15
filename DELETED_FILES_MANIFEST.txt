@@ -1,0 +1,25 @@
+Deep cleanup pass deleted only regenerated local artifacts created or restored during verification.
+
+Deleted:
+
+backend/node_modules
+Reason: restored by npm ci for backend tests; ignored by Git; not tracked.
+Verification: backend npm test passed with 40 tests before deletion.
+Restore: cd backend && npm ci
+
+.dart_tool
+Reason: recreated by flutter pub get/analyze/test; ignored by Git; not tracked.
+Verification: flutter pub get, flutter analyze and flutter test completed before deletion.
+Restore: flutter pub get
+
+build
+Reason: recreated by flutter test and flutter build web; ignored by Git; not tracked.
+Verification: flutter build web --release passed before deletion.
+Restore: run the relevant Flutter build/test command.
+
+android/.gradle
+Reason: recreated by Gradle during Android build attempt; ignored by Android gitignore; not tracked.
+Verification: Android build reached Gradle release signing gate.
+Restore: Gradle/Flutter Android build regenerates it.
+
+No risky files, SQL files, secrets, production configs, migrations, platform manifests, or deployment configs were deleted.

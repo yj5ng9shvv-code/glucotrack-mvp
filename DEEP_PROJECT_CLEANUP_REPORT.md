@@ -4,114 +4,126 @@ Date: 2026-07-15
 Project: GlukoTrack
 Workspace: `C:\GLUKOTRACK\glucotrack_mvp`
 
-## 1. Backup gate
+## Backup and checkpoint
 
-Before cleanup, a full project backup was created and verified:
+Full physical backup created before this pass:
 
-- Backup: `C:\Backups\PROJECT_FULL_BACKUP_BEFORE_CLEANUP_2026-07-15_16-15`
-- Verification: required project directories and `pubspec.yaml` are present.
-- Robocopy result: 5673 files copied, 209024208 bytes, no required project folders missing.
+- `C:\Backups\FULL_PROJECT_BACKUP_BEFORE_DEEP_CLEANUP_2026-07-15_17-05`
+- Robocopy code: `1`
+- Backup files: `2091`
+- Backup bytes: `144016887`
+- `.git` present: yes
+- `pubspec.yaml` present: yes
 
-Git checkpoint before cleanup:
+Git checkpoint:
 
-- Commit: `17d7eaed72f8186c4b2a7fdbf2fa662b87da9e7f`
-- Message: `backup before deep cleanup audit`
-- Tag: `backup-before-deep-cleanup-2026-07-15`
+- Base commit: `463f96ed85187e61fe67f60bb86e397958638a21`
+- Control branch: `audit/deep-cleanup-2026-07-15`
+- Control tag: `before-deep-cleanup-2026-07-15-17-05`
 
-## 2. What was removed
+## Inventory
 
-Only generated, ignored, or local-only files were removed. Risky candidates were not deleted.
+After this pass and after removing regenerated artifacts:
 
-| Path | Category | Size | Reason | Restore |
-|---|---:|---:|---|---|
-| `backend/node_modules` | generated dependencies | 32303366 bytes | Ignored by `**/node_modules/`, not tracked, restored by `npm ci`. | `cd backend && npm ci` |
-| `android/.gradle` | generated build cache | 28728829 bytes | Ignored by Android gitignore, not tracked. | Android/Flutter build regenerates it. |
-| `.idea` | local IDE metadata | 3818 bytes | Ignored, not tracked, local editor settings only. | IDE regenerates it. |
-| `analyze.log` | temporary log | 0 bytes | Ignored, empty analyzer log. | Not needed. |
-| `.dart_tool` | generated Flutter metadata | 45507 bytes | Recreated by Flutter checks, ignored, not tracked. | `flutter pub get` |
-| `build` | generated build/test output | 58833362 bytes | Recreated by Flutter tests, ignored, not tracked. | Flutter build/test regenerates it. |
+- Files including `.git`: `1916`
+- Bytes including `.git`: `143473579`
+- Files excluding `.git`: `480`
+- Bytes excluding `.git`: `52210258`
 
-Final absence check passed for:
+Cleanup audit output:
+
+- Files scanned: `1921`
+- Directories: `413`
+- Cleanup candidates: `64`
+- Duplicate groups: `19`
+- Secret-review findings: `7`
+
+## Removed in this pass
+
+Only generated verification artifacts were deleted:
 
 - `backend/node_modules`
 - `.dart_tool`
 - `build`
 - `android/.gradle`
-- `.idea`
-- `analyze.log`
 
-## 3. Current inventory
+No SQL, migrations, `.env`, platform manifests, signing files, production configs, website deployment snapshots, user data, or source modules were deleted automatically.
 
-After cleanup:
+## Verified
 
-- Files including `.git`: 1888
-- Size including `.git`: 143441356 bytes
-- Files excluding `.git`: 469
-- Size excluding `.git`: 52200431 bytes
+Passed:
 
-Final audit:
+- Backend `npm ci`
+- Backend `npm test`: 40 tests passed
+- `flutter pub get`
+- `flutter analyze`: no issues
+- Full `flutter test`: 614 tests passed
+- Flutter web release build for `/app/`
+- Project cleanup audit script
+- Localization audit script
 
-- Files scanned by audit: 1893
-- Directories: 408
-- Cleanup candidates left for review: 60
-- Duplicate groups: 19
-- Secret-review findings: 7
+Failed or blocked:
 
-Detailed audit files:
+- Root `npm test` failed on strict i18n policy.
+- `dart format --set-exit-if-changed` did not complete and was stopped.
+- Android release APK build is blocked by missing release signing env vars.
+- Android appbundle release was not run because the same signing gate applies.
 
+Not verified:
+
+- iOS build, macOS build, production server, production database and destructive migration rollback.
+
+## Errors found
+
+The strict root i18n check still finds localization architecture debt:
+
+- `profile_extra_translations.dart` locale key coverage differs from English.
+- `about_screen.dart`, `notifications_screen.dart`, `referral_screen.dart` still contain local UI dictionaries.
+- Some app code still checks locale manually instead of resolving through the shared localization layer.
+
+Flutter runtime localization tests pass, but the strict policy failure means the localization cleanup is not complete.
+
+## Manual review required
+
+Do not delete automatically:
+
+- `.env` files and any secret-bearing configs.
+- SQL schema/import files.
+- `website_source/app` until deployment ownership is confirmed.
+- `backend_proxy_sample` until owner confirms it is obsolete.
+- root screenshots/phone XML evidence files.
+- platform template duplicates in iOS/macOS/Windows.
+
+## Reports created
+
+- `PROJECT_ARCHITECTURE_MAP.md`
+- `BACKUP_VERIFICATION_REPORT.md`
+- `DELETED_FILES_MANIFEST.txt`
+- `MODIFIED_FILES_MANIFEST.txt`
+- `MANUAL_REVIEW_CANDIDATES.md`
+- `DATABASE_DEEP_AUDIT_REPORT.md`
+- `DATABASE_CLEANUP_CANDIDATES.sql`
+- `DATABASE_CLEANUP_ROLLBACK.sql`
+- `BUILD_AND_TEST_RESULTS.md`
+- `RESIDUAL_RISKS.md`
 - `reports/project-cleanup-audit.md`
-- `reports/project-cleanup-audit.json`
-- `reports/project-cleanup-deleted-files.csv`
+- `reports/localization-static-audit.md`
 
-## 4. Verification
+## Rollback
 
-Backend:
+Git rollback to the checkpoint:
 
-- `npm ci`: passed.
-- `npm test`: passed, 40 tests.
+```powershell
+git reset --hard 463f96ed85187e61fe67f60bb86e397958638a21
+```
 
-Flutter:
+Physical rollback:
 
-- `flutter pub get`: passed.
-- `flutter analyze`: passed, no issues.
-- `flutter test test\premium_localizations_test.dart`: passed, 2 tests.
-- Full `flutter test`: passed, 614 tests.
+1. Stop any running app/backend processes.
+2. Copy `C:\Backups\FULL_PROJECT_BACKUP_BEFORE_DEEP_CLEANUP_2026-07-15_17-05` back over `C:\GLUKOTRACK\glucotrack_mvp`.
+3. Run `flutter pub get`.
+4. Run `cd backend && npm ci` if backend dependencies are needed.
 
-The full test run included localization checks for the home screen, auth screen, runtime routes, patient card, SOS profile, public SOS labels, voice messages, and premium subscription copy.
+## Result
 
-## 5. Fixes made during verification
-
-These changes were required because tests exposed real regressions:
-
-- `android/app/build.gradle.kts`: production `applicationId` changed from template package to `com.glukotrack.app`.
-- `lib/l10n/navigation_translations.dart`: Italian bottom navigation `Home` changed to `Inizio`.
-- `lib/l10n/premium_translations.dart`: Russian family plan price changed from text placeholder to `€9.99 / месяц`.
-- `test/widget_test.dart`: tests now force English locale and use English auth labels, preventing machine-locale dependent failures.
-
-Encoding note: while fixing the Russian family price, one attempted edit corrupted the file in-memory through a bad console encoding path. The file was restored byte-for-byte from the checkpoint and the one-line change was reapplied. The final diff for `premium_translations.dart` contains only the intended UTF-8 Russian price line.
-
-## 6. Left untouched on purpose
-
-These were not deleted automatically:
-
-- `.git`: repository history and tags.
-- `website_source/app`: tracked production web output/source snapshot; needs deployment ownership decision before cleanup.
-- `backend/.env` and `backend_proxy_sample/.env`: local secret configs; no values printed, no deletion without rotation/ops plan.
-- SQL files such as `backend/database_schema.sql` and `backend/phpmyadmin_import.sql`: database schema/import assets, high risk to remove.
-- `reports`: audit/security/history reports.
-- duplicate iOS/macOS asset/config files: many are legitimate platform templates.
-- screenshots/phone images: possible evidence/debug artifacts, review manually before deletion.
-
-## 7. Risk candidates requiring approval
-
-The audit still lists candidates, but they need manual confirmation before deletion:
-
-- High risk: `.env` files and SQL schema/import files.
-- Medium risk: tracked duplicate files in `website_source`, iOS/macOS templates, screenshots, and helper tools.
-- Low risk but not auto-deleted: empty `android/build` directory candidate from audit output.
-
-No destructive cleanup was performed on these items.
-
-## 8. Result
-
-The project is backed up, checkpointed, cleaned of safe generated artifacts, audited again, and verified by backend and Flutter test suites. Remaining cleanup requires explicit approval per item because it can affect deployment, database recovery, secrets, or platform builds.
+This pass completed a safe audit and report expansion across mobile, web, desktop project files, website, admin panel, backend, API and database assets. Safe generated artifacts were removed. Risky cleanup is intentionally left for manual approval.

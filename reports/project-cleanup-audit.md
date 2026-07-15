@@ -1,6 +1,6 @@
 # GlukoTrack Project Cleanup Audit
 
-Generated: 2026-07-15T14:44:24.304Z
+Generated: 2026-07-15T15:27:31.755Z
 
 Phase: **analysis only**. No files were deleted.
 
@@ -11,7 +11,7 @@ The user required a full backup before audit. This report assumes the verified b
 ## Git State
 
 - Branch: `main`
-- HEAD: `17d7eaed72f8186c4b2a7fdbf2fa662b87da9e7f`
+- HEAD: `463f96ed85187e61fe67f60bb86e397958638a21`
 - Cleanup branch exists: true
 - `before-full-cleanup` tag exists: true
 - Working tree dirty: true
@@ -20,16 +20,16 @@ The user required a full backup before audit. This report assumes the verified b
 
 ## Inventory
 
-- Files: 1893
-- Directories: 408
-- Total file size: 136.80 MB
+- Files: 1921
+- Directories: 413
+- Total file size: 136.82 MB
 
 ## Largest Directories
 
 | Directory | Size |
 |---|---:|
-| `.git` | 87.01 MB |
-| `.git/objects` | 86.94 MB |
+| `.git` | 87.04 MB |
+| `.git/objects` | 86.96 MB |
 | `website_source` | 32.28 MB |
 | `website_source/app` | 31.91 MB |
 | `website_source/app/canvaskit` | 26.18 MB |
@@ -43,7 +43,7 @@ The user required a full backup before audit. This report assumes the verified b
 | `.git/objects/ad` | 3.54 MB |
 | `.git/objects/40` | 3.45 MB |
 | `.git/objects/b9` | 3.45 MB |
-| `reports` | 3.34 MB |
+| `reports` | 3.33 MB |
 | `.git/objects/f4` | 3.09 MB |
 | `.git/objects/c8` | 3.03 MB |
 | `.git/objects/8e` | 2.39 MB |
@@ -75,15 +75,19 @@ These are candidates only. Nothing in this table is approved for deletion until 
 | `backend/phpmyadmin_import.sql` | ARCHIVE_OR_RELEASE_ARTIFACT | high | 0.01 MB | Archive/release/database dump extension found. | review before deletion |
 | `backend_proxy_sample/.env` | SECRET_REVIEW | high | 0.00 MB | Filename matches secret/credential pattern. | candidate: move to env/secure storage only after rotation plan |
 | `backend_proxy_sample/database_schema.sql` | ARCHIVE_OR_RELEASE_ARTIFACT | high | 0.00 MB | Archive/release/database dump extension found. | review before deletion |
+| `BACKUP_VERIFICATION_REPORT.md` | DUPLICATE_OR_OBSOLETE_NAME | medium | 0.00 MB | Filename/path contains old/copy/backup/temp/fixed/final style marker. | review before deletion |
+| `DATABASE_CLEANUP_CANDIDATES.sql` | ARCHIVE_OR_RELEASE_ARTIFACT | high | 0.00 MB | Archive/release/database dump extension found. | review before deletion |
+| `DATABASE_CLEANUP_ROLLBACK.sql` | ARCHIVE_OR_RELEASE_ARTIFACT | high | 0.00 MB | Archive/release/database dump extension found. | review before deletion |
 | `glucotrack_voice_final.png` | DUPLICATE_OR_OBSOLETE_NAME | medium | 0.38 MB | Filename/path contains old/copy/backup/temp/fixed/final style marker. | review before deletion |
 | `tools/fix_mojibake_literals.mjs` | DUPLICATE_OR_OBSOLETE_NAME | medium | 0.00 MB | Filename/path contains old/copy/backup/temp/fixed/final style marker. | review before deletion |
 | `.git/objects/0f/6330ea3e6d5184b2e0f7fda0c741c870e0f9c4` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/objects/0f/tmp_obj_YWiM8J` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
+| `.git/refs/heads/audit/deep-cleanup-2026-07-15` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
+| `.git/refs/heads/main` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
+| `.git/refs/tags/before-deep-cleanup-2026-07-15-17-05` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/refs/heads/chore/full-project-cleanup` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/refs/remotes/origin/main` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `.git/refs/tags/before-full-cleanup` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `.git/refs/heads/main` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
-| `.git/refs/tags/backup-before-deep-cleanup-2026-07-15` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `android/app/src/debug/AndroidManifest.xml` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `android/app/src/profile/AndroidManifest.xml` | DUPLICATE | medium | 0.00 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
 | `assets/translations/core.json` | DUPLICATE | medium | 0.09 MB | Same byte size and SHA-256 hash as another file. | candidate: keep canonical file only after reference/deploy check |
@@ -130,8 +134,8 @@ These are candidates only. Nothing in this table is approved for deletion until 
 ## Duplicate Content Groups
 
 - 0.00 MB: `.git/objects/0f/6330ea3e6d5184b2e0f7fda0c741c870e0f9c4`, `.git/objects/0f/tmp_obj_YWiM8J`
+- 0.00 MB: `.git/refs/heads/audit/deep-cleanup-2026-07-15`, `.git/refs/heads/main`, `.git/refs/tags/before-deep-cleanup-2026-07-15-17-05`
 - 0.00 MB: `.git/refs/heads/chore/full-project-cleanup`, `.git/refs/remotes/origin/main`, `.git/refs/tags/before-full-cleanup`
-- 0.00 MB: `.git/refs/heads/main`, `.git/refs/tags/backup-before-deep-cleanup-2026-07-15`
 - 0.00 MB: `android/app/src/debug/AndroidManifest.xml`, `android/app/src/profile/AndroidManifest.xml`
 - 0.09 MB: `assets/translations/core.json`, `website_source/app/assets/assets/translations/core.json`
 - 0.00 MB: `backend/DB_SETUP_RU.md`, `backend_proxy_sample/DB_SETUP_RU.md`

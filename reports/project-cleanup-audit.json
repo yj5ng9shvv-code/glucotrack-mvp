@@ -1,37 +1,48 @@
 {
-  "generatedAt": "2026-07-15T14:44:24.304Z",
+  "generatedAt": "2026-07-15T15:27:31.755Z",
   "root": "C:\\GLUKOTRACK\\glucotrack_mvp",
   "phase": "analysis-only",
   "deletionPerformed": false,
   "git": {
     "currentBranch": "main",
-    "currentHead": "17d7eaed72f8186c4b2a7fdbf2fa662b87da9e7f",
+    "currentHead": "463f96ed85187e61fe67f60bb86e397958638a21",
     "cleanupBranchExists": true,
     "beforeCleanupTagExists": true,
     "dirty": true,
     "statusShort": [
-      "M android/app/build.gradle.kts",
-      " M lib/l10n/navigation_translations.dart",
-      " M lib/l10n/premium_translations.dart",
+      "M DEEP_PROJECT_CLEANUP_REPORT.md",
+      " M docs/localization-screen-inventory.md",
+      " M reports/localization-failures.json",
+      " M reports/localization-screen-matrix.html",
+      " M reports/localization-static-audit.json",
+      " M reports/localization-static-audit.md",
       " M reports/project-cleanup-audit.json",
       " M reports/project-cleanup-audit.md",
-      " M reports/project-cleanup-deleted-files.csv",
-      " M test/widget_test.dart"
+      "?? BACKUP_VERIFICATION_REPORT.md",
+      "?? BUILD_AND_TEST_RESULTS.md",
+      "?? DATABASE_CLEANUP_CANDIDATES.sql",
+      "?? DATABASE_CLEANUP_ROLLBACK.sql",
+      "?? DATABASE_DEEP_AUDIT_REPORT.md",
+      "?? DELETED_FILES_MANIFEST.txt",
+      "?? MANUAL_REVIEW_CANDIDATES.md",
+      "?? MODIFIED_FILES_MANIFEST.txt",
+      "?? PROJECT_ARCHITECTURE_MAP.md",
+      "?? RESIDUAL_RISKS.md"
     ]
   },
   "inventory": {
-    "totalEntries": 2301,
-    "files": 1893,
-    "directories": 408,
-    "totalBytes": 143441356,
+    "totalEntries": 2334,
+    "files": 1921,
+    "directories": 413,
+    "totalBytes": 143471189,
     "topDirectories": [
       {
         "directory": ".git",
-        "size": 91240925
+        "size": 91263321
       },
       {
         "directory": ".git/objects",
-        "size": 91162367
+        "size": 91184001
       },
       {
         "directory": "website_source",
@@ -87,7 +98,7 @@
       },
       {
         "directory": "reports",
-        "size": 3503092
+        "size": 3491566
       },
       {
         "directory": ".git/objects/f4",
@@ -143,7 +154,7 @@
       },
       {
         "directory": ".git/objects/96",
-        "size": 1537948
+        "size": 1540415
       },
       {
         "directory": ".git/objects/bf",
@@ -317,6 +328,39 @@
       "deleteAutomatically": false
     },
     {
+      "path": "BACKUP_VERIFICATION_REPORT.md",
+      "category": "DUPLICATE_OR_OBSOLETE_NAME",
+      "risk": "medium",
+      "size": 1141,
+      "platform": "Project",
+      "reason": "Filename/path contains old/copy/backup/temp/fixed/final style marker.",
+      "evidence": "Name-based signal only; imports/routes/build references still need manual proof.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "DATABASE_CLEANUP_CANDIDATES.sql",
+      "category": "ARCHIVE_OR_RELEASE_ARTIFACT",
+      "risk": "high",
+      "size": 662,
+      "platform": "Project",
+      "reason": "Archive/release/database dump extension found.",
+      "evidence": "Could be current public release or backup; verify website links, deployment, and secrets before moving/removal.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "DATABASE_CLEANUP_ROLLBACK.sql",
+      "category": "ARCHIVE_OR_RELEASE_ARTIFACT",
+      "risk": "high",
+      "size": 357,
+      "platform": "Project",
+      "reason": "Archive/release/database dump extension found.",
+      "evidence": "Could be current public release or backup; verify website links, deployment, and secrets before moving/removal.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
       "path": "glucotrack_voice_final.png",
       "category": "DUPLICATE_OR_OBSOLETE_NAME",
       "risk": "medium",
@@ -361,6 +405,39 @@
       "deleteAutomatically": false
     },
     {
+      "path": ".git/refs/heads/audit/deep-cleanup-2026-07-15",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/heads/audit/deep-cleanup-2026-07-15, .git/refs/heads/main, .git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/heads/main",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/heads/audit/deep-cleanup-2026-07-15, .git/refs/heads/main, .git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/heads/audit/deep-cleanup-2026-07-15, .git/refs/heads/main, .git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
       "path": ".git/refs/heads/chore/full-project-cleanup",
       "category": "DUPLICATE",
       "risk": "medium",
@@ -390,28 +467,6 @@
       "platform": "Project",
       "reason": "Same byte size and SHA-256 hash as another file.",
       "evidence": "Duplicate group: .git/refs/heads/chore/full-project-cleanup, .git/refs/remotes/origin/main, .git/refs/tags/before-full-cleanup",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": ".git/refs/heads/main",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 41,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: .git/refs/heads/main, .git/refs/tags/backup-before-deep-cleanup-2026-07-15",
-      "action": "candidate: keep canonical file only after reference/deploy check",
-      "deleteAutomatically": false
-    },
-    {
-      "path": ".git/refs/tags/backup-before-deep-cleanup-2026-07-15",
-      "category": "DUPLICATE",
-      "risk": "medium",
-      "size": 41,
-      "platform": "Project",
-      "reason": "Same byte size and SHA-256 hash as another file.",
-      "evidence": "Duplicate group: .git/refs/heads/main, .git/refs/tags/backup-before-deep-cleanup-2026-07-15",
       "action": "candidate: keep canonical file only after reference/deploy check",
       "deleteAutomatically": false
     },
@@ -888,20 +943,21 @@
       ]
     },
     {
+      "key": "41:ec952a0dea57a69cbe32f1430e7898d17da2d0ec4c52faac38808227c121a14b",
+      "size": 41,
+      "paths": [
+        ".git/refs/heads/audit/deep-cleanup-2026-07-15",
+        ".git/refs/heads/main",
+        ".git/refs/tags/before-deep-cleanup-2026-07-15-17-05"
+      ]
+    },
+    {
       "key": "41:e5625e65480875cfb8b0a31aebb0d18d4beb7f2e6926dc70283e5fac6534616d",
       "size": 41,
       "paths": [
         ".git/refs/heads/chore/full-project-cleanup",
         ".git/refs/remotes/origin/main",
         ".git/refs/tags/before-full-cleanup"
-      ]
-    },
-    {
-      "key": "41:16896bf0472b4303ab30b56439a626792bca5b6afb578d6bbf3599e1f3d6e3c0",
-      "size": 41,
-      "paths": [
-        ".git/refs/heads/main",
-        ".git/refs/tags/backup-before-deep-cleanup-2026-07-15"
       ]
     },
     {

@@ -1,6 +1,6 @@
 # GlukoTrack Localization Static Audit
 
-Generated: 2026-07-15T13:07:03.591Z
+Generated: 2026-07-15T15:06:44.222Z
 
 ## Scope
 
@@ -16,18 +16,18 @@ Generated: 2026-07-15T13:07:03.591Z
 - Files scanned: 212
 - Locales detected: 30
 - Translation keys union: 506
-- Used keys detected in Flutter UI: 447
-- Findings total: 8012
-- High: 7724
+- Used keys detected in Flutter UI: 446
+- Findings total: 7984
+- High: 7696
 - Medium: 288
 - Low: 0
-- Missing keys: 7720
+- Missing keys: 7692
 - Hardcoded UI strings: 288
 - Mojibake findings: 0
 
 ## Findings By Kind
 
-- missing-translation-key: 7720
+- missing-translation-key: 7692
 - hardcoded-ui-string: 288
 - key-as-value: 4
 
@@ -47,7 +47,7 @@ Generated: 2026-07-15T13:07:03.591Z
 | HARD-10 | medium | hardcoded-ui-string | lib/navigation/app_navigator.dart | 6 |  | key = GlobalKey |
 | HARD-11 | medium | hardcoded-ui-string | lib/navigation/app_navigator.dart | 43 |  | (Future |
 | HARD-12 | medium | hardcoded-ui-string | lib/screens/auth_screen.dart | 139 |  | $provider: $message |
-| HARD-13 | medium | hardcoded-ui-string | lib/screens/auth_screen.dart | 451 |  | (value?.length ?? 0) |
+| HARD-13 | medium | hardcoded-ui-string | lib/screens/auth_screen.dart | 516 |  | (value?.length ?? 0) |
 | HARD-14 | medium | hardcoded-ui-string | lib/screens/emergency_profile_screen.dart | 359 |  | $value |
 | HARD-15 | medium | hardcoded-ui-string | lib/screens/export_screen.dart | 182 |  | GlukoTrack Doctor Report |
 | HARD-16 | medium | hardcoded-ui-string | lib/screens/export_screen.dart | 193 |  | GlukoTrack Doctor Report |
