@@ -7,7 +7,11 @@
     "db:install": "node install-db.js",
     "admin:create": "node create-admin.js",
     "start": "node server.js",
-    "test": "node --test"
+    "test": "node --test",
+    "benchmark:synthetic": "node scripts/run-synthetic-benchmark.js",
+    "validate-benchmark-dataset": "node scripts/validate-benchmark-dataset.js",
+    "generate-benchmark-synthetic": "node scripts/generate-synthetic-benchmark.js",
+    "benchmark:dataset": "node scripts/run-benchmark-dataset.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
