@@ -23,6 +23,13 @@ export function getDatabaseStatus() {
   return { ...databaseStatus };
 }
 
+export async function closeDatabase() {
+  if (!mysqlPool) return;
+  const activePool = mysqlPool;
+  mysqlPool = null;
+  await activePool.end();
+}
+
 function createApplicationPool() {
   return mysql.createPool({
     ...databaseConfig,

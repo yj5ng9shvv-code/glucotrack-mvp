@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "db:install": "node install-db.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "migrate:test": "node --env-file=.env.test scripts/migrate-test.mjs",
+    "seed:test": "node --env-file=.env.test scripts/seed-test.mjs"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
