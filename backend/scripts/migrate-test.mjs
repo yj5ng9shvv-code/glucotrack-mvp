@@ -9,5 +9,10 @@ process.env.DB_PORT = process.env.TEST_DATABASE_PORT;
 process.env.DB_NAME = process.env.TEST_DATABASE_NAME;
 process.env.DB_USER = process.env.TEST_DATABASE_USER;
 process.env.DB_PASSWORD = process.env.TEST_DATABASE_PASSWORD;
-const { initializeDatabase } = await import("../db.js");
-console.log(JSON.stringify(await initializeDatabase()));
+const { closeDatabase, initializeDatabase } = await import("../db.js");
+
+try {
+  console.log(JSON.stringify(await initializeDatabase()));
+} finally {
+  await closeDatabase();
+}

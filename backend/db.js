@@ -38,6 +38,16 @@ export function getDatabaseStatus() {
   return { ...databaseStatus };
 }
 
+// The application process intentionally keeps this pool open. One-off tools,
+// such as the isolated test migration, must explicitly release it so Node can
+// finish naturally after their work completes.
+export async function closeDatabase() {
+  if (!mysqlPool) return;
+  const activePool = mysqlPool;
+  mysqlPool = null;
+  await activePool.end();
+}
+
 function createApplicationPool() {
   return mysql.createPool({
     ...databaseConfig,
