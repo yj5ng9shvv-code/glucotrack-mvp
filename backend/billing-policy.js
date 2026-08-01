@@ -3,8 +3,10 @@ const ACTIVE_STRIPE_STATUSES = new Set([
   "trialing",
   "canceled"
 ]);
-const KNOWN_PLANS = new Set(["monthly", "yearly", "family"]);
-const KNOWN_PLAN_SOURCE = new Set(["monthly", "yearly", "family"]);
+const KNOWN_PLANS = new Set([
+  "monthly", "semiannual", "yearly", "family", "family_semiannual", "family_yearly"
+]);
+const KNOWN_PLAN_SOURCE = new Set(KNOWN_PLANS);
 
 function resolvePlan(subscription, fallbackPlan = "monthly", pricePlanMap = null) {
   const requestedPlan = String(subscription?.metadata?.plan ?? "").trim().toLowerCase();

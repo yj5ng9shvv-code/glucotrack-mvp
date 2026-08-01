@@ -1,0 +1,1 @@
+export class MockEmailService { constructor(){this.sent=[];} async send(message){this.sent.push(message); console.log('MOCK_EMAIL_SENT', {recipient:message.to, template:message.template ?? 'unknown'}); return {mock:true};} }

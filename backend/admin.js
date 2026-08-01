@@ -4,7 +4,6 @@ import { mkdir, stat } from "node:fs/promises";
 
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import nodemailer from "nodemailer";
 
 import { pool } from "./db.js";
 import { ABOUT_LOCALES } from "./about-content.js";
@@ -37,7 +36,10 @@ const ADMIN_ROLES = {
   medical_data_reviewer: ["dashboard:read", "medical:read", "users:read", "gdpr:read", "gdpr.view", "gdpr.view_audit"]
 };
 
-export function registerAdminRoutes(app, { asyncHandler }) {
+let services;
+
+export function registerAdminRoutes(app, { asyncHandler, services: runtimeServices }) {
+  services = runtimeServices;
   app.post("/admin/auth/login", asyncHandler(adminLogin));
   app.get("/admin/auth/me", adminAuth(), asyncHandler(adminMe));
   app.post("/admin/auth/2fa/setup", adminAuth({ allowPending2fa: true }), asyncHandler(adminSetupTwoFactor));
@@ -259,7 +261,7 @@ async function adminDashboard(_req, res) {
     countWhere("users", "email_verified = TRUE"),
     countWhere("users", "admin_blocked_at IS NOT NULL"),
     countWhere("users", "subscription_status IN ('active','trialing') OR premium_status IN ('active','trialing')"),
-    countWhere("users", "premium_plan = 'family' AND (subscription_status = 'active' OR premium_status = 'active')"),
+    countWhere("users", "premium_plan IN ('family', 'family_semiannual', 'family_yearly') AND (subscription_status = 'active' OR premium_status = 'active')"),
     countWhere("trial_periods", "status = 'active' AND ends_at > UTC_TIMESTAMP()"),
     pool.query("SELECT (SELECT COUNT(*) FROM glucose_logs)+(SELECT COUNT(*) FROM insulin_logs)+(SELECT COUNT(*) FROM food_logs) count"),
     countWhere("account_devices", "revoked_at IS NULL"),
@@ -556,7 +558,7 @@ async function adminTrials(req, res) {
 async function adminFamily(req, res) {
   const page = pageParams(req);
   const search = searchTerm(req);
-  const where = ["(u.premium_plan = 'family' OR f.id IS NOT NULL)"];
+  const where = ["(u.premium_plan IN ('family', 'family_semiannual', 'family_yearly') OR f.id IS NOT NULL)"];
   const params = [];
   if (search) {
     params.push(`%${search}%`);
@@ -1720,28 +1722,14 @@ async function adminUpdateUser(req, res) {
   res.json({ ok: true });
 }
 
-let supportMailTransport;
 async function sendSupportReplyEmail(ticket, body) {
-  if (!supportMailTransport) {
-    const smtpHost = process.env.SMTP_HOST ?? "127.0.0.1";
-    const localSmtp = smtpHost === "127.0.0.1" || smtpHost === "localhost";
-    supportMailTransport = nodemailer.createTransport({
-      host: smtpHost,
-      port: envNumber("SMTP_PORT", 25),
-      secure: envBoolean("SMTP_SECURE", false),
-      ignoreTLS: envBoolean("SMTP_IGNORE_TLS", localSmtp),
-      ...(process.env.SMTP_USER ? {
-        auth: { user: process.env.SMTP_USER, pass: requiredEnv("SMTP_PASSWORD") }
-      } : {})
-    });
-  }
+  if (!services) throw new Error("Admin services are not configured");
   const subject = cleanText(ticket.subject, 180).replace(/^Help Center:\s*/i, "");
-  await supportMailTransport.sendMail({
-    from: process.env.EMAIL_FROM ?? "GlucoTrack <support@glukotrack.com>",
-    to: ticket.email,
-    subject: `GlucoTrack Support: ${subject || `ticket #${ticket.id}`}`,
-    text: `${body}\n\n---\nGlucoTrack Support\nTicket #${ticket.id}`,
-    html: `<p>${escapeHtml(body).replace(/\n/g, "<br>")}</p><hr><p>GlucoTrack Support<br>Ticket #${escapeHtml(ticket.id)}</p>`
+  return services.email.sendSupportReply({
+    email: ticket.email,
+    subject,
+    ticketId: ticket.id,
+    reply: body
   });
 }
 

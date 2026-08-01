@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "./config/env-loader.js";
 import mysql from "mysql2/promise";
 import {
   ABOUT_CONTENT,
@@ -12,13 +12,17 @@ import {
   HELP_LOCALES
 } from "./help-content.js";
 
+const isTestEnvironment = process.env.NODE_ENV === "test";
 const databaseConfig = {
-  host: requiredEnv("DB_HOST"),
-  port: envNumber("DB_PORT", 3306),
-  user: requiredEnv("DB_USER"),
-  password: requiredEnv("DB_PASSWORD"),
+  host: requiredEnv(isTestEnvironment ? "TEST_DATABASE_HOST" : "DB_HOST"),
+  port: envNumber(isTestEnvironment ? "TEST_DATABASE_PORT" : "DB_PORT", 3306),
+  user: requiredEnv(isTestEnvironment ? "TEST_DATABASE_USER" : "DB_USER"),
+  password: requiredEnv(isTestEnvironment ? "TEST_DATABASE_PASSWORD" : "DB_PASSWORD"),
 };
-const databaseName = validatedDatabaseName(requiredEnv("DB_NAME"));
+const databaseName = validatedDatabaseName(requiredEnv(isTestEnvironment ? "TEST_DATABASE_NAME" : "DB_NAME"));
+if (isTestEnvironment && !/(_test|test_)$/i.test(databaseName)) {
+  throw new Error("Integration tests require an isolated TEST_DATABASE_NAME; production database access is disabled.");
+}
 let mysqlPool;
 let databaseStatus = {
   ready: false,
@@ -112,7 +116,7 @@ export async function initializeDatabase() {
     databaseStatus = {
       ready: true,
       database: databaseName,
-      schemaVersion: 20,
+      schemaVersion: 25,
       installedAt: new Date().toISOString(),
       error: null
     };
@@ -361,12 +365,54 @@ async function installSchema() {
     eaten_at DATETIME NOT NULL, metadata JSON NOT NULL, KEY food_logs_user_time_idx (user_id, eaten_at),
     CONSTRAINT food_logs_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+  await query(`CREATE TABLE IF NOT EXISTS user_food_catalog (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, user_id BIGINT UNSIGNED NOT NULL,
+    food_name VARCHAR(255) NOT NULL, category VARCHAR(100) NOT NULL DEFAULT 'Food',
+    portion_grams DECIMAL(10,3) NOT NULL DEFAULT 0, calories DECIMAL(10,3) NOT NULL DEFAULT 0,
+    protein_grams DECIMAL(10,3) NOT NULL DEFAULT 0, fat_grams DECIMAL(10,3) NOT NULL DEFAULT 0,
+    carbohydrates_grams DECIMAL(10,3) NOT NULL DEFAULT 0, glycemic_index DECIMAL(6,2) NOT NULL DEFAULT 0,
+    usage_count INT UNSIGNED NOT NULL DEFAULT 0, favorite BOOLEAN NOT NULL DEFAULT FALSE,
+    last_used_at DATETIME NULL, created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    KEY user_food_catalog_user_name_idx (user_id, food_name),
+    KEY user_food_catalog_user_favorite_idx (user_id, favorite, usage_count),
+    CONSTRAINT user_food_catalog_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+  await query("ALTER TABLE user_food_catalog ADD COLUMN IF NOT EXISTS deleted_at DATETIME NULL");
+  await query(`CREATE TABLE IF NOT EXISTS food_history (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, user_id BIGINT UNSIGNED NOT NULL,
+    food_id BIGINT UNSIGNED NULL, glucose_before DECIMAL(7,3) NULL, glucose_after DECIMAL(7,3) NULL,
+    insulin DECIMAL(8,3) NULL, eaten_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    KEY food_history_user_time_idx (user_id, eaten_at),
+    CONSTRAINT food_history_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    CONSTRAINT food_history_food_fk FOREIGN KEY (food_id) REFERENCES user_food_catalog(id) ON DELETE SET NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+  await query(`CREATE TABLE IF NOT EXISTS ai_food_analysis (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, user_id BIGINT UNSIGNED NOT NULL,
+    image_reference VARCHAR(512) NULL, ai_response JSON NOT NULL, confirmed BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, KEY ai_food_analysis_user_time_idx (user_id, created_at),
+    CONSTRAINT ai_food_analysis_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
   await query(`CREATE TABLE IF NOT EXISTS ai_requests (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, user_id BIGINT UNSIGNED NOT NULL,
     request_type VARCHAR(64) NOT NULL, locale VARCHAR(16) NOT NULL, status VARCHAR(32) NOT NULL,
     model VARCHAR(64) NULL, input_tokens INT NULL, output_tokens INT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, KEY ai_requests_user_time_idx (user_id, created_at),
     CONSTRAINT ai_requests_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+  await query("ALTER TABLE ai_requests ADD COLUMN IF NOT EXISTS request_id VARCHAR(80) NULL");
+  await query("ALTER TABLE ai_requests ADD COLUMN IF NOT EXISTS idempotency_key VARCHAR(128) NULL");
+  await query("ALTER TABLE ai_requests ADD COLUMN IF NOT EXISTS plan VARCHAR(32) NULL");
+  await query("ALTER TABLE ai_requests ADD COLUMN IF NOT EXISTS is_photo BOOLEAN NOT NULL DEFAULT FALSE");
+  await query("ALTER TABLE ai_requests ADD COLUMN IF NOT EXISTS period_date DATE NULL");
+  await query("ALTER TABLE ai_requests ADD COLUMN IF NOT EXISTS error_code VARCHAR(64) NULL");
+  await query("ALTER TABLE ai_requests ADD COLUMN IF NOT EXISTS duration_ms INT UNSIGNED NULL");
+  await query("ALTER TABLE ai_requests ADD COLUMN IF NOT EXISTS estimated_cost_minor INT UNSIGNED NOT NULL DEFAULT 0");
+  await query("CREATE UNIQUE INDEX IF NOT EXISTS ai_requests_user_request_uq ON ai_requests(user_id, request_id)");
+  await query("CREATE INDEX IF NOT EXISTS ai_requests_limit_idx ON ai_requests(user_id, period_date, status, is_photo, created_at)");
+  await query(`CREATE TABLE IF NOT EXISTS ai_limit_locks (
+    lock_key VARCHAR(128) NOT NULL PRIMARY KEY,
+    touched_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
   await query(`CREATE TABLE IF NOT EXISTS voice_requests (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, user_id BIGINT UNSIGNED NOT NULL,
@@ -528,6 +574,87 @@ async function installSchema() {
     "ALTER TABLE family_links MODIFY COLUMN status " +
     "ENUM('pending', 'accepted', 'suspended', 'revoked') NOT NULL DEFAULT 'pending'"
   );
+  await query("ALTER TABLE family_links ADD COLUMN IF NOT EXISTS email_sent TINYINT(1) NOT NULL DEFAULT 0");
+  await query("ALTER TABLE family_links ADD COLUMN IF NOT EXISTS email_sent_at DATETIME NULL");
+  await query("ALTER TABLE family_links ADD COLUMN IF NOT EXISTS email_error VARCHAR(500) NULL");
+  await query("ALTER TABLE family_links ADD COLUMN IF NOT EXISTS member_name VARCHAR(255) NULL");
+  await query("ALTER TABLE family_links ADD COLUMN IF NOT EXISTS member_role ENUM('patient','guardian','doctor') NOT NULL DEFAULT 'guardian'");
+  // The link table remains for backwards compatibility with existing clients.
+  // These normalized tables are the authoritative family-access boundary for
+  // new clients and make per-member permissions auditable.
+  await query(`
+    CREATE TABLE IF NOT EXISTS family_groups (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      owner_user_id BIGINT UNSIGNED NOT NULL UNIQUE,
+      plan_type VARCHAR(32) NOT NULL DEFAULT 'family',
+      max_members TINYINT UNSIGNED NOT NULL DEFAULT 5,
+      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      CONSTRAINT family_groups_owner_fk FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+  await query(`
+    CREATE TABLE IF NOT EXISTS family_members (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      family_id BIGINT UNSIGNED NOT NULL,
+      user_id BIGINT UNSIGNED NULL,
+      display_name VARCHAR(255) NULL,
+      role ENUM('owner','patient','guardian','doctor') NOT NULL,
+      status ENUM('pending','accepted','declined','suspended','revoked') NOT NULL DEFAULT 'pending',
+      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      accepted_at DATETIME NULL,
+      KEY family_members_family_idx (family_id, status),
+      KEY family_members_user_idx (user_id, status),
+      CONSTRAINT family_members_family_fk FOREIGN KEY (family_id) REFERENCES family_groups(id) ON DELETE CASCADE,
+      CONSTRAINT family_members_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+  await query(`
+    CREATE TABLE IF NOT EXISTS family_invitations (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      family_id BIGINT UNSIGNED NOT NULL,
+      member_id BIGINT UNSIGNED NOT NULL,
+      email VARCHAR(255) NOT NULL,
+      token_hash CHAR(64) NOT NULL UNIQUE,
+      role ENUM('patient','guardian','doctor') NOT NULL,
+      status ENUM('pending','accepted','declined','expired','revoked') NOT NULL DEFAULT 'pending',
+      expires_at DATETIME NOT NULL,
+      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      KEY family_invitations_email_idx (email, status),
+      CONSTRAINT family_invitations_family_fk FOREIGN KEY (family_id) REFERENCES family_groups(id) ON DELETE CASCADE,
+      CONSTRAINT family_invitations_member_fk FOREIGN KEY (member_id) REFERENCES family_members(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+  await query(`
+    CREATE TABLE IF NOT EXISTS family_permissions (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      member_id BIGINT UNSIGNED NOT NULL UNIQUE,
+      view_glucose BOOLEAN NOT NULL DEFAULT TRUE,
+      view_insulin BOOLEAN NOT NULL DEFAULT FALSE,
+      view_food BOOLEAN NOT NULL DEFAULT FALSE,
+      view_reports BOOLEAN NOT NULL DEFAULT FALSE,
+      receive_alerts BOOLEAN NOT NULL DEFAULT FALSE,
+      sos_access BOOLEAN NOT NULL DEFAULT FALSE,
+      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      CONSTRAINT family_permissions_member_fk FOREIGN KEY (member_id) REFERENCES family_members(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+  await query(`
+    CREATE TABLE IF NOT EXISTS family_access_audit (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      actor_user_id BIGINT UNSIGNED NOT NULL,
+      subject_user_id BIGINT UNSIGNED NULL,
+      family_member_id BIGINT UNSIGNED NULL,
+      action VARCHAR(64) NOT NULL,
+      details JSON NULL,
+      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      KEY family_access_audit_actor_idx (actor_user_id, created_at),
+      KEY family_access_audit_subject_idx (subject_user_id, created_at),
+      CONSTRAINT family_access_audit_actor_fk FOREIGN KEY (actor_user_id) REFERENCES users(id) ON DELETE CASCADE,
+      CONSTRAINT family_access_audit_subject_fk FOREIGN KEY (subject_user_id) REFERENCES users(id) ON DELETE SET NULL,
+      CONSTRAINT family_access_audit_member_fk FOREIGN KEY (family_member_id) REFERENCES family_members(id) ON DELETE SET NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
 
   await query(`
     CREATE TABLE IF NOT EXISTS reports (
@@ -595,6 +722,27 @@ async function installSchema() {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `);
 
+  // Family SOS events are separate from the public QR SOS card and medical
+  // snapshots. They retain only the minimum data needed during an emergency.
+  await query(`
+    CREATE TABLE IF NOT EXISTS sos_events (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      user_id BIGINT UNSIGNED NOT NULL,
+      status ENUM('active','cancelled') NOT NULL DEFAULT 'active',
+      glucose_mmol DECIMAL(6,3) NULL,
+      latitude DECIMAL(10,7) NULL,
+      longitude DECIMAL(10,7) NULL,
+      accuracy_meters DECIMAL(10,2) NULL,
+      activated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      cancelled_at DATETIME NULL,
+      updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      KEY sos_events_user_status_idx (user_id, status, activated_at),
+      CONSTRAINT sos_events_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+  await query("ALTER TABLE sos_events ADD COLUMN IF NOT EXISTS escalated_5_at DATETIME NULL");
+  await query("ALTER TABLE sos_events ADD COLUMN IF NOT EXISTS escalated_15_at DATETIME NULL");
+
   await query(`
     CREATE TABLE IF NOT EXISTS sos_pin_attempts (
       id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -610,6 +758,91 @@ async function installSchema() {
       KEY sos_pin_attempts_user_time_idx (user_id, attempted_at),
       CONSTRAINT sos_pin_attempts_user_fk
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+
+  // Live family location is opt-in. Store only the last point: this feature
+  // deliberately does not create a movement-history database.
+  await query(`
+    CREATE TABLE IF NOT EXISTS family_live_location_settings (
+      user_id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
+      enabled BOOLEAN NOT NULL DEFAULT FALSE,
+      consented_at DATETIME NULL,
+      updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      CONSTRAINT family_live_location_settings_user_fk
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+
+  await query(`
+    CREATE TABLE IF NOT EXISTS family_live_location_grants (
+      owner_user_id BIGINT UNSIGNED NOT NULL,
+      caregiver_user_id BIGINT UNSIGNED NOT NULL,
+      granted_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      revoked_at DATETIME NULL,
+      PRIMARY KEY (owner_user_id, caregiver_user_id),
+      KEY family_live_location_grants_caregiver_idx (caregiver_user_id, revoked_at),
+      CONSTRAINT family_live_location_grants_owner_fk
+        FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE CASCADE,
+      CONSTRAINT family_live_location_grants_caregiver_fk
+        FOREIGN KEY (caregiver_user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+
+  await query(`
+    CREATE TABLE IF NOT EXISTS family_live_location_current (
+      user_id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
+      latitude DECIMAL(10,7) NOT NULL,
+      longitude DECIMAL(10,7) NOT NULL,
+      accuracy_meters DECIMAL(10,2) NULL,
+      speed_mps DECIMAL(10,3) NULL,
+      heading_degrees DECIMAL(7,2) NULL,
+      captured_at DATETIME NOT NULL,
+      updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      CONSTRAINT family_live_location_current_user_fk
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+
+  // One current heartbeat per patient. Deliberately no historical trail.
+  await query(`
+    CREATE TABLE IF NOT EXISTS patient_presence (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      patient_id BIGINT UNSIGNED NOT NULL,
+      last_seen DATETIME NOT NULL,
+      online_status BOOLEAN NOT NULL DEFAULT TRUE,
+      latitude DECIMAL(10,7) NULL,
+      longitude DECIMAL(10,7) NULL,
+      battery TINYINT UNSIGNED NULL,
+      glucose DECIMAL(6,3) NULL,
+      updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      UNIQUE KEY patient_presence_patient_uq (patient_id),
+      KEY patient_presence_last_seen_idx (last_seen),
+      CONSTRAINT patient_presence_patient_fk
+        FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+
+  // Route points are retained only while a patient has an active SOS event.
+  // Normal family tracking continues to store just the current location.
+  await query(`
+    CREATE TABLE IF NOT EXISTS patient_locations (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      patient_id BIGINT UNSIGNED NOT NULL,
+      family_id BIGINT UNSIGNED NULL,
+      latitude DECIMAL(10,7) NOT NULL,
+      longitude DECIMAL(10,7) NOT NULL,
+      accuracy DECIMAL(10,2) NULL,
+      battery_level TINYINT UNSIGNED NULL,
+      captured_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      sos_session_id BIGINT UNSIGNED NULL,
+      status VARCHAR(20) NOT NULL DEFAULT 'sos',
+      KEY patient_locations_patient_time_idx (patient_id, captured_at),
+      KEY patient_locations_sos_time_idx (sos_session_id, captured_at),
+      CONSTRAINT patient_locations_patient_fk
+        FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE,
+      CONSTRAINT patient_locations_sos_fk
+        FOREIGN KEY (sos_session_id) REFERENCES sos_events(id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `);
 
@@ -1443,7 +1676,23 @@ async function installSchema() {
   );
   await query(
     `INSERT IGNORE INTO schema_migrations(version, description)
+     VALUES(22, 'Server-authoritative AI access limits, idempotency and audit fields')`
+  );
+  await query(
+    `INSERT IGNORE INTO schema_migrations(version, description)
      VALUES(21, 'Editable multilingual About GlukoTrack content')`
+  );
+  await query(
+    `INSERT IGNORE INTO schema_migrations(version, description)
+     VALUES(22, 'Personal food catalog, food history and confirmed AI food analyses')`
+  );
+  await query(
+    `INSERT IGNORE INTO schema_migrations(version, description)
+     VALUES(23, 'Soft deletion support for personal food catalog products')`
+  );
+  await query(
+    `INSERT IGNORE INTO schema_migrations(version, description)
+     VALUES(25, 'Normalized Family Access groups, invitations, permissions and audit log')`
   );
 }
 
