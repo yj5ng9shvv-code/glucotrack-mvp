@@ -39,61 +39,136 @@ class AppState extends ChangeNotifier {
   final AuthService _authService;
   EmergencyCardUpdater? emergencyCardUpdater;
   static const supportedLanguages = <AppLanguage>[
+    AppLanguage(code: 'en', label: 'English', flag: 'GB', locale: Locale('en')),
+    AppLanguage(code: 'de', label: 'Deutsch', flag: 'DE', locale: Locale('de')),
     AppLanguage(
-        code: 'en', label: 'English', flag: '🇬🇧', locale: Locale('en')),
+      code: 'fr',
+      label: 'Fran\u00E7ais',
+      flag: 'FR',
+      locale: Locale('fr'),
+    ),
     AppLanguage(
-        code: 'de', label: 'Deutsch', flag: '🇩🇪', locale: Locale('de')),
+      code: 'es',
+      label: 'Espa\u00F1ol',
+      flag: 'ES',
+      locale: Locale('es'),
+    ),
     AppLanguage(
-        code: 'fr', label: 'Français', flag: '🇫🇷', locale: Locale('fr')),
+      code: 'it',
+      label: 'Italiano',
+      flag: 'IT',
+      locale: Locale('it'),
+    ),
+    AppLanguage(code: 'pl', label: 'Polski', flag: 'PL', locale: Locale('pl')),
     AppLanguage(
-        code: 'es', label: 'Español', flag: '🇪🇸', locale: Locale('es')),
+      code: 'uk',
+      label: '\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430',
+      flag: 'UA',
+      locale: Locale('uk'),
+    ),
     AppLanguage(
-        code: 'it', label: 'Italiano', flag: '🇮🇹', locale: Locale('it')),
+      code: 'ru',
+      label: '\u0420\u0443\u0441\u0441\u043A\u0438\u0439',
+      flag: 'RU',
+      locale: Locale('ru'),
+    ),
     AppLanguage(
-        code: 'pl', label: 'Polski', flag: '🇵🇱', locale: Locale('pl')),
+      code: 'pt',
+      label: 'Portugu\u00EAs',
+      flag: 'PT',
+      locale: Locale('pt'),
+    ),
     AppLanguage(
-        code: 'uk', label: 'Українська', flag: '🇺🇦', locale: Locale('uk')),
+      code: 'nl',
+      label: 'Nederlands',
+      flag: 'NL',
+      locale: Locale('nl'),
+    ),
     AppLanguage(
-        code: 'ru', label: 'Русский', flag: '🇷🇺', locale: Locale('ru')),
+      code: 'ro',
+      label: 'Rom\u00E2n\u0103',
+      flag: 'RO',
+      locale: Locale('ro'),
+    ),
     AppLanguage(
-        code: 'pt', label: 'Português', flag: '🇵🇹', locale: Locale('pt')),
+      code: 'cs',
+      label: '\u010Ce\u0161tina',
+      flag: 'CZ',
+      locale: Locale('cs'),
+    ),
     AppLanguage(
-        code: 'nl', label: 'Nederlands', flag: '🇳🇱', locale: Locale('nl')),
+      code: 'sk',
+      label: 'Sloven\u010Dina',
+      flag: 'SK',
+      locale: Locale('sk'),
+    ),
+    AppLanguage(code: 'hu', label: 'Magyar', flag: 'HU', locale: Locale('hu')),
+    AppLanguage(code: 'sv', label: 'Svenska', flag: 'SE', locale: Locale('sv')),
+    AppLanguage(code: 'da', label: 'Dansk', flag: 'DK', locale: Locale('da')),
+    AppLanguage(code: 'fi', label: 'Suomi', flag: 'FI', locale: Locale('fi')),
+    AppLanguage(code: 'no', label: 'Norsk', flag: 'NO', locale: Locale('no')),
     AppLanguage(
-        code: 'ro', label: 'Română', flag: '🇷🇴', locale: Locale('ro')),
+      code: 'el',
+      label: '\u0395\u03BB\u03BB\u03B7\u03BD\u03B9\u03BA\u03AC',
+      flag: 'GR',
+      locale: Locale('el'),
+    ),
     AppLanguage(
-        code: 'cs', label: 'Čeština', flag: '🇨🇿', locale: Locale('cs')),
+      code: 'tr',
+      label: 'T\u00FCrk\u00E7e',
+      flag: 'TR',
+      locale: Locale('tr'),
+    ),
     AppLanguage(
-        code: 'sk', label: 'Slovenčina', flag: '🇸🇰', locale: Locale('sk')),
+      code: 'bg',
+      label: '\u0411\u044A\u043B\u0433\u0430\u0440\u0441\u043A\u0438',
+      flag: 'BG',
+      locale: Locale('bg'),
+    ),
     AppLanguage(
-        code: 'hu', label: 'Magyar', flag: '🇭🇺', locale: Locale('hu')),
+      code: 'hr',
+      label: 'Hrvatski',
+      flag: 'HR',
+      locale: Locale('hr'),
+    ),
     AppLanguage(
-        code: 'sv', label: 'Svenska', flag: '🇸🇪', locale: Locale('sv')),
-    AppLanguage(code: 'da', label: 'Dansk', flag: '🇩🇰', locale: Locale('da')),
-    AppLanguage(code: 'fi', label: 'Suomi', flag: '🇫🇮', locale: Locale('fi')),
-    AppLanguage(code: 'no', label: 'Norsk', flag: '🇳🇴', locale: Locale('no')),
+      code: 'sl',
+      label: 'Sloven\u0161\u010Dina',
+      flag: 'SI',
+      locale: Locale('sl'),
+    ),
     AppLanguage(
-        code: 'el', label: 'Ελληνικά', flag: '🇬🇷', locale: Locale('el')),
+      code: 'lt',
+      label: 'Lietuvi\u0173',
+      flag: 'LT',
+      locale: Locale('lt'),
+    ),
     AppLanguage(
-        code: 'tr', label: 'Türkçe', flag: '🇹🇷', locale: Locale('tr')),
+      code: 'lv',
+      label: 'Latvie\u0161u',
+      flag: 'LV',
+      locale: Locale('lv'),
+    ),
+    AppLanguage(code: 'et', label: 'Eesti', flag: 'EE', locale: Locale('et')),
     AppLanguage(
-        code: 'bg', label: 'Български', flag: '🇧🇬', locale: Locale('bg')),
+      code: 'sr',
+      label: '\u0421\u0440\u043F\u0441\u043A\u0438',
+      flag: 'RS',
+      locale: Locale('sr'),
+    ),
+    AppLanguage(code: 'sq', label: 'Shqip', flag: 'AL', locale: Locale('sq')),
     AppLanguage(
-        code: 'hr', label: 'Hrvatski', flag: '🇭🇷', locale: Locale('hr')),
+      code: 'mk',
+      label: '\u041C\u0430\u043A\u0435\u0434\u043E\u043D\u0441\u043A\u0438',
+      flag: 'MK',
+      locale: Locale('mk'),
+    ),
     AppLanguage(
-        code: 'sl', label: 'Slovenščina', flag: '🇸🇮', locale: Locale('sl')),
-    AppLanguage(
-        code: 'lt', label: 'Lietuvių', flag: '🇱🇹', locale: Locale('lt')),
-    AppLanguage(
-        code: 'lv', label: 'Latviešu', flag: '🇱🇻', locale: Locale('lv')),
-    AppLanguage(code: 'et', label: 'Eesti', flag: '🇪🇪', locale: Locale('et')),
-    AppLanguage(
-        code: 'sr', label: 'Српски', flag: '🇷🇸', locale: Locale('sr')),
-    AppLanguage(code: 'sq', label: 'Shqip', flag: '🇦🇱', locale: Locale('sq')),
-    AppLanguage(
-        code: 'mk', label: 'Македонски', flag: '🇲🇰', locale: Locale('mk')),
-    AppLanguage(
-        code: 'is', label: 'Íslenska', flag: '🇮🇸', locale: Locale('is')),
+      code: 'is',
+      label: '\u00CDslenska',
+      flag: 'IS',
+      locale: Locale('is'),
+    ),
   ];
 
   static String normalizeLanguageCode(String? value) {
@@ -162,6 +237,7 @@ class AppState extends ChangeNotifier {
 
   String _accountEmail = '';
   String _accountToken = '';
+  String _accountRefreshToken = '';
   bool _authenticated = false;
 
   bool _loaded = false;
@@ -201,8 +277,9 @@ class AppState extends ChangeNotifier {
     return switch (preference) {
       GlucoseUnitPreference.mmolL => GlucoseUnit.mmolL,
       GlucoseUnitPreference.mgDl => GlucoseUnit.mgDl,
-      GlucoseUnitPreference.auto =>
-        _defaultGlucoseUnitForLanguage(languageCode),
+      GlucoseUnitPreference.auto => _defaultGlucoseUnitForLanguage(
+          languageCode,
+        ),
     };
   }
 
@@ -266,15 +343,27 @@ class AppState extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     _accountEmail = prefs.getString('accountEmail') ?? '';
     _accountToken = prefs.getString('accountToken') ?? '';
+    _accountRefreshToken = prefs.getString('accountRefreshToken') ?? '';
     final restoredSession = _accountToken.isEmpty
         ? null
-        : await _authService.restoreSession(_accountToken);
+        : await _authService.restoreSession(
+            _accountToken,
+            refreshToken: _accountRefreshToken,
+          );
     _authenticated = restoredSession != null;
     if (!_authenticated) {
       _accountToken = '';
+      _accountRefreshToken = '';
       await prefs.remove('accountToken');
+      await prefs.remove('accountRefreshToken');
     }
-    if (restoredSession != null) _applyAuthSession(restoredSession);
+    if (restoredSession != null) {
+      _accountToken = restoredSession.token;
+      _accountRefreshToken =
+          restoredSession.refreshToken ?? _accountRefreshToken;
+      _applyAuthSession(restoredSession);
+      await _persistAuthTokens(prefs);
+    }
     final diabetesTypeIndex = prefs.getInt('diabetesType') ?? 0;
     diabetesType =
         diabetesTypeIndex >= 0 && diabetesTypeIndex < DiabetesType.values.length
@@ -309,7 +398,6 @@ class AppState extends ChangeNotifier {
       GlucoseUnitPreference.auto,
     );
     // Server profile is authoritative after cache loss or stale local values.
-    if (restoredSession != null) _applyAuthSession(restoredSession);
 
     fullName = prefs.getString('fullName') ?? fullName;
     email = prefs.getString('email') ?? email;
@@ -336,10 +424,9 @@ class AppState extends ChangeNotifier {
         prefs.getString('emergencyContactName') ?? emergencyContactName;
     emergencyContactPhone =
         prefs.getString('emergencyContactPhone') ?? emergencyContactPhone;
-    additionalEmergencyContacts = prefs.getString(
-          'additionalEmergencyContacts',
-        ) ??
-        additionalEmergencyContacts;
+    additionalEmergencyContacts =
+        prefs.getString('additionalEmergencyContacts') ??
+            additionalEmergencyContacts;
     hideSensitiveSosData =
         prefs.getBool('hideSensitiveSosData') ?? hideSensitiveSosData;
     sosAccessPin = prefs.getString('sosAccessPin') ?? sosAccessPin;
@@ -383,9 +470,11 @@ class AppState extends ChangeNotifier {
       if (decoded is List) {
         sensorReadings = decoded
             .whereType<Map>()
-            .map((item) => SensorReading.fromJson(
-                  item.map((key, value) => MapEntry(key.toString(), value)),
-                ))
+            .map(
+              (item) => SensorReading.fromJson(
+                item.map((key, value) => MapEntry(key.toString(), value)),
+              ),
+            )
             .toList()
           ..sort((a, b) => b.time.compareTo(a.time));
       }
@@ -396,9 +485,11 @@ class AppState extends ChangeNotifier {
       if (decoded is List) {
         diaryEntries = decoded
             .whereType<Map>()
-            .map((item) => DiaryLogEntry.fromJson(
-                  item.map((key, value) => MapEntry(key.toString(), value)),
-                ))
+            .map(
+              (item) => DiaryLogEntry.fromJson(
+                item.map((key, value) => MapEntry(key.toString(), value)),
+              ),
+            )
             .toList()
           ..sort((a, b) => b.time.compareTo(a.time));
       }
@@ -427,6 +518,7 @@ class AppState extends ChangeNotifier {
     );
     _accountEmail = session.email;
     _accountToken = session.token;
+    _accountRefreshToken = session.refreshToken ?? '';
     _authenticated = true;
     fullName = session.fullName;
     this.email = session.email;
@@ -441,6 +533,7 @@ class AppState extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('accountEmail', _accountEmail);
     await prefs.setString('accountToken', _accountToken);
+    await _persistAuthTokens(prefs);
     await prefs.setString('fullName', fullName);
     await prefs.setString('email', email);
   }
@@ -453,12 +546,14 @@ class AppState extends ChangeNotifier {
     );
     _accountEmail = session.email;
     _accountToken = session.token;
+    _accountRefreshToken = session.refreshToken ?? '';
     _applyAuthSession(session);
     _authenticated = true;
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('accountEmail', _accountEmail);
     await prefs.setString('accountToken', _accountToken);
+    await _persistAuthTokens(prefs);
     return true;
   }
 
@@ -469,12 +564,14 @@ class AppState extends ChangeNotifier {
     );
     _accountEmail = session.email;
     _accountToken = session.token;
+    _accountRefreshToken = session.refreshToken ?? '';
     _authenticated = true;
     _applyAuthSession(session);
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('accountEmail', _accountEmail);
     await prefs.setString('accountToken', _accountToken);
+    await _persistAuthTokens(prefs);
     await prefs.setString('fullName', fullName);
     await prefs.setString('email', email);
   }
@@ -492,29 +589,47 @@ class AppState extends ChangeNotifier {
     );
     _accountEmail = session.email;
     _accountToken = session.token;
+    _accountRefreshToken = session.refreshToken ?? '';
     _authenticated = true;
     _applyAuthSession(session);
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('accountEmail', _accountEmail);
     await prefs.setString('accountToken', _accountToken);
+    await _persistAuthTokens(prefs);
     await prefs.setString('fullName', this.fullName);
     await prefs.setString('email', this.email);
   }
 
   Future<void> logout() async {
+    final token = _accountToken;
+    if (token.isNotEmpty) {
+      try {
+        await _authService.logout(
+          token,
+          refreshToken:
+              _accountRefreshToken.isNotEmpty ? _accountRefreshToken : null,
+        );
+      } on Exception {
+        // Local logout must still complete when the network is unavailable.
+      }
+    }
     _authenticated = false;
     _accountToken = '';
+    _accountRefreshToken = '';
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('accountToken');
+    await prefs.remove('accountRefreshToken');
   }
 
   Future<void> useDeviceManagementToken(String token) async {
     _accountToken = token;
+    _accountRefreshToken = '';
     _authenticated = true;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('accountToken', token);
+    await prefs.remove('accountRefreshToken');
     notifyListeners();
   }
 
@@ -552,6 +667,15 @@ class AppState extends ChangeNotifier {
     await _refreshEmergencyCard();
   }
 
+  Future<void> _persistAuthTokens(SharedPreferences prefs) async {
+    await prefs.setString('accountToken', _accountToken);
+    if (_accountRefreshToken.isEmpty) {
+      await prefs.remove('accountRefreshToken');
+    } else {
+      await prefs.setString('accountRefreshToken', _accountRefreshToken);
+    }
+  }
+
   void updateServerSubscription({
     required bool active,
     required String status,
@@ -586,17 +710,29 @@ class AppState extends ChangeNotifier {
     );
     if (session.onboardingCompleted) {
       diabetesType = _enumValue(
-          DiabetesType.values, session.diabetesType ?? '', diabetesType);
-      glucoseUnitPreference = _enumValue(GlucoseUnitPreference.values,
-          session.glucoseUnit ?? '', glucoseUnitPreference);
+        DiabetesType.values,
+        session.diabetesType ?? '',
+        diabetesType,
+      );
+      glucoseUnitPreference = _enumValue(
+        GlucoseUnitPreference.values,
+        session.glucoseUnit ?? '',
+        glucoseUnitPreference,
+      );
       onboardingCompleted = true;
     }
   }
 
   Future<void> completeOnboarding(
-      DiabetesType type, GlucoseUnitPreference unit, bool accepted) async {
+    DiabetesType type,
+    GlucoseUnitPreference unit,
+    bool accepted,
+  ) async {
     await _authService.saveOnboardingProfile(
-        _accountToken, type.name, unit.name);
+      _accountToken,
+      type.name,
+      unit.name,
+    );
     await setDiabetesType(type);
     await setGlucoseUnitPreference(unit);
     await setMedicalDisclaimerAccepted(accepted);
@@ -627,7 +763,9 @@ class AppState extends ChangeNotifier {
       await prefs.remove('lastCloudSyncAt');
     } else {
       await prefs.setString(
-          'lastCloudSyncAt', lastCloudSyncAt!.toIso8601String());
+        'lastCloudSyncAt',
+        lastCloudSyncAt!.toIso8601String(),
+      );
     }
   }
 
@@ -782,10 +920,7 @@ class AppState extends ChangeNotifier {
       'communicationLanguages',
       this.communicationLanguages,
     );
-    await prefs.setString(
-      'emergencyInstructions',
-      this.emergencyInstructions,
-    );
+    await prefs.setString('emergencyInstructions', this.emergencyInstructions);
     await prefs.setString('emergencyContactName', this.emergencyContactName);
     await prefs.setString('emergencyContactPhone', this.emergencyContactPhone);
     await prefs.setString(
@@ -852,9 +987,11 @@ class AppState extends ChangeNotifier {
     if (diary is List) {
       diaryEntries = diary
           .whereType<Map>()
-          .map((item) => DiaryLogEntry.fromJson(
-                item.map((key, value) => MapEntry(key.toString(), value)),
-              ))
+          .map(
+            (item) => DiaryLogEntry.fromJson(
+              item.map((key, value) => MapEntry(key.toString(), value)),
+            ),
+          )
           .toList()
         ..sort((a, b) => b.time.compareTo(a.time));
     }
@@ -862,16 +999,19 @@ class AppState extends ChangeNotifier {
     if (readings is List) {
       sensorReadings = readings
           .whereType<Map>()
-          .map((item) => SensorReading.fromJson(
-                item.map((key, value) => MapEntry(key.toString(), value)),
-              ))
+          .map(
+            (item) => SensorReading.fromJson(
+              item.map((key, value) => MapEntry(key.toString(), value)),
+            ),
+          )
           .toList()
         ..sort((a, b) => b.time.compareTo(a.time));
     }
     final emergency = payload['emergency'];
     if (emergency is Map) {
-      final data =
-          emergency.map((key, value) => MapEntry(key.toString(), value));
+      final data = emergency.map(
+        (key, value) => MapEntry(key.toString(), value),
+      );
       emergencyContactName =
           data['contactName']?.toString() ?? emergencyContactName;
       emergencyContactPhone =
@@ -933,10 +1073,7 @@ class AppState extends ChangeNotifier {
     );
     await prefs.setBool('hideSensitiveSosData', hideSensitiveSosData);
     await prefs.setString('sosPublicToken', sosPublicToken);
-    await prefs.setBool(
-      'showEmergencyOnLockScreen',
-      showEmergencyOnLockScreen,
-    );
+    await prefs.setBool('showEmergencyOnLockScreen', showEmergencyOnLockScreen);
     await prefs.setString(
       'diaryEntries',
       jsonEncode(diaryEntries.map((entry) => entry.toJson()).toList()),
@@ -1046,8 +1183,9 @@ class AppState extends ChangeNotifier {
     if (diaryEntries.length > 1000) {
       diaryEntries = diaryEntries.take(1000).toList();
     }
-    final glucoseChanged =
-        _syncCachedGlucoseFromLatestSource(clearIfMissing: false);
+    final glucoseChanged = _syncCachedGlucoseFromLatestSource(
+      clearIfMissing: false,
+    );
     notifyListeners();
     await _saveDiaryEntries();
     if (glucoseChanged || entry.glucoseMmol > 0) {
@@ -1058,8 +1196,9 @@ class AppState extends ChangeNotifier {
 
   Future<void> removeDiaryEntry(String id) async {
     diaryEntries = diaryEntries.where((entry) => entry.id != id).toList();
-    final glucoseChanged =
-        _syncCachedGlucoseFromLatestSource(clearIfMissing: true);
+    final glucoseChanged = _syncCachedGlucoseFromLatestSource(
+      clearIfMissing: true,
+    );
     notifyListeners();
     await _saveDiaryEntries();
     if (glucoseChanged) {
@@ -1070,8 +1209,9 @@ class AppState extends ChangeNotifier {
 
   Future<void> clearDiaryEntries() async {
     diaryEntries = [];
-    final glucoseChanged =
-        _syncCachedGlucoseFromLatestSource(clearIfMissing: true);
+    final glucoseChanged = _syncCachedGlucoseFromLatestSource(
+      clearIfMissing: true,
+    );
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('diaryEntries');
@@ -1083,8 +1223,9 @@ class AppState extends ChangeNotifier {
 
   Future<void> clearSensorReadings() async {
     sensorReadings = [];
-    final glucoseChanged =
-        _syncCachedGlucoseFromLatestSource(clearIfMissing: true);
+    final glucoseChanged = _syncCachedGlucoseFromLatestSource(
+      clearIfMissing: true,
+    );
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('sensorReadings');

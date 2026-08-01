@@ -5,7 +5,16 @@
   "type": "module",
   "scripts": {
     "db:install": "node install-db.js",
-    "start": "node server.js"
+    "db:backup": "node scripts/backup-database.mjs",
+    "admin:create": "node create-admin.js",
+    "start": "node server.js",
+    "start:test": "node --env-file=.env.test server.js",
+    "test": "node --test",
+    "migrate:test": "node --env-file=.env.test scripts/migrate-test.mjs",
+    "db:test:check": "node --env-file=.env.test scripts/db-test-check.js",
+    "db:test:schema-check": "node --env-file=.env.test scripts/db-test-schema-check.js"
+    ,"seed:test": "node --env-file=.env.test scripts/seed-test.js"
+    ,"test:family:integration": "NODE_ENV=test node --test --test-concurrency=1 test/integration/family/*.test.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",

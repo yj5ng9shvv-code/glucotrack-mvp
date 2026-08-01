@@ -1,32 +1,152 @@
 final deviceTranslations = <String, Map<String, String>>{
-  'en': {'deviceLimitReached': 'Device limit reached. To continue, remove an old device in Profile → Premium → Connected devices.', 'manageDevices': 'Connected devices'},
-  'de': {'deviceLimitReached': 'Gerätelimit erreicht. Entfernen Sie zum Fortfahren ein altes Gerät unter Profil → Premium → Verbundene Geräte.', 'manageDevices': 'Verbundene Geräte'},
-  'fr': {'deviceLimitReached': 'Limite d’appareils atteinte. Pour continuer, supprimez un ancien appareil dans Profil → Premium → Appareils connectés.', 'manageDevices': 'Appareils connectés'},
-  'es': {'deviceLimitReached': 'Se alcanzó el límite de dispositivos. Para continuar, elimina un dispositivo antiguo en Perfil → Premium → Dispositivos conectados.', 'manageDevices': 'Dispositivos conectados'},
-  'it': {'deviceLimitReached': 'Limite dispositivi raggiunto. Per continuare, rimuovi un vecchio dispositivo in Profilo → Premium → Dispositivi connessi.', 'manageDevices': 'Dispositivi connessi'},
-  'pl': {'deviceLimitReached': 'Osiągnięto limit urządzeń. Aby kontynuować, usuń stare urządzenie w Profil → Premium → Podłączone urządzenia.', 'manageDevices': 'Podłączone urządzenia'},
-  'uk': {'deviceLimitReached': 'Досягнуто ліміту пристроїв. Щоб продовжити, видаліть старий пристрій у Профіль → Premium → Підключені пристрої.', 'manageDevices': 'Підключені пристрої'},
-  'ru': {'deviceLimitReached': 'Достигнут лимит устройств. Чтобы продолжить, удалите старое устройство во вкладке Профиль → Premium → Подключённые устройства.', 'manageDevices': 'Подключённые устройства'},
-  'pt': {'deviceLimitReached': 'Limite de dispositivos atingido. Para continuar, remova um dispositivo antigo em Perfil → Premium → Dispositivos ligados.', 'manageDevices': 'Dispositivos ligados'},
-  'nl': {'deviceLimitReached': 'Apparaatlimiet bereikt. Verwijder een oud apparaat via Profiel → Premium → Verbonden apparaten om door te gaan.', 'manageDevices': 'Verbonden apparaten'},
-  'ro': {'deviceLimitReached': 'Limita de dispozitive a fost atinsă. Pentru a continua, eliminați un dispozitiv vechi din Profil → Premium → Dispozitive conectate.', 'manageDevices': 'Dispozitive conectate'},
-  'cs': {'deviceLimitReached': 'Byl dosažen limit zařízení. Chcete-li pokračovat, odeberte staré zařízení v Profil → Premium → Připojená zařízení.', 'manageDevices': 'Připojená zařízení'},
-  'sk': {'deviceLimitReached': 'Bol dosiahnutý limit zariadení. Ak chcete pokračovať, odstráňte staré zariadenie v Profil → Premium → Pripojené zariadenia.', 'manageDevices': 'Pripojené zariadenia'},
-  'hu': {'deviceLimitReached': 'Elérte az eszközkorlátot. A folytatáshoz távolítson el egy régi eszközt itt: Profil → Premium → Csatlakoztatott eszközök.', 'manageDevices': 'Csatlakoztatott eszközök'},
-  'sv': {'deviceLimitReached': 'Enhetsgränsen har nåtts. Ta bort en gammal enhet under Profil → Premium → Anslutna enheter för att fortsätta.', 'manageDevices': 'Anslutna enheter'},
-  'da': {'deviceLimitReached': 'Enhedsgrænsen er nået. Fjern en gammel enhed under Profil → Premium → Tilsluttede enheder for at fortsætte.', 'manageDevices': 'Tilsluttede enheder'},
-  'fi': {'deviceLimitReached': 'Laiteraja on saavutettu. Jatka poistamalla vanha laite kohdasta Profiili → Premium → Yhdistetyt laitteet.', 'manageDevices': 'Yhdistetyt laitteet'},
-  'no': {'deviceLimitReached': 'Enhetsgrensen er nådd. Fjern en gammel enhet under Profil → Premium → Tilkoblede enheter for å fortsette.', 'manageDevices': 'Tilkoblede enheter'},
-  'el': {'deviceLimitReached': 'Το όριο συσκευών συμπληρώθηκε. Για να συνεχίσετε, αφαιρέστε μια παλιά συσκευή από Προφίλ → Premium → Συνδεδεμένες συσκευές.', 'manageDevices': 'Συνδεδεμένες συσκευές'},
-  'tr': {'deviceLimitReached': 'Cihaz sınırına ulaşıldı. Devam etmek için Profil → Premium → Bağlı cihazlar bölümünden eski bir cihazı kaldırın.', 'manageDevices': 'Bağlı cihazlar'},
-  'bg': {'deviceLimitReached': 'Достигнат е лимитът за устройства. За да продължите, премахнете старо устройство от Профил → Premium → Свързани устройства.', 'manageDevices': 'Свързани устройства'},
-  'hr': {'deviceLimitReached': 'Dosegnuto je ograničenje uređaja. Za nastavak uklonite stari uređaj u Profil → Premium → Povezani uređaji.', 'manageDevices': 'Povezani uređaji'},
-  'sl': {'deviceLimitReached': 'Dosežena je omejitev naprav. Za nadaljevanje odstranite staro napravo v Profil → Premium → Povezane naprave.', 'manageDevices': 'Povezane naprave'},
-  'lt': {'deviceLimitReached': 'Pasiektas įrenginių limitas. Norėdami tęsti, pašalinkite seną įrenginį skiltyje Profilis → Premium → Prijungti įrenginiai.', 'manageDevices': 'Prijungti įrenginiai'},
-  'lv': {'deviceLimitReached': 'Sasniegts ierīču limits. Lai turpinātu, noņemiet veco ierīci sadaļā Profils → Premium → Pievienotās ierīces.', 'manageDevices': 'Pievienotās ierīces'},
-  'et': {'deviceLimitReached': 'Seadmete limiit on täis. Jätkamiseks eemaldage vana seade jaotises Profiil → Premium → Ühendatud seadmed.', 'manageDevices': 'Ühendatud seadmed'},
-  'sr': {'deviceLimitReached': 'Достигнуто је ограничење уређаја. За наставак уклоните стари уређај у Профил → Premium → Повезани уређаји.', 'manageDevices': 'Повезани уређаји'},
-  'sq': {'deviceLimitReached': 'U arrit kufiri i pajisjeve. Për të vazhduar, hiqni një pajisje të vjetër te Profili → Premium → Pajisjet e lidhura.', 'manageDevices': 'Pajisjet e lidhura'},
-  'mk': {'deviceLimitReached': 'Достигнат е лимитот на уреди. За да продолжите, отстранете стар уред во Профил → Premium → Поврзани уреди.', 'manageDevices': 'Поврзани уреди'},
-  'is': {'deviceLimitReached': 'Hámarksfjölda tækja hefur verið náð. Fjarlægðu gamalt tæki undir Prófíll → Premium → Tengd tæki til að halda áfram.', 'manageDevices': 'Tengd tæki'},
+  'en': {
+    'deviceLimitReached':
+        'Device limit reached. To continue, remove an old device in Profile → Premium → Connected devices.',
+    'manageDevices': 'Connected devices',
+  },
+  'de': {
+    'deviceLimitReached':
+        'Gerätelimit erreicht. Entfernen Sie zum Fortfahren ein altes Gerät unter Profil → Premium → Verbundene Geräte.',
+    'manageDevices': 'Verbundene Geräte',
+  },
+  'fr': {
+    'deviceLimitReached':
+        'Limite d’appareils atteinte. Pour continuer, supprimez un ancien appareil dans Profil → Premium → Appareils connectés.',
+    'manageDevices': 'Appareils connectés',
+  },
+  'es': {
+    'deviceLimitReached':
+        'Se alcanzó el límite de dispositivos. Para continuar, elimina un dispositivo antiguo en Perfil → Premium → Dispositivos conectados.',
+    'manageDevices': 'Dispositivos conectados',
+  },
+  'it': {
+    'deviceLimitReached':
+        'Limite dispositivi raggiunto. Per continuare, rimuovi un vecchio dispositivo in Profilo → Premium → Dispositivi connessi.',
+    'manageDevices': 'Dispositivi connessi',
+  },
+  'pl': {
+    'deviceLimitReached':
+        'Osiągnięto limit urządzeń. Aby kontynuować, usuń stare urządzenie w Profil → Premium → Podłączone urządzenia.',
+    'manageDevices': 'Podłączone urządzenia',
+  },
+  'uk': {
+    'deviceLimitReached':
+        'Досягнуто ліміту пристроїв. Щоб продовжити, видаліть старий пристрій у Профіль → Premium → Підключені пристрої.',
+    'manageDevices': 'Підключені пристрої',
+  },
+  'ru': {
+    'deviceLimitReached':
+        'Достигнут лимит устройств. Чтобы продолжить, удалите старое устройство во вкладке Профиль → Premium → Подключённые устройства.',
+    'manageDevices': 'Подключённые устройства',
+  },
+  'pt': {
+    'deviceLimitReached':
+        'Limite de dispositivos atingido. Para continuar, remova um dispositivo antigo em Perfil → Premium → Dispositivos ligados.',
+    'manageDevices': 'Dispositivos ligados',
+  },
+  'nl': {
+    'deviceLimitReached':
+        'Apparaatlimiet bereikt. Verwijder een oud apparaat via Profiel → Premium → Verbonden apparaten om door te gaan.',
+    'manageDevices': 'Verbonden apparaten',
+  },
+  'ro': {
+    'deviceLimitReached':
+        'Limita de dispozitive a fost atinsă. Pentru a continua, eliminați un dispozitiv vechi din Profil → Premium → Dispozitive conectate.',
+    'manageDevices': 'Dispozitive conectate',
+  },
+  'cs': {
+    'deviceLimitReached':
+        'Byl dosažen limit zařízení. Chcete-li pokračovat, odeberte staré zařízení v Profil → Premium → Připojená zařízení.',
+    'manageDevices': 'Připojená zařízení',
+  },
+  'sk': {
+    'deviceLimitReached':
+        'Bol dosiahnutý limit zariadení. Ak chcete pokračovať, odstráňte staré zariadenie v Profil → Premium → Pripojené zariadenia.',
+    'manageDevices': 'Pripojené zariadenia',
+  },
+  'hu': {
+    'deviceLimitReached':
+        'Elérte az eszközkorlátot. A folytatáshoz távolítson el egy régi eszközt itt: Profil → Premium → Csatlakoztatott eszközök.',
+    'manageDevices': 'Csatlakoztatott eszközök',
+  },
+  'sv': {
+    'deviceLimitReached':
+        'Enhetsgränsen har nåtts. Ta bort en gammal enhet under Profil → Premium → Anslutna enheter för att fortsätta.',
+    'manageDevices': 'Anslutna enheter',
+  },
+  'da': {
+    'deviceLimitReached':
+        'Enhedsgrænsen er nået. Fjern en gammel enhed under Profil → Premium → Tilsluttede enheder for at fortsætte.',
+    'manageDevices': 'Tilsluttede enheder',
+  },
+  'fi': {
+    'deviceLimitReached':
+        'Laiteraja on saavutettu. Jatka poistamalla vanha laite kohdasta Profiili → Premium → Yhdistetyt laitteet.',
+    'manageDevices': 'Yhdistetyt laitteet',
+  },
+  'no': {
+    'deviceLimitReached':
+        'Enhetsgrensen er nådd. Fjern en gammel enhet under Profil → Premium → Tilkoblede enheter for å fortsette.',
+    'manageDevices': 'Tilkoblede enheter',
+  },
+  'el': {
+    'deviceLimitReached':
+        'Το όριο συσκευών συμπληρώθηκε. Για να συνεχίσετε, αφαιρέστε μια παλιά συσκευή από Προφίλ → Premium → Συνδεδεμένες συσκευές.',
+    'manageDevices': 'Συνδεδεμένες συσκευές',
+  },
+  'tr': {
+    'deviceLimitReached':
+        'Cihaz sınırına ulaşıldı. Devam etmek için Profil → Premium → Bağlı cihazlar bölümünden eski bir cihazı kaldırın.',
+    'manageDevices': 'Bağlı cihazlar',
+  },
+  'bg': {
+    'deviceLimitReached':
+        'Достигнат е лимитът за устройства. За да продължите, премахнете старо устройство от Профил → Premium → Свързани устройства.',
+    'manageDevices': 'Свързани устройства',
+  },
+  'hr': {
+    'deviceLimitReached':
+        'Dosegnuto je ograničenje uređaja. Za nastavak uklonite stari uređaj u Profil → Premium → Povezani uređaji.',
+    'manageDevices': 'Povezani uređaji',
+  },
+  'sl': {
+    'deviceLimitReached':
+        'Dosežena je omejitev naprav. Za nadaljevanje odstranite staro napravo v Profil → Premium → Povezane naprave.',
+    'manageDevices': 'Povezane naprave',
+  },
+  'lt': {
+    'deviceLimitReached':
+        'Pasiektas įrenginių limitas. Norėdami tęsti, pašalinkite seną įrenginį skiltyje Profilis → Premium → Prijungti įrenginiai.',
+    'manageDevices': 'Prijungti įrenginiai',
+  },
+  'lv': {
+    'deviceLimitReached':
+        'Sasniegts ierīču limits. Lai turpinātu, noņemiet veco ierīci sadaļā Profils → Premium → Pievienotās ierīces.',
+    'manageDevices': 'Pievienotās ierīces',
+  },
+  'et': {
+    'deviceLimitReached':
+        'Seadmete limiit on täis. Jätkamiseks eemaldage vana seade jaotises Profiil → Premium → Ühendatud seadmed.',
+    'manageDevices': 'Ühendatud seadmed',
+  },
+  'sr': {
+    'deviceLimitReached':
+        'Достигнуто је ограничење уређаја. За наставак уклоните стари уређај у Профил → Premium → Повезани уређаји.',
+    'manageDevices': 'Повезани уређаји',
+  },
+  'sq': {
+    'deviceLimitReached':
+        'U arrit kufiri i pajisjeve. Për të vazhduar, hiqni një pajisje të vjetër te Profili → Premium → Pajisjet e lidhura.',
+    'manageDevices': 'Pajisjet e lidhura',
+  },
+  'mk': {
+    'deviceLimitReached':
+        'Достигнат е лимитот на уреди. За да продолжите, отстранете стар уред во Профил → Premium → Поврзани уреди.',
+    'manageDevices': 'Поврзани уреди',
+  },
+  'is': {
+    'deviceLimitReached':
+        'Hámarksfjölda tækja hefur verið náð. Fjarlægðu gamalt tæki undir Prófíll → Premium → Tengd tæki til að halda áfram.',
+    'manageDevices': 'Tengd tæki',
+  },
 };

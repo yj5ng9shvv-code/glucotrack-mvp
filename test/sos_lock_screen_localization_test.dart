@@ -29,169 +29,199 @@ void main() {
         .setMockMethodCallHandler(channel, null);
   });
 
-  test('lock screen SOS payload stays English when app language changes',
-      () async {
-    final service = AndroidEmergencyService();
-    final state = AppState(
-      authService: _OfflineAuthService(),
-      emergencyCardUpdater: service.updateLockScreenCard,
-    )
-      ..showEmergencyOnLockScreen = true
-      ..fullName = 'Alex Patient'
-      ..emergencyContactName = 'Taylor'
-      ..emergencyContactPhone = '+48111222333'
-      ..bloodType = 'O+'
-      ..insulinName = 'Novorapid'
-      ..hasAllergies = false
-      ..allergies = 'peanuts'
-      ..medications = 'Siofor';
+  test(
+    'lock screen SOS payload stays English when app language changes',
+    () async {
+      final service = AndroidEmergencyService();
+      final state = AppState(
+        authService: _OfflineAuthService(),
+        emergencyCardUpdater: service.updateLockScreenCard,
+      )
+        ..showEmergencyOnLockScreen = true
+        ..fullName = 'Alex Patient'
+        ..emergencyContactName = 'Taylor'
+        ..emergencyContactPhone = '+48111222333'
+        ..bloodType = 'O+'
+        ..insulinName = 'Novorapid'
+        ..hasAllergies = false
+        ..allergies = 'peanuts'
+        ..medications = 'Siofor';
 
-    await state.setLanguage('pl');
-    await state.setLanguage('en');
-    await state.setLanguage('de');
+      await state.setLanguage('pl');
+      await state.setLanguage('en');
+      await state.setLanguage('de');
 
-    expect(calls, hasLength(3));
+      expect(calls, hasLength(3));
 
-    _expectEnglishLockScreenPayload(calls[0]);
-    _expectEnglishLockScreenPayload(calls[1]);
-    _expectEnglishLockScreenPayload(calls[2]);
-    expect(calls.map((payload) => payload['cardTitle']).toSet(), hasLength(1));
-    expect(calls.every((payload) => payload['bloodType'] == 'O+'), isTrue);
-    expect(
-      calls.every((payload) => payload['insulinName'] == 'Novorapid'),
-      isTrue,
-    );
-    expect(calls.every((payload) => payload['allergyStatusCode'] == 'no'),
-        isTrue);
-    expect(calls.every((payload) => payload['allergyStatus'] == 'NO'), isTrue);
-    expect(calls.every((payload) => payload['allergies'] == 'NO'), isTrue);
-    expect(
-      calls.every((payload) => payload['contactName'] == 'Taylor'),
-      isTrue,
-    );
-  });
+      _expectEnglishLockScreenPayload(calls[0]);
+      _expectEnglishLockScreenPayload(calls[1]);
+      _expectEnglishLockScreenPayload(calls[2]);
+      expect(
+        calls.map((payload) => payload['cardTitle']).toSet(),
+        hasLength(1),
+      );
+      expect(calls.every((payload) => payload['bloodType'] == 'O+'), isTrue);
+      expect(
+        calls.every((payload) => payload['insulinName'] == 'Novorapid'),
+        isTrue,
+      );
+      expect(
+        calls.every((payload) => payload['allergyStatusCode'] == 'no'),
+        isTrue,
+      );
+      expect(
+        calls.every((payload) => payload['allergyStatus'] == 'NO'),
+        isTrue,
+      );
+      expect(calls.every((payload) => payload['allergies'] == 'NO'), isTrue);
+      expect(
+        calls.every((payload) => payload['contactName'] == 'Taylor'),
+        isTrue,
+      );
+    },
+  );
 
-  test('normalized language code is persisted before lock screen refresh',
-      () async {
-    String? refreshedLanguage;
-    final state = AppState(
-      authService: _OfflineAuthService(),
-      emergencyCardUpdater: (state) async {
-        refreshedLanguage = state.languageCode;
-      },
-    )..showEmergencyOnLockScreen = true;
+  test(
+    'normalized language code is persisted before lock screen refresh',
+    () async {
+      String? refreshedLanguage;
+      final state = AppState(
+        authService: _OfflineAuthService(),
+        emergencyCardUpdater: (state) async {
+          refreshedLanguage = state.languageCode;
+        },
+      )..showEmergencyOnLockScreen = true;
 
-    await state.setLanguage('en_GB');
-    final prefs = await SharedPreferences.getInstance();
+      await state.setLanguage('en_GB');
+      final prefs = await SharedPreferences.getInstance();
 
-    expect(state.languageCode, 'en');
-    expect(refreshedLanguage, 'en');
-    expect(prefs.getString('languageCode'), 'en');
-  });
+      expect(state.languageCode, 'en');
+      expect(refreshedLanguage, 'en');
+      expect(prefs.getString('languageCode'), 'en');
+    },
+  );
 
-  test('lock screen system values are English and custom notes stay unchanged',
-      () async {
-    final service = AndroidEmergencyService();
-    final state = AppState(
-      authService: _OfflineAuthService(),
-      emergencyCardUpdater: service.updateLockScreenCard,
-    )
-      ..showEmergencyOnLockScreen = true
-      ..diabetesType = DiabetesType.type2
-      ..insulinName = 'none'
-      ..hasAllergies = true
-      ..allergies = 'peanuts'
-      ..emergencyInstructions = 'Пациент говорит только русский.';
+  test(
+    'lock screen system values are English and custom notes stay unchanged',
+    () async {
+      final service = AndroidEmergencyService();
+      final state = AppState(
+        authService: _OfflineAuthService(),
+        emergencyCardUpdater: service.updateLockScreenCard,
+      )
+        ..showEmergencyOnLockScreen = true
+        ..diabetesType = DiabetesType.type2
+        ..insulinName = 'none'
+        ..hasAllergies = true
+        ..allergies = 'peanuts'
+        ..emergencyInstructions = 'Пациент говорит только русский.';
 
-    await state.setLanguage('ru');
+      await state.setLanguage('ru');
 
-    final payload = calls.single;
-    expect(payload['languageCode'], 'en');
-    expect(payload['diabetesText'], 'Type 2 Diabetes');
-    expect(payload['insulinName'], 'None');
-    expect(payload['allergyStatusCode'], 'yes');
-    expect(payload['allergyStatus'], 'YES');
-    expect(payload['allergies'], 'YES');
-    expect(payload['allergies'], isNot('peanuts'));
-    expect(payload['instructionText'], 'Пациент говорит только русский.');
-  });
-
-  test('allergy profile updates immediately refresh lock screen status',
-      () async {
-    final service = AndroidEmergencyService();
-    final state = AppState(
-      authService: _OfflineAuthService(),
-      emergencyCardUpdater: service.updateLockScreenCard,
-    )
-      ..showEmergencyOnLockScreen = true
-      ..allergies = 'peanuts';
-
-    await state.updateAllergyProfile(hasAllergies: true, allergies: 'peanuts');
-    await state.updateAllergyProfile(hasAllergies: false, allergies: 'peanuts');
-    await state.updateAllergyProfile(hasAllergies: true, allergies: 'peanuts');
-
-    expect(calls.map((payload) => payload['allergyStatus']), [
-      'YES',
-      'NO',
-      'YES',
-    ]);
-    expect(calls.map((payload) => payload['allergies']), [
-      'YES',
-      'NO',
-      'YES',
-    ]);
-    expect(calls.every((payload) => payload['allergies'] != 'peanuts'), isTrue);
-  });
-
-  test('every supported language can build a lock screen SOS payload',
-      () async {
-    final service = AndroidEmergencyService();
-    final state = AppState(
-      authService: _OfflineAuthService(),
-      emergencyCardUpdater: service.updateLockScreenCard,
-    )..showEmergencyOnLockScreen = true;
-
-    for (final language in AppState.supportedLanguages) {
-      await state.setLanguage(language.code);
-      final payload = calls.last;
+      final payload = calls.single;
       expect(payload['languageCode'], 'en');
-      _expectEnglishLockScreenPayload(payload);
-      for (final key in const [
-        'cardTitle',
-        'emergencyMedicalCardLabel',
-        'medicalInfoLabel',
-        'nameLabel',
-        'glucoseLabel',
-        'lastUpdatedLabel',
-        'diabetesLabel',
-        'bloodLabel',
-        'insulinLabel',
-        'allergiesLabel',
-        'contactLabel',
-        'phoneLabel',
-        'instructionTitle',
-        'instructionText',
-        'call112Label',
-        'myLocationLabel',
-        'callContactLabel',
-        'showQrLabel',
-        'medicalCardLabel',
-        'sendLocationActionLabel',
-        'openMapLabel',
-        'closeLabel',
-        'openCardLabel',
-        'locationUnavailable',
-        'smsUnavailable',
-        'locationPermissionRequired',
-      ]) {
-        final value = payload[key]?.toString() ?? '';
-        expect(value.trim(), isNotEmpty, reason: '${language.code}: $key');
-        expect(value, isNot(key), reason: '${language.code}: $key');
-      }
-    }
+      expect(payload['diabetesText'], 'Type 2 Diabetes');
+      expect(payload['insulinName'], 'None');
+      expect(payload['allergyStatusCode'], 'yes');
+      expect(payload['allergyStatus'], 'YES');
+      expect(payload['allergies'], 'YES');
+      expect(payload['allergies'], isNot('peanuts'));
+      expect(payload['instructionText'], 'Пациент говорит только русский.');
+    },
+  );
 
-    expect(calls, hasLength(AppState.supportedLanguages.length));
-  });
+  test(
+    'allergy profile updates immediately refresh lock screen status',
+    () async {
+      final service = AndroidEmergencyService();
+      final state = AppState(
+        authService: _OfflineAuthService(),
+        emergencyCardUpdater: service.updateLockScreenCard,
+      )
+        ..showEmergencyOnLockScreen = true
+        ..allergies = 'peanuts';
+
+      await state.updateAllergyProfile(
+        hasAllergies: true,
+        allergies: 'peanuts',
+      );
+      await state.updateAllergyProfile(
+        hasAllergies: false,
+        allergies: 'peanuts',
+      );
+      await state.updateAllergyProfile(
+        hasAllergies: true,
+        allergies: 'peanuts',
+      );
+
+      expect(calls.map((payload) => payload['allergyStatus']), [
+        'YES',
+        'NO',
+        'YES',
+      ]);
+      expect(calls.map((payload) => payload['allergies']), [
+        'YES',
+        'NO',
+        'YES',
+      ]);
+      expect(
+        calls.every((payload) => payload['allergies'] != 'peanuts'),
+        isTrue,
+      );
+    },
+  );
+
+  test(
+    'every supported language can build a lock screen SOS payload',
+    () async {
+      final service = AndroidEmergencyService();
+      final state = AppState(
+        authService: _OfflineAuthService(),
+        emergencyCardUpdater: service.updateLockScreenCard,
+      )..showEmergencyOnLockScreen = true;
+
+      for (final language in AppState.supportedLanguages) {
+        await state.setLanguage(language.code);
+        final payload = calls.last;
+        expect(payload['languageCode'], 'en');
+        _expectEnglishLockScreenPayload(payload);
+        for (final key in const [
+          'cardTitle',
+          'emergencyMedicalCardLabel',
+          'medicalInfoLabel',
+          'nameLabel',
+          'glucoseLabel',
+          'lastUpdatedLabel',
+          'diabetesLabel',
+          'bloodLabel',
+          'insulinLabel',
+          'allergiesLabel',
+          'contactLabel',
+          'phoneLabel',
+          'instructionTitle',
+          'instructionText',
+          'call112Label',
+          'myLocationLabel',
+          'callContactLabel',
+          'showQrLabel',
+          'medicalCardLabel',
+          'sendLocationActionLabel',
+          'openMapLabel',
+          'closeLabel',
+          'openCardLabel',
+          'locationUnavailable',
+          'smsUnavailable',
+          'locationPermissionRequired',
+        ]) {
+          final value = payload[key]?.toString() ?? '';
+          expect(value.trim(), isNotEmpty, reason: '${language.code}: $key');
+          expect(value, isNot(key), reason: '${language.code}: $key');
+        }
+      }
+
+      expect(calls, hasLength(AppState.supportedLanguages.length));
+    },
+  );
 }
 
 void _expectEnglishLockScreenPayload(Map<dynamic, dynamic> payload) {
@@ -225,5 +255,9 @@ void _expectEnglishLockScreenPayload(Map<dynamic, dynamic> payload) {
 
 class _OfflineAuthService extends AuthService {
   @override
-  Future<AuthSession?> restoreSession(String token) async => null;
+  Future<AuthSession?> restoreSession(
+    String token, {
+    String? refreshToken,
+  }) async =>
+      null;
 }

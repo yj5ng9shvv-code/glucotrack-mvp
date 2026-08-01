@@ -30,9 +30,7 @@ class ExportScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
-                  const LocalizedText(
-                    'ui.text.b87be56977ed',
-                  ),
+                  const LocalizedText('ui.text.b87be56977ed'),
                   const SizedBox(height: 12),
                   FilledButton.icon(
                     onPressed: () async {
@@ -40,7 +38,8 @@ class ExportScreen extends StatelessWidget {
                       if (!context.mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                            content: LocalizedText('ui.text.718b3dfb03cf')),
+                          content: LocalizedText('ui.text.718b3dfb03cf'),
+                        ),
                       );
                     },
                     icon: const Icon(Icons.copy),
@@ -53,7 +52,8 @@ class ExportScreen extends StatelessWidget {
                       if (!context.mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                            content: LocalizedText('ui.text.7c7e4e371e5b')),
+                          content: LocalizedText('ui.text.7c7e4e371e5b'),
+                        ),
                       );
                     },
                     icon: const Icon(Icons.picture_as_pdf),
@@ -103,7 +103,7 @@ String _buildCsv(AppState state) {
       'insulin_units',
       'source',
       'title',
-      'note'
+      'note',
     ],
   ];
   for (final entry in state.diaryEntries) {

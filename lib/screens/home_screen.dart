@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/app_state.dart';
+import '../navigation/app_navigator.dart';
+import '../services/notification_service.dart';
 import '../widgets/localized_text.dart';
 import '../widgets/medical_disclaimer.dart';
 
@@ -15,12 +17,49 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _glucoseController = TextEditingController();
+  final _notificationService = NotificationService();
   bool _savingGlucose = false;
+  int _unreadNotifications = 0;
+  bool _loadingNotifications = false;
+  bool _notificationsRequested = false;
 
   @override
   void dispose() {
     _glucoseController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_notificationsRequested) return;
+    _notificationsRequested = true;
+    _loadUnreadNotifications();
+  }
+
+  Future<void> _loadUnreadNotifications() async {
+    if (_loadingNotifications) return;
+    final state = context.read<AppState>();
+    if (!state.isAuthenticated || state.accountToken.isEmpty) return;
+    _loadingNotifications = true;
+    try {
+      final notifications = await _notificationService.list(state.accountToken);
+      if (mounted) {
+        setState(() {
+          _unreadNotifications =
+              notifications.where((item) => !item.isRead).length;
+        });
+      }
+    } catch (_) {
+      // The home screen should stay usable when notification loading fails.
+    } finally {
+      _loadingNotifications = false;
+    }
+  }
+
+  Future<void> _openNotifications() async {
+    await AppNavigator.pushNamed('/notifications');
+    if (mounted) _loadUnreadNotifications();
   }
 
   Future<void> _saveGlucose(AppState state) async {
@@ -63,6 +102,17 @@ class _HomeScreenState extends State<HomeScreen> {
         toolbarHeight: 46,
         title: const LocalizedText('ui.text.f60a227611f3'),
         actions: [
+          if (state.isAuthenticated)
+            IconButton(
+              tooltip: l10n.t('referrals'),
+              onPressed: () => AppNavigator.pushNamed('/referrals'),
+              icon: const Icon(Icons.group_add_outlined),
+            ),
+          if (state.isAuthenticated)
+            _NotificationBell(
+              unreadCount: _unreadNotifications,
+              onPressed: _openNotifications,
+            ),
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: DropdownButtonHideUnderline(
@@ -153,9 +203,57 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         onDestinationSelected: (i) {
-          if (i == 1) Navigator.pushNamed(context, '/voice-assistant');
-          if (i == 2) Navigator.pushNamed(context, '/profile');
+          if (i == 1) AppNavigator.pushNamed('/voice-assistant');
+          if (i == 2) AppNavigator.pushNamed('/profile');
         },
+      ),
+    );
+  }
+}
+
+class _NotificationBell extends StatelessWidget {
+  const _NotificationBell({required this.unreadCount, required this.onPressed});
+
+  final int unreadCount;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    final count = unreadCount > 99 ? '99+' : unreadCount.toString();
+    final notificationTooltip = context.l10n.t('notifications.title');
+    return Padding(
+      padding: const EdgeInsets.only(right: 4),
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          IconButton(
+            tooltip: notificationTooltip,
+            onPressed: onPressed,
+            icon: const Icon(Icons.notifications_none),
+          ),
+          if (unreadCount > 0)
+            Positioned(
+              right: 4,
+              top: 4,
+              child: Container(
+                constraints: const BoxConstraints(minWidth: 18, minHeight: 18),
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.error,
+                  borderRadius: BorderRadius.circular(999),
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  count,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onError,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -172,7 +270,7 @@ class _VoiceAiIntroCard extends StatelessWidget {
       color: const Color(0xFFEFF8FF),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
-        onTap: () => Navigator.pushNamed(context, '/voice-assistant'),
+        onTap: () => AppNavigator.pushNamed('/voice-assistant'),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Row(
@@ -229,7 +327,7 @@ class _TrialEndingBanner extends StatelessWidget {
                 constraints.maxWidth < (520 + (textScale - 1) * 620);
             final title = _TrialEndingTitle(text: l10n.t('trialEndsTomorrow'));
             final action = FilledButton(
-              onPressed: () => Navigator.pushNamed(context, '/subscription'),
+              onPressed: () => AppNavigator.pushNamed('/subscription'),
               child: Text(l10n.t('subscribeToContinue')),
             );
 
@@ -341,8 +439,9 @@ class _GlucoseHeader extends StatelessWidget {
                 width: 116,
                 child: TextField(
                   controller: controller,
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
+                  keyboardType: const TextInputType.numberWithOptions(
+                    decimal: true,
+                  ),
                   textInputAction: TextInputAction.done,
                   onSubmitted: (_) => onSave(),
                   style: const TextStyle(
@@ -409,17 +508,10 @@ class _EmergencyStrip extends StatelessWidget {
       child: ListTile(
         minLeadingWidth: 24,
         visualDensity: const VisualDensity(vertical: -3),
-        leading: const Icon(
-          Icons.sos,
-          color: Color(0xFFB42318),
-          size: 22,
-        ),
+        leading: const Icon(Icons.sos, color: Color(0xFFB42318), size: 22),
         title: Text(
           l10n.t('emergencyInfo'),
-          style: const TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 12.5,
-          ),
+          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12.5),
         ),
         subtitle: Text(
           l10n.t('emergencySubtitle'),
@@ -428,7 +520,7 @@ class _EmergencyStrip extends StatelessWidget {
           style: const TextStyle(fontSize: 11),
         ),
         trailing: const Icon(Icons.chevron_right, size: 20),
-        onTap: () => Navigator.pushNamed(context, '/emergency'),
+        onTap: () => AppNavigator.pushNamed('/emergency'),
       ),
     );
   }
@@ -561,21 +653,24 @@ class _HomeSectionsGrid extends StatelessWidget {
             route: '/subscription',
           ),
           _SectionEntry(
+            title: l10n.t('referrals'),
+            icon: Icons.group_add,
+            route: '/referrals',
+          ),
+          _SectionEntry(
             title: l10n.t('settings'),
             icon: Icons.settings,
             route: '/profile',
           ),
-          const _SectionEntry(
-            title: 'helpTitle',
+          _SectionEntry(
+            title: l10n.t('helpTitle'),
             icon: Icons.help_outline,
-            dialogTitle: 'helpTitle',
-            dialogText: 'helpText',
+            route: '/help',
           ),
-          const _SectionEntry(
-            title: 'aboutTitle',
+          _SectionEntry(
+            title: l10n.t('about.title'),
             icon: Icons.info_outline,
-            dialogTitle: 'aboutTitle',
-            dialogText: 'marketingAboutText',
+            route: '/about',
           ),
         ],
       ),
@@ -612,9 +707,8 @@ class _HomeSectionsGrid extends StatelessWidget {
             childAspectRatio: cellWidth / cellHeight,
           ),
           itemCount: sections.length,
-          itemBuilder: (context, index) => _SectionCard(
-            section: sections[index],
-          ),
+          itemBuilder: (context, index) =>
+              _SectionCard(section: sections[index]),
         );
       },
     );
@@ -640,19 +734,11 @@ class _HomeSection {
 }
 
 class _SectionEntry {
-  const _SectionEntry({
-    required this.title,
-    required this.icon,
-    this.route,
-    this.dialogTitle,
-    this.dialogText,
-  });
+  const _SectionEntry({required this.title, required this.icon, this.route});
 
   final String title;
   final IconData icon;
   final String? route;
-  final String? dialogTitle;
-  final String? dialogText;
 }
 
 class _SectionCard extends StatelessWidget {
@@ -668,7 +754,7 @@ class _SectionCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         onTap: () {
           if (section.route != null) {
-            Navigator.pushNamed(context, section.route!);
+            AppNavigator.pushNamed(section.route!);
             return;
           }
           _showSectionSheet(context, section);
@@ -761,27 +847,10 @@ class _SectionCard extends StatelessWidget {
                     onTap: () {
                       Navigator.pop(sheetContext);
                       if (entry.route != null) {
-                        Navigator.pushNamed(context, entry.route!);
-                        return;
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          AppNavigator.pushNamed(entry.route!);
+                        });
                       }
-                      showDialog<void>(
-                        context: context,
-                        builder: (dialogContext) => AlertDialog(
-                          title: Text(
-                            entry.dialogTitle ?? entry.title,
-                          ),
-                          content: SingleChildScrollView(
-                            child: Text(entry.dialogText ?? ''),
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(dialogContext),
-                              child:
-                                  const LocalizedText('ui.text.f080f201d00d'),
-                            ),
-                          ],
-                        ),
-                      );
                     },
                   ),
                 ),

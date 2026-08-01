@@ -12,8 +12,9 @@ class FoodRecognitionService {
   FoodRecognitionService({http.Client? client})
       : _client = client ?? http.Client();
 
-  static const _backendEndpoint =
-      String.fromEnvironment('FOOD_RECOGNITION_ENDPOINT');
+  static const _backendEndpoint = String.fromEnvironment(
+    'FOOD_RECOGNITION_ENDPOINT',
+  );
 
   final http.Client _client;
 
@@ -73,8 +74,9 @@ class FoodRecognitionService {
       ..fields['target_glucose'] = appState.targetGlucose.toStringAsFixed(1)
       ..fields['insulin_to_carb_ratio'] =
           appState.insulinToCarbRatio.toStringAsFixed(1)
-      ..fields['correction_factor'] =
-          appState.correctionFactor.toStringAsFixed(1)
+      ..fields['correction_factor'] = appState.correctionFactor.toStringAsFixed(
+        1,
+      )
       ..files.add(
         http.MultipartFile.fromBytes(
           'image',
@@ -102,7 +104,14 @@ class FoodRecognitionService {
   }
 
   Map<String, dynamic> _decodeJson(List<int> bodyBytes) {
-    final decoded = jsonDecode(utf8.decode(bodyBytes));
+    final Object? decoded;
+    try {
+      decoded = jsonDecode(utf8.decode(bodyBytes));
+    } catch (_) {
+      throw const FoodRecognitionException(
+        'Service returned an unexpected response format.',
+      );
+    }
     if (decoded is! Map<String, dynamic>) {
       throw const FoodRecognitionException(
         'Service returned an unexpected response format.',

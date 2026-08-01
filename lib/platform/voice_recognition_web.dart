@@ -207,25 +207,20 @@ Future<String?> _listenWithMediaRecorder(
   final bytes = await _blobBytes(html.Blob(chunks, 'audio/webm'));
   if (bytes.isEmpty) throw PlatformException(code: 'no_match');
 
-  final request = http.MultipartRequest(
-    'POST',
-    Uri.parse('$baseUrl/ai/transcribe'),
-  )
-    ..fields['language_code'] = languageCode
-    ..files.add(http.MultipartFile.fromBytes(
-      'audio',
-      bytes,
-      filename: 'voice.webm',
-    ));
+  final request =
+      http.MultipartRequest('POST', Uri.parse('$baseUrl/ai/transcribe'))
+        ..fields['language_code'] = languageCode
+        ..files.add(
+          http.MultipartFile.fromBytes('audio', bytes, filename: 'voice.webm'),
+        );
   if (accountToken != null && accountToken.isNotEmpty) {
     request.headers['Authorization'] = 'Bearer $accountToken';
   }
 
   try {
-    final response =
-        await http.Response.fromStream(await request.send()).timeout(
-      const Duration(seconds: 35),
-    );
+    final response = await http.Response.fromStream(
+      await request.send(),
+    ).timeout(const Duration(seconds: 35));
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw PlatformException(code: 'unavailable');
     }

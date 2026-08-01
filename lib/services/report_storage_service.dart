@@ -31,15 +31,19 @@ class ReportStorageService {
   }
 
   Future<List<StoredReport>> list(String token) async {
-    final response =
-        await _client.get(_uri('/reports'), headers: _headers(token));
+    final response = await _client.get(
+      _uri('/reports'),
+      headers: _headers(token),
+    );
     if (response.statusCode != 200) throw Exception(_error(response));
     final body = jsonDecode(response.body);
     return (body['reports'] as List? ?? [])
         .whereType<Map>()
-        .map((item) => StoredReport.fromJson(
-              item.map((key, value) => MapEntry(key.toString(), value)),
-            ))
+        .map(
+          (item) => StoredReport.fromJson(
+            item.map((key, value) => MapEntry(key.toString(), value)),
+          ),
+        )
         .toList();
   }
 
@@ -54,13 +58,12 @@ class ReportStorageService {
 
   Map<String, String> _headers(String token) => {
         'Authorization': 'Bearer $token',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
       };
 
   String _error(http.Response response) {
     try {
-      return jsonDecode(response.body)['code']?.toString() ??
-          'NETWORK_ERROR';
+      return jsonDecode(response.body)['code']?.toString() ?? 'NETWORK_ERROR';
     } catch (_) {
       return 'NETWORK_ERROR';
     }

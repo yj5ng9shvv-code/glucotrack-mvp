@@ -66,8 +66,7 @@ final voicePermissionTranslations = <String, Map<String, String>>{
         'Разрешение на микрофон заблокировано. Откройте настройки приложения и разрешите доступ к микрофону.',
     'voiceOpenSettings': 'Открыть настройки',
     'voiceRecognizerBusy': 'Распознавание голоса уже активно.',
-    'voiceNoSpeechRecognized':
-        'Речь не распознана. Попробуйте еще раз.',
+    'voiceNoSpeechRecognized': 'Речь не распознана. Попробуйте еще раз.',
   },
   'pt': {
     'voiceMicPermissionDenied':

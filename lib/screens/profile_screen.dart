@@ -6,8 +6,10 @@ import 'package:provider/provider.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/app_state.dart';
+import '../navigation/app_navigator.dart';
 import '../services/sos_public_service.dart';
 import '../widgets/allergy_input_card.dart';
+import 'gdpr_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -109,11 +111,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
     await state.updateMedicalSettings(
       diabetesType: _diabetesType,
-      targetGlucose:
-          state.glucoseFromDisplay(_parseDouble(_targetController.text)),
+      targetGlucose: state.glucoseFromDisplay(
+        _parseDouble(_targetController.text),
+      ),
       insulinToCarbRatio: _parseDouble(_ratioController.text),
-      correctionFactor:
-          state.glucoseFromDisplay(_parseDouble(_correctionController.text)),
+      correctionFactor: state.glucoseFromDisplay(
+        _parseDouble(_correctionController.text),
+      ),
     );
     await state.updateAllergyProfile(
       hasAllergies: _hasAllergies,
@@ -288,10 +292,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     final correction = unit == GlucoseUnit.mgDl
                         ? state.correctionFactor * 18.0182
                         : state.correctionFactor;
-                    _targetController.text = target
-                        .toStringAsFixed(unit == GlucoseUnit.mgDl ? 0 : 1);
-                    _correctionController.text = correction
-                        .toStringAsFixed(unit == GlucoseUnit.mgDl ? 0 : 1);
+                    _targetController.text = target.toStringAsFixed(
+                      unit == GlucoseUnit.mgDl ? 0 : 1,
+                    );
+                    _correctionController.text = correction.toStringAsFixed(
+                      unit == GlucoseUnit.mgDl ? 0 : 1,
+                    );
                   },
                 ),
                 const SizedBox(height: 10),
@@ -375,8 +381,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   l10n
                       .t('profile.selectedLanguage')
                       .replaceAll('{language}', state.languageLabel),
-                  style:
-                      const TextStyle(color: Color(0xFF64748B), fontSize: 13),
+                  style: const TextStyle(
+                    color: Color(0xFF64748B),
+                    fontSize: 13,
+                  ),
                 ),
               ],
             ),
@@ -392,8 +400,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     title: Text(l10n.t('profile.sosProfileTitle')),
                     subtitle: Text(l10n.t('profile.sosProfileSubtitle')),
                     trailing: const Icon(Icons.chevron_right),
-                    onTap: () =>
-                        Navigator.pushNamed(context, '/emergency-profile'),
+                    onTap: () => AppNavigator.pushNamed('/emergency-profile'),
                   ),
                   const Divider(height: 1),
                   ListTile(
@@ -404,8 +411,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     title: Text(l10n.t('profile.emergencyCardTitle')),
                     subtitle: Text(l10n.t('profile.emergencyCardSubtitle')),
                     trailing: const Icon(Icons.chevron_right),
-                    onTap: () =>
-                        Navigator.pushNamed(context, '/emergency-card'),
+                    onTap: () => AppNavigator.pushNamed('/emergency-card'),
                   ),
                 ],
               ),
@@ -417,7 +423,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: Text(l10n.t('profile.sensorsTitle')),
                 subtitle: Text(l10n.t('profile.sensorsSubtitle')),
                 trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.pushNamed(context, '/sensors'),
+                onTap: () => AppNavigator.pushNamed('/sensors'),
+              ),
+            ),
+            const SizedBox(height: 12),
+            Card(
+              child: ListTile(
+                leading: const Icon(
+                  Icons.privacy_tip_outlined,
+                  color: Color(0xFF075BBB),
+                ),
+                title: Text(l10n.t('gdpr.profileTitle')),
+                subtitle: Text(l10n.t('gdpr.profileSubtitle')),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (_) => GdprScreen())),
               ),
             ),
             const SizedBox(height: 16),
@@ -439,9 +460,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const SizedBox(height: 10),
             OutlinedButton.icon(
               onPressed: () async {
-                await context.read<AppState>().logout();
-                if (!context.mounted) return;
-                Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false);
+                AppNavigator.popUntilRoot();
+                final state = context.read<AppState>();
+                await state.logout();
               },
               icon: const Icon(Icons.logout),
               label: Text(l10n.t('profile.logout')),

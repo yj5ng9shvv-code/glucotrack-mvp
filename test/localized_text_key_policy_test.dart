@@ -14,8 +14,9 @@ void main() {
     for (final entity in Directory('lib').listSync(recursive: true)) {
       if (entity is! File || !entity.path.endsWith('.dart')) continue;
       if (entity.path.endsWith('localized_text.dart')) continue;
-      for (final match
-          in localizedTextCall.allMatches(entity.readAsStringSync())) {
+      for (final match in localizedTextCall.allMatches(
+        entity.readAsStringSync(),
+      )) {
         final key = match.group(1)!;
         if (!stableKey.hasMatch(key)) {
           violations.add('${entity.path}: $key');

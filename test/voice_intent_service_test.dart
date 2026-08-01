@@ -26,18 +26,28 @@ void main() {
   });
 
   test('parses localized navigation commands', () {
-    expect(service.parse('Trends anzeigen', languageCode: 'de').type,
-        VoiceIntentType.openTrends);
-    expect(service.parse('Informe médico', languageCode: 'es').type,
-        VoiceIntentType.openDoctorReport);
-    expect(service.parse('Dostęp rodzinny', languageCode: 'pl').type,
-        VoiceIntentType.familyStatus);
+    expect(
+      service.parse('Trends anzeigen', languageCode: 'de').type,
+      VoiceIntentType.openTrends,
+    );
+    expect(
+      service.parse('Informe médico', languageCode: 'es').type,
+      VoiceIntentType.openDoctorReport,
+    );
+    expect(
+      service.parse('Dostęp rodzinny', languageCode: 'pl').type,
+      VoiceIntentType.familyStatus,
+    );
   });
 
   test('parses localized glucose and insulin values', () {
-    expect(service.parse('Aktuelle Glukose 120', languageCode: 'de').type,
-        VoiceIntentType.recordGlucose);
-    expect(service.parse('insulina activa 6', languageCode: 'es').type,
-        VoiceIntentType.recordInsulin);
+    expect(
+      service.parse('Aktuelle Glukose 120', languageCode: 'de').type,
+      VoiceIntentType.recordGlucose,
+    );
+    expect(
+      service.parse('insulina activa 6', languageCode: 'es').type,
+      VoiceIntentType.recordInsulin,
+    );
   });
 }

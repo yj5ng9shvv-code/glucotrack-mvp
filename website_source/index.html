@@ -12,9 +12,8 @@
   <meta property="og:url" content="https://glukotrack.com/" />
   <meta name="twitter:card" content="summary" />
   <link rel="canonical" href="https://glukotrack.com/" />
-  <link rel="manifest" href="/manifest.webmanifest" />
   <title>GlukoTrack</title>
-  <link rel="stylesheet" href="style.css?v=20260706-3" />
+  <link rel="stylesheet" href="style.css?v=20260714-ref1" />
 </head>
 <body>
   <nav class="nav">
@@ -24,6 +23,8 @@
         <a href="#features" data-i18n="navFeatures">Features</a>
         <a href="#app" data-i18n="navApp">Web App</a>
         <a href="#plans" data-i18n="navPlans">Plans</a>
+        <a href="/about/" data-i18n="aboutTitle">About</a>
+        <a href="/help/" data-i18n="helpCenter">Help</a>
         <a href="#safety" data-i18n="navSafety">Important</a>
         <a href="#contact" data-i18n="navContact">Contacts</a>
       </div>
@@ -109,7 +110,7 @@
     <div class="marketing-summary">
       <p data-i18n="marketingMoreText"></p>
       <p data-i18n="marketingFinalText"></p>
-      <button id="open-about" class="btn btn-blue" type="button" data-i18n="aboutTitle">About GlukoTrack</button>
+      <a id="open-about" class="btn btn-blue" href="/about/" data-i18n="aboutTitle">About GlukoTrack</a>
     </div>
   </div></section>
 
@@ -136,7 +137,13 @@
   </div></section>
 
   <section id="app" class="section app-section"><div class="container">
-    <div class="app-box"><a id="open-web-app" class="btn btn-blue" href="/app/" data-i18n="openFullApp">Open GlukoTrack Web App</a><iframe id="web-app-frame" title="GlukoTrack Web App"></iframe></div>
+    <div class="app-box">
+      <div class="app-actions">
+        <a id="open-web-app" class="btn btn-blue" href="/app/" data-i18n="openFullApp">Open GlukoTrack Web App</a>
+        <a class="btn btn-outline" href="/app/#/referrals" data-i18n="referralProgram">Referral program</a>
+      </div>
+      <iframe id="web-app-frame" title="GlukoTrack Web App"></iframe>
+    </div>
   </div></section>
 
   <section id="plans" class="section"><div class="container">
@@ -189,6 +196,38 @@
       }
     };
     Object.assign(marketingTranslations, window.glukoMarketingTranslations || {});
+    const referralProgramTranslations = {
+      en: 'Referral program',
+      de: 'Empfehlungsprogramm',
+      fr: 'Programme de parrainage',
+      es: 'Programa de referidos',
+      it: 'Programma referral',
+      pl: 'Program poleceń',
+      uk: 'Реферальна програма',
+      ru: 'Реферальная программа',
+      pt: 'Programa de referências',
+      nl: 'Verwijzingsprogramma',
+      ro: 'Program de recomandări',
+      cs: 'Doporučovací program',
+      sk: 'Referenčný program',
+      hu: 'Ajánlói program',
+      sv: 'Värvningsprogram',
+      da: 'Henvisningsprogram',
+      fi: 'Suositteluohjelma',
+      no: 'Vervingsprogram',
+      el: 'Πρόγραμμα παραπομπών',
+      tr: 'Referans programı',
+      bg: 'Реферална програма',
+      hr: 'Referalni program',
+      sl: 'Referenčni program',
+      lt: 'Rekomendacijų programa',
+      lv: 'Ieteikumu programma',
+      et: 'Soovitusprogramm',
+      sr: 'Реферални програм',
+      sq: 'Programi i referimeve',
+      mk: 'Реферална програма',
+      is: 'Tilvísunarforrit'
+    };
     const languageSelect = document.getElementById('site-language');
     const webAppLink = document.getElementById('open-web-app');
     const webAppFrame = document.getElementById('web-app-frame');
@@ -213,6 +252,7 @@
         ...marketingTranslations.en,
         ...(marketingTranslations[code] || {})
       };
+      copy.referralProgram = referralProgramTranslations[code] || referralProgramTranslations.en;
       const voice = (window.glukoVoiceMarketing || {})[code] || window.glukoVoiceMarketing.en;
       copy.marketingVoiceTitle = voice[0];
       copy.marketingVoiceText = voice[1];
@@ -244,7 +284,7 @@
       installLink.setAttribute('aria-label', installCopy[0]);
       document.getElementById('hero-install-hint').textContent = installCopy[3];
       window.GlucoTrackInstall.qr(document.getElementById('hero-install-qr'), code, 180);
-      const appUrl = `/app/?lang=${encodeURIComponent(code)}&v=20260703-50`;
+      const appUrl = `/app/?lang=${encodeURIComponent(code)}&v=20260715-l10n-fix-2`;
       webAppLink.href = appUrl;
       if (webAppFrame.getAttribute('src') !== appUrl) webAppFrame.src = appUrl;
       window.currentSiteCopy = copy;
@@ -267,20 +307,6 @@
         const copy = window.currentSiteCopy || {};
         openFeatureDialog(copy[tile.dataset.detailTitle] || '', [copy[tile.dataset.detailText] || '']);
       });
-    });
-    document.getElementById('open-about').addEventListener('click', () => {
-      const copy = window.currentSiteCopy || {};
-      openFeatureDialog(copy.aboutTitle || copy.marketingHeroTitle || 'GlukoTrack', [
-        copy.marketingHeroText,
-        `${copy.marketingVoiceTitle}. ${copy.marketingVoiceText}`,
-        `${copy.marketingAiTitle}. ${copy.marketingAiText}`,
-        `${copy.marketingPhotoTitle}. ${copy.marketingPhotoText}`,
-        `${copy.marketingFamilyTitle}. ${copy.marketingFamilyText}`,
-        `${copy.marketingSosTitle}. ${copy.marketingSosText}`,
-        copy.marketingMoreText,
-        copy.marketingFinalText,
-        copy.safetyText
-      ], true);
     });
     document.getElementById('feature-dialog-close').addEventListener('click', () => featureDialog.close());
     featureDialog.addEventListener('click', (event) => {

@@ -106,10 +106,14 @@ void main() {
     await state.load();
 
     expect(state.languageCode, 'en');
-    expect(AppLocalizations(state.languageCode).t('measurementHint'),
-        isNot('measurementHint'));
-    expect(AppLocalizations(state.languageCode).t('emergencyInfo'),
-        isNot('emergencyInfo'));
+    expect(
+      AppLocalizations(state.languageCode).t('measurementHint'),
+      isNot('measurementHint'),
+    );
+    expect(
+      AppLocalizations(state.languageCode).t('emergencyInfo'),
+      isNot('emergencyInfo'),
+    );
   });
 
   test('broken machine-translation markers never reach the UI', () {
@@ -123,5 +127,9 @@ void main() {
 
 class _OfflineAuthService extends AuthService {
   @override
-  Future<AuthSession?> restoreSession(String token) async => null;
+  Future<AuthSession?> restoreSession(
+    String token, {
+    String? refreshToken,
+  }) async =>
+      null;
 }

@@ -1,0 +1,1009 @@
+{
+  "generatedAt": "2026-07-15T18:47:36.960Z",
+  "root": "C:\\GLUKOTRACK\\glucotrack_mvp",
+  "phase": "analysis-only",
+  "deletionPerformed": false,
+  "git": {
+    "currentBranch": "main",
+    "currentHead": "59a8c094069d307ab75143ff674df793d6dbb450",
+    "cleanupBranchExists": true,
+    "beforeCleanupTagExists": true,
+    "dirty": true,
+    "statusShort": [
+      "D phone_window.xml",
+      " D phone_window2.xml",
+      " D phone_window3.xml"
+    ]
+  },
+  "inventory": {
+    "totalEntries": 2369,
+    "files": 1957,
+    "directories": 412,
+    "totalBytes": 132388276,
+    "topDirectories": [
+      {
+        "directory": ".git",
+        "size": 91934185
+      },
+      {
+        "directory": ".git/objects",
+        "size": 91851642
+      },
+      {
+        "directory": "website_source",
+        "size": 33848596
+      },
+      {
+        "directory": "website_source/app",
+        "size": 33463868
+      },
+      {
+        "directory": "website_source/app/canvaskit",
+        "size": 27448780
+      },
+      {
+        "directory": "website_source/app/canvaskit/chromium",
+        "size": 7058775
+      },
+      {
+        "directory": ".git/objects/70",
+        "size": 5828221
+      },
+      {
+        "directory": ".git/objects/8f",
+        "size": 5541782
+      },
+      {
+        "directory": ".git/objects/dd",
+        "size": 4724620
+      },
+      {
+        "directory": ".git/objects/a5",
+        "size": 4394115
+      },
+      {
+        "directory": ".git/objects/42",
+        "size": 4166383
+      },
+      {
+        "directory": ".git/objects/90",
+        "size": 3711028
+      },
+      {
+        "directory": ".git/objects/ad",
+        "size": 3708578
+      },
+      {
+        "directory": ".git/objects/40",
+        "size": 3621218
+      },
+      {
+        "directory": ".git/objects/b9",
+        "size": 3618394
+      },
+      {
+        "directory": "reports",
+        "size": 3587903
+      },
+      {
+        "directory": ".git/objects/f4",
+        "size": 3239414
+      },
+      {
+        "directory": ".git/objects/c8",
+        "size": 3184289
+      },
+      {
+        "directory": ".git/objects/8e",
+        "size": 2507690
+      },
+      {
+        "directory": ".git/objects/85",
+        "size": 2482262
+      },
+      {
+        "directory": ".git/objects/08",
+        "size": 2470685
+      },
+      {
+        "directory": ".git/objects/a1",
+        "size": 2466933
+      },
+      {
+        "directory": ".git/objects/b8",
+        "size": 1948527
+      },
+      {
+        "directory": ".git/objects/be",
+        "size": 1847349
+      },
+      {
+        "directory": ".git/objects/fd",
+        "size": 1686800
+      },
+      {
+        "directory": ".git/objects/1e",
+        "size": 1599104
+      },
+      {
+        "directory": ".git/objects/51",
+        "size": 1597088
+      },
+      {
+        "directory": ".git/objects/68",
+        "size": 1548733
+      },
+      {
+        "directory": ".git/objects/96",
+        "size": 1542476
+      },
+      {
+        "directory": ".git/objects/00",
+        "size": 1541126
+      },
+      {
+        "directory": ".git/objects/bf",
+        "size": 1513342
+      },
+      {
+        "directory": ".git/objects/6a",
+        "size": 1513310
+      },
+      {
+        "directory": ".git/objects/d6",
+        "size": 1511293
+      },
+      {
+        "directory": ".git/objects/c4",
+        "size": 1508769
+      },
+      {
+        "directory": ".git/objects/ae",
+        "size": 1500989
+      },
+      {
+        "directory": ".git/objects/92",
+        "size": 1494597
+      },
+      {
+        "directory": "website_source/app/assets",
+        "size": 1492595
+      },
+      {
+        "directory": ".git/objects/2e",
+        "size": 1479266
+      },
+      {
+        "directory": ".git/objects/02",
+        "size": 1477801
+      },
+      {
+        "directory": ".git/objects/f0",
+        "size": 1462491
+      }
+    ]
+  },
+  "dependencies": {
+    "pubspecPresent": true,
+    "pubspecDependencyLines": [
+      "intl: any",
+      "provider: ^6.1.2",
+      "image_picker: ^1.1.2",
+      "http: ^1.2.2",
+      "http_parser: ^4.1.2",
+      "url_launcher: ^6.3.1",
+      "shared_preferences: ^2.3.2",
+      "fl_chart: ^0.69.0",
+      "qr_flutter: ^4.1.0",
+      "cupertino_icons: ^1.0.8",
+      "web: any",
+      "google_sign_in: 7.2.0",
+      "google_sign_in_web: 1.1.3",
+      "sign_in_with_apple: ^7.0.1",
+      "flutter_lints: ^4.0.0"
+    ],
+    "packageJsonFiles": [
+      "backend/package.json",
+      "backend_proxy_sample/package.json",
+      "package.json"
+    ],
+    "lockFiles": [
+      "backend/package-lock.json",
+      "pubspec.lock"
+    ]
+  },
+  "candidates": [
+    {
+      "path": ".git/objects/0f/tmp_obj_YWiM8J",
+      "category": "DUPLICATE_OR_OBSOLETE_NAME",
+      "risk": "medium",
+      "size": 2683,
+      "platform": "Project",
+      "reason": "Filename/path contains old/copy/backup/temp/fixed/final style marker.",
+      "evidence": "Name-based signal only; imports/routes/build references still need manual proof.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/objects/12/tmp_obj_Xtlqeh",
+      "category": "DUPLICATE_OR_OBSOLETE_NAME",
+      "risk": "medium",
+      "size": 0,
+      "platform": "Project",
+      "reason": "Filename/path contains old/copy/backup/temp/fixed/final style marker.",
+      "evidence": "Name-based signal only; imports/routes/build references still need manual proof.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/tags/backup-before-deep-cleanup-2026-07-15",
+      "category": "DUPLICATE_OR_OBSOLETE_NAME",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Filename/path contains old/copy/backup/temp/fixed/final style marker.",
+      "evidence": "Name-based signal only; imports/routes/build references still need manual proof.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend/.env",
+      "category": "SECRET_REVIEW",
+      "risk": "high",
+      "size": 1074,
+      "platform": "Backend",
+      "reason": "Filename matches secret/credential pattern.",
+      "evidence": "Do not print values. Verify whether file is template, production credential, or required platform config.",
+      "action": "candidate: move to env/secure storage only after rotation plan",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend/database_schema.sql",
+      "category": "ARCHIVE_OR_RELEASE_ARTIFACT",
+      "risk": "high",
+      "size": 9430,
+      "platform": "Backend",
+      "reason": "Archive/release/database dump extension found.",
+      "evidence": "Could be current public release or backup; verify website links, deployment, and secrets before moving/removal.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend/phpmyadmin_import.sql",
+      "category": "ARCHIVE_OR_RELEASE_ARTIFACT",
+      "risk": "high",
+      "size": 9178,
+      "platform": "Backend",
+      "reason": "Archive/release/database dump extension found.",
+      "evidence": "Could be current public release or backup; verify website links, deployment, and secrets before moving/removal.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend_proxy_sample/.env",
+      "category": "SECRET_REVIEW",
+      "risk": "high",
+      "size": 920,
+      "platform": "Project",
+      "reason": "Filename matches secret/credential pattern.",
+      "evidence": "Do not print values. Verify whether file is template, production credential, or required platform config.",
+      "action": "candidate: move to env/secure storage only after rotation plan",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend_proxy_sample/database_schema.sql",
+      "category": "ARCHIVE_OR_RELEASE_ARTIFACT",
+      "risk": "high",
+      "size": 3957,
+      "platform": "Project",
+      "reason": "Archive/release/database dump extension found.",
+      "evidence": "Could be current public release or backup; verify website links, deployment, and secrets before moving/removal.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "BACKUP_VERIFICATION_REPORT.md",
+      "category": "DUPLICATE_OR_OBSOLETE_NAME",
+      "risk": "medium",
+      "size": 1141,
+      "platform": "Project",
+      "reason": "Filename/path contains old/copy/backup/temp/fixed/final style marker.",
+      "evidence": "Name-based signal only; imports/routes/build references still need manual proof.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "DATABASE_CLEANUP_CANDIDATES.sql",
+      "category": "ARCHIVE_OR_RELEASE_ARTIFACT",
+      "risk": "high",
+      "size": 662,
+      "platform": "Project",
+      "reason": "Archive/release/database dump extension found.",
+      "evidence": "Could be current public release or backup; verify website links, deployment, and secrets before moving/removal.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "DATABASE_CLEANUP_PLAN.sql",
+      "category": "ARCHIVE_OR_RELEASE_ARTIFACT",
+      "risk": "high",
+      "size": 808,
+      "platform": "Project",
+      "reason": "Archive/release/database dump extension found.",
+      "evidence": "Could be current public release or backup; verify website links, deployment, and secrets before moving/removal.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "DATABASE_CLEANUP_ROLLBACK.sql",
+      "category": "ARCHIVE_OR_RELEASE_ARTIFACT",
+      "risk": "high",
+      "size": 564,
+      "platform": "Project",
+      "reason": "Archive/release/database dump extension found.",
+      "evidence": "Could be current public release or backup; verify website links, deployment, and secrets before moving/removal.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "tools/fix_mojibake_literals.mjs",
+      "category": "DUPLICATE_OR_OBSOLETE_NAME",
+      "risk": "medium",
+      "size": 1538,
+      "platform": "Project",
+      "reason": "Filename/path contains old/copy/backup/temp/fixed/final style marker.",
+      "evidence": "Name-based signal only; imports/routes/build references still need manual proof.",
+      "action": "review before deletion",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/objects/0f/6330ea3e6d5184b2e0f7fda0c741c870e0f9c4",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 2683,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/objects/0f/6330ea3e6d5184b2e0f7fda0c741c870e0f9c4, .git/objects/0f/tmp_obj_YWiM8J",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/objects/0f/tmp_obj_YWiM8J",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 2683,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/objects/0f/6330ea3e6d5184b2e0f7fda0c741c870e0f9c4, .git/objects/0f/tmp_obj_YWiM8J",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/codex/turn-diffs/captures/1784141196369/6ecb2996-c1f8-4f5a-a5f2-53a228b73ea5/base",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/codex/turn-diffs/captures/1784141196369/6ecb2996-c1f8-4f5a-a5f2-53a228b73ea5/base, .git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/f48865260e7a91e6be66945c8282dfdab1da9cbd040e0550f95aee523944fd15/1784140916760/7638af22-5b95-4efb-8aa7-65ef51df137c",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/f48865260e7a91e6be66945c8282dfdab1da9cbd040e0550f95aee523944fd15/1784140916760/7638af22-5b95-4efb-8aa7-65ef51df137c",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/codex/turn-diffs/captures/1784141196369/6ecb2996-c1f8-4f5a-a5f2-53a228b73ea5/base, .git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/f48865260e7a91e6be66945c8282dfdab1da9cbd040e0550f95aee523944fd15/1784140916760/7638af22-5b95-4efb-8aa7-65ef51df137c",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/heads/audit/deep-cleanup-2026-07-15",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/heads/audit/deep-cleanup-2026-07-15, .git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/heads/audit/deep-cleanup-2026-07-15, .git/refs/tags/before-deep-cleanup-2026-07-15-17-05",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/heads/chore/full-project-cleanup",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/heads/chore/full-project-cleanup, .git/refs/remotes/origin/main, .git/refs/tags/before-full-cleanup",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/remotes/origin/main",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/heads/chore/full-project-cleanup, .git/refs/remotes/origin/main, .git/refs/tags/before-full-cleanup",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": ".git/refs/tags/before-full-cleanup",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 41,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: .git/refs/heads/chore/full-project-cleanup, .git/refs/remotes/origin/main, .git/refs/tags/before-full-cleanup",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "android/app/src/debug/AndroidManifest.xml",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 385,
+      "platform": "Android",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: android/app/src/debug/AndroidManifest.xml, android/app/src/profile/AndroidManifest.xml",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "android/app/src/profile/AndroidManifest.xml",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 385,
+      "platform": "Android",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: android/app/src/debug/AndroidManifest.xml, android/app/src/profile/AndroidManifest.xml",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "assets/translations/core.json",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 97380,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: assets/translations/core.json, website_source/app/assets/assets/translations/core.json",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "website_source/app/assets/assets/translations/core.json",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 97380,
+      "platform": "Website",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: assets/translations/core.json, website_source/app/assets/assets/translations/core.json",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend/DB_SETUP_RU.md",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 2151,
+      "platform": "Backend",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: backend/DB_SETUP_RU.md, backend_proxy_sample/DB_SETUP_RU.md",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend_proxy_sample/DB_SETUP_RU.md",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 2151,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: backend/DB_SETUP_RU.md, backend_proxy_sample/DB_SETUP_RU.md",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend/install-db.js",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 346,
+      "platform": "Backend",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: backend/install-db.js, backend_proxy_sample/install-db.js",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend_proxy_sample/install-db.js",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 346,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: backend/install-db.js, backend_proxy_sample/install-db.js",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend/nginx-glukotrack-api.conf.example",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 277,
+      "platform": "Backend",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: backend/nginx-glukotrack-api.conf.example, backend_proxy_sample/nginx-glukotrack-api.conf.example",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "backend_proxy_sample/nginx-glukotrack-api.conf.example",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 277,
+      "platform": "Project",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: backend/nginx-glukotrack-api.conf.example, backend_proxy_sample/nginx-glukotrack-api.conf.example",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Flutter/Debug.xcconfig",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 31,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Flutter/Debug.xcconfig, ios/Flutter/Release.xcconfig",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Flutter/Release.xcconfig",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 31,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Flutter/Debug.xcconfig, ios/Flutter/Release.xcconfig",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 962,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png, ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 962,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png, ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 2195,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png, ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 2195,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png, ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 68,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png, ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png, ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 68,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png, ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png, ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 68,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png, ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png, ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 246,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 246,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 246,
+      "platform": "macOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 246,
+      "platform": "macOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist, macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 234,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings, ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 234,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings, ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "ios/Runner.xcworkspace/contents.xcworkspacedata",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 159,
+      "platform": "iOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner.xcworkspace/contents.xcworkspacedata, macos/Runner.xcworkspace/contents.xcworkspacedata",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "macos/Runner.xcworkspace/contents.xcworkspacedata",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 159,
+      "platform": "macOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: ios/Runner.xcworkspace/contents.xcworkspacedata, macos/Runner.xcworkspace/contents.xcworkspacedata",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "macos/Flutter/Flutter-Debug.xcconfig",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 49,
+      "platform": "macOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: macos/Flutter/Flutter-Debug.xcconfig, macos/Flutter/Flutter-Release.xcconfig",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "macos/Flutter/Flutter-Release.xcconfig",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 49,
+      "platform": "macOS",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: macos/Flutter/Flutter-Debug.xcconfig, macos/Flutter/Flutter-Release.xcconfig",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "web/manifest.json",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 363,
+      "platform": "Flutter Web",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: web/manifest.json, website_source/app/manifest.json",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    },
+    {
+      "path": "website_source/app/manifest.json",
+      "category": "DUPLICATE",
+      "risk": "medium",
+      "size": 363,
+      "platform": "Website",
+      "reason": "Same byte size and SHA-256 hash as another file.",
+      "evidence": "Duplicate group: web/manifest.json, website_source/app/manifest.json",
+      "action": "candidate: keep canonical file only after reference/deploy check",
+      "deleteAutomatically": false
+    }
+  ],
+  "duplicateGroups": [
+    {
+      "key": "2683:d814fd01c6b9b6a88e45d10d77aee70fdbbd3783e8615fdb2e482b3f285125a7",
+      "size": 2683,
+      "paths": [
+        ".git/objects/0f/6330ea3e6d5184b2e0f7fda0c741c870e0f9c4",
+        ".git/objects/0f/tmp_obj_YWiM8J"
+      ]
+    },
+    {
+      "key": "41:d3cbc8ed4e7bd086bc8b72dca67c78756cd9f01dbb59a6686b3c5c90a0d24b2b",
+      "size": 41,
+      "paths": [
+        ".git/refs/codex/turn-diffs/captures/1784141196369/6ecb2996-c1f8-4f5a-a5f2-53a228b73ea5/base",
+        ".git/refs/codex/turn-diffs/checkpoints/508cdd64183e9819ad0ffdca3d98e9b25e33be2a5cf920c31b1634f3a4f8c47b/f48865260e7a91e6be66945c8282dfdab1da9cbd040e0550f95aee523944fd15/1784140916760/7638af22-5b95-4efb-8aa7-65ef51df137c"
+      ]
+    },
+    {
+      "key": "41:ec952a0dea57a69cbe32f1430e7898d17da2d0ec4c52faac38808227c121a14b",
+      "size": 41,
+      "paths": [
+        ".git/refs/heads/audit/deep-cleanup-2026-07-15",
+        ".git/refs/tags/before-deep-cleanup-2026-07-15-17-05"
+      ]
+    },
+    {
+      "key": "41:e5625e65480875cfb8b0a31aebb0d18d4beb7f2e6926dc70283e5fac6534616d",
+      "size": 41,
+      "paths": [
+        ".git/refs/heads/chore/full-project-cleanup",
+        ".git/refs/remotes/origin/main",
+        ".git/refs/tags/before-full-cleanup"
+      ]
+    },
+    {
+      "key": "385:b01a4541a8144c15bc617bab7eb267c99fa1476368fbbda5a12cdbf4e316a34c",
+      "size": 385,
+      "paths": [
+        "android/app/src/debug/AndroidManifest.xml",
+        "android/app/src/profile/AndroidManifest.xml"
+      ]
+    },
+    {
+      "key": "97380:884acd97bb9a7f38b587823e0b206efb679205bd8e5a1d1727794ef4c307dcea",
+      "size": 97380,
+      "paths": [
+        "assets/translations/core.json",
+        "website_source/app/assets/assets/translations/core.json"
+      ]
+    },
+    {
+      "key": "2151:0a1cb8cf5548b0ce52ceeb08839b4c090c54b4475d5ed1fd5f2f206dacc6ca95",
+      "size": 2151,
+      "paths": [
+        "backend/DB_SETUP_RU.md",
+        "backend_proxy_sample/DB_SETUP_RU.md"
+      ]
+    },
+    {
+      "key": "346:49b20ad777bafcee7f7c6e203fbc791ca048f67049715107bbc719410ba1a436",
+      "size": 346,
+      "paths": [
+        "backend/install-db.js",
+        "backend_proxy_sample/install-db.js"
+      ]
+    },
+    {
+      "key": "277:53302b8ccb79b8d1688bb9b2f9082c1d59fb8cbdde6774313d84fb6c4f524e0c",
+      "size": 277,
+      "paths": [
+        "backend/nginx-glukotrack-api.conf.example",
+        "backend_proxy_sample/nginx-glukotrack-api.conf.example"
+      ]
+    },
+    {
+      "key": "31:c0d1da54718e75f2028962b689258ecc741abf7cdaed50483aa5225264d0a7d7",
+      "size": 31,
+      "paths": [
+        "ios/Flutter/Debug.xcconfig",
+        "ios/Flutter/Release.xcconfig"
+      ]
+    },
+    {
+      "key": "962:0db7f2bc4675d93b8c9bcf8456fd05d586ba573ce7c970725c595433c4394a8b",
+      "size": 962,
+      "paths": [
+        "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png",
+        "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png"
+      ]
+    },
+    {
+      "key": "2195:5c0dd19d71a386fbac3a97552521b2df4fa22daa5c28ff8861157aa613ebbfd8",
+      "size": 2195,
+      "paths": [
+        "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png",
+        "ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png"
+      ]
+    },
+    {
+      "key": "68:93ae7d494fad0fb30cbf3ae746a39c4bc7a0f8bbf87fbb587a3f3c01f3c5ce20",
+      "size": 68,
+      "paths": [
+        "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png",
+        "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png",
+        "ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png"
+      ]
+    },
+    {
+      "key": "246:d557c2c32fc6258ec28981fa45dc847b76c9968beb90a2e26d13ef9c4ea45c30",
+      "size": 246,
+      "paths": [
+        "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+        "ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+        "macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+        "macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"
+      ]
+    },
+    {
+      "key": "234:dd64c0308ab2971c456871b990b24a008bdc3ece09833e8dbe9675e33a496e74",
+      "size": 234,
+      "paths": [
+        "ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings",
+        "ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings"
+      ]
+    },
+    {
+      "key": "159:706a4c812f2a1e220e6785c27580020d58048e2ae4d30d1280f3c43344ce6b38",
+      "size": 159,
+      "paths": [
+        "ios/Runner.xcworkspace/contents.xcworkspacedata",
+        "macos/Runner.xcworkspace/contents.xcworkspacedata"
+      ]
+    },
+    {
+      "key": "49:7e9b3ee3961b7d7718b418ceaed812a5f06a4e4cec894aae712a78e159c32ab0",
+      "size": 49,
+      "paths": [
+        "macos/Flutter/Flutter-Debug.xcconfig",
+        "macos/Flutter/Flutter-Release.xcconfig"
+      ]
+    },
+    {
+      "key": "363:1b00d29cf6a091a9851cd4f8083e7db82aac763418d8fbc50ca07f1cf9e474ea",
+      "size": 363,
+      "paths": [
+        "web/manifest.json",
+        "website_source/app/manifest.json"
+      ]
+    }
+  ],
+  "secretFindings": [
+    {
+      "path": "backend/.env.example",
+      "type": "JWT secret assignment",
+      "risk": "high",
+      "evidence": "Pattern matched; value intentionally not included.",
+      "rotationRequired": true
+    },
+    {
+      "path": "backend/admin.js",
+      "type": "Password assignment",
+      "risk": "high",
+      "evidence": "Pattern matched; value intentionally not included.",
+      "rotationRequired": true
+    },
+    {
+      "path": "backend/create-admin.js",
+      "type": "Password assignment",
+      "risk": "high",
+      "evidence": "Pattern matched; value intentionally not included.",
+      "rotationRequired": true
+    },
+    {
+      "path": "backend/gdpr.js",
+      "type": "Password assignment",
+      "risk": "high",
+      "evidence": "Pattern matched; value intentionally not included.",
+      "rotationRequired": true
+    },
+    {
+      "path": "backend/server.js",
+      "type": "Password assignment",
+      "risk": "high",
+      "evidence": "Pattern matched; value intentionally not included.",
+      "rotationRequired": true
+    },
+    {
+      "path": "backend_proxy_sample/.env.example",
+      "type": "JWT secret assignment",
+      "risk": "high",
+      "evidence": "Pattern matched; value intentionally not included.",
+      "rotationRequired": true
+    },
+    {
+      "path": "backend_proxy_sample/server.js",
+      "type": "Password assignment",
+      "risk": "high",
+      "evidence": "Pattern matched; value intentionally not included.",
+      "rotationRequired": true
+    }
+  ],
+  "generatedPolicy": [],
+  "blockers": [
+    "Working tree contains uncommitted changes; cleanup/deletion is blocked until user confirms preservation strategy."
+  ],
+  "reports": {
+    "markdown": "reports/project-cleanup-audit.md",
+    "json": "reports/project-cleanup-audit.json"
+  }
+}

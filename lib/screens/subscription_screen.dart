@@ -69,9 +69,11 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
         until: subscription.until,
       );
       if (mounted) {
-        setState(() => _message = subscription.trialEndsAt == null
-            ? null
-            : '${context.l10n.t('premiumTrialTitle')}: ${context.l10n.formatDateTime(subscription.trialEndsAt!)}');
+        setState(
+          () => _message = subscription.trialEndsAt == null
+              ? null
+              : '${context.l10n.t('premiumTrialTitle')}: ${context.l10n.formatDateTime(subscription.trialEndsAt!)}',
+        );
       }
     });
   }
@@ -125,11 +127,11 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
         final message = error is SubscriptionException
             ? context.l10n.t(error.message)
             : raw.contains('socketexception') ||
-                raw.contains('clientexception') ||
-                raw.contains('failed host lookup') ||
-                raw.contains('timed out')
-            ? context.l10n.t('networkUnavailable')
-            : context.l10n.t('networkUnavailable');
+                    raw.contains('clientexception') ||
+                    raw.contains('failed host lookup') ||
+                    raw.contains('timed out')
+                ? context.l10n.t('networkUnavailable')
+                : context.l10n.t('networkUnavailable');
         setState(() => _message = message);
       }
     } finally {
@@ -143,11 +145,12 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
     final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(
-        title: const LocalizedText('ui.text.fa9b4ee785d7'),
+        title: Text(l10n.t('premiumScreenTitle')),
         actions: [
           IconButton(
-              onPressed: _busy ? null : _refresh,
-              icon: const Icon(Icons.refresh)),
+            onPressed: _busy ? null : _refresh,
+            icon: const Icon(Icons.refresh),
+          ),
         ],
       ),
       body: ListView(
@@ -159,9 +162,13 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(l10n.t('premium'),
-                      style: const TextStyle(
-                          fontSize: 28, fontWeight: FontWeight.bold)),
+                  Text(
+                    l10n.t('premium'),
+                    style: const TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   const SizedBox(height: 12),
                   Text(
                     l10n.t('premiumDescription'),
@@ -171,10 +178,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   Card(
                     color: const Color(0xFFEFF8FF),
                     child: ListTile(
-                      leading: const Icon(Icons.card_giftcard,
-                          color: Color(0xFF075BBB)),
-                      title: Text(l10n.t('premiumTrialTitle'),
-                          style: const TextStyle(fontWeight: FontWeight.w800)),
+                      leading: const Icon(
+                        Icons.card_giftcard,
+                        color: Color(0xFF075BBB),
+                      ),
+                      title: Text(
+                        l10n.t('premiumTrialTitle'),
+                        style: const TextStyle(fontWeight: FontWeight.w800),
+                      ),
                       subtitle: Text(l10n.t('premiumTrialText')),
                     ),
                   ),
@@ -190,16 +201,17 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                       TextButton.icon(
                         onPressed: _busy ? null : _resendVerification,
                         icon: const Icon(Icons.mark_email_unread),
-                        label: const LocalizedText(
-                          'ui.text.ea53bbb03834',
-                        ),
+                        label: const LocalizedText('ui.text.ea53bbb03834'),
                       ),
                       if (_verificationSent)
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Icon(Icons.check_circle,
-                                color: Color(0xFF039855), size: 20),
+                            const Icon(
+                              Icons.check_circle,
+                              color: Color(0xFF039855),
+                              size: 20,
+                            ),
                             const SizedBox(width: 6),
                             Flexible(
                               child: Text(
@@ -232,23 +244,33 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                     Card(
                       color: const Color(0xFFFFF7E6),
                       child: ListTile(
-                        leading: const Icon(Icons.notifications_active,
-                            color: Color(0xFFF79009)),
+                        leading: const Icon(
+                          Icons.notifications_active,
+                          color: Color(0xFFF79009),
+                        ),
                         title: Text(l10n.t('trialEndsTomorrow')),
                       ),
                     ),
                   ],
                   const SizedBox(height: 12),
-                  Text(l10n.t('freeForeverTitle'),
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w800)),
+                  Text(
+                    l10n.t('freeForeverTitle'),
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
                   _Feature(text: l10n.t('freeCurrentSugar')),
                   _Feature(text: l10n.t('freeBasicStats')),
                   _Feature(text: l10n.t('freeDiary')),
                   const SizedBox(height: 12),
-                  Text(l10n.t('premiumIncludesTitle'),
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w800)),
+                  Text(
+                    l10n.t('premiumIncludesTitle'),
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
                   _Feature(text: l10n.t('premiumAiAssistant')),
                   _Feature(text: l10n.t('premiumSugarForecast')),
                   _Feature(text: l10n.t('premiumFoodPhoto')),
@@ -258,21 +280,53 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   _Feature(text: l10n.t('premiumRecommendations')),
                   const SizedBox(height: 20),
                   if (state.premium) ...[
-                    const ListTile(
+                    ListTile(
                       contentPadding: EdgeInsets.zero,
-                      leading: Icon(Icons.verified, color: Color(0xFF039855)),
-                      title: LocalizedText('ui.text.be447dcdbb3f'),
+                      leading: const Icon(
+                        Icons.verified,
+                        color: Color(0xFF039855),
+                      ),
+                      title: Text(l10n.t('premiumActiveLabel')),
                     ),
                     Text(
-                        '${l10n.t('ui.text.f23dc4f4fbb4')}: ${state.premiumPlan ?? 'subscription'}'),
+                      '${l10n.t('subscriptionPlanLabel')}: ${_planName(l10n, state.premiumPlan)}',
+                    ),
                     if (state.premiumUntil != null)
                       Text(
-                          '${l10n.t('ui.text.fe3c73ce5b52')}: ${state.premiumUntil!.toLocal()}'),
+                        '${l10n.t('subscriptionPaidUntilLabel')}: ${l10n.formatDateTime(state.premiumUntil!)}',
+                      ),
                     const SizedBox(height: 12),
-                    OutlinedButton(
+                    OutlinedButton.icon(
                       onPressed: _busy ? null : _portal,
-                      child: const LocalizedText('ui.text.537f95d8b61c'),
+                      icon: const Icon(Icons.manage_accounts),
+                      label: Text(l10n.t('manageSubscription')),
                     ),
+                    const SizedBox(height: 16),
+                    Text(
+                      l10n.t('changePlanTitle'),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    if (state.premiumPlan != 'family')
+                      _PlanOption(
+                        icon: Icons.family_restroom,
+                        title: l10n.t('changeToFamilyPlan'),
+                        price: l10n.t('familyPrice'),
+                        description: l10n.t('familyPlanDescription'),
+                        primary: true,
+                        onPressed: _busy ? null : _portal,
+                      )
+                    else
+                      _PlanOption(
+                        icon: Icons.person,
+                        title: l10n.t('changePersonalPlan'),
+                        price: l10n.t('monthPrice'),
+                        description: l10n.t('personalPlanDescription'),
+                        onPressed: _busy ? null : _portal,
+                      ),
                   ] else ...[
                     _PlanOption(
                       icon: Icons.calendar_month,
@@ -313,9 +367,13 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                       l10n
                           .t('deviceUsage')
                           .replaceAll(
-                              '{count}', '${_subscription!.devices.length}')
+                            '{count}',
+                            '${_subscription!.devices.length}',
+                          )
                           .replaceAll(
-                              '{limit}', '${_subscription!.deviceLimit}'),
+                            '{limit}',
+                            '${_subscription!.deviceLimit}',
+                          ),
                     ),
                     const SizedBox(height: 8),
                     ..._subscription!.devices.map(
@@ -332,12 +390,14 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                                         ? '-'
                                         : l10n.formatDateTime(
                                             device.lastSeenAt!,
-                                          )
+                                          ),
                                   ),
                         ),
                         trailing: device.deviceId == _currentDeviceId
-                            ? const Icon(Icons.check_circle,
-                                color: Color(0xFF039855))
+                            ? const Icon(
+                                Icons.check_circle,
+                                color: Color(0xFF039855),
+                              )
                             : IconButton(
                                 tooltip: l10n.t('removeDevice'),
                                 onPressed:
@@ -353,8 +413,10 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   ],
                   if (_message != null) ...[
                     const SizedBox(height: 12),
-                    Text(_message!,
-                        style: const TextStyle(color: Color(0xFFB42318))),
+                    Text(
+                      _message!,
+                      style: const TextStyle(color: Color(0xFFB42318)),
+                    ),
                   ],
                 ],
               ),
@@ -398,91 +460,115 @@ class _PlanOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      final compact = constraints.maxWidth < 520;
-      final details = Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, size: 28),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final compact = constraints.maxWidth < 520;
+        final details = Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(icon, size: 28),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
                     style: const TextStyle(
-                        fontSize: 17, fontWeight: FontWeight.w800)),
-                const SizedBox(height: 4),
-                Text(description),
-              ],
-            ),
-          ),
-        ],
-      );
-      final content = Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: compact
-            ? Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  details,
-                  const SizedBox(height: 12),
-                  Text(price,
-                      textAlign: TextAlign.end,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w900)),
-                ],
-              )
-            : Row(
-                children: [
-                  Expanded(child: details),
-                  const SizedBox(width: 24),
-                  Text(price,
-                      textAlign: TextAlign.end,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w900)),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(description),
                 ],
               ),
-      );
-      final shape = RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
-      );
-      if (!primary) {
-        return OutlinedButton(
-          onPressed: onPressed,
-          style: OutlinedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-            shape: shape,
-          ),
-          child: content,
+            ),
+          ],
         );
-      }
-      return DecoratedBox(
-        decoration: BoxDecoration(
+        final content = Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: compact
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    details,
+                    const SizedBox(height: 12),
+                    Text(
+                      price,
+                      textAlign: TextAlign.end,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
+                )
+              : Row(
+                  children: [
+                    Expanded(child: details),
+                    const SizedBox(width: 24),
+                    Text(
+                      price,
+                      textAlign: TextAlign.end,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
+                ),
+        );
+        final shape = RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
-          gradient: const LinearGradient(
-            colors: [Color(0xFF075BBB), Color(0xFF635BDF), Color(0xFF8B5CF6)],
+        );
+        if (!primary) {
+          return OutlinedButton(
+            onPressed: onPressed,
+            style: OutlinedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              shape: shape,
+            ),
+            child: content,
+          );
+        }
+        return DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24),
+            gradient: const LinearGradient(
+              colors: [Color(0xFF075BBB), Color(0xFF635BDF), Color(0xFF8B5CF6)],
+            ),
           ),
-        ),
-        child: FilledButton(
-          onPressed: onPressed,
-          style: FilledButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-            shape: shape,
+          child: FilledButton(
+            onPressed: onPressed,
+            style: FilledButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              shadowColor: Colors.transparent,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              shape: shape,
+            ),
+            child: content,
           ),
-          child: content,
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }
 
 IconData _deviceIcon(String platform) {
   return switch (platform) {
-    'android' || 'iOS' => Icons.smartphone,
+    'android' || 'ios' => Icons.smartphone,
     'web' => Icons.language,
     _ => Icons.computer,
+  };
+}
+
+String _planName(AppLocalizations l10n, String? plan) {
+  return switch (plan) {
+    'monthly' => l10n.t('personalMonthlyPlan'),
+    'yearly' => l10n.t('personalYearlyPlan'),
+    'family' => l10n.t('familyPlan'),
+    'trial' => l10n.t('premiumTrialTitle'),
+    _ => l10n.t('premium'),
   };
 }

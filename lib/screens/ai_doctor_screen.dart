@@ -134,15 +134,10 @@ class _AiDoctorScreenState extends State<AiDoctorScreen> {
             if (_error != null)
               Padding(
                 padding: const EdgeInsets.fromLTRB(12, 6, 12, 0),
-                child: Text(
-                  _error!,
-                  style: const TextStyle(color: Colors.red),
-                ),
+                child: Text(_error!, style: const TextStyle(color: Colors.red)),
               ),
             Expanded(
-              child: TabBarView(
-                children: [_labTab(), _medicationsTab()],
-              ),
+              child: TabBarView(children: [_labTab(), _medicationsTab()]),
             ),
           ],
         ),
@@ -162,11 +157,7 @@ class _AiDoctorScreenState extends State<AiDoctorScreen> {
         if (hasImage)
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.memory(
-              _image!,
-              height: 210,
-              fit: BoxFit.contain,
-            ),
+            child: Image.memory(_image!, height: 210, fit: BoxFit.contain),
           )
         else
           const _EmptyPhotoBox(),
@@ -288,10 +279,7 @@ class _ResultCard extends StatelessWidget {
         margin: const EdgeInsets.only(top: 12),
         child: Padding(
           padding: const EdgeInsets.all(14),
-          child: SelectableText(
-            text,
-            style: const TextStyle(height: 1.4),
-          ),
+          child: SelectableText(text, style: const TextStyle(height: 1.4)),
         ),
       );
 }

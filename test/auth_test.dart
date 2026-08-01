@@ -1,10 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 import 'package:glucotrack/models/app_state.dart';
 import 'package:glucotrack/services/auth_service.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   test('registration, logout and login update access state', () async {
     SharedPreferences.setMockInitialValues({});
     final state = AppState(authService: _FakeAuthService());
@@ -50,11 +55,78 @@ void main() {
     final preferences = await SharedPreferences.getInstance();
     expect(preferences.getString('accountToken'), 'google-session-token');
   });
+
+  test('maps lowercase auth error code to device limit message', () async {
+    SharedPreferences.setMockInitialValues({
+      'accountDeviceId': 'test-device-id',
+    });
+
+    final service = AuthService(
+      client: MockClient((request) async {
+        if (!request.url.path.endsWith('/auth/login')) {
+          return http.Response('{}', 500);
+        }
+        return http.Response(
+          jsonEncode({'code': 'device_limit_reached'}),
+          409,
+          headers: {'content-type': 'application/json'},
+        );
+      }),
+    );
+
+    await expectLater(
+      service.login(
+        email: 'alice@example.com',
+        password: 'password123',
+        locale: 'en',
+      ),
+      throwsA(
+        isA<AuthException>()
+            .having((e) => e.message, 'message', 'deviceLimitReached')
+            .having((e) => e.code, 'code', 'DEVICE_LIMIT_REACHED'),
+      ),
+    );
+  });
+
+  test('maps lowercase auth error field to device limit message', () async {
+    SharedPreferences.setMockInitialValues({
+      'accountDeviceId': 'test-device-id',
+    });
+
+    final service = AuthService(
+      client: MockClient((request) async {
+        if (!request.url.path.endsWith('/auth/login')) {
+          return http.Response('{}', 500);
+        }
+        return http.Response(
+          jsonEncode({'error': 'device limit reached'}),
+          409,
+          headers: {'content-type': 'application/json'},
+        );
+      }),
+    );
+
+    await expectLater(
+      service.login(
+        email: 'alice@example.com',
+        password: 'password123',
+        locale: 'en',
+      ),
+      throwsA(
+        isA<AuthException>()
+            .having((e) => e.message, 'message', 'deviceLimitReached')
+            .having((e) => e.code, 'code', 'DEVICE_LIMIT_REACHED'),
+      ),
+    );
+  });
 }
 
 class _FakeAuthService extends AuthService {
   @override
-  Future<AuthSession> loginWithGoogle(String idToken, {required String locale}) async {
+  Future<AuthSession> loginWithGoogle(
+    String idToken, {
+    required String locale,
+  }) async {
     if (idToken != 'google-id-token') {
       throw const AuthException('Invalid Google token');
     }

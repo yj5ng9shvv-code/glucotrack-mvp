@@ -1,0 +1,5452 @@
+[
+  {
+    "anonymous_user_id": "synthetic-001",
+    "entries": [
+      {
+        "time": "2025-12-31T23:55:00.000Z",
+        "glucoseMmol": 5.963009136961773,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T00:00:00.000Z",
+        "carbs": 36,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T02:00:00.000Z",
+        "glucoseMmol": 9.587517193974927,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T07:55:00.000Z",
+        "glucoseMmol": 7.863466712646186,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T08:00:00.000Z",
+        "carbs": 24,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T10:00:00.000Z",
+        "glucoseMmol": 10.406952395811677,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T15:55:00.000Z",
+        "glucoseMmol": 7.570089412620291,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T16:00:00.000Z",
+        "carbs": 26,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T18:00:00.000Z",
+        "glucoseMmol": 10.34015493491354,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T23:55:00.000Z",
+        "glucoseMmol": 6.149896606337279,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T00:00:00.000Z",
+        "carbs": 56,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T02:00:00.000Z",
+        "glucoseMmol": 11.605061267136286,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T07:55:00.000Z",
+        "glucoseMmol": 7.9628035018686205,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T08:00:00.000Z",
+        "carbs": 46,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T10:00:00.000Z",
+        "glucoseMmol": 11.911377310960864,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T15:55:00.000Z",
+        "glucoseMmol": 5.256169311702251,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T16:00:00.000Z",
+        "carbs": 54,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T18:00:00.000Z",
+        "glucoseMmol": 10.41130667399615,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T23:55:00.000Z",
+        "glucoseMmol": 5.32312215003185,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T00:00:00.000Z",
+        "carbs": 20,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T02:00:00.000Z",
+        "glucoseMmol": 7.484451665558542,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T07:55:00.000Z",
+        "glucoseMmol": 6.978924539405853,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T08:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T10:00:00.000Z",
+        "glucoseMmol": 12.386166791475068,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T15:55:00.000Z",
+        "glucoseMmol": 5.593724672915414,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T16:00:00.000Z",
+        "carbs": 68,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T18:00:00.000Z",
+        "glucoseMmol": 11.878894925710433,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T23:55:00.000Z",
+        "glucoseMmol": 5.046194431371987,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T00:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T02:00:00.000Z",
+        "glucoseMmol": 11.09794999803106,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T07:55:00.000Z",
+        "glucoseMmol": 6.468761667376384,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T08:00:00.000Z",
+        "carbs": 51,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T10:00:00.000Z",
+        "glucoseMmol": 11.15478662586771,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T15:55:00.000Z",
+        "glucoseMmol": 7.718586498405784,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T16:00:00.000Z",
+        "carbs": 25,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T18:00:00.000Z",
+        "glucoseMmol": 9.891776580208292,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T23:55:00.000Z",
+        "glucoseMmol": 7.1234330295119435,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T00:00:00.000Z",
+        "carbs": 54,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T02:00:00.000Z",
+        "glucoseMmol": 12.049206972504034,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T07:55:00.000Z",
+        "glucoseMmol": 6.8411348927766085,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T08:00:00.000Z",
+        "carbs": 49,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T10:00:00.000Z",
+        "glucoseMmol": 11.48529566684117,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T15:55:00.000Z",
+        "glucoseMmol": 5.8040853820275515,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T16:00:00.000Z",
+        "carbs": 35,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T18:00:00.000Z",
+        "glucoseMmol": 8.918411603026712,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T23:55:00.000Z",
+        "glucoseMmol": 7.042231148574501,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T00:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T02:00:00.000Z",
+        "glucoseMmol": 11.631773785979798,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T07:55:00.000Z",
+        "glucoseMmol": 5.856587699847296,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T08:00:00.000Z",
+        "carbs": 69,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T10:00:00.000Z",
+        "glucoseMmol": 12.523065630169585,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T15:55:00.000Z",
+        "glucoseMmol": 6.228193960152566,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T16:00:00.000Z",
+        "carbs": 43,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T18:00:00.000Z",
+        "glucoseMmol": 10.177454458599287,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-002",
+    "entries": [
+      {
+        "time": "2026-01-01T00:55:00.000Z",
+        "glucoseMmol": 6.640861110528931,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T01:00:00.000Z",
+        "carbs": 30,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T03:00:00.000Z",
+        "glucoseMmol": 8.620383000513538,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T08:55:00.000Z",
+        "glucoseMmol": 6.669498506467789,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T09:00:00.000Z",
+        "carbs": 30,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T11:00:00.000Z",
+        "glucoseMmol": 8.825413763988763,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T16:55:00.000Z",
+        "glucoseMmol": 7.251118533546105,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T17:00:00.000Z",
+        "carbs": 28,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T19:00:00.000Z",
+        "glucoseMmol": 9.287186466613786,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T00:55:00.000Z",
+        "glucoseMmol": 6.754959266632795,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T01:00:00.000Z",
+        "carbs": 68,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T03:00:00.000Z",
+        "glucoseMmol": 11.723358165882528,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T08:55:00.000Z",
+        "glucoseMmol": 7.722112010000274,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T09:00:00.000Z",
+        "carbs": 30,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T11:00:00.000Z",
+        "glucoseMmol": 9.742551909713073,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T16:55:00.000Z",
+        "glucoseMmol": 7.340746209491044,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T17:00:00.000Z",
+        "carbs": 46,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T19:00:00.000Z",
+        "glucoseMmol": 10.772094742562622,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T00:55:00.000Z",
+        "glucoseMmol": 7.638990261824802,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T01:00:00.000Z",
+        "carbs": 39,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T03:00:00.000Z",
+        "glucoseMmol": 10.761995020853355,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T08:55:00.000Z",
+        "glucoseMmol": 7.479512677527964,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T09:00:00.000Z",
+        "carbs": 47,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T11:00:00.000Z",
+        "glucoseMmol": 10.515583651661872,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T16:55:00.000Z",
+        "glucoseMmol": 5.469736207043752,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T17:00:00.000Z",
+        "carbs": 56,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T19:00:00.000Z",
+        "glucoseMmol": 9.354598452365027,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T00:55:00.000Z",
+        "glucoseMmol": 7.618624222930521,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T01:00:00.000Z",
+        "carbs": 27,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T03:00:00.000Z",
+        "glucoseMmol": 9.16005818122998,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T08:55:00.000Z",
+        "glucoseMmol": 5.692083845147863,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T09:00:00.000Z",
+        "carbs": 51,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T11:00:00.000Z",
+        "glucoseMmol": 9.014230155879632,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T16:55:00.000Z",
+        "glucoseMmol": 5.043001091107726,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T17:00:00.000Z",
+        "carbs": 40,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T19:00:00.000Z",
+        "glucoseMmol": 7.469502426125109,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T00:55:00.000Z",
+        "glucoseMmol": 7.578806114150211,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T01:00:00.000Z",
+        "carbs": 40,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T03:00:00.000Z",
+        "glucoseMmol": 10.2335687271785,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T08:55:00.000Z",
+        "glucoseMmol": 5.844922984484583,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T09:00:00.000Z",
+        "carbs": 53,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T11:00:00.000Z",
+        "glucoseMmol": 9.725310482960195,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T16:55:00.000Z",
+        "glucoseMmol": 5.523820008384064,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T17:00:00.000Z",
+        "carbs": 47,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T19:00:00.000Z",
+        "glucoseMmol": 8.735862515689805,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T00:55:00.000Z",
+        "glucoseMmol": 7.967793176881969,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T01:00:00.000Z",
+        "carbs": 70,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T03:00:00.000Z",
+        "glucoseMmol": 12.906714077666402,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T08:55:00.000Z",
+        "glucoseMmol": 6.724172433605418,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T09:00:00.000Z",
+        "carbs": 58,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T11:00:00.000Z",
+        "glucoseMmol": 11.138372693946586,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T16:55:00.000Z",
+        "glucoseMmol": 6.330819986294955,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T17:00:00.000Z",
+        "carbs": 56,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T19:00:00.000Z",
+        "glucoseMmol": 10.343057727236301,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-003",
+    "entries": [
+      {
+        "time": "2026-01-01T01:55:00.000Z",
+        "glucoseMmol": 7.067149963462725,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T02:00:00.000Z",
+        "carbs": 58,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T04:00:00.000Z",
+        "glucoseMmol": 9.31411975315151,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T09:55:00.000Z",
+        "glucoseMmol": 7.634347051382065,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T10:00:00.000Z",
+        "carbs": 58,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T12:00:00.000Z",
+        "glucoseMmol": 10.343388558042546,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T17:55:00.000Z",
+        "glucoseMmol": 7.89499784889631,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T18:00:00.000Z",
+        "carbs": 29,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T20:00:00.000Z",
+        "glucoseMmol": 9.285701328494277,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T01:55:00.000Z",
+        "glucoseMmol": 7.608649794477969,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T02:00:00.000Z",
+        "carbs": 33,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T04:00:00.000Z",
+        "glucoseMmol": 9.307278423961252,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T09:55:00.000Z",
+        "glucoseMmol": 7.1195383195299655,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T10:00:00.000Z",
+        "carbs": 49,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T12:00:00.000Z",
+        "glucoseMmol": 9.170743528700743,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T17:55:00.000Z",
+        "glucoseMmol": 7.13991389144212,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T18:00:00.000Z",
+        "carbs": 65,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T20:00:00.000Z",
+        "glucoseMmol": 10.057475655029217,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T01:55:00.000Z",
+        "glucoseMmol": 5.622845403617248,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T02:00:00.000Z",
+        "carbs": 58,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T04:00:00.000Z",
+        "glucoseMmol": 8.390488048459714,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T09:55:00.000Z",
+        "glucoseMmol": 5.323322506155819,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T10:00:00.000Z",
+        "carbs": 70,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T12:00:00.000Z",
+        "glucoseMmol": 7.984059288197507,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T17:55:00.000Z",
+        "glucoseMmol": 5.19556318060495,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T18:00:00.000Z",
+        "carbs": 40,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T20:00:00.000Z",
+        "glucoseMmol": 7.198603279873108,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T01:55:00.000Z",
+        "glucoseMmol": 5.992202484980226,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T02:00:00.000Z",
+        "carbs": 60,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T04:00:00.000Z",
+        "glucoseMmol": 8.605406652577221,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T09:55:00.000Z",
+        "glucoseMmol": 6.1189465678762645,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T10:00:00.000Z",
+        "carbs": 23,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T12:00:00.000Z",
+        "glucoseMmol": 7.04737274324211,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T17:55:00.000Z",
+        "glucoseMmol": 7.091515643987805,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T18:00:00.000Z",
+        "carbs": 57,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T20:00:00.000Z",
+        "glucoseMmol": 9.370985702406614,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T01:55:00.000Z",
+        "glucoseMmol": 6.077758430736139,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T02:00:00.000Z",
+        "carbs": 41,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T04:00:00.000Z",
+        "glucoseMmol": 7.870458428335066,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T09:55:00.000Z",
+        "glucoseMmol": 7.3411297192797065,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T10:00:00.000Z",
+        "carbs": 49,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T12:00:00.000Z",
+        "glucoseMmol": 9.50557984513541,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T17:55:00.000Z",
+        "glucoseMmol": 7.086273992201313,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T18:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T20:00:00.000Z",
+        "glucoseMmol": 9.719626741449659,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T01:55:00.000Z",
+        "glucoseMmol": 6.406764488201588,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T02:00:00.000Z",
+        "carbs": 45,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T04:00:00.000Z",
+        "glucoseMmol": 8.588211866188793,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T09:55:00.000Z",
+        "glucoseMmol": 5.706323206657544,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T10:00:00.000Z",
+        "carbs": 28,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T12:00:00.000Z",
+        "glucoseMmol": 7.144660691081857,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T17:55:00.000Z",
+        "glucoseMmol": 7.201782006770372,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T18:00:00.000Z",
+        "carbs": 21,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T20:00:00.000Z",
+        "glucoseMmol": 8.219254906140268,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-004",
+    "entries": [
+      {
+        "time": "2026-01-01T02:55:00.000Z",
+        "glucoseMmol": 7.722043948946521,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T03:00:00.000Z",
+        "carbs": 65,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T05:00:00.000Z",
+        "glucoseMmol": 13.265647387178614,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T10:55:00.000Z",
+        "glucoseMmol": 7.41857584612444,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T11:00:00.000Z",
+        "carbs": 37,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T13:00:00.000Z",
+        "glucoseMmol": 11.352304348410108,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T18:55:00.000Z",
+        "glucoseMmol": 7.798323557944968,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T19:00:00.000Z",
+        "carbs": 66,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T21:00:00.000Z",
+        "glucoseMmol": 13.685400447081776,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T02:55:00.000Z",
+        "glucoseMmol": 6.871712648309767,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T03:00:00.000Z",
+        "carbs": 50,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T05:00:00.000Z",
+        "glucoseMmol": 10.625155759858899,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T10:55:00.000Z",
+        "glucoseMmol": 5.176273461198434,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T11:00:00.000Z",
+        "carbs": 55,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T13:00:00.000Z",
+        "glucoseMmol": 8.568944496428593,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T18:55:00.000Z",
+        "glucoseMmol": 7.163690259214491,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T19:00:00.000Z",
+        "carbs": 22,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T21:00:00.000Z",
+        "glucoseMmol": 9.53779269136954,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T02:55:00.000Z",
+        "glucoseMmol": 5.337011294672266,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T03:00:00.000Z",
+        "carbs": 34,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T05:00:00.000Z",
+        "glucoseMmol": 7.168234854266046,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T10:55:00.000Z",
+        "glucoseMmol": 6.495700133964419,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T11:00:00.000Z",
+        "carbs": 45,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T13:00:00.000Z",
+        "glucoseMmol": 11.323776003695093,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T18:55:00.000Z",
+        "glucoseMmol": 6.482017119182274,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T19:00:00.000Z",
+        "carbs": 67,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T21:00:00.000Z",
+        "glucoseMmol": 10.803276113132014,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T02:55:00.000Z",
+        "glucoseMmol": 7.577617647591978,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T03:00:00.000Z",
+        "carbs": 49,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T05:00:00.000Z",
+        "glucoseMmol": 12.516835944452323,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T10:55:00.000Z",
+        "glucoseMmol": 5.821885022567585,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T11:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T13:00:00.000Z",
+        "glucoseMmol": 8.821379379350692,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T18:55:00.000Z",
+        "glucoseMmol": 7.481092381291091,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T19:00:00.000Z",
+        "carbs": 64,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T21:00:00.000Z",
+        "glucoseMmol": 13.021236108387821,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T02:55:00.000Z",
+        "glucoseMmol": 7.722908584168181,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T03:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T05:00:00.000Z",
+        "glucoseMmol": 11.56563063393347,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T10:55:00.000Z",
+        "glucoseMmol": 7.364571392070502,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T11:00:00.000Z",
+        "carbs": 65,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T13:00:00.000Z",
+        "glucoseMmol": 13.735063117858953,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T18:55:00.000Z",
+        "glucoseMmol": 5.920118365669623,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T19:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T21:00:00.000Z",
+        "glucoseMmol": 10.239135155491532,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T02:55:00.000Z",
+        "glucoseMmol": 7.2168619111180305,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T03:00:00.000Z",
+        "carbs": 55,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T05:00:00.000Z",
+        "glucoseMmol": 11.85086829306092,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T10:55:00.000Z",
+        "glucoseMmol": 6.953631779877469,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T11:00:00.000Z",
+        "carbs": 46,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T13:00:00.000Z",
+        "glucoseMmol": 10.755802165316418,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T18:55:00.000Z",
+        "glucoseMmol": 5.55392585368827,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T19:00:00.000Z",
+        "carbs": 20,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T21:00:00.000Z",
+        "glucoseMmol": 6.853771175281144,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-005",
+    "entries": [
+      {
+        "time": "2026-01-01T03:55:00.000Z",
+        "glucoseMmol": 7.9099803764838725,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T04:00:00.000Z",
+        "carbs": 57,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T06:00:00.000Z",
+        "glucoseMmol": 11.598479239540174,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T11:55:00.000Z",
+        "glucoseMmol": 6.299496960826218,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T12:00:00.000Z",
+        "carbs": 64,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T14:00:00.000Z",
+        "glucoseMmol": 10.189343141963084,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T19:55:00.000Z",
+        "glucoseMmol": 7.1389467713888735,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T20:00:00.000Z",
+        "carbs": 29,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T22:00:00.000Z",
+        "glucoseMmol": 8.59770676688912,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T03:55:00.000Z",
+        "glucoseMmol": 7.321322330739349,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T04:00:00.000Z",
+        "carbs": 63,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T06:00:00.000Z",
+        "glucoseMmol": 11.380863086376339,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T11:55:00.000Z",
+        "glucoseMmol": 6.056873133638874,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T12:00:00.000Z",
+        "carbs": 27,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T14:00:00.000Z",
+        "glucoseMmol": 7.756466244244948,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T19:55:00.000Z",
+        "glucoseMmol": 7.21885353513062,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T20:00:00.000Z",
+        "carbs": 49,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T22:00:00.000Z",
+        "glucoseMmol": 10.425858125475546,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T03:55:00.000Z",
+        "glucoseMmol": 5.126895331544802,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T04:00:00.000Z",
+        "carbs": 69,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T06:00:00.000Z",
+        "glucoseMmol": 9.139546939386054,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T11:55:00.000Z",
+        "glucoseMmol": 5.402548453304917,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T12:00:00.000Z",
+        "carbs": 49,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T14:00:00.000Z",
+        "glucoseMmol": 8.818532795937111,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T19:55:00.000Z",
+        "glucoseMmol": 6.812611527042463,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T20:00:00.000Z",
+        "carbs": 21,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T22:00:00.000Z",
+        "glucoseMmol": 8.25201266703196,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T03:55:00.000Z",
+        "glucoseMmol": 5.207093394361436,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T04:00:00.000Z",
+        "carbs": 65,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T06:00:00.000Z",
+        "glucoseMmol": 9.147880964602034,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T11:55:00.000Z",
+        "glucoseMmol": 5.4218111948575824,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T12:00:00.000Z",
+        "carbs": 60,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T14:00:00.000Z",
+        "glucoseMmol": 9.35176432444714,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T19:55:00.000Z",
+        "glucoseMmol": 7.1783160152845085,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T20:00:00.000Z",
+        "carbs": 46,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T22:00:00.000Z",
+        "glucoseMmol": 10.271261445948234,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T03:55:00.000Z",
+        "glucoseMmol": 6.4785702305380255,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T04:00:00.000Z",
+        "carbs": 58,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T06:00:00.000Z",
+        "glucoseMmol": 10.237554290651655,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T11:55:00.000Z",
+        "glucoseMmol": 5.703832980245352,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T12:00:00.000Z",
+        "carbs": 43,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T14:00:00.000Z",
+        "glucoseMmol": 8.10707213030507,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T19:55:00.000Z",
+        "glucoseMmol": 5.272759998915717,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T20:00:00.000Z",
+        "carbs": 59,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T22:00:00.000Z",
+        "glucoseMmol": 9.288199759551013,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T03:55:00.000Z",
+        "glucoseMmol": 7.25806224392727,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T04:00:00.000Z",
+        "carbs": 56,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T06:00:00.000Z",
+        "glucoseMmol": 10.60866943270589,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T11:55:00.000Z",
+        "glucoseMmol": 6.723322862060741,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T12:00:00.000Z",
+        "carbs": 38,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T14:00:00.000Z",
+        "glucoseMmol": 9.182036348131174,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T19:55:00.000Z",
+        "glucoseMmol": 7.640628279186785,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T20:00:00.000Z",
+        "carbs": 34,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T22:00:00.000Z",
+        "glucoseMmol": 10.059192893107731,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-006",
+    "entries": [
+      {
+        "time": "2026-01-01T04:55:00.000Z",
+        "glucoseMmol": 6.343033913290128,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T05:00:00.000Z",
+        "carbs": 63,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T07:00:00.000Z",
+        "glucoseMmol": 12.151760091697795,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T12:55:00.000Z",
+        "glucoseMmol": 7.140899506863207,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T13:00:00.000Z",
+        "carbs": 41,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T15:00:00.000Z",
+        "glucoseMmol": 10.9568636128741,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T20:55:00.000Z",
+        "glucoseMmol": 5.095398331293836,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T21:00:00.000Z",
+        "carbs": 39,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T23:00:00.000Z",
+        "glucoseMmol": 8.499558542305603,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T04:55:00.000Z",
+        "glucoseMmol": 6.49792062304914,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T05:00:00.000Z",
+        "carbs": 30,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T07:00:00.000Z",
+        "glucoseMmol": 8.906796566583218,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T12:55:00.000Z",
+        "glucoseMmol": 6.9763259559404105,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T13:00:00.000Z",
+        "carbs": 21,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T15:00:00.000Z",
+        "glucoseMmol": 8.714996790690346,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T20:55:00.000Z",
+        "glucoseMmol": 7.281838456634432,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T21:00:00.000Z",
+        "carbs": 61,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T23:00:00.000Z",
+        "glucoseMmol": 12.805900682390977,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T04:55:00.000Z",
+        "glucoseMmol": 6.421779374824837,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T05:00:00.000Z",
+        "carbs": 57,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T07:00:00.000Z",
+        "glucoseMmol": 11.88100183618255,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T12:55:00.000Z",
+        "glucoseMmol": 5.837568427436054,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T13:00:00.000Z",
+        "carbs": 61,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T15:00:00.000Z",
+        "glucoseMmol": 11.209536938344437,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T20:55:00.000Z",
+        "glucoseMmol": 7.825208997121081,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T21:00:00.000Z",
+        "carbs": 20,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T23:00:00.000Z",
+        "glucoseMmol": 10.015645499915506,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T04:55:00.000Z",
+        "glucoseMmol": 5.64140961272642,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T05:00:00.000Z",
+        "carbs": 43,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T07:00:00.000Z",
+        "glucoseMmol": 9.266430242874968,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T12:55:00.000Z",
+        "glucoseMmol": 5.732768278801814,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T13:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T15:00:00.000Z",
+        "glucoseMmol": 9.926762014140063,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T20:55:00.000Z",
+        "glucoseMmol": 5.764089867472649,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T21:00:00.000Z",
+        "carbs": 37,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T23:00:00.000Z",
+        "glucoseMmol": 8.922718888533613,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T04:55:00.000Z",
+        "glucoseMmol": 7.357544450787827,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T05:00:00.000Z",
+        "carbs": 38,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T07:00:00.000Z",
+        "glucoseMmol": 10.606918191292014,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T12:55:00.000Z",
+        "glucoseMmol": 7.546808381099254,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T13:00:00.000Z",
+        "carbs": 38,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T15:00:00.000Z",
+        "glucoseMmol": 11.207809222197781,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T20:55:00.000Z",
+        "glucoseMmol": 5.103844789089635,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T21:00:00.000Z",
+        "carbs": 63,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T23:00:00.000Z",
+        "glucoseMmol": 11.105381680624559,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T04:55:00.000Z",
+        "glucoseMmol": 6.517741491086781,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T05:00:00.000Z",
+        "carbs": 31,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T07:00:00.000Z",
+        "glucoseMmol": 9.374716195811828,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T12:55:00.000Z",
+        "glucoseMmol": 6.506445653503761,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T13:00:00.000Z",
+        "carbs": 66,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T15:00:00.000Z",
+        "glucoseMmol": 12.30900625771843,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T20:55:00.000Z",
+        "glucoseMmol": 7.442688511218876,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T21:00:00.000Z",
+        "carbs": 31,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T23:00:00.000Z",
+        "glucoseMmol": 10.416645982557288,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-007",
+    "entries": [
+      {
+        "time": "2026-01-01T05:55:00.000Z",
+        "glucoseMmol": 7.555141208926216,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T06:00:00.000Z",
+        "carbs": 63,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T13:55:00.000Z",
+        "glucoseMmol": 6.152557769790292,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T14:00:00.000Z",
+        "carbs": 34,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T16:00:00.000Z",
+        "glucoseMmol": 8.380548197515308,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T21:55:00.000Z",
+        "glucoseMmol": 6.479420930845663,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T22:00:00.000Z",
+        "carbs": 23,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T00:00:00.000Z",
+        "glucoseMmol": 8.178252876354382,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T05:55:00.000Z",
+        "glucoseMmol": 5.859728990588337,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T06:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T08:00:00.000Z",
+        "glucoseMmol": 9.101399116050452,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T13:55:00.000Z",
+        "glucoseMmol": 6.899159684078768,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T14:00:00.000Z",
+        "carbs": 55,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T21:55:00.000Z",
+        "glucoseMmol": 5.002476586960256,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T22:00:00.000Z",
+        "carbs": 49,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T00:00:00.000Z",
+        "glucoseMmol": 8.312240303978324,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T05:55:00.000Z",
+        "glucoseMmol": 5.492321351310238,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T06:00:00.000Z",
+        "carbs": 38,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T08:00:00.000Z",
+        "glucoseMmol": 8.260452976068482,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T13:55:00.000Z",
+        "glucoseMmol": 5.67909937677905,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T14:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T16:00:00.000Z",
+        "glucoseMmol": 9.05198926107958,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T21:55:00.000Z",
+        "glucoseMmol": 5.17735667550005,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T22:00:00.000Z",
+        "carbs": 65,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T05:55:00.000Z",
+        "glucoseMmol": 6.3886756636202335,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T06:00:00.000Z",
+        "carbs": 47,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T08:00:00.000Z",
+        "glucoseMmol": 9.563260033689438,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T13:55:00.000Z",
+        "glucoseMmol": 6.9437181677203625,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T14:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T16:00:00.000Z",
+        "glucoseMmol": 9.674739142386242,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T21:55:00.000Z",
+        "glucoseMmol": 7.5209485669620335,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T22:00:00.000Z",
+        "carbs": 37,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T00:00:00.000Z",
+        "glucoseMmol": 10.143382272925228,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T05:55:00.000Z",
+        "glucoseMmol": 6.076219619484618,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T06:00:00.000Z",
+        "carbs": 26,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T13:55:00.000Z",
+        "glucoseMmol": 6.771244921721518,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T14:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T16:00:00.000Z",
+        "glucoseMmol": 11.287653569281101,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T21:55:00.000Z",
+        "glucoseMmol": 7.295334946131334,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T22:00:00.000Z",
+        "carbs": 45,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T00:00:00.000Z",
+        "glucoseMmol": 10.607845126604662,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T05:55:00.000Z",
+        "glucoseMmol": 6.835042004939169,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T06:00:00.000Z",
+        "carbs": 48,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T08:00:00.000Z",
+        "glucoseMmol": 9.79543541515246,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T13:55:00.000Z",
+        "glucoseMmol": 5.463460775325075,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T14:00:00.000Z",
+        "carbs": 59,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T21:55:00.000Z",
+        "glucoseMmol": 5.298319784924388,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T22:00:00.000Z",
+        "carbs": 26,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T00:00:00.000Z",
+        "glucoseMmol": 7.104507834352553,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-008",
+    "entries": [
+      {
+        "time": "2026-01-01T06:55:00.000Z",
+        "glucoseMmol": 7.6741593822371215,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T07:00:00.000Z",
+        "carbs": 61,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T09:00:00.000Z",
+        "glucoseMmol": 10.145205292406802,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T14:55:00.000Z",
+        "glucoseMmol": 5.021672325674444,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T15:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T17:00:00.000Z",
+        "glucoseMmol": 8.06463157185043,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T22:55:00.000Z",
+        "glucoseMmol": 6.934953260468319,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T23:00:00.000Z",
+        "carbs": 26,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T01:00:00.000Z",
+        "glucoseMmol": 8.404042579752083,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T06:55:00.000Z",
+        "glucoseMmol": 6.455800416879356,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T07:00:00.000Z",
+        "carbs": 48,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T09:00:00.000Z",
+        "glucoseMmol": 8.908363091126084,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T14:55:00.000Z",
+        "glucoseMmol": 6.961859805276617,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T15:00:00.000Z",
+        "carbs": 50,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T17:00:00.000Z",
+        "glucoseMmol": 9.368681666643049,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T22:55:00.000Z",
+        "glucoseMmol": 5.660968437325209,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T23:00:00.000Z",
+        "carbs": 27,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T01:00:00.000Z",
+        "glucoseMmol": 6.483326480705291,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T06:55:00.000Z",
+        "glucoseMmol": 7.013034273171797,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T07:00:00.000Z",
+        "carbs": 36,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T09:00:00.000Z",
+        "glucoseMmol": 8.594835661062971,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T14:55:00.000Z",
+        "glucoseMmol": 5.270781897008419,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T15:00:00.000Z",
+        "carbs": 67,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T17:00:00.000Z",
+        "glucoseMmol": 8.026201058936614,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T22:55:00.000Z",
+        "glucoseMmol": 6.887131369439885,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T23:00:00.000Z",
+        "carbs": 30,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T01:00:00.000Z",
+        "glucoseMmol": 8.06737692761235,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T06:55:00.000Z",
+        "glucoseMmol": 6.6787280407734215,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T07:00:00.000Z",
+        "carbs": 65,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T09:00:00.000Z",
+        "glucoseMmol": 9.495467320239792,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T14:55:00.000Z",
+        "glucoseMmol": 6.386800502659753,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T15:00:00.000Z",
+        "carbs": 61,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T17:00:00.000Z",
+        "glucoseMmol": 9.380772141016399,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T22:55:00.000Z",
+        "glucoseMmol": 5.271820333786309,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T23:00:00.000Z",
+        "carbs": 46,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T01:00:00.000Z",
+        "glucoseMmol": 7.2516335535546155,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T06:55:00.000Z",
+        "glucoseMmol": 6.38659693277441,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T07:00:00.000Z",
+        "carbs": 21,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T09:00:00.000Z",
+        "glucoseMmol": 7.687991664176807,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T14:55:00.000Z",
+        "glucoseMmol": 6.026898586656898,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T15:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T17:00:00.000Z",
+        "glucoseMmol": 8.16774098455285,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T22:55:00.000Z",
+        "glucoseMmol": 5.335020726779476,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T23:00:00.000Z",
+        "carbs": 58,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T01:00:00.000Z",
+        "glucoseMmol": 8.003939800246929,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T06:55:00.000Z",
+        "glucoseMmol": 6.159159915521741,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T07:00:00.000Z",
+        "carbs": 29,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T09:00:00.000Z",
+        "glucoseMmol": 7.380249980675678,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T14:55:00.000Z",
+        "glucoseMmol": 5.2498876235913485,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T15:00:00.000Z",
+        "carbs": 23,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T17:00:00.000Z",
+        "glucoseMmol": 6.0878509057095895,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T22:55:00.000Z",
+        "glucoseMmol": 6.206831669900566,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T23:00:00.000Z",
+        "carbs": 47,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T01:00:00.000Z",
+        "glucoseMmol": 8.428443712225805,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-009",
+    "entries": [
+      {
+        "time": "2026-01-01T07:55:00.000Z",
+        "glucoseMmol": 5.222290597157553,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T08:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T10:00:00.000Z",
+        "glucoseMmol": 8.295988592300564,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T15:55:00.000Z",
+        "glucoseMmol": 6.888045898638666,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T16:00:00.000Z",
+        "carbs": 40,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T18:00:00.000Z",
+        "glucoseMmol": 10.761075434903614,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T23:55:00.000Z",
+        "glucoseMmol": 7.814528094371781,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T00:00:00.000Z",
+        "carbs": 47,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T02:00:00.000Z",
+        "glucoseMmol": 12.061601516781375,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T07:55:00.000Z",
+        "glucoseMmol": 6.713435861747712,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T08:00:00.000Z",
+        "carbs": 25,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T10:00:00.000Z",
+        "glucoseMmol": 9.57675213564653,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T15:55:00.000Z",
+        "glucoseMmol": 5.709054611856118,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T16:00:00.000Z",
+        "carbs": 37,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T18:00:00.000Z",
+        "glucoseMmol": 8.115724381096662,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T23:55:00.000Z",
+        "glucoseMmol": 7.618248533457518,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T00:00:00.000Z",
+        "carbs": 67,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T02:00:00.000Z",
+        "glucoseMmol": 13.26854627767112,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T07:55:00.000Z",
+        "glucoseMmol": 6.226251463172957,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T08:00:00.000Z",
+        "carbs": 64,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T10:00:00.000Z",
+        "glucoseMmol": 11.700369700910525,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T15:55:00.000Z",
+        "glucoseMmol": 7.22835297929123,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T16:00:00.000Z",
+        "carbs": 30,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T18:00:00.000Z",
+        "glucoseMmol": 9.170901857526042,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T23:55:00.000Z",
+        "glucoseMmol": 6.0661202755291015,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T00:00:00.000Z",
+        "carbs": 30,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T02:00:00.000Z",
+        "glucoseMmol": 7.682644439022988,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T07:55:00.000Z",
+        "glucoseMmol": 6.732922927476466,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T08:00:00.000Z",
+        "carbs": 54,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T10:00:00.000Z",
+        "glucoseMmol": 10.006307662981563,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T15:55:00.000Z",
+        "glucoseMmol": 7.530368942534551,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T16:00:00.000Z",
+        "carbs": 61,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T18:00:00.000Z",
+        "glucoseMmol": 12.053932477599009,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T23:55:00.000Z",
+        "glucoseMmol": 6.140282792504877,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T00:00:00.000Z",
+        "carbs": 59,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T02:00:00.000Z",
+        "glucoseMmol": 11.213114541401154,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T07:55:00.000Z",
+        "glucoseMmol": 7.734289447078481,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T08:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T10:00:00.000Z",
+        "glucoseMmol": 13.019374636784196,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T15:55:00.000Z",
+        "glucoseMmol": 7.879929846152663,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T16:00:00.000Z",
+        "carbs": 55,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T18:00:00.000Z",
+        "glucoseMmol": 11.809405829734168,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T23:55:00.000Z",
+        "glucoseMmol": 7.609819155884907,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T00:00:00.000Z",
+        "carbs": 27,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T02:00:00.000Z",
+        "glucoseMmol": 10.135363524863497,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T07:55:00.000Z",
+        "glucoseMmol": 6.720581168774515,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T08:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T10:00:00.000Z",
+        "glucoseMmol": 11.329046434410849,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T15:55:00.000Z",
+        "glucoseMmol": 7.019731874810532,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T16:00:00.000Z",
+        "carbs": 40,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T18:00:00.000Z",
+        "glucoseMmol": 10.559000973869114,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T23:55:00.000Z",
+        "glucoseMmol": 7.738742451183498,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T00:00:00.000Z",
+        "carbs": 45,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T02:00:00.000Z",
+        "glucoseMmol": 11.744375893170945,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-010",
+    "entries": [
+      {
+        "time": "2026-01-01T08:55:00.000Z",
+        "glucoseMmol": 7.735522141447291,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T09:00:00.000Z",
+        "carbs": 47,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T11:00:00.000Z",
+        "glucoseMmol": 11.032374533504868,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T16:55:00.000Z",
+        "glucoseMmol": 5.03225665492937,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T17:00:00.000Z",
+        "carbs": 28,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T19:00:00.000Z",
+        "glucoseMmol": 6.863390048959603,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T00:55:00.000Z",
+        "glucoseMmol": 6.565725919092074,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T01:00:00.000Z",
+        "carbs": 60,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T03:00:00.000Z",
+        "glucoseMmol": 10.137374093243853,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T08:55:00.000Z",
+        "glucoseMmol": 7.966063976287842,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T09:00:00.000Z",
+        "carbs": 24,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T11:00:00.000Z",
+        "glucoseMmol": 9.178953159861265,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T16:55:00.000Z",
+        "glucoseMmol": 5.244663043646142,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T17:00:00.000Z",
+        "carbs": 55,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T19:00:00.000Z",
+        "glucoseMmol": 8.717577447074776,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T00:55:00.000Z",
+        "glucoseMmol": 6.400490496773273,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T01:00:00.000Z",
+        "carbs": 46,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T03:00:00.000Z",
+        "glucoseMmol": 9.487782616869858,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T08:55:00.000Z",
+        "glucoseMmol": 5.991391462506726,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T09:00:00.000Z",
+        "carbs": 29,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T11:00:00.000Z",
+        "glucoseMmol": 7.8500135764448595,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T16:55:00.000Z",
+        "glucoseMmol": 5.523281340487301,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T17:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T19:00:00.000Z",
+        "glucoseMmol": 8.331675618837275,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T00:55:00.000Z",
+        "glucoseMmol": 7.61253049201332,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T01:00:00.000Z",
+        "carbs": 41,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T03:00:00.000Z",
+        "glucoseMmol": 9.815976462826754,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T08:55:00.000Z",
+        "glucoseMmol": 7.022805096115917,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T09:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T11:00:00.000Z",
+        "glucoseMmol": 10.545689433508862,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T16:55:00.000Z",
+        "glucoseMmol": 7.838040007511154,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T17:00:00.000Z",
+        "carbs": 43,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T19:00:00.000Z",
+        "glucoseMmol": 10.228495053335402,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T00:55:00.000Z",
+        "glucoseMmol": 6.338879698887467,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T01:00:00.000Z",
+        "carbs": 42,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T03:00:00.000Z",
+        "glucoseMmol": 8.982611586935818,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T08:55:00.000Z",
+        "glucoseMmol": 5.933534667594358,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T09:00:00.000Z",
+        "carbs": 39,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T11:00:00.000Z",
+        "glucoseMmol": 8.137076379014179,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T16:55:00.000Z",
+        "glucoseMmol": 7.047005905304104,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T17:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T19:00:00.000Z",
+        "glucoseMmol": 10.26373396727567,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T00:55:00.000Z",
+        "glucoseMmol": 6.713766961591318,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T01:00:00.000Z",
+        "carbs": 45,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T03:00:00.000Z",
+        "glucoseMmol": 9.606419416936115,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T08:55:00.000Z",
+        "glucoseMmol": 6.008942930959165,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T09:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T11:00:00.000Z",
+        "glucoseMmol": 10.186371923709908,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T16:55:00.000Z",
+        "glucoseMmol": 6.57703005685471,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T17:00:00.000Z",
+        "carbs": 67,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T19:00:00.000Z",
+        "glucoseMmol": 10.59732072476608,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T00:55:00.000Z",
+        "glucoseMmol": 5.195021759252995,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T01:00:00.000Z",
+        "carbs": 51,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T03:00:00.000Z",
+        "glucoseMmol": 8.372228295374661,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-011",
+    "entries": [
+      {
+        "time": "2026-01-01T09:55:00.000Z",
+        "glucoseMmol": 5.2769111099187285,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T10:00:00.000Z",
+        "carbs": 54,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T12:00:00.000Z",
+        "glucoseMmol": 9.963162147263064,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T17:55:00.000Z",
+        "glucoseMmol": 7.988865066319704,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T18:00:00.000Z",
+        "carbs": 57,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T20:00:00.000Z",
+        "glucoseMmol": 12.997590326033533,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T01:55:00.000Z",
+        "glucoseMmol": 7.533567893086001,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T02:00:00.000Z",
+        "carbs": 20,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T04:00:00.000Z",
+        "glucoseMmol": 9.215019331701722,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T09:55:00.000Z",
+        "glucoseMmol": 6.760768644977361,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T10:00:00.000Z",
+        "carbs": 46,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T12:00:00.000Z",
+        "glucoseMmol": 10.690631274388481,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T17:55:00.000Z",
+        "glucoseMmol": 5.44900627550669,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T18:00:00.000Z",
+        "carbs": 27,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T20:00:00.000Z",
+        "glucoseMmol": 8.07005739335902,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T01:55:00.000Z",
+        "glucoseMmol": 6.479397648014128,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T02:00:00.000Z",
+        "carbs": 39,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T04:00:00.000Z",
+        "glucoseMmol": 10.273601550757885,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T09:55:00.000Z",
+        "glucoseMmol": 7.71720328531228,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T10:00:00.000Z",
+        "carbs": 23,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T12:00:00.000Z",
+        "glucoseMmol": 10.132320176378514,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T17:55:00.000Z",
+        "glucoseMmol": 5.560161908622831,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T18:00:00.000Z",
+        "carbs": 39,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T20:00:00.000Z",
+        "glucoseMmol": 9.12260306501761,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T01:55:00.000Z",
+        "glucoseMmol": 7.997850166866556,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T02:00:00.000Z",
+        "carbs": 42,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T04:00:00.000Z",
+        "glucoseMmol": 11.853105492824689,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T09:55:00.000Z",
+        "glucoseMmol": 5.960158033296466,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T10:00:00.000Z",
+        "carbs": 36,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T12:00:00.000Z",
+        "glucoseMmol": 9.655778491534292,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T17:55:00.000Z",
+        "glucoseMmol": 6.239482034696266,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T18:00:00.000Z",
+        "carbs": 47,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T20:00:00.000Z",
+        "glucoseMmol": 10.637350493573273,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T01:55:00.000Z",
+        "glucoseMmol": 6.161401899997145,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T02:00:00.000Z",
+        "carbs": 61,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T04:00:00.000Z",
+        "glucoseMmol": 11.776281010986615,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T09:55:00.000Z",
+        "glucoseMmol": 6.381315413163975,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T10:00:00.000Z",
+        "carbs": 43,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T12:00:00.000Z",
+        "glucoseMmol": 10.460328928849968,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T17:55:00.000Z",
+        "glucoseMmol": 6.07372363191098,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T18:00:00.000Z",
+        "carbs": 51,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T20:00:00.000Z",
+        "glucoseMmol": 11.110153109803795,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T01:55:00.000Z",
+        "glucoseMmol": 6.420732138445601,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T02:00:00.000Z",
+        "carbs": 43,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T04:00:00.000Z",
+        "glucoseMmol": 10.53298549373013,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T09:55:00.000Z",
+        "glucoseMmol": 6.473658054601401,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T10:00:00.000Z",
+        "carbs": 35,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T12:00:00.000Z",
+        "glucoseMmol": 9.442068538783738,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T17:55:00.000Z",
+        "glucoseMmol": 6.492527786875144,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T18:00:00.000Z",
+        "carbs": 27,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T20:00:00.000Z",
+        "glucoseMmol": 9.285235058078541,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T01:55:00.000Z",
+        "glucoseMmol": 7.313437081873417,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T02:00:00.000Z",
+        "carbs": 61,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T04:00:00.000Z",
+        "glucoseMmol": 13.024612886620062,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-012",
+    "entries": [
+      {
+        "time": "2026-01-01T10:55:00.000Z",
+        "glucoseMmol": 7.054284981219098,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T11:00:00.000Z",
+        "carbs": 59,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T13:00:00.000Z",
+        "glucoseMmol": 10.895369684575124,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T18:55:00.000Z",
+        "glucoseMmol": 5.522276413161308,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T19:00:00.000Z",
+        "carbs": 36,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T21:00:00.000Z",
+        "glucoseMmol": 8.403562078233808,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T02:55:00.000Z",
+        "glucoseMmol": 5.697036613943055,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T03:00:00.000Z",
+        "carbs": 21,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T05:00:00.000Z",
+        "glucoseMmol": 6.921177275972441,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T10:55:00.000Z",
+        "glucoseMmol": 6.718047362752259,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T11:00:00.000Z",
+        "carbs": 68,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T13:00:00.000Z",
+        "glucoseMmol": 11.476631128638983,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T18:55:00.000Z",
+        "glucoseMmol": 6.189251214032993,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T19:00:00.000Z",
+        "carbs": 22,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T21:00:00.000Z",
+        "glucoseMmol": 7.61864913023077,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T02:55:00.000Z",
+        "glucoseMmol": 5.988635578658432,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T03:00:00.000Z",
+        "carbs": 61,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T05:00:00.000Z",
+        "glucoseMmol": 10.21724100390449,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T10:55:00.000Z",
+        "glucoseMmol": 6.30260237143375,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T11:00:00.000Z",
+        "carbs": 63,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T13:00:00.000Z",
+        "glucoseMmol": 10.558072953009978,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T18:55:00.000Z",
+        "glucoseMmol": 7.526311846449971,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T19:00:00.000Z",
+        "carbs": 27,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T21:00:00.000Z",
+        "glucoseMmol": 9.265489461608231,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T02:55:00.000Z",
+        "glucoseMmol": 7.447476320667192,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T03:00:00.000Z",
+        "carbs": 30,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T05:00:00.000Z",
+        "glucoseMmol": 9.20903964783065,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T10:55:00.000Z",
+        "glucoseMmol": 5.84277611086145,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T11:00:00.000Z",
+        "carbs": 38,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T13:00:00.000Z",
+        "glucoseMmol": 8.533212264012546,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T18:55:00.000Z",
+        "glucoseMmol": 7.352226472692564,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T19:00:00.000Z",
+        "carbs": 65,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T21:00:00.000Z",
+        "glucoseMmol": 11.896269808383659,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T02:55:00.000Z",
+        "glucoseMmol": 7.494684285484254,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T03:00:00.000Z",
+        "carbs": 68,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T05:00:00.000Z",
+        "glucoseMmol": 11.872950844690203,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T10:55:00.000Z",
+        "glucoseMmol": 7.640300871571526,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T11:00:00.000Z",
+        "carbs": 53,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T13:00:00.000Z",
+        "glucoseMmol": 11.088022608300673,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T18:55:00.000Z",
+        "glucoseMmol": 7.1469283583574,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T19:00:00.000Z",
+        "carbs": 61,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T21:00:00.000Z",
+        "glucoseMmol": 11.452634696830064,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T02:55:00.000Z",
+        "glucoseMmol": 6.381048240000382,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T03:00:00.000Z",
+        "carbs": 38,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T05:00:00.000Z",
+        "glucoseMmol": 8.915685721198097,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T10:55:00.000Z",
+        "glucoseMmol": 6.331213738769293,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T11:00:00.000Z",
+        "carbs": 41,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T13:00:00.000Z",
+        "glucoseMmol": 8.869674772284926,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T18:55:00.000Z",
+        "glucoseMmol": 5.2007504652719945,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T19:00:00.000Z",
+        "carbs": 26,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T21:00:00.000Z",
+        "glucoseMmol": 7.38779334130697,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T02:55:00.000Z",
+        "glucoseMmol": 7.858063728082925,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T03:00:00.000Z",
+        "carbs": 60,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T05:00:00.000Z",
+        "glucoseMmol": 11.720781367924063,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-013",
+    "entries": [
+      {
+        "time": "2026-01-01T11:55:00.000Z",
+        "glucoseMmol": 7.527734064729884,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T12:00:00.000Z",
+        "carbs": 24,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T14:00:00.000Z",
+        "glucoseMmol": 8.501680312501266,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T19:55:00.000Z",
+        "glucoseMmol": 7.448779434897006,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T20:00:00.000Z",
+        "carbs": 49,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T22:00:00.000Z",
+        "glucoseMmol": 9.2513329966863,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T03:55:00.000Z",
+        "glucoseMmol": 6.696780357277021,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T04:00:00.000Z",
+        "carbs": 35,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T06:00:00.000Z",
+        "glucoseMmol": 8.355420477703836,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T11:55:00.000Z",
+        "glucoseMmol": 6.2075943923555315,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T12:00:00.000Z",
+        "carbs": 54,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T14:00:00.000Z",
+        "glucoseMmol": 8.884698261562734,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T19:55:00.000Z",
+        "glucoseMmol": 6.140983755001798,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T20:00:00.000Z",
+        "carbs": 20,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T22:00:00.000Z",
+        "glucoseMmol": 7.059116631482418,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T03:55:00.000Z",
+        "glucoseMmol": 7.990786572918296,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T04:00:00.000Z",
+        "carbs": 31,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T06:00:00.000Z",
+        "glucoseMmol": 9.12838410490503,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T11:55:00.000Z",
+        "glucoseMmol": 6.4411997764837,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T12:00:00.000Z",
+        "carbs": 33,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T14:00:00.000Z",
+        "glucoseMmol": 8.208841229481623,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T19:55:00.000Z",
+        "glucoseMmol": 5.986346433404833,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T20:00:00.000Z",
+        "carbs": 47,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T22:00:00.000Z",
+        "glucoseMmol": 7.891084326288353,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T03:55:00.000Z",
+        "glucoseMmol": 7.7717790708411485,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T04:00:00.000Z",
+        "carbs": 35,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T06:00:00.000Z",
+        "glucoseMmol": 9.492737945836659,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T11:55:00.000Z",
+        "glucoseMmol": 7.832448060624301,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T12:00:00.000Z",
+        "carbs": 50,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T14:00:00.000Z",
+        "glucoseMmol": 9.950131949658196,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T19:55:00.000Z",
+        "glucoseMmol": 7.963900929084048,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T20:00:00.000Z",
+        "carbs": 41,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T22:00:00.000Z",
+        "glucoseMmol": 10.114484273881342,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T03:55:00.000Z",
+        "glucoseMmol": 5.812931425403804,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T04:00:00.000Z",
+        "carbs": 60,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T06:00:00.000Z",
+        "glucoseMmol": 8.383351207990199,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T11:55:00.000Z",
+        "glucoseMmol": 5.191999446833506,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T12:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T14:00:00.000Z",
+        "glucoseMmol": 7.121984636296207,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T19:55:00.000Z",
+        "glucoseMmol": 6.010777190327644,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T20:00:00.000Z",
+        "carbs": 48,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T22:00:00.000Z",
+        "glucoseMmol": 8.120359601192176,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T03:55:00.000Z",
+        "glucoseMmol": 6.862017689971253,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T04:00:00.000Z",
+        "carbs": 48,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T06:00:00.000Z",
+        "glucoseMmol": 8.729645241675899,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T11:55:00.000Z",
+        "glucoseMmol": 7.213641454000026,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T12:00:00.000Z",
+        "carbs": 54,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T14:00:00.000Z",
+        "glucoseMmol": 9.75348767047748,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T19:55:00.000Z",
+        "glucoseMmol": 5.83002990228124,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T20:00:00.000Z",
+        "carbs": 21,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T22:00:00.000Z",
+        "glucoseMmol": 6.66837619532831,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T03:55:00.000Z",
+        "glucoseMmol": 7.786416252143681,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T04:00:00.000Z",
+        "carbs": 20,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T06:00:00.000Z",
+        "glucoseMmol": 8.311830486605565,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-014",
+    "entries": [
+      {
+        "time": "2026-01-01T12:55:00.000Z",
+        "glucoseMmol": 5.293638981645927,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T13:00:00.000Z",
+        "carbs": 57,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T20:55:00.000Z",
+        "glucoseMmol": 5.091992573346943,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T21:00:00.000Z",
+        "carbs": 58,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T23:00:00.000Z",
+        "glucoseMmol": 9.853954438571819,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T04:55:00.000Z",
+        "glucoseMmol": 7.763986138859764,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T05:00:00.000Z",
+        "carbs": 28,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T07:00:00.000Z",
+        "glucoseMmol": 11.033977361172438,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T12:55:00.000Z",
+        "glucoseMmol": 6.290426084771752,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T13:00:00.000Z",
+        "carbs": 30,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T15:00:00.000Z",
+        "glucoseMmol": 8.429558267793618,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T20:55:00.000Z",
+        "glucoseMmol": 6.130701840622351,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T21:00:00.000Z",
+        "carbs": 37,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T04:55:00.000Z",
+        "glucoseMmol": 5.916041700635105,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T05:00:00.000Z",
+        "carbs": 25,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T07:00:00.000Z",
+        "glucoseMmol": 7.516003006719984,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T12:55:00.000Z",
+        "glucoseMmol": 6.1631818257737905,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T13:00:00.000Z",
+        "carbs": 69,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T15:00:00.000Z",
+        "glucoseMmol": 12.880473523382097,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T20:55:00.000Z",
+        "glucoseMmol": 5.4591615637764335,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T21:00:00.000Z",
+        "carbs": 46,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T23:00:00.000Z",
+        "glucoseMmol": 8.397618969152681,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T04:55:00.000Z",
+        "glucoseMmol": 7.536689171334729,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T05:00:00.000Z",
+        "carbs": 33,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T12:55:00.000Z",
+        "glucoseMmol": 5.701601948123425,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T13:00:00.000Z",
+        "carbs": 70,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T15:00:00.000Z",
+        "glucoseMmol": 10.6273553339066,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T20:55:00.000Z",
+        "glucoseMmol": 7.818463072413579,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T21:00:00.000Z",
+        "carbs": 50,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T23:00:00.000Z",
+        "glucoseMmol": 13.029974014498293,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T04:55:00.000Z",
+        "glucoseMmol": 7.710358027368784,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T05:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T07:00:00.000Z",
+        "glucoseMmol": 13.423449647068047,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T12:55:00.000Z",
+        "glucoseMmol": 7.484757187543437,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T13:00:00.000Z",
+        "carbs": 53,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T20:55:00.000Z",
+        "glucoseMmol": 7.619481392670423,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T21:00:00.000Z",
+        "carbs": 60,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T23:00:00.000Z",
+        "glucoseMmol": 12.813930271030404,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T04:55:00.000Z",
+        "glucoseMmol": 5.152035088511184,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T05:00:00.000Z",
+        "carbs": 57,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T07:00:00.000Z",
+        "glucoseMmol": 10.056958419214933,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T12:55:00.000Z",
+        "glucoseMmol": 7.563553639687598,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T13:00:00.000Z",
+        "carbs": 27,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T15:00:00.000Z",
+        "glucoseMmol": 9.998807737338357,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T20:55:00.000Z",
+        "glucoseMmol": 7.481917541241273,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T21:00:00.000Z",
+        "carbs": 53,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T04:55:00.000Z",
+        "glucoseMmol": 6.804870282765478,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T05:00:00.000Z",
+        "carbs": 24,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T07:00:00.000Z",
+        "glucoseMmol": 8.654557054121979,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-015",
+    "entries": [
+      {
+        "time": "2026-01-01T13:55:00.000Z",
+        "glucoseMmol": 5.847406031796709,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T14:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T16:00:00.000Z",
+        "glucoseMmol": 8.562947454486661,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T21:55:00.000Z",
+        "glucoseMmol": 6.157972691580653,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T22:00:00.000Z",
+        "carbs": 48,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T00:00:00.000Z",
+        "glucoseMmol": 9.385347946323453,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T05:55:00.000Z",
+        "glucoseMmol": 5.5148991390597075,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T06:00:00.000Z",
+        "carbs": 32,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T08:00:00.000Z",
+        "glucoseMmol": 7.72760507991227,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T13:55:00.000Z",
+        "glucoseMmol": 5.69700168306008,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T14:00:00.000Z",
+        "carbs": 46,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T16:00:00.000Z",
+        "glucoseMmol": 8.859588215829184,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T21:55:00.000Z",
+        "glucoseMmol": 7.990073043154553,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T22:00:00.000Z",
+        "carbs": 68,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T00:00:00.000Z",
+        "glucoseMmol": 12.17416924319851,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T05:55:00.000Z",
+        "glucoseMmol": 5.370994838885963,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T06:00:00.000Z",
+        "carbs": 56,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T08:00:00.000Z",
+        "glucoseMmol": 9.022301659161846,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T13:55:00.000Z",
+        "glucoseMmol": 7.983314646175131,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T14:00:00.000Z",
+        "carbs": 66,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T16:00:00.000Z",
+        "glucoseMmol": 12.168548933854327,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T21:55:00.000Z",
+        "glucoseMmol": 6.987210556399077,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T22:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T00:00:00.000Z",
+        "glucoseMmol": 9.736435647724816,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T05:55:00.000Z",
+        "glucoseMmol": 6.359575469279662,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T06:00:00.000Z",
+        "carbs": 54,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T08:00:00.000Z",
+        "glucoseMmol": 9.663897241959349,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T13:55:00.000Z",
+        "glucoseMmol": 6.990335278213024,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T14:00:00.000Z",
+        "carbs": 25,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T16:00:00.000Z",
+        "glucoseMmol": 8.316914332223435,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T21:55:00.000Z",
+        "glucoseMmol": 7.135756677715108,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T22:00:00.000Z",
+        "carbs": 37,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T00:00:00.000Z",
+        "glucoseMmol": 9.103670719939595,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T05:55:00.000Z",
+        "glucoseMmol": 7.003516283351928,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T06:00:00.000Z",
+        "carbs": 32,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T08:00:00.000Z",
+        "glucoseMmol": 9.070116359746706,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T13:55:00.000Z",
+        "glucoseMmol": 5.2635402728337795,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T14:00:00.000Z",
+        "carbs": 42,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T16:00:00.000Z",
+        "glucoseMmol": 7.8117649569083,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T21:55:00.000Z",
+        "glucoseMmol": 7.143060860224068,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T22:00:00.000Z",
+        "carbs": 56,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T00:00:00.000Z",
+        "glucoseMmol": 10.846145763049524,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T05:55:00.000Z",
+        "glucoseMmol": 6.274448677664623,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T06:00:00.000Z",
+        "carbs": 36,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T08:00:00.000Z",
+        "glucoseMmol": 8.526020310884341,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T13:55:00.000Z",
+        "glucoseMmol": 7.10985361924395,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T14:00:00.000Z",
+        "carbs": 24,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T16:00:00.000Z",
+        "glucoseMmol": 8.977527206931263,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T21:55:00.000Z",
+        "glucoseMmol": 5.054344630101696,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T22:00:00.000Z",
+        "carbs": 68,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T00:00:00.000Z",
+        "glucoseMmol": 9.681977681700761,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T05:55:00.000Z",
+        "glucoseMmol": 6.934567140415311,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T06:00:00.000Z",
+        "carbs": 43,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T08:00:00.000Z",
+        "glucoseMmol": 9.811928130773206,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-016",
+    "entries": [
+      {
+        "time": "2026-01-01T14:55:00.000Z",
+        "glucoseMmol": 7.744075485272333,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T15:00:00.000Z",
+        "carbs": 37,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T17:00:00.000Z",
+        "glucoseMmol": 11.31882931158257,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T22:55:00.000Z",
+        "glucoseMmol": 7.448077088687569,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T23:00:00.000Z",
+        "carbs": 22,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T01:00:00.000Z",
+        "glucoseMmol": 9.427877513797332,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T06:55:00.000Z",
+        "glucoseMmol": 5.219020716147497,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T07:00:00.000Z",
+        "carbs": 22,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T09:00:00.000Z",
+        "glucoseMmol": 6.916553871206318,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T14:55:00.000Z",
+        "glucoseMmol": 7.000641367398202,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T15:00:00.000Z",
+        "carbs": 64,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T17:00:00.000Z",
+        "glucoseMmol": 12.915380677108963,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T22:55:00.000Z",
+        "glucoseMmol": 5.470418588956818,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T23:00:00.000Z",
+        "carbs": 56,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T01:00:00.000Z",
+        "glucoseMmol": 10.353081859887267,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T06:55:00.000Z",
+        "glucoseMmol": 5.100863817613572,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T07:00:00.000Z",
+        "carbs": 66,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T09:00:00.000Z",
+        "glucoseMmol": 11.408655057419091,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T14:55:00.000Z",
+        "glucoseMmol": 7.683027677470818,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T15:00:00.000Z",
+        "carbs": 45,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T17:00:00.000Z",
+        "glucoseMmol": 12.110506619373336,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T22:55:00.000Z",
+        "glucoseMmol": 5.425736408680677,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T23:00:00.000Z",
+        "carbs": 31,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T01:00:00.000Z",
+        "glucoseMmol": 8.346766574842235,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T06:55:00.000Z",
+        "glucoseMmol": 6.5644210677128285,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T07:00:00.000Z",
+        "carbs": 36,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T09:00:00.000Z",
+        "glucoseMmol": 9.707338031558319,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T14:55:00.000Z",
+        "glucoseMmol": 7.503639802802354,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T15:00:00.000Z",
+        "carbs": 48,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T17:00:00.000Z",
+        "glucoseMmol": 12.317230071332306,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T22:55:00.000Z",
+        "glucoseMmol": 7.718515792163089,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T23:00:00.000Z",
+        "carbs": 41,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T01:00:00.000Z",
+        "glucoseMmol": 11.200423574593538,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T06:55:00.000Z",
+        "glucoseMmol": 7.230580613948405,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T07:00:00.000Z",
+        "carbs": 20,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T09:00:00.000Z",
+        "glucoseMmol": 8.938483650485676,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T14:55:00.000Z",
+        "glucoseMmol": 5.2573072200175375,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T15:00:00.000Z",
+        "carbs": 30,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T17:00:00.000Z",
+        "glucoseMmol": 7.659601516043768,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T22:55:00.000Z",
+        "glucoseMmol": 6.68365461891517,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T23:00:00.000Z",
+        "carbs": 64,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T01:00:00.000Z",
+        "glucoseMmol": 13.033722270273913,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T06:55:00.000Z",
+        "glucoseMmol": 5.597707817563787,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T07:00:00.000Z",
+        "carbs": 37,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T09:00:00.000Z",
+        "glucoseMmol": 9.001236959233259,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T14:55:00.000Z",
+        "glucoseMmol": 6.382248615846038,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T15:00:00.000Z",
+        "carbs": 37,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T17:00:00.000Z",
+        "glucoseMmol": 9.725047294435402,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T22:55:00.000Z",
+        "glucoseMmol": 7.18238188023679,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T23:00:00.000Z",
+        "carbs": 26,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T01:00:00.000Z",
+        "glucoseMmol": 9.717689896427714,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T06:55:00.000Z",
+        "glucoseMmol": 7.654329563025385,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T07:00:00.000Z",
+        "carbs": 22,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T09:00:00.000Z",
+        "glucoseMmol": 10.00742256242161,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-017",
+    "entries": [
+      {
+        "time": "2026-01-01T15:55:00.000Z",
+        "glucoseMmol": 6.882022525416687,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T16:00:00.000Z",
+        "carbs": 48,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T18:00:00.000Z",
+        "glucoseMmol": 10.44264202666469,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T23:55:00.000Z",
+        "glucoseMmol": 7.029818068258464,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T00:00:00.000Z",
+        "carbs": 68,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T02:00:00.000Z",
+        "glucoseMmol": 12.090690558627248,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T07:55:00.000Z",
+        "glucoseMmol": 7.7691344225313514,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T08:00:00.000Z",
+        "carbs": 68,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T10:00:00.000Z",
+        "glucoseMmol": 12.444565866878255,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T15:55:00.000Z",
+        "glucoseMmol": 7.043004236649722,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T16:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T18:00:00.000Z",
+        "glucoseMmol": 10.372394449133427,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T23:55:00.000Z",
+        "glucoseMmol": 6.98756542452611,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T00:00:00.000Z",
+        "carbs": 47,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T02:00:00.000Z",
+        "glucoseMmol": 10.156622289130464,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T07:55:00.000Z",
+        "glucoseMmol": 7.418737322092056,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T08:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T10:00:00.000Z",
+        "glucoseMmol": 11.045206441693008,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T15:55:00.000Z",
+        "glucoseMmol": 6.2652724522631615,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T16:00:00.000Z",
+        "carbs": 51,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T18:00:00.000Z",
+        "glucoseMmol": 9.525087720928713,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T23:55:00.000Z",
+        "glucoseMmol": 7.780206565279514,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T00:00:00.000Z",
+        "carbs": 67,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T02:00:00.000Z",
+        "glucoseMmol": 12.614546778853985,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T07:55:00.000Z",
+        "glucoseMmol": 7.417611670913175,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T08:00:00.000Z",
+        "carbs": 25,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T10:00:00.000Z",
+        "glucoseMmol": 9.507539849774911,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T15:55:00.000Z",
+        "glucoseMmol": 5.68702903855592,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T16:00:00.000Z",
+        "carbs": 41,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T18:00:00.000Z",
+        "glucoseMmol": 8.615324028283359,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T23:55:00.000Z",
+        "glucoseMmol": 5.65231018490158,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T00:00:00.000Z",
+        "carbs": 49,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T02:00:00.000Z",
+        "glucoseMmol": 8.767304110592232,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T07:55:00.000Z",
+        "glucoseMmol": 6.428571255411953,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T08:00:00.000Z",
+        "carbs": 39,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T10:00:00.000Z",
+        "glucoseMmol": 8.832469521854073,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T15:55:00.000Z",
+        "glucoseMmol": 6.8027061654720455,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T16:00:00.000Z",
+        "carbs": 26,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T18:00:00.000Z",
+        "glucoseMmol": 8.806249172175303,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T23:55:00.000Z",
+        "glucoseMmol": 6.496454739943147,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T00:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T02:00:00.000Z",
+        "glucoseMmol": 10.278910149224103,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T07:55:00.000Z",
+        "glucoseMmol": 6.47033651242964,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T08:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T10:00:00.000Z",
+        "glucoseMmol": 9.308084742976353,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T15:55:00.000Z",
+        "glucoseMmol": 7.479531689081341,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T16:00:00.000Z",
+        "carbs": 24,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T18:00:00.000Z",
+        "glucoseMmol": 9.344324232470244,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T23:55:00.000Z",
+        "glucoseMmol": 6.639005839126185,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T00:00:00.000Z",
+        "carbs": 45,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T02:00:00.000Z",
+        "glucoseMmol": 10.163025954039767,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T07:55:00.000Z",
+        "glucoseMmol": 5.201765297912061,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T08:00:00.000Z",
+        "carbs": 21,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T10:00:00.000Z",
+        "glucoseMmol": 6.2959548958390945,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-018",
+    "entries": [
+      {
+        "time": "2026-01-01T16:55:00.000Z",
+        "glucoseMmol": 6.317587757250294,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T17:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T19:00:00.000Z",
+        "glucoseMmol": 8.482878681064273,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T00:55:00.000Z",
+        "glucoseMmol": 5.69591025589034,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T01:00:00.000Z",
+        "carbs": 66,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T03:00:00.000Z",
+        "glucoseMmol": 8.349747532177716,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T08:55:00.000Z",
+        "glucoseMmol": 6.365489125484601,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T09:00:00.000Z",
+        "carbs": 69,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T11:00:00.000Z",
+        "glucoseMmol": 9.354102771738544,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T16:55:00.000Z",
+        "glucoseMmol": 5.011162359267473,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T17:00:00.000Z",
+        "carbs": 31,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T19:00:00.000Z",
+        "glucoseMmol": 6.416965988439818,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T00:55:00.000Z",
+        "glucoseMmol": 5.540450113592669,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T01:00:00.000Z",
+        "carbs": 67,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T03:00:00.000Z",
+        "glucoseMmol": 8.426058581996088,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T08:55:00.000Z",
+        "glucoseMmol": 7.328532122541219,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T09:00:00.000Z",
+        "carbs": 39,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T11:00:00.000Z",
+        "glucoseMmol": 9.32239261349663,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T16:55:00.000Z",
+        "glucoseMmol": 5.1706576209980994,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T17:00:00.000Z",
+        "carbs": 68,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T19:00:00.000Z",
+        "glucoseMmol": 7.873269829001899,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T00:55:00.000Z",
+        "glucoseMmol": 6.341095709241927,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T01:00:00.000Z",
+        "carbs": 35,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T03:00:00.000Z",
+        "glucoseMmol": 7.469396998981635,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T08:55:00.000Z",
+        "glucoseMmol": 5.379516776418313,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T09:00:00.000Z",
+        "carbs": 64,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T11:00:00.000Z",
+        "glucoseMmol": 8.518309206183378,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T16:55:00.000Z",
+        "glucoseMmol": 5.784987439867109,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T17:00:00.000Z",
+        "carbs": 44,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T19:00:00.000Z",
+        "glucoseMmol": 8.072067098064968,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T00:55:00.000Z",
+        "glucoseMmol": 7.6693549326155335,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T01:00:00.000Z",
+        "carbs": 40,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T03:00:00.000Z",
+        "glucoseMmol": 9.463332476451374,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T08:55:00.000Z",
+        "glucoseMmol": 7.31852157227695,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T09:00:00.000Z",
+        "carbs": 45,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T11:00:00.000Z",
+        "glucoseMmol": 9.356067761220038,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T16:55:00.000Z",
+        "glucoseMmol": 6.587324757827446,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T17:00:00.000Z",
+        "carbs": 33,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T19:00:00.000Z",
+        "glucoseMmol": 7.737518530590459,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T00:55:00.000Z",
+        "glucoseMmol": 5.078666987363249,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T01:00:00.000Z",
+        "carbs": 28,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T03:00:00.000Z",
+        "glucoseMmol": 6.658758915544798,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T08:55:00.000Z",
+        "glucoseMmol": 7.340327712940052,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T09:00:00.000Z",
+        "carbs": 35,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T11:00:00.000Z",
+        "glucoseMmol": 8.908883835297699,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T16:55:00.000Z",
+        "glucoseMmol": 7.1337468503043056,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T17:00:00.000Z",
+        "carbs": 63,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T19:00:00.000Z",
+        "glucoseMmol": 10.179535301700234,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T00:55:00.000Z",
+        "glucoseMmol": 5.283396390965208,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T01:00:00.000Z",
+        "carbs": 68,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T03:00:00.000Z",
+        "glucoseMmol": 8.11962979951563,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T08:55:00.000Z",
+        "glucoseMmol": 5.136196255218238,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T09:00:00.000Z",
+        "carbs": 24,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T11:00:00.000Z",
+        "glucoseMmol": 6.250841870028526,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-019",
+    "entries": [
+      {
+        "time": "2026-01-01T17:55:00.000Z",
+        "glucoseMmol": 6.365153882885352,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T18:00:00.000Z",
+        "carbs": 50,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T20:00:00.000Z",
+        "glucoseMmol": 10.344415265135467,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T01:55:00.000Z",
+        "glucoseMmol": 7.696984298527241,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T02:00:00.000Z",
+        "carbs": 58,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T04:00:00.000Z",
+        "glucoseMmol": 12.335075943483972,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T09:55:00.000Z",
+        "glucoseMmol": 7.5622105214279145,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T10:00:00.000Z",
+        "carbs": 27,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T12:00:00.000Z",
+        "glucoseMmol": 9.45253028635867,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T17:55:00.000Z",
+        "glucoseMmol": 7.791392963845283,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T18:00:00.000Z",
+        "carbs": 67,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T20:00:00.000Z",
+        "glucoseMmol": 12.802516703740693,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T01:55:00.000Z",
+        "glucoseMmol": 5.2591630418319255,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T02:00:00.000Z",
+        "carbs": 42,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T04:00:00.000Z",
+        "glucoseMmol": 9.094504045452922,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T09:55:00.000Z",
+        "glucoseMmol": 6.801743638701737,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T10:00:00.000Z",
+        "carbs": 46,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T12:00:00.000Z",
+        "glucoseMmol": 10.930421911361627,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T17:55:00.000Z",
+        "glucoseMmol": 7.1197283861692995,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T18:00:00.000Z",
+        "carbs": 31,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T20:00:00.000Z",
+        "glucoseMmol": 10.516555362632499,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T01:55:00.000Z",
+        "glucoseMmol": 7.043873020913452,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T02:00:00.000Z",
+        "carbs": 35,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T04:00:00.000Z",
+        "glucoseMmol": 8.96748958930839,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T09:55:00.000Z",
+        "glucoseMmol": 7.434974065283313,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T10:00:00.000Z",
+        "carbs": 64,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T12:00:00.000Z",
+        "glucoseMmol": 12.06682375341654,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T17:55:00.000Z",
+        "glucoseMmol": 6.74818360991776,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T18:00:00.000Z",
+        "carbs": 39,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T20:00:00.000Z",
+        "glucoseMmol": 9.477768841437065,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T01:55:00.000Z",
+        "glucoseMmol": 5.914099179906771,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T02:00:00.000Z",
+        "carbs": 54,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T04:00:00.000Z",
+        "glucoseMmol": 10.355464376443997,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T09:55:00.000Z",
+        "glucoseMmol": 5.910429915878922,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T10:00:00.000Z",
+        "carbs": 65,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T12:00:00.000Z",
+        "glucoseMmol": 11.58037348317448,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T17:55:00.000Z",
+        "glucoseMmol": 6.589274890022352,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T18:00:00.000Z",
+        "carbs": 63,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T20:00:00.000Z",
+        "glucoseMmol": 10.7913735354878,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T01:55:00.000Z",
+        "glucoseMmol": 6.12954995688051,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T02:00:00.000Z",
+        "carbs": 52,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T04:00:00.000Z",
+        "glucoseMmol": 10.581366997878067,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T09:55:00.000Z",
+        "glucoseMmol": 5.626170309027657,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T10:00:00.000Z",
+        "carbs": 42,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T12:00:00.000Z",
+        "glucoseMmol": 9.271035458324477,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T17:55:00.000Z",
+        "glucoseMmol": 6.947312552016228,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T18:00:00.000Z",
+        "carbs": 60,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T20:00:00.000Z",
+        "glucoseMmol": 11.442186494660564,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T01:55:00.000Z",
+        "glucoseMmol": 6.553469486767426,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T02:00:00.000Z",
+        "carbs": 58,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T04:00:00.000Z",
+        "glucoseMmol": 12.031524043865502,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T09:55:00.000Z",
+        "glucoseMmol": 6.234824355691671,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T10:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T12:00:00.000Z",
+        "glucoseMmol": 10.543875687210821,
+        "source": "synthetic"
+      }
+    ]
+  },
+  {
+    "anonymous_user_id": "synthetic-020",
+    "entries": [
+      {
+        "time": "2026-01-01T18:55:00.000Z",
+        "glucoseMmol": 6.435427332995459,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T19:00:00.000Z",
+        "carbs": 50,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-01T21:00:00.000Z",
+        "glucoseMmol": 9.306002849169696,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T02:55:00.000Z",
+        "glucoseMmol": 5.2715265159495175,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T03:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T05:00:00.000Z",
+        "glucoseMmol": 9.16677045971776,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T10:55:00.000Z",
+        "glucoseMmol": 6.998817020328715,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T11:00:00.000Z",
+        "carbs": 63,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T13:00:00.000Z",
+        "glucoseMmol": 10.751208106623963,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T18:55:00.000Z",
+        "glucoseMmol": 7.270709277130663,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T19:00:00.000Z",
+        "carbs": 33,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-02T21:00:00.000Z",
+        "glucoseMmol": 9.245434566736222,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T02:55:00.000Z",
+        "glucoseMmol": 5.376988593256101,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T03:00:00.000Z",
+        "carbs": 54,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T05:00:00.000Z",
+        "glucoseMmol": 8.569360201274977,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T10:55:00.000Z",
+        "glucoseMmol": 7.659283784683794,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T11:00:00.000Z",
+        "carbs": 35,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T13:00:00.000Z",
+        "glucoseMmol": 10.02259170745189,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T18:55:00.000Z",
+        "glucoseMmol": 6.136688197264448,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T19:00:00.000Z",
+        "carbs": 59,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-03T21:00:00.000Z",
+        "glucoseMmol": 9.641289670203502,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T02:55:00.000Z",
+        "glucoseMmol": 6.356073787435889,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T03:00:00.000Z",
+        "carbs": 62,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T05:00:00.000Z",
+        "glucoseMmol": 10.263869958656528,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T10:55:00.000Z",
+        "glucoseMmol": 5.295279529644176,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T11:00:00.000Z",
+        "carbs": 56,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T13:00:00.000Z",
+        "glucoseMmol": 8.939888833963002,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T18:55:00.000Z",
+        "glucoseMmol": 6.049725870136172,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T19:00:00.000Z",
+        "carbs": 55,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-04T21:00:00.000Z",
+        "glucoseMmol": 9.842977158011246,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T02:55:00.000Z",
+        "glucoseMmol": 6.304563801037148,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T03:00:00.000Z",
+        "carbs": 43,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T05:00:00.000Z",
+        "glucoseMmol": 9.099663874826703,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T10:55:00.000Z",
+        "glucoseMmol": 6.991985286585987,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T11:00:00.000Z",
+        "carbs": 53,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T13:00:00.000Z",
+        "glucoseMmol": 10.486614208693304,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T18:55:00.000Z",
+        "glucoseMmol": 7.160011684289202,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T19:00:00.000Z",
+        "carbs": 58,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-05T21:00:00.000Z",
+        "glucoseMmol": 11.008543791662282,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T02:55:00.000Z",
+        "glucoseMmol": 5.5320454011671245,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T03:00:00.000Z",
+        "carbs": 28,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T05:00:00.000Z",
+        "glucoseMmol": 7.059933834889283,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T10:55:00.000Z",
+        "glucoseMmol": 6.078400414669886,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T11:00:00.000Z",
+        "carbs": 34,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T13:00:00.000Z",
+        "glucoseMmol": 8.407315697579953,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T18:55:00.000Z",
+        "glucoseMmol": 5.460452184081078,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T19:00:00.000Z",
+        "carbs": 41,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-06T21:00:00.000Z",
+        "glucoseMmol": 7.891761910530429,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T02:55:00.000Z",
+        "glucoseMmol": 7.260091393021867,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T03:00:00.000Z",
+        "carbs": 59,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T05:00:00.000Z",
+        "glucoseMmol": 10.685871030666554,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T10:55:00.000Z",
+        "glucoseMmol": 6.644131143111736,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T11:00:00.000Z",
+        "carbs": 55,
+        "source": "synthetic"
+      },
+      {
+        "time": "2026-01-07T13:00:00.000Z",
+        "glucoseMmol": 10.287249004499365,
+        "source": "synthetic"
+      }
+    ]
+  }
+]

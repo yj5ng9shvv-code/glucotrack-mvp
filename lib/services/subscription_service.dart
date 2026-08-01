@@ -31,12 +31,13 @@ class SubscriptionService {
   Future<ServerSubscription> startTrial(String token) async {
     final device = await DeviceIdentityService.current();
     final body = await _request(
-      'POST',
-      '/trial/start',
-      token,
-      {'deviceHash': device.id},
-      device.id,
-    );
+        'POST',
+        '/trial/start',
+        token,
+        {
+          'deviceHash': device.id,
+        },
+        device.id);
     final value = body['subscription'];
     return ServerSubscription.fromJson(
       value is Map
@@ -58,7 +59,7 @@ class SubscriptionService {
     );
     final response = await _client.post(
       uri,
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json; charset=utf-8'},
       body: jsonEncode({'email': email, 'locale': locale}),
     );
     if (response.statusCode < 200 || response.statusCode >= 300) {
@@ -78,12 +79,9 @@ class SubscriptionService {
   }
 
   Future<Uri> createCheckout(String token, String plan) async {
-    final body = await _request(
-      'POST',
-      '/billing/checkout',
-      token,
-      {'plan': plan},
-    );
+    final body = await _request('POST', '/billing/checkout', token, {
+      'plan': plan,
+    });
     final url = Uri.tryParse(body['checkoutUrl']?.toString() ?? '');
     if (url == null || !url.hasScheme) {
       throw const SubscriptionException('networkUnavailable');
@@ -115,7 +113,7 @@ class SubscriptionService {
     );
     final headers = {
       'Authorization': 'Bearer $token',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
       if (deviceId != null) 'X-Device-ID': deviceId,
     };
     final response = method == 'GET'
@@ -129,18 +127,26 @@ class SubscriptionService {
               );
     final body = _decode(response.body);
     if (response.statusCode < 200 || response.statusCode >= 300) {
-      final error = body['code']?.toString();
-      throw SubscriptionException(
-        switch (error) {
-          'EMAIL_NOT_VERIFIED' =>
-            'ui.text.a7ac75be7b72',
-          'TRIAL_ALREADY_USED' =>
-            'trialEndsTomorrow',
-          _ => 'networkUnavailable',
-        },
+      final error = _normalizeErrorCode(
+        body['code']?.toString() ?? body['error']?.toString(),
       );
+      throw SubscriptionException(switch (error) {
+        'EMAIL_NOT_VERIFIED' => 'ui.text.a7ac75be7b72',
+        'TRIAL_ALREADY_USED' => 'trialEndsTomorrow',
+        _ => 'networkUnavailable',
+      });
     }
     return body;
+  }
+
+  static String? _normalizeErrorCode(Object? value) {
+    final source = value?.toString().trim();
+    if (source == null || source.isEmpty) return null;
+    final normalized = source.toUpperCase().replaceAll(
+          RegExp(r'[^A-Z0-9]+'),
+          '_',
+        );
+    return normalized.replaceAll(RegExp(r'^_+|_+$'), '');
   }
 
   Map<String, dynamic> _decode(String value) {
@@ -194,15 +200,18 @@ class ServerSubscription {
       deviceLimit: int.tryParse(json['deviceLimit']?.toString() ?? '') ?? 3,
       devices: (json['devices'] is List ? json['devices'] as List : const [])
           .whereType<Map>()
-          .map((item) => SubscriptionDevice.fromJson(
-                item.map((key, value) => MapEntry(key.toString(), value)),
-              ))
+          .map(
+            (item) => SubscriptionDevice.fromJson(
+              item.map((key, value) => MapEntry(key.toString(), value)),
+            ),
+          )
           .toList(),
       accessStatus: json['accessStatus']?.toString() ?? 'free',
       trialUsed: json['trialUsed'] == true,
       emailVerified: json['emailVerified'] == true,
-      trialStartedAt:
-          DateTime.tryParse(json['trialStartedAt']?.toString() ?? ''),
+      trialStartedAt: DateTime.tryParse(
+        json['trialStartedAt']?.toString() ?? '',
+      ),
       trialEndsAt: DateTime.tryParse(json['trialEndsAt']?.toString() ?? ''),
       serverTime:
           serverTime ?? DateTime.tryParse(json['serverTime']?.toString() ?? ''),

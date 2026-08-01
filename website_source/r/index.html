@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>GlukoTrack referral</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f4f8fc;
+      color: #172033;
+    }
+    main {
+      width: min(420px, calc(100vw - 32px));
+      padding: 24px;
+      border: 1px solid #d7e3ea;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 16px 44px rgba(23, 32, 51, .12);
+      text-align: center;
+    }
+    h1 { margin: 0 0 10px; font-size: 24px; }
+    p { margin: 0 0 16px; color: #596b7a; }
+    code {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #eaf5f4;
+      color: #0b6b63;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    a, button {
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid #127c72;
+      background: #127c72;
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .muted { margin-top: 14px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>GlukoTrack</h1>
+    <p id="status">Открываем приглашение...</p>
+    <code id="code">GT</code>
+    <div><a id="openApp" href="/app/">Открыть приложение</a></div>
+    <p class="muted">Код будет применён при регистрации нового аккаунта.</p>
+  </main>
+  <script>
+    const code = referralCode();
+    const statusNode = document.getElementById('status');
+    const codeNode = document.getElementById('code');
+    const openApp = document.getElementById('openApp');
+    if (!code) {
+      statusNode.textContent = 'Код приглашения не найден.';
+      codeNode.textContent = '-';
+    } else {
+      codeNode.textContent = code;
+      openApp.href = `/app/?ref=${encodeURIComponent(code)}`;
+      track(code).then((saved) => {
+        if (!saved) {
+          statusNode.textContent = 'Код приглашения не найден.';
+          return;
+        }
+        localStorage.setItem('glukotrack-referral-code', code);
+        statusNode.textContent = 'Приглашение сохранено.';
+        setTimeout(() => { location.href = openApp.href; }, 900);
+      });
+    }
+
+    function referralCode() {
+      const query = new URLSearchParams(location.search).get('code') || new URLSearchParams(location.search).get('ref');
+      const path = location.pathname.split('/').filter(Boolean);
+      const value = query || path[path.length - 1] || '';
+      const normalized = value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      return /^GT[A-Z0-9]{4,10}$/.test(normalized) ? normalized : '';
+    }
+
+    async function track(value) {
+      try {
+        const response = await fetch('/api/referrals/track-click', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code: value, platform: 'web' })
+        });
+        if (!response.ok) return false;
+        const body = await response.json();
+        if (body.clickToken) {
+          localStorage.setItem('glukotrack-referral-click-token', body.clickToken);
+        }
+        return true;
+      } catch {
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

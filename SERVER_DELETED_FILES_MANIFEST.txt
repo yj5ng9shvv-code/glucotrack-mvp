@@ -1,0 +1,8 @@
+GlukoTrack Server Deleted Files Manifest
+Generated: 2026-07-15 20:30 Europe/Warsaw
+
+No server files were deleted.
+
+Reason:
+- Server backup was created and verified.
+- Cleanup is still forbidden until exact server candidates are reviewed and approved.

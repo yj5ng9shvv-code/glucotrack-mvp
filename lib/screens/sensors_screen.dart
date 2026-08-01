@@ -46,9 +46,9 @@ class _SensorsScreenState extends State<SensorsScreen> {
     }
     setState(() => _syncing = true);
     try {
-      final readings = await _registry.adapterFor(brand).fetchReadings(
-            currentGlucoseMmol: state.glucoseMmol,
-          );
+      final readings = await _registry
+          .adapterFor(brand)
+          .fetchReadings(currentGlucoseMmol: state.glucoseMmol);
       await state.replaceSensorReadings(readings);
     } on SensorIntegrationException {
       if (mounted) {
@@ -291,9 +291,7 @@ class _HistoryCard extends StatelessWidget {
                         _trendIcon(reading.trend),
                         style: const TextStyle(fontSize: 22),
                       ),
-                      title: Text(
-                        state.formatGlucose(reading.glucoseMmol),
-                      ),
+                      title: Text(state.formatGlucose(reading.glucoseMmol)),
                       subtitle: Text(
                         '${_brandLabel(reading.brand)} - ${_timeLabel(reading.time)}',
                       ),

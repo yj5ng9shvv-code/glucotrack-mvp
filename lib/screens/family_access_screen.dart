@@ -81,10 +81,7 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
     final token = context.read<AppState>().accountToken;
     final l10n = _l10n();
     await _run(() async {
-      await _service.accept(
-        token: token,
-        code: code,
-      );
+      await _service.accept(token: token, code: code);
       _codeController.clear();
       _dashboard = await _service.load(token);
     }, successMessage: l10n.t('settingsSaved'));
@@ -94,10 +91,7 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
     final token = context.read<AppState>().accountToken;
     final l10n = _l10n();
     await _run(() async {
-      await _service.revoke(
-        token: token,
-        id: member.id,
-      );
+      await _service.revoke(token: token, id: member.id);
       _dashboard = await _service.load(token);
     }, successMessage: l10n.t('settingsSaved'));
   }
@@ -117,7 +111,10 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
       if (mounted) setState(() => _message = successMessage);
     } catch (error) {
       if (mounted) {
-        setState(() => _message = l10n.t('networkUnavailable'));
+        final messageKey = error is FamilyAccessException
+            ? error.message
+            : 'networkUnavailable';
+        setState(() => _message = l10n.t(messageKey));
       }
     } finally {
       if (mounted) setState(() => _busy = false);
@@ -132,7 +129,9 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
         title: const LocalizedText('family.title'),
         actions: [
           IconButton(
-              onPressed: _busy ? null : _load, icon: const Icon(Icons.refresh)),
+            onPressed: _busy ? null : _load,
+            icon: const Icon(Icons.refresh),
+          ),
         ],
       ),
       body: ListView(
@@ -142,9 +141,7 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
             color: Color(0xFFEAF3FF),
             child: Padding(
               padding: EdgeInsets.all(14),
-              child: LocalizedText(
-                'family.description',
-              ),
+              child: LocalizedText('family.description'),
             ),
           ),
           const SizedBox(height: 8),
@@ -216,8 +213,10 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
             Text(_message!, style: const TextStyle(color: Color(0xFF344054))),
           ],
           const SizedBox(height: 16),
-          LocalizedText('family.visibleTo',
-              style: Theme.of(context).textTheme.titleLarge),
+          LocalizedText(
+            'family.visibleTo',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
           const SizedBox(height: 8),
           if (dashboard == null || dashboard.members.isEmpty)
             _EmptyCard(context.l10n.t('family.invite')),
@@ -233,15 +232,18 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
                       : const Color(0xFFF79009),
                 ),
                 title: Text(member.fullName ?? member.email),
-                subtitle: Text(member.status == 'accepted'
-                    ? context.l10n.t('family.acceptAccess')
-                    : context.l10n.t('family.accept')),
+                subtitle: Text(
+                  member.status == 'accepted'
+                      ? context.l10n.t('family.acceptAccess')
+                      : context.l10n.t('family.accept'),
+                ),
                 trailing: PopupMenuButton<String>(
                   onSelected: (value) async {
                     final l10n = _l10n();
                     if (value == 'copy' && member.inviteCode != null) {
                       await Clipboard.setData(
-                          ClipboardData(text: member.inviteCode!));
+                        ClipboardData(text: member.inviteCode!),
+                      );
                       if (mounted) {
                         setState(() => _message = l10n.t('settingsSaved'));
                       }
@@ -251,18 +253,22 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
                   itemBuilder: (_) => [
                     if (member.status == 'pending' && member.inviteCode != null)
                       const PopupMenuItem(
-                          value: 'copy',
-                          child: LocalizedText('family.copyCode')),
+                        value: 'copy',
+                        child: LocalizedText('family.copyCode'),
+                      ),
                     const PopupMenuItem(
-                        value: 'revoke',
-                        child: LocalizedText('family.revokeAccess')),
+                      value: 'revoke',
+                      child: LocalizedText('family.revokeAccess'),
+                    ),
                   ],
                 ),
               ),
             ),
           const SizedBox(height: 16),
-          LocalizedText('family.monitoredPeople',
-              style: Theme.of(context).textTheme.titleLarge),
+          LocalizedText(
+            'family.monitoredPeople',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
           const SizedBox(height: 8),
           if (dashboard == null || dashboard.patients.isEmpty)
             _EmptyCard(context.l10n.t('family.accept')),
@@ -270,19 +276,23 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
             Card(
               child: ListTile(
                 leading: const CircleAvatar(child: Icon(Icons.favorite)),
-                title: Text(patient.fullName.isEmpty
-                    ? patient.email
-                    : patient.fullName),
-                subtitle: Text(patient.updatedAt == null
-                    ? context.l10n.t('cloudSync')
-                    : '${context.l10n.t('cloudSync')}: ${context.l10n.formatDateTime(patient.updatedAt!)}'),
+                title: Text(
+                  patient.fullName.isEmpty ? patient.email : patient.fullName,
+                ),
+                subtitle: Text(
+                  patient.updatedAt == null
+                      ? context.l10n.t('cloudSync')
+                      : '${context.l10n.t('cloudSync')}: ${context.l10n.formatDateTime(patient.updatedAt!)}',
+                ),
                 trailing: Text(
                   patient.glucoseMmol == null
                       ? '-'
                       : '${patient.glucoseMmol!.toStringAsFixed(1)}\nmmol/L',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                      fontSize: 17, fontWeight: FontWeight.w700),
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),
@@ -358,6 +368,7 @@ class _EmptyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: Padding(padding: const EdgeInsets.all(16), child: Text(text)));
+      child: Padding(padding: const EdgeInsets.all(16), child: Text(text)),
+    );
   }
 }

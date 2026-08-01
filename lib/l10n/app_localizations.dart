@@ -10,6 +10,7 @@ import 'device_translations.dart';
 import 'diary_voice_translations.dart';
 import 'email_verification_translations.dart' as bundled_email_verification;
 import 'family_access_translations.dart';
+import 'home_screen_translations.dart';
 import 'network_error_translations.dart' as bundled_network_errors;
 import 'navigation_translations.dart';
 import 'patient_card_translations.dart';
@@ -58,12 +59,24 @@ class AppLocalizations {
       final aliased = t(alias);
       if (aliased != alias) return aliased;
     }
+    if (key == 'currentGlucose') {
+      final local = _strings[languageCode]?[key];
+      if (local != null) return local;
+      final family =
+          familyAccessTranslations[languageCode]?['family.currentGlucose'];
+      if (family != null) return family;
+    }
+    final homeScreen = homeScreenTranslations[languageCode]?[key] ??
+        homeScreenTranslations[_fallback]?[key];
+    if (homeScreen != null) return homeScreen;
+    final homeCommon = homeCommonTranslations[languageCode]?[key] ??
+        homeCommonTranslations[_fallback]?[key];
+    if (homeCommon != null) return homeCommon;
     if (key == 'kcal') {
-      final translated = coreTranslation(
-        languageCode,
-        key,
-        const ['full', 'compact'],
-      );
+      final translated = coreTranslation(languageCode, key, const [
+        'full',
+        'compact',
+      ]);
       if (translated != null && translated != key) return translated;
       final local = _strings[languageCode]?[key];
       if (local != null && local != key) return local;
@@ -462,16 +475,12 @@ class AppLocalizations {
     'sl': {
       'sos.public_card_notice': 'Javna kartica je namenjena nujni pomoči.',
     },
-    'lt': {
-      'sos.public_card_notice': 'Vieša kortelė skirta skubiai pagalbai.',
-    },
+    'lt': {'sos.public_card_notice': 'Vieša kortelė skirta skubiai pagalbai.'},
     'lv': {
       'sos.public_card_notice':
           'Publiskā karte ir paredzēta ārkārtas palīdzībai.',
     },
-    'et': {
-      'sos.public_card_notice': 'Avalik kaart on mõeldud hädaabiks.',
-    },
+    'et': {'sos.public_card_notice': 'Avalik kaart on mõeldud hädaabiks.'},
     'sr': {
       'sos.public_card_notice': 'Јавна картица је намењена хитној помоћи.',
     },
@@ -2492,9 +2501,7 @@ class AppLocalizations {
       'family.revokeAccess': 'Отозвать доступ',
       'family.monitoredPeople': 'Люди под моим контролем',
     },
-    'de': {
-      'sos.cardTitle': 'Notfall-SOS',
-    },
+    'de': {'sos.cardTitle': 'Notfall-SOS'},
   };
 
   String diabetesType(DiabetesType type) {

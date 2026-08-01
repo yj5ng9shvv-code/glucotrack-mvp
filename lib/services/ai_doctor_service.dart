@@ -24,9 +24,7 @@ class AiDoctorService {
     }
 
     final request = http.MultipartRequest(
-      'POST',
-      Uri.parse('$_baseUrl/ai/lab-analysis'),
-    )
+        'POST', Uri.parse('$_baseUrl/ai/lab-analysis'))
       ..headers['Authorization'] = 'Bearer ${state.accountToken}'
       ..fields['language_code'] = state.languageCode
       ..files.add(
@@ -58,7 +56,7 @@ class AiDoctorService {
           Uri.parse('$_baseUrl/ai/medication-check'),
           headers: {
             'Authorization': 'Bearer ${state.accountToken}',
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
           },
           body: jsonEncode({
             'medications': medications,
@@ -72,10 +70,10 @@ class AiDoctorService {
   }
 
   String _readText(http.Response response) {
-    final decoded = jsonDecode(utf8.decode(response.bodyBytes));
     if (response.statusCode < 200 || response.statusCode >= 300) {
       throw const AiDoctorException('NETWORK_ERROR');
     }
+    final decoded = jsonDecode(utf8.decode(response.bodyBytes));
 
     final text = decoded is Map ? decoded['text']?.toString().trim() : '';
     if (text == null || text.isEmpty) {

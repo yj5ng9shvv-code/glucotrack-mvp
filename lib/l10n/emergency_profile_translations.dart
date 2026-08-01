@@ -6,7 +6,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Auto-call a loved one',
     'Save SOS profile',
     'Saving...',
-    '4–8 digits'
+    '4–8 digits',
   ],
   'de': [
     'Auf Sperrbildschirm anzeigen',
@@ -15,7 +15,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Angehörige automatisch anrufen',
     'SOS-Profil speichern',
     'Speichern...',
-    '4–8 Ziffern'
+    '4–8 Ziffern',
   ],
   'fr': [
     "Afficher sur l’écran verrouillé",
@@ -24,7 +24,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Appeler automatiquement un proche',
     'Enregistrer le profil SOS',
     'Enregistrement...',
-    '4 à 8 chiffres'
+    '4 à 8 chiffres',
   ],
   'es': [
     'Mostrar en la pantalla de bloqueo',
@@ -33,7 +33,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Llamar automáticamente a un familiar',
     'Guardar perfil SOS',
     'Guardando...',
-    '4–8 dígitos'
+    '4–8 dígitos',
   ],
   'it': [
     'Mostra nella schermata di blocco',
@@ -42,7 +42,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Chiama automaticamente un familiare',
     'Salva profilo SOS',
     'Salvataggio...',
-    '4–8 cifre'
+    '4–8 cifre',
   ],
   'pl': [
     'Pokaż na ekranie blokady',
@@ -51,7 +51,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Automatycznie zadzwoń do bliskiej osoby',
     'Zapisz profil SOS',
     'Zapisywanie...',
-    '4–8 cyfr'
+    '4–8 cyfr',
   ],
   'uk': [
     'Показувати на екрані блокування',
@@ -60,7 +60,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Автодзвінок близькій людині',
     'Зберегти SOS-профіль',
     'Збереження...',
-    '4–8 цифр'
+    '4–8 цифр',
   ],
   'ru': [
     'Показывать на экране блокировки',
@@ -69,7 +69,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Автозвонок близкому',
     'Сохранить SOS-профиль',
     'Сохранение...',
-    '4–8 цифр'
+    '4–8 цифр',
   ],
   'pt': [
     'Mostrar na tela de bloqueio',
@@ -78,7 +78,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Ligar automaticamente para uma pessoa próxima',
     'Salvar perfil SOS',
     'Salvando...',
-    '4–8 dígitos'
+    '4–8 dígitos',
   ],
   'nl': [
     'Tonen op vergrendelscherm',
@@ -87,7 +87,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Een naaste automatisch bellen',
     'SOS-profiel opslaan',
     'Opslaan...',
-    '4–8 cijfers'
+    '4–8 cijfers',
   ],
   'ro': [
     'Afișează pe ecranul de blocare',
@@ -96,7 +96,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Apelează automat o persoană apropiată',
     'Salvează profilul SOS',
     'Se salvează...',
-    '4–8 cifre'
+    '4–8 cifre',
   ],
   'cs': [
     'Zobrazit na zamykací obrazovce',
@@ -105,7 +105,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Automaticky zavolat blízké osobě',
     'Uložit profil SOS',
     'Ukládání...',
-    '4–8 číslic'
+    '4–8 číslic',
   ],
   'sk': [
     'Zobraziť na uzamknutej obrazovke',
@@ -114,7 +114,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Automaticky zavolať blízkej osobe',
     'Uložiť profil SOS',
     'Ukladanie...',
-    '4–8 číslic'
+    '4–8 číslic',
   ],
   'hu': [
     'Megjelenítés a zárolási képernyőn',
@@ -123,7 +123,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Hozzátartozó automatikus hívása',
     'SOS-profil mentése',
     'Mentés...',
-    '4–8 számjegy'
+    '4–8 számjegy',
   ],
   'sv': [
     'Visa på låsskärmen',
@@ -132,7 +132,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Ring närstående automatiskt',
     'Spara SOS-profil',
     'Sparar...',
-    '4–8 siffror'
+    '4–8 siffror',
   ],
   'da': [
     'Vis på låseskærmen',
@@ -141,7 +141,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Ring automatisk til pårørende',
     'Gem SOS-profil',
     'Gemmer...',
-    '4–8 cifre'
+    '4–8 cifre',
   ],
   'fi': [
     'Näytä lukitusnäytöllä',
@@ -150,7 +150,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Soita läheiselle automaattisesti',
     'Tallenna SOS-profiili',
     'Tallennetaan...',
-    '4–8 numeroa'
+    '4–8 numeroa',
   ],
   'no': [
     'Vis på låseskjermen',
@@ -159,7 +159,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Ring pårørende automatisk',
     'Lagre SOS-profil',
     'Lagrer...',
-    '4–8 sifre'
+    '4–8 sifre',
   ],
   'el': [
     'Εμφάνιση στην οθόνη κλειδώματος',
@@ -168,7 +168,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Αυτόματη κλήση οικείου προσώπου',
     'Αποθήκευση προφίλ SOS',
     'Αποθήκευση...',
-    '4–8 ψηφία'
+    '4–8 ψηφία',
   ],
   'tr': [
     'Kilit ekranında göster',
@@ -177,7 +177,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Yakınınızı otomatik ara',
     'SOS profilini kaydet',
     'Kaydediliyor...',
-    '4–8 rakam'
+    '4–8 rakam',
   ],
   'bg': [
     'Показване на заключения екран',
@@ -186,7 +186,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Автоматично обаждане на близък',
     'Запазване на SOS профила',
     'Запазване...',
-    '4–8 цифри'
+    '4–8 цифри',
   ],
   'hr': [
     'Prikaži na zaključanom zaslonu',
@@ -195,7 +195,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Automatski nazovi blisku osobu',
     'Spremi SOS profil',
     'Spremanje...',
-    '4–8 znamenki'
+    '4–8 znamenki',
   ],
   'sl': [
     'Prikaži na zaklenjenem zaslonu',
@@ -204,7 +204,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Samodejno pokliči bližnjo osebo',
     'Shrani profil SOS',
     'Shranjevanje...',
-    '4–8 številk'
+    '4–8 številk',
   ],
   'lt': [
     'Rodyti užrakinimo ekrane',
@@ -213,7 +213,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Automatiškai skambinti artimam žmogui',
     'Išsaugoti SOS profilį',
     'Išsaugoma...',
-    '4–8 skaitmenys'
+    '4–8 skaitmenys',
   ],
   'lv': [
     'Rādīt bloķēšanas ekrānā',
@@ -222,7 +222,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Automātiski zvanīt tuviniekam',
     'Saglabāt SOS profilu',
     'Saglabā...',
-    '4–8 cipari'
+    '4–8 cipari',
   ],
   'et': [
     'Kuva lukustuskuval',
@@ -231,7 +231,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Helista lähedasele automaatselt',
     'Salvesta SOS-profiil',
     'Salvestamine...',
-    '4–8 numbrit'
+    '4–8 numbrit',
   ],
   'sr': [
     'Прикажи на закључаном екрану',
@@ -240,7 +240,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Аутоматски позови блиску особу',
     'Сачувај SOS профил',
     'Чување...',
-    '4–8 цифара'
+    '4–8 цифара',
   ],
   'sq': [
     'Shfaq në ekranin e kyçjes',
@@ -249,7 +249,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Telefono automatikisht një të afërm',
     'Ruaj profilin SOS',
     'Duke ruajtur...',
-    '4–8 shifra'
+    '4–8 shifra',
   ],
   'mk': [
     'Прикажи на заклучениот екран',
@@ -258,7 +258,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Автоматски повикај блиска личност',
     'Зачувај SOS профил',
     'Зачувување...',
-    '4–8 цифри'
+    '4–8 цифри',
   ],
   'is': [
     'Sýna á lásskjá',
@@ -267,7 +267,7 @@ final emergencyProfileTranslations = <String, List<String>>{
     'Hringja sjálfvirkt í aðstandanda',
     'Vista SOS-snið',
     'Vistar...',
-    '4–8 tölustafir'
+    '4–8 tölustafir',
   ],
 };
 

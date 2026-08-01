@@ -107,11 +107,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(context.l10n.t('diary')),
-        content: Text(command.confirmationText(
-          state,
-          now,
-          l10n: context.l10n,
-        )),
+        content: Text(command.confirmationText(state, now, l10n: context.l10n)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, _DiarySaveDecision.cancel),
@@ -150,8 +146,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
     final l10n = context.l10n;
     final message = switch (error) {
       VoiceListenError.permissionDenied => l10n.t('voiceMicPermissionDenied'),
-      VoiceListenError.permissionPermanentlyDenied =>
-        l10n.t('voiceMicPermanentlyDenied'),
+      VoiceListenError.permissionPermanentlyDenied => l10n.t(
+          'voiceMicPermanentlyDenied',
+        ),
       VoiceListenError.busy => l10n.t('voiceRecognizerBusy'),
       VoiceListenError.noMatch => l10n.t('voiceNoSpeechRecognized'),
       VoiceListenError.unavailable => l10n.t('voiceMicUnavailable'),
@@ -170,9 +167,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
   }
 
   void _message(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message)),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
   }
 
   @override
@@ -213,8 +210,9 @@ class _DiaryScreenState extends State<DiaryScreen> {
                     controller: _glucoseController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: context.l10n
-                          .literal('Glucose, ${state.glucoseUnitLabel}'),
+                      labelText: context.l10n.literal(
+                        'Glucose, ${state.glucoseUnitLabel}',
+                      ),
                       border: const OutlineInputBorder(),
                     ),
                   ),
@@ -283,9 +281,7 @@ class _DiaryScreenState extends State<DiaryScreen> {
             const Card(
               child: Padding(
                 padding: EdgeInsets.all(16),
-                child: LocalizedText(
-                  'ui.text.2740b7861903',
-                ),
+                child: LocalizedText('ui.text.2740b7861903'),
               ),
             )
           else

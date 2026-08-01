@@ -59,11 +59,10 @@ class _EmergencyProfileScreenState extends State<EmergencyProfileScreen> {
     _medications.text = state.medications;
     _doctor.text = state.doctorContact;
     _languages.text = state.communicationLanguages;
-    _instructions.text = isDefaultEmergencyInstruction(
-      state.emergencyInstructions,
-    )
-        ? ''
-        : state.emergencyInstructions;
+    _instructions.text =
+        isDefaultEmergencyInstruction(state.emergencyInstructions)
+            ? ''
+            : state.emergencyInstructions;
     _contactName.text = state.emergencyContactName;
     _contactPhone.text = state.emergencyContactPhone;
     _additionalContacts.text = state.additionalEmergencyContacts;

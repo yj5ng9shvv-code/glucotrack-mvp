@@ -7,9 +7,9 @@ Map<String, String> networkErrorTranslations = {};
 Map<String, String> uiKeySources = {};
 
 Future<void> loadCoreTranslations() async {
-  final source = jsonDecode(
-    await rootBundle.loadString('assets/translations/core.json'),
-  ) as Map<String, dynamic>;
+  final source =
+      jsonDecode(await rootBundle.loadString('assets/translations/core.json'))
+          as Map<String, dynamic>;
 
   coreTranslationGroups = {
     for (final entry in source.entries)
@@ -18,8 +18,9 @@ Future<void> loadCoreTranslations() async {
           entry.key != 'uiKeySources')
         entry.key: _decode(entry.value),
   };
-  networkErrorTranslations =
-      Map<String, String>.from(source['networkError'] as Map);
+  networkErrorTranslations = Map<String, String>.from(
+    source['networkError'] as Map,
+  );
   uiKeySources = Map<String, String>.from(source['uiKeySources'] as Map);
 }
 
@@ -44,9 +45,7 @@ Map<String, Map<String, String>> coreGroup(String name) {
 Map<String, Map<String, String>> _decode(Object? value) {
   final outer = value as Map<String, dynamic>;
   return outer.map(
-    (language, translations) => MapEntry(
-      language,
-      Map<String, String>.from(translations as Map),
-    ),
+    (language, translations) =>
+        MapEntry(language, Map<String, String>.from(translations as Map)),
   );
 }

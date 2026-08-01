@@ -22,7 +22,7 @@ final authTranslations = <String, List<String>>{
     'Passwords do not match.',
     'Confirm your consent to data processing.',
     'Create account',
-    'Sign in'
+    'Sign in',
   ],
   'ru': [
     'Вход в GlukoTrack',
@@ -34,7 +34,7 @@ final authTranslations = <String, List<String>>{
     'Пароли не совпадают.',
     'Подтвердите согласие на обработку данных.',
     'Создать аккаунт',
-    'Войти'
+    'Войти',
   ],
   'uk': [
     'Вхід до GlukoTrack',
@@ -46,7 +46,7 @@ final authTranslations = <String, List<String>>{
     'Паролі не збігаються.',
     'Підтвердьте згоду на обробку даних.',
     'Створити обліковий запис',
-    'Увійти'
+    'Увійти',
   ],
   'de': [
     'Bei GlukoTrack anmelden',
@@ -58,7 +58,7 @@ final authTranslations = <String, List<String>>{
     'Die Passwörter stimmen nicht überein.',
     'Bestätigen Sie Ihre Einwilligung zur Datenverarbeitung.',
     'Konto erstellen',
-    'Anmelden'
+    'Anmelden',
   ],
   'fr': [
     'Connexion à GlukoTrack',
@@ -70,7 +70,7 @@ final authTranslations = <String, List<String>>{
     'Les mots de passe ne correspondent pas.',
     'Confirmez votre consentement au traitement des données.',
     'Créer un compte',
-    'Se connecter'
+    'Se connecter',
   ],
   'es': [
     'Iniciar sesión en GlukoTrack',
@@ -82,7 +82,7 @@ final authTranslations = <String, List<String>>{
     'Las contraseñas no coinciden.',
     'Confirme su consentimiento para el tratamiento de datos.',
     'Crear cuenta',
-    'Iniciar sesión'
+    'Iniciar sesión',
   ],
   'it': [
     'Accedi a GlukoTrack',
@@ -94,7 +94,7 @@ final authTranslations = <String, List<String>>{
     'Le password non corrispondono.',
     'Conferma il consenso al trattamento dei dati.',
     'Crea account',
-    'Accedi'
+    'Accedi',
   ],
   'pl': [
     'Logowanie do GlukoTrack',
@@ -106,7 +106,7 @@ final authTranslations = <String, List<String>>{
     'Hasła nie są zgodne.',
     'Potwierdź zgodę na przetwarzanie danych.',
     'Utwórz konto',
-    'Zaloguj się'
+    'Zaloguj się',
   ],
   'pt': [
     'Entrar no GlukoTrack',
@@ -118,7 +118,7 @@ final authTranslations = <String, List<String>>{
     'As palavras-passe não coincidem.',
     'Confirme o consentimento para o tratamento de dados.',
     'Criar conta',
-    'Entrar'
+    'Entrar',
   ],
   'nl': [
     'Inloggen bij GlukoTrack',
@@ -130,7 +130,7 @@ final authTranslations = <String, List<String>>{
     'De wachtwoorden komen niet overeen.',
     'Bevestig uw toestemming voor gegevensverwerking.',
     'Account aanmaken',
-    'Inloggen'
+    'Inloggen',
   ],
   'ro': [
     'Autentificare în GlukoTrack',
@@ -142,7 +142,7 @@ final authTranslations = <String, List<String>>{
     'Parolele nu coincid.',
     'Confirmați consimțământul pentru prelucrarea datelor.',
     'Creați cont',
-    'Autentificare'
+    'Autentificare',
   ],
   'cs': [
     'Přihlášení do GlukoTrack',
@@ -154,7 +154,7 @@ final authTranslations = <String, List<String>>{
     'Hesla se neshodují.',
     'Potvrďte souhlas se zpracováním údajů.',
     'Vytvořit účet',
-    'Přihlásit se'
+    'Přihlásit se',
   ],
   'sk': [
     'Prihlásenie do GlukoTrack',
@@ -166,7 +166,7 @@ final authTranslations = <String, List<String>>{
     'Heslá sa nezhodujú.',
     'Potvrďte súhlas so spracovaním údajov.',
     'Vytvoriť účet',
-    'Prihlásiť sa'
+    'Prihlásiť sa',
   ],
   'hu': [
     'Bejelentkezés a GlukoTrackba',
@@ -178,7 +178,7 @@ final authTranslations = <String, List<String>>{
     'A jelszavak nem egyeznek.',
     'Erősítse meg hozzájárulását az adatkezeléshez.',
     'Fiók létrehozása',
-    'Bejelentkezés'
+    'Bejelentkezés',
   ],
   'sv': [
     'Logga in på GlukoTrack',
@@ -190,7 +190,7 @@ final authTranslations = <String, List<String>>{
     'Lösenorden matchar inte.',
     'Bekräfta ditt samtycke till databehandling.',
     'Skapa konto',
-    'Logga in'
+    'Logga in',
   ],
   'da': [
     'Log ind på GlukoTrack',
@@ -202,7 +202,7 @@ final authTranslations = <String, List<String>>{
     'Adgangskoderne er ikke ens.',
     'Bekræft dit samtykke til databehandling.',
     'Opret konto',
-    'Log ind'
+    'Log ind',
   ],
   'fi': [
     'Kirjaudu GlukoTrackiin',
@@ -214,7 +214,7 @@ final authTranslations = <String, List<String>>{
     'Salasanat eivät täsmää.',
     'Vahvista suostumuksesi tietojen käsittelyyn.',
     'Luo tili',
-    'Kirjaudu'
+    'Kirjaudu',
   ],
   'no': [
     'Logg inn på GlukoTrack',
@@ -226,7 +226,7 @@ final authTranslations = <String, List<String>>{
     'Passordene samsvarer ikke.',
     'Bekreft samtykke til databehandling.',
     'Opprett konto',
-    'Logg inn'
+    'Logg inn',
   ],
   'el': [
     'Σύνδεση στο GlukoTrack',
@@ -238,7 +238,7 @@ final authTranslations = <String, List<String>>{
     'Οι κωδικοί δεν ταιριάζουν.',
     'Επιβεβαιώστε τη συγκατάθεσή σας για την επεξεργασία δεδομένων.',
     'Δημιουργία λογαριασμού',
-    'Σύνδεση'
+    'Σύνδεση',
   ],
   'tr': [
     'GlukoTrack’a giriş',
@@ -250,7 +250,7 @@ final authTranslations = <String, List<String>>{
     'Şifreler eşleşmiyor.',
     'Veri işlemeye ilişkin onayınızı doğrulayın.',
     'Hesap oluştur',
-    'Giriş yap'
+    'Giriş yap',
   ],
   'bg': [
     'Вход в GlukoTrack',
@@ -262,7 +262,7 @@ final authTranslations = <String, List<String>>{
     'Паролите не съвпадат.',
     'Потвърдете съгласието си за обработка на данни.',
     'Създаване на акаунт',
-    'Вход'
+    'Вход',
   ],
   'hr': [
     'Prijava u GlukoTrack',
@@ -274,7 +274,7 @@ final authTranslations = <String, List<String>>{
     'Lozinke se ne podudaraju.',
     'Potvrdite privolu za obradu podataka.',
     'Izradi račun',
-    'Prijava'
+    'Prijava',
   ],
   'sl': [
     'Prijava v GlukoTrack',
@@ -286,7 +286,7 @@ final authTranslations = <String, List<String>>{
     'Gesli se ne ujemata.',
     'Potrdite soglasje za obdelavo podatkov.',
     'Ustvari račun',
-    'Prijava'
+    'Prijava',
   ],
   'lt': [
     'Prisijungimas prie GlukoTrack',
@@ -298,7 +298,7 @@ final authTranslations = <String, List<String>>{
     'Slaptažodžiai nesutampa.',
     'Patvirtinkite sutikimą tvarkyti duomenis.',
     'Sukurti paskyrą',
-    'Prisijungti'
+    'Prisijungti',
   ],
   'lv': [
     'Pieteikšanās GlukoTrack',
@@ -310,7 +310,7 @@ final authTranslations = <String, List<String>>{
     'Paroles nesakrīt.',
     'Apstipriniet piekrišanu datu apstrādei.',
     'Izveidot kontu',
-    'Pieteikties'
+    'Pieteikties',
   ],
   'et': [
     'GlukoTracki sisselogimine',
@@ -322,7 +322,7 @@ final authTranslations = <String, List<String>>{
     'Paroolid ei kattu.',
     'Kinnitage nõusolek andmete töötlemiseks.',
     'Loo konto',
-    'Logi sisse'
+    'Logi sisse',
   ],
   'sr': [
     'Пријава у GlukoTrack',
@@ -334,7 +334,7 @@ final authTranslations = <String, List<String>>{
     'Лозинке се не подударају.',
     'Потврдите сагласност за обраду података.',
     'Направи налог',
-    'Пријави се'
+    'Пријави се',
   ],
   'sq': [
     'Hyr në GlukoTrack',
@@ -346,7 +346,7 @@ final authTranslations = <String, List<String>>{
     'Fjalëkalimet nuk përputhen.',
     'Konfirmoni pëlqimin për përpunimin e të dhënave.',
     'Krijo llogari',
-    'Hyr'
+    'Hyr',
   ],
   'mk': [
     'Најава во GlukoTrack',
@@ -358,7 +358,7 @@ final authTranslations = <String, List<String>>{
     'Лозинките не се совпаѓаат.',
     'Потврдете ја согласноста за обработка на податоци.',
     'Создај сметка',
-    'Најави се'
+    'Најави се',
   ],
   'is': [
     'Skrá inn í GlukoTrack',
@@ -370,7 +370,7 @@ final authTranslations = <String, List<String>>{
     'Lykilorðin passa ekki saman.',
     'Staðfestu samþykki fyrir vinnslu gagna.',
     'Búa til reikning',
-    'Skrá inn'
+    'Skrá inn',
   ],
 };
 

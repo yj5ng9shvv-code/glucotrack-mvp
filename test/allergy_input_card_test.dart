@@ -6,8 +6,9 @@ import 'package:glucotrack/models/app_state.dart';
 import 'package:glucotrack/widgets/allergy_input_card.dart';
 
 void main() {
-  testWidgets('allergy choice buttons emit explicit yes and no values',
-      (tester) async {
+  testWidgets('allergy choice buttons emit explicit yes and no values', (
+    tester,
+  ) async {
     bool? changedTo;
     final controller = TextEditingController(text: 'peanuts');
     addTearDown(controller.dispose);

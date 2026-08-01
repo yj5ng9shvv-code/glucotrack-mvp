@@ -106,7 +106,8 @@ class DiaryCommand {
       lines.add('${l10n.t('diaryVoiceNote')}: ${note.trim()}');
     }
     lines.add(
-        '${l10n.t('diaryVoiceTime')}: ${_timeLabel(entryTime, now, l10n)}?');
+      '${l10n.t('diaryVoiceTime')}: ${_timeLabel(entryTime, now, l10n)}?',
+    );
     return lines.join('\n');
   }
 
@@ -203,8 +204,9 @@ class DiaryCommandService {
     final normalized = _normalize(original);
     final baseNow = now ?? DateTime.now();
 
-    final pressure =
-        RegExp(r'\b(\d{2,3})\s*/\s*(\d{2,3})\b').firstMatch(normalized);
+    final pressure = RegExp(
+      r'\b(\d{2,3})\s*/\s*(\d{2,3})\b',
+    ).firstMatch(normalized);
     final systolic = pressure == null ? null : int.tryParse(pressure.group(1)!);
     final diastolic =
         pressure == null ? null : int.tryParse(pressure.group(2)!);
@@ -267,8 +269,12 @@ class DiaryCommandService {
 
   double? _glucoseValue(String text, String? stateLabel) {
     if (!_looksLikeGlucose(text, stateLabel)) return null;
-    final hasExplicitGlucose =
-        _has(text, const ['сахар', 'глюкоз', 'glucose', 'sugar']);
+    final hasExplicitGlucose = _has(text, const [
+      'сахар',
+      'глюкоз',
+      'glucose',
+      'sugar',
+    ]);
     if (!hasExplicitGlucose &&
         _has(text, const ['инсулин', 'вколол', 'единиц', 'углевод', 'carb'])) {
       return null;
@@ -287,7 +293,7 @@ class DiaryCommandService {
           'glucose',
           'sugar',
           'glycemia',
-          'glycaemia'
+          'glycaemia',
         ]) ||
         (stateLabel != null && _firstNumber(text) != null);
   }
@@ -319,10 +325,7 @@ class DiaryCommandService {
         '($_numberToken)\\s*(?:грамм\\s*)?(?:углевод[а-я]*|carbs?|carbohydrates?)',
         unicode: true,
       ),
-      RegExp(
-        '(?:углевод[а-я]*|carbs?)\\D{0,12}($_numberToken)',
-        unicode: true,
-      ),
+      RegExp('(?:углевод[а-я]*|carbs?)\\D{0,12}($_numberToken)', unicode: true),
     ];
     for (final pattern in patterns) {
       final match = pattern.firstMatch(text);
@@ -361,7 +364,7 @@ class DiaryCommandService {
           'уколол',
           'колол',
           'добавь',
-          'insulin'
+          'insulin',
         ]) ||
         _insulinName(text) != null;
   }
@@ -384,8 +387,12 @@ class DiaryCommandService {
     if (_has(text, const ['до еды', 'перед едой', 'before meal'])) {
       return 'before meal';
     }
-    if (_has(
-        text, const ['перед сном', 'на ночь', 'bedtime', 'before sleep'])) {
+    if (_has(text, const [
+      'перед сном',
+      'на ночь',
+      'bedtime',
+      'before sleep',
+    ])) {
       return 'bedtime';
     }
     if (_has(text, const ['ночью', 'night'])) return 'night';
@@ -403,8 +410,10 @@ class DiaryCommandService {
   String? _food(String text) {
     final patterns = [
       RegExp(r'(?:ел|ела|съел|съела|кушал|кушала)\s+([^,.]+)', unicode: true),
-      RegExp(r'(?:на завтрак|на обед|на ужин|food|ate)\s+(?:было\s*)?([^,.]+)',
-          unicode: true),
+      RegExp(
+        r'(?:на завтрак|на обед|на ужин|food|ate)\s+(?:было\s*)?([^,.]+)',
+        unicode: true,
+      ),
     ];
     for (final pattern in patterns) {
       final match = pattern.firstMatch(text);
@@ -435,8 +444,13 @@ class DiaryCommandService {
   }
 
   DateTime? _entryTime(String text, DateTime now) {
-    DateTime date =
-        DateTime(now.year, now.month, now.day, now.hour, now.minute);
+    DateTime date = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      now.hour,
+      now.minute,
+    );
     if (_has(text, const ['вчера', 'yesterday'])) {
       date = date.subtract(const Duration(days: 1));
     }
@@ -464,8 +478,10 @@ class DiaryCommandService {
   }
 
   double? _firstNumber(String text) {
-    final match =
-        RegExp('\\b($_numberToken)\\b', unicode: true).firstMatch(text);
+    final match = RegExp(
+      '\\b($_numberToken)\\b',
+      unicode: true,
+    ).firstMatch(text);
     return match == null ? null : _numberValue(match.group(1)!);
   }
 

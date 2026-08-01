@@ -6,7 +6,8 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Ask any question',
     'voiceStart': 'Start voice query',
     'voiceStop': 'Stop recording',
-    'voiceMicUnavailable': 'Microphone unavailable. Enter your request as text.'
+    'voiceMicUnavailable':
+        'Microphone unavailable. Enter your request as text.',
   },
   'de': {
     'voiceAskAi': 'KI fragen',
@@ -16,7 +17,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Sprachanfrage starten',
     'voiceStop': 'Aufnahme stoppen',
     'voiceMicUnavailable':
-        'Mikrofon nicht verfügbar. Geben Sie Ihre Anfrage als Text ein.'
+        'Mikrofon nicht verfügbar. Geben Sie Ihre Anfrage als Text ein.',
   },
   'fr': {
     'voiceAskAi': 'Demander à l’IA',
@@ -25,7 +26,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Posez n’importe quelle question',
     'voiceStart': 'Démarrer la requête vocale',
     'voiceStop': 'Arrêter l’enregistrement',
-    'voiceMicUnavailable': 'Microphone indisponible. Saisissez votre demande.'
+    'voiceMicUnavailable': 'Microphone indisponible. Saisissez votre demande.',
   },
   'es': {
     'voiceAskAi': 'Preguntar a la IA',
@@ -34,7 +35,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Haga cualquier pregunta',
     'voiceStart': 'Iniciar consulta de voz',
     'voiceStop': 'Detener grabación',
-    'voiceMicUnavailable': 'Micrófono no disponible. Escriba su consulta.'
+    'voiceMicUnavailable': 'Micrófono no disponible. Escriba su consulta.',
   },
   'it': {
     'voiceAskAi': 'Chiedi all’IA',
@@ -44,7 +45,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Avvia richiesta vocale',
     'voiceStop': 'Interrompi registrazione',
     'voiceMicUnavailable':
-        'Microfono non disponibile. Inserisci la richiesta come testo.'
+        'Microfono non disponibile. Inserisci la richiesta come testo.',
   },
   'pl': {
     'voiceAskAi': 'Zapytaj AI',
@@ -53,7 +54,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Zadaj dowolne pytanie',
     'voiceStart': 'Rozpocznij zapytanie głosowe',
     'voiceStop': 'Zatrzymaj nagrywanie',
-    'voiceMicUnavailable': 'Mikrofon jest niedostępny. Wpisz zapytanie.'
+    'voiceMicUnavailable': 'Mikrofon jest niedostępny. Wpisz zapytanie.',
   },
   'uk': {
     'voiceAskAi': 'Запитати AI',
@@ -62,7 +63,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Поставте будь-яке запитання',
     'voiceStart': 'Почати голосовий запит',
     'voiceStop': 'Зупинити запис',
-    'voiceMicUnavailable': 'Мікрофон недоступний. Введіть запит текстом.'
+    'voiceMicUnavailable': 'Мікрофон недоступний. Введіть запит текстом.',
   },
   'ru': {
     'voiceAskAi': 'Спросить AI',
@@ -71,7 +72,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Задайте любой вопрос',
     'voiceStart': 'Начать голосовой запрос',
     'voiceStop': 'Остановить запись',
-    'voiceMicUnavailable': 'Микрофон недоступен. Введите запрос текстом.'
+    'voiceMicUnavailable': 'Микрофон недоступен. Введите запрос текстом.',
   },
   'pt': {
     'voiceAskAi': 'Perguntar à IA',
@@ -81,7 +82,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Iniciar pedido por voz',
     'voiceStop': 'Parar gravação',
     'voiceMicUnavailable':
-        'Microfone indisponível. Introduza o pedido como texto.'
+        'Microfone indisponível. Introduza o pedido como texto.',
   },
   'nl': {
     'voiceAskAi': 'Vraag het AI',
@@ -90,7 +91,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Stel een willekeurige vraag',
     'voiceStart': 'Spraakvraag starten',
     'voiceStop': 'Opname stoppen',
-    'voiceMicUnavailable': 'Microfoon niet beschikbaar. Typ uw vraag.'
+    'voiceMicUnavailable': 'Microfoon niet beschikbaar. Typ uw vraag.',
   },
   'ro': {
     'voiceAskAi': 'Întreabă AI',
@@ -100,7 +101,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Porniți solicitarea vocală',
     'voiceStop': 'Opriți înregistrarea',
     'voiceMicUnavailable':
-        'Microfon indisponibil. Introduceți solicitarea ca text.'
+        'Microfon indisponibil. Introduceți solicitarea ca text.',
   },
   'cs': {
     'voiceAskAi': 'Zeptat se AI',
@@ -109,7 +110,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Položte libovolnou otázku',
     'voiceStart': 'Spustit hlasový dotaz',
     'voiceStop': 'Zastavit nahrávání',
-    'voiceMicUnavailable': 'Mikrofon není dostupný. Zadejte dotaz textem.'
+    'voiceMicUnavailable': 'Mikrofon není dostupný. Zadejte dotaz textem.',
   },
   'sk': {
     'voiceAskAi': 'Opýtať sa AI',
@@ -119,7 +120,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Spustiť hlasovú požiadavku',
     'voiceStop': 'Zastaviť nahrávanie',
     'voiceMicUnavailable':
-        'Mikrofón nie je dostupný. Zadajte požiadavku textom.'
+        'Mikrofón nie je dostupný. Zadajte požiadavku textom.',
   },
   'hu': {
     'voiceAskAi': 'Kérdezze az AI-t',
@@ -128,7 +129,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Tegyen fel bármilyen kérdést',
     'voiceStart': 'Hangos kérdés indítása',
     'voiceStop': 'Felvétel leállítása',
-    'voiceMicUnavailable': 'A mikrofon nem érhető el. Írja be a kérését.'
+    'voiceMicUnavailable': 'A mikrofon nem érhető el. Írja be a kérését.',
   },
   'sv': {
     'voiceAskAi': 'Fråga AI',
@@ -137,7 +138,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Ställ valfri fråga',
     'voiceStart': 'Starta röstfråga',
     'voiceStop': 'Stoppa inspelning',
-    'voiceMicUnavailable': 'Mikrofonen är inte tillgänglig. Skriv din fråga.'
+    'voiceMicUnavailable': 'Mikrofonen är inte tillgänglig. Skriv din fråga.',
   },
   'da': {
     'voiceAskAi': 'Spørg AI',
@@ -147,7 +148,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Start stemmeforespørgsel',
     'voiceStop': 'Stop optagelse',
     'voiceMicUnavailable':
-        'Mikrofonen er ikke tilgængelig. Skriv din forespørgsel.'
+        'Mikrofonen er ikke tilgængelig. Skriv din forespørgsel.',
   },
   'fi': {
     'voiceAskAi': 'Kysy tekoälyltä',
@@ -156,7 +157,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Kysy mitä tahansa',
     'voiceStart': 'Aloita äänikysely',
     'voiceStop': 'Lopeta tallennus',
-    'voiceMicUnavailable': 'Mikrofoni ei ole käytettävissä. Kirjoita pyyntösi.'
+    'voiceMicUnavailable': 'Mikrofoni ei ole käytettävissä. Kirjoita pyyntösi.',
   },
   'no': {
     'voiceAskAi': 'Spør AI',
@@ -166,7 +167,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Start stemmeforespørsel',
     'voiceStop': 'Stopp opptak',
     'voiceMicUnavailable':
-        'Mikrofonen er utilgjengelig. Skriv inn forespørselen.'
+        'Mikrofonen er utilgjengelig. Skriv inn forespørselen.',
   },
   'el': {
     'voiceAskAi': 'Ρωτήστε το AI',
@@ -176,7 +177,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Έναρξη φωνητικού αιτήματος',
     'voiceStop': 'Διακοπή εγγραφής',
     'voiceMicUnavailable':
-        'Το μικρόφωνο δεν είναι διαθέσιμο. Πληκτρολογήστε το αίτημά σας.'
+        'Το μικρόφωνο δεν είναι διαθέσιμο. Πληκτρολογήστε το αίτημά σας.',
   },
   'tr': {
     'voiceAskAi': 'AI’a sor',
@@ -186,7 +187,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Sesli sorguyu başlat',
     'voiceStop': 'Kaydı durdur',
     'voiceMicUnavailable':
-        'Mikrofon kullanılamıyor. İsteğinizi metin olarak girin.'
+        'Mikrofon kullanılamıyor. İsteğinizi metin olarak girin.',
   },
   'bg': {
     'voiceAskAi': 'Попитайте AI',
@@ -196,7 +197,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Стартиране на гласова заявка',
     'voiceStop': 'Спиране на записа',
     'voiceMicUnavailable':
-        'Микрофонът не е достъпен. Въведете заявката като текст.'
+        'Микрофонът не е достъпен. Въведете заявката като текст.',
   },
   'hr': {
     'voiceAskAi': 'Pitajte AI',
@@ -205,7 +206,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Postavite bilo koje pitanje',
     'voiceStart': 'Pokreni glasovni upit',
     'voiceStop': 'Zaustavi snimanje',
-    'voiceMicUnavailable': 'Mikrofon nije dostupan. Unesite upit kao tekst.'
+    'voiceMicUnavailable': 'Mikrofon nije dostupan. Unesite upit kao tekst.',
   },
   'sl': {
     'voiceAskAi': 'Vprašajte AI',
@@ -214,7 +215,8 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Postavite poljubno vprašanje',
     'voiceStart': 'Začni glasovno poizvedbo',
     'voiceStop': 'Ustavi snemanje',
-    'voiceMicUnavailable': 'Mikrofon ni na voljo. Vnesite zahtevo kot besedilo.'
+    'voiceMicUnavailable':
+        'Mikrofon ni na voljo. Vnesite zahtevo kot besedilo.',
   },
   'lt': {
     'voiceAskAi': 'Klausti AI',
@@ -223,7 +225,8 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Užduokite bet kokį klausimą',
     'voiceStart': 'Pradėti balso užklausą',
     'voiceStop': 'Stabdyti įrašymą',
-    'voiceMicUnavailable': 'Mikrofonas nepasiekiamas. Įveskite užklausą tekstu.'
+    'voiceMicUnavailable':
+        'Mikrofonas nepasiekiamas. Įveskite užklausą tekstu.',
   },
   'lv': {
     'voiceAskAi': 'Jautāt AI',
@@ -233,7 +236,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Sākt balss vaicājumu',
     'voiceStop': 'Apturēt ierakstu',
     'voiceMicUnavailable':
-        'Mikrofons nav pieejams. Ievadiet pieprasījumu kā tekstu.'
+        'Mikrofons nav pieejams. Ievadiet pieprasījumu kā tekstu.',
   },
   'et': {
     'voiceAskAi': 'Küsi AI-lt',
@@ -242,7 +245,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Esitage ükskõik milline küsimus',
     'voiceStart': 'Alusta häälpäringut',
     'voiceStop': 'Peata salvestamine',
-    'voiceMicUnavailable': 'Mikrofon pole saadaval. Sisestage päring tekstina.'
+    'voiceMicUnavailable': 'Mikrofon pole saadaval. Sisestage päring tekstina.',
   },
   'sr': {
     'voiceAskAi': 'Питајте AI',
@@ -251,7 +254,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceAnyQuestion': 'Поставите било које питање',
     'voiceStart': 'Покрени гласовни упит',
     'voiceStop': 'Заустави снимање',
-    'voiceMicUnavailable': 'Микрофон није доступан. Унесите упит као текст.'
+    'voiceMicUnavailable': 'Микрофон није доступан. Унесите упит као текст.',
   },
   'sq': {
     'voiceAskAi': 'Pyet AI',
@@ -261,7 +264,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Fillo kërkesën zanore',
     'voiceStop': 'Ndalo regjistrimin',
     'voiceMicUnavailable':
-        'Mikrofoni nuk është i disponueshëm. Shkruani kërkesën tuaj.'
+        'Mikrofoni nuk është i disponueshëm. Shkruani kërkesën tuaj.',
   },
   'mk': {
     'voiceAskAi': 'Прашајте AI',
@@ -271,7 +274,7 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Започни гласовно барање',
     'voiceStop': 'Запри снимање',
     'voiceMicUnavailable':
-        'Микрофонот не е достапен. Внесете го барањето како текст.'
+        'Микрофонот не е достапен. Внесете го барањето како текст.',
   },
   'is': {
     'voiceAskAi': 'Spyrja AI',
@@ -281,6 +284,6 @@ final voiceAssistantTranslations = <String, Map<String, String>>{
     'voiceStart': 'Hefja raddfyrirspurn',
     'voiceStop': 'Stöðva upptöku',
     'voiceMicUnavailable':
-        'Hljóðnemi er ekki tiltækur. Sláðu inn fyrirspurnina.'
+        'Hljóðnemi er ekki tiltækur. Sláðu inn fyrirspurnina.',
   },
 };

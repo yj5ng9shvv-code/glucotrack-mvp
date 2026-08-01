@@ -8,7 +8,7 @@ import 'package:glucotrack/services/auth_service.dart';
 
 void main() {
   testWidgets('requires registration before onboarding', (tester) async {
-    SharedPreferences.setMockInitialValues({});
+    SharedPreferences.setMockInitialValues({'languageCode': 'en'});
 
     await tester.pumpWidget(
       GlukoTrackApp(initialState: AppState(authService: _FakeAuthService())),
@@ -23,19 +23,25 @@ void main() {
   });
 
   testWidgets('registration unlocks onboarding', (tester) async {
-    SharedPreferences.setMockInitialValues({});
+    SharedPreferences.setMockInitialValues({'languageCode': 'en'});
     await tester.pumpWidget(
       GlukoTrackApp(initialState: AppState(authService: _FakeAuthService())),
     );
     await tester.pumpAndSettle();
 
-    await tester.enterText(find.widgetWithText(TextFormField, 'Имя'), 'Иван');
+    await tester.enterText(find.widgetWithText(TextFormField, 'Name'), 'Ivan');
     await tester.enterText(
-        find.widgetWithText(TextFormField, 'Email'), 'ivan@example.com');
+      find.widgetWithText(TextFormField, 'Email'),
+      'ivan@example.com',
+    );
     await tester.enterText(
-        find.widgetWithText(TextFormField, 'Пароль'), 'secure123');
+      find.widgetWithText(TextFormField, 'Password'),
+      'secure123',
+    );
     await tester.enterText(
-        find.widgetWithText(TextFormField, 'Повторите пароль'), 'secure123');
+      find.widgetWithText(TextFormField, 'Confirm password'),
+      'secure123',
+    );
     final termsCheckbox = find.byType(CheckboxListTile);
     await tester.ensureVisible(termsCheckbox);
     await tester.tap(termsCheckbox);

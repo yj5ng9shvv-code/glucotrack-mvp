@@ -54,8 +54,7 @@ class _FoodCatalogScreenState extends State<FoodCatalogScreen> {
       });
     } catch (error) {
       if (mounted) {
-        setState(
-            () => _error = context.l10n.t('networkUnavailable'));
+        setState(() => _error = context.l10n.t('networkUnavailable'));
       }
     } finally {
       if (mounted) setState(() => _searching = false);
@@ -111,8 +110,10 @@ class _FoodCatalogScreenState extends State<FoodCatalogScreen> {
               children: [
                 const Icon(Icons.auto_awesome, color: Color(0xFF1463C2)),
                 const SizedBox(width: 7),
-                Text(l10n.t('recognitionResult'),
-                    style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  l10n.t('recognitionResult'),
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
               ],
             ),
             const SizedBox(height: 6),
@@ -167,8 +168,10 @@ class _AiFoodCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(food.name,
-                      style: const TextStyle(fontWeight: FontWeight.w700)),
+                  Text(
+                    food.name,
+                    style: const TextStyle(fontWeight: FontWeight.w700),
+                  ),
                   Text(
                     '${food.category} • ${l10n.t('carbs')} '
                     '${food.carbsPer100g.toStringAsFixed(1)} ${l10n.t('grams')} • '
@@ -178,8 +181,10 @@ class _AiFoodCard extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   if (food.note.isNotEmpty)
-                    Text(food.note,
-                        style: Theme.of(context).textTheme.bodySmall),
+                    Text(
+                      food.note,
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
                 ],
               ),
             ),
@@ -201,8 +206,10 @@ class _LocalFoodCard extends StatelessWidget {
     return Card(
       child: ListTile(
         dense: true,
-        leading: Icon(_recommendationIcon(food.recommendation),
-            color: _recommendationColor(food.recommendation)),
+        leading: Icon(
+          _recommendationIcon(food.recommendation),
+          color: _recommendationColor(food.recommendation),
+        ),
         title: Text(l10n.t('food.${food.name}')),
         subtitle: Text(
           '${l10n.t('category.${food.category}')} • '
@@ -224,10 +231,7 @@ class _MessageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Card(
         color: error ? const Color(0xFFFFEEEE) : const Color(0xFFEAF3FF),
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Text(text),
-        ),
+        child: Padding(padding: const EdgeInsets.all(12), child: Text(text)),
       );
 }
 

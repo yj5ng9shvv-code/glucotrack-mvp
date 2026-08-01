@@ -1,0 +1,58 @@
+Modified or newly created files in this audit pass:
+
+Generated/updated audit outputs:
+- reports/project-cleanup-audit.md
+- reports/project-cleanup-audit.json
+- reports/localization-static-audit.md
+- reports/localization-static-audit.json
+- reports/localization-failures.json
+- reports/localization-screen-matrix.html
+- docs/localization-screen-inventory.md
+
+New root reports:
+- PROJECT_ARCHITECTURE_MAP.md
+- BACKUP_VERIFICATION_REPORT.md
+- DELETED_FILES_MANIFEST.txt
+- MODIFIED_FILES_MANIFEST.txt
+- MANUAL_REVIEW_CANDIDATES.md
+- DATABASE_DEEP_AUDIT_REPORT.md
+- DATABASE_CLEANUP_CANDIDATES.sql
+- DATABASE_CLEANUP_ROLLBACK.sql
+- BUILD_AND_TEST_RESULTS.md
+- RESIDUAL_RISKS.md
+
+No production source code was intentionally changed in this pass.
+2026-07-15 cleanup audit pass:
+
+Modified/generated report files:
+- docs/localization-screen-inventory.md
+- reports/localization-failures.json
+- reports/localization-screen-matrix.html
+- reports/localization-static-audit.json
+- reports/localization-static-audit.md
+- reports/project-cleanup-audit.json
+- reports/project-cleanup-audit.md
+- FULL_SYSTEM_ARCHITECTURE_MAP.md
+- LOCAL_PROJECT_CLEANUP_REPORT.md
+- SERVER_DEEP_AUDIT_REPORT.md
+- PHONE_STORAGE_AUDIT_REPORT.md
+- SERVER_DELETED_FILES_MANIFEST.txt
+- DATABASE_CLEANUP_PLAN.sql
+- RESTORE_INSTRUCTIONS.md
+
+Runtime source code was not changed in this pass.
+
+2026-07-15 approved safe cleanup pass:
+
+Deleted runtime-unrelated diagnostic artifacts:
+- 38 root phone/browser diagnostic `.png/.xml` files.
+- `android/build`.
+
+Updated audit/report files:
+- `DELETED_FILES_MANIFEST.txt`
+- `MODIFIED_FILES_MANIFEST.txt`
+- `BUILD_AND_TEST_RESULTS.md`
+- `reports/project-cleanup-audit.json`
+- `reports/project-cleanup-audit.md`
+
+Runtime source code was not changed.

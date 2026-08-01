@@ -34,24 +34,15 @@ class FamilyAccessService {
     required String email,
     required FamilyPermissions permissions,
   }) async {
-    final body = await _send(
-      'POST',
-      '/family/invitations',
-      token,
-      {'email': email, 'permissions': permissions.toJson()},
-    );
-    return FamilyMember.fromJson(
-      _stringMap(body['invitation'] as Map? ?? {}),
-    );
+    final body = await _send('POST', '/family/invitations', token, {
+      'email': email,
+      'permissions': permissions.toJson(),
+    });
+    return FamilyMember.fromJson(_stringMap(body['invitation'] as Map? ?? {}));
   }
 
   Future<void> accept({required String token, required String code}) async {
-    await _send(
-      'POST',
-      '/family/invitations/accept',
-      token,
-      {'code': code},
-    );
+    await _send('POST', '/family/invitations/accept', token, {'code': code});
   }
 
   Future<void> revoke({required String token, required String id}) async {
@@ -69,14 +60,12 @@ class FamilyAccessService {
     Map<String, dynamic>? payload,
   ) async {
     if (_baseUrl.trim().isEmpty) {
-      throw const FamilyAccessException('NETWORK_ERROR');
+      throw const FamilyAccessException('networkUnavailable');
     }
-    final uri = Uri.parse(
-      '${_baseUrl.replaceFirst(RegExp(r'/$'), '')}$path',
-    );
+    final uri = Uri.parse('${_baseUrl.replaceFirst(RegExp(r'/$'), '')}$path');
     final headers = {
       'Authorization': 'Bearer $token',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
     };
     final response = switch (method) {
       'GET' => await _client.get(uri, headers: headers),
@@ -89,11 +78,32 @@ class FamilyAccessService {
     };
     final body = _decode(response.body);
     if (response.statusCode < 200 || response.statusCode >= 300) {
-      throw const FamilyAccessException(
-        'NETWORK_ERROR',
-      );
+      throw FamilyAccessException(_errorMessage(body));
     }
     return body;
+  }
+
+  String _errorMessage(Map<String, dynamic> body) {
+    final code = _normalizeErrorCode(
+      body['code']?.toString() ?? body['error']?.toString(),
+    );
+    return switch (code) {
+      'FAMILY_SUBSCRIPTION_REQUIRED' =>
+        'family.error.familySubscriptionRequired',
+      'FAMILY_MEMBER_LIMIT_REACHED' => 'family.error.memberLimitReached',
+      'INVALID_INVITATION_CODE' => 'family.error.invalidInvitationCode',
+      _ => 'networkUnavailable',
+    };
+  }
+
+  static String? _normalizeErrorCode(Object? value) {
+    final source = value?.toString().trim();
+    if (source == null || source.isEmpty) return null;
+    final normalized = source.toUpperCase().replaceAll(
+          RegExp(r'[^A-Z0-9]+'),
+          '_',
+        );
+    return normalized.replaceAll(RegExp(r'^_+|_+$'), '');
   }
 
   Map<String, dynamic> _decode(String source) {
@@ -167,8 +177,9 @@ class FamilyMember {
       status: json['status']?.toString() ?? 'pending',
       inviteCode: json['inviteCode']?.toString(),
       permissions: FamilyPermissions.fromJson(
-        (json['permissions'] as Map? ?? {})
-            .map((key, value) => MapEntry(key.toString(), value)),
+        (json['permissions'] as Map? ?? {}).map(
+          (key, value) => MapEntry(key.toString(), value),
+        ),
       ),
     );
   }
@@ -199,8 +210,9 @@ class MonitoredPatient {
       glucoseMmol: (json['glucoseMmol'] as num?)?.toDouble(),
       updatedAt: DateTime.tryParse(json['updatedAt']?.toString() ?? ''),
       permissions: FamilyPermissions.fromJson(
-        (json['permissions'] as Map? ?? {})
-            .map((key, value) => MapEntry(key.toString(), value)),
+        (json['permissions'] as Map? ?? {}).map(
+          (key, value) => MapEntry(key.toString(), value),
+        ),
       ),
     );
   }

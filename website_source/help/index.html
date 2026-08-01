@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow">
+  <title>GlukoTrack Help Center</title>
+  <link rel="canonical" href="https://glukotrack.com/help/">
+  <link rel="stylesheet" href="/help/help.css?v=20260714-1">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span>G</span>GlukoTrack</a>
+    <nav>
+      <a href="/app/">Web App</a>
+      <a href="/install/">Install</a>
+      <select id="localeSelect" aria-label="Language"></select>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow" data-key="help.center.title">Help Center</p>
+      <h1 data-key="help.center.title">Help Center</h1>
+      <p data-key="help.subtitle">Find answers about GlukoTrack</p>
+      <form id="searchForm" class="search">
+        <input id="searchInput" type="search" autocomplete="off" data-placeholder="help.search.placeholder" placeholder="Search help articles">
+        <button data-key="help.search.button">Search</button>
+      </form>
+    </section>
+
+    <section id="searchResults" class="panel hidden"></section>
+
+    <section class="grid two">
+      <div class="panel">
+        <div class="panel-head">
+          <h2 data-key="help.popular.title">Popular articles</h2>
+        </div>
+        <div id="popularArticles" class="article-list"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <h2 data-key="help.recent.title">Recently updated</h2>
+        </div>
+        <div id="recentArticles" class="article-list"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2 data-key="help.categories.title">Help categories</h2>
+      </div>
+      <div id="categories" class="category-grid"></div>
+    </section>
+
+    <section id="articleView" class="panel article-view hidden"></section>
+
+    <section id="contact" class="contact">
+      <div>
+        <h2 data-key="help.contact.title">Did not find an answer?</h2>
+        <p data-key="help.contact.description">Send a message to GlukoTrack support.</p>
+      </div>
+      <form id="contactForm" class="contact-form">
+        <input name="email" type="email" data-placeholder="help.contact.email" placeholder="Email" required>
+        <input name="subject" data-placeholder="help.contact.subject" placeholder="Subject" required>
+        <textarea name="message" rows="4" data-placeholder="help.contact.message" placeholder="Message" required></textarea>
+        <button data-key="help.contact.button">Contact support</button>
+      </form>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/help/help.js?v=20260714-1"></script>
+</body>
+</html>

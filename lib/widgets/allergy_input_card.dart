@@ -18,9 +18,7 @@ class AllergyInputCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final status = l10n.t(
-      hasAllergies
-          ? 'profile.allergyStatusYes'
-          : 'profile.allergyStatusNo',
+      hasAllergies ? 'profile.allergyStatusYes' : 'profile.allergyStatusNo',
     );
     return Container(
       margin: const EdgeInsets.only(bottom: 10),

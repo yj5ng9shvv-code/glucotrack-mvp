@@ -34,7 +34,8 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
       _messages
         ..clear()
         ..add(
-            _ChatMessage(text: context.l10n.t('aiGreeting'), fromUser: false));
+          _ChatMessage(text: context.l10n.t('aiGreeting'), fromUser: false),
+        );
     }
   }
 
