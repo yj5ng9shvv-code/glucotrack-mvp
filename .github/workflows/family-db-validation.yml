@@ -52,6 +52,11 @@ jobs:
       - name: Seed and validate Family foundation
         run: |
           npm run seed:test --prefix backend
-          mysql -h 127.0.0.1 -uglucotrack_test_user -pci_test_password glucotrack_test -N -e "SELECT COUNT(*) FROM users WHERE email IN ('patient@test.com','caregiver@test.com','stranger@test.com')" | grep -x 3
-          mysql -h 127.0.0.1 -uglucotrack_test_user -pci_test_password glucotrack_test -N -e "SELECT can_view_history,can_view_reports FROM family_permissions" | grep -x $'1\t0'
-          test "$(mysql -h 127.0.0.1 -uglucotrack_test_user -pci_test_password glucotrack_test -N -e \"SELECT COUNT(*) FROM family_members fm JOIN users u ON u.id=fm.user_id WHERE u.email='stranger@test.com'\")" -eq 0
+          mysql -h 127.0.0.1 -uglucotrack_test_user -pci_test_password glucotrack_test -N <<'SQL' > /tmp/family-validation
+          SELECT COUNT(*) FROM users WHERE email IN ('patient@test.com','caregiver@test.com','stranger@test.com');
+          SELECT can_view_history, can_view_reports FROM family_permissions;
+          SELECT COUNT(*) FROM family_members fm JOIN users u ON u.id=fm.user_id WHERE u.email = 'stranger@test.com';
+          SQL
+          sed -n '1p' /tmp/family-validation | grep -x 3
+          sed -n '2p' /tmp/family-validation | grep -x $'1\t0'
+          sed -n '3p' /tmp/family-validation | grep -x 0
