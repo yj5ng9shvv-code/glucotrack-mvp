@@ -49,7 +49,7 @@ jobs:
 
           echo "TOKEN=$patient"
 
-          curl -fsS http://127.0.0.1:8787/api/family \
+          curl -i http://127.0.0.1:8787/api/family \
           -H "Authorization: Bearer $patient"
       - if: always()
         run: test -f /tmp/api.pid && kill "$(cat /tmp/api.pid)" || true
