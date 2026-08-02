@@ -10,9 +10,11 @@
     "seed:test": "node --env-file=.env.test scripts/seed-test.mjs"
   },
   "dependencies": {
+    "apn": "^2.2.0",
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.6.1",
     "express": "^4.19.2",
+    "firebase-admin": "^14.2.0",
     "google-auth-library": "^10.4.0",
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.2.0",

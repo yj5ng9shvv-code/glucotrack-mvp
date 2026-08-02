@@ -17,7 +17,7 @@ export function createPushDeliveryService({
   };
 
   const isInvalidToken = (error) =>
-    ["INVALID_TOKEN", "NOT_REGISTERED", "UNREGISTERED"].includes(error?.code);
+    ["TOKEN_INVALID", "INVALID_TOKEN", "NOT_REGISTERED", "UNREGISTERED"].includes(error?.code);
 
   const compactError = (error) =>
     String(error?.code ?? error?.message ?? "DELIVERY_FAILED").slice(0, 255);
@@ -72,6 +72,8 @@ export function createPushDeliveryService({
             await pushProvider.send({
               token,
               platform: device.platform,
+              title: "Family Watch emergency alert",
+              body: "Open GlucoTrack to check the current SOS status.",
               data: { type: "family_sos", event_id: String(job.sos_event_id) }
             });
             await log(job, "SUCCESS");
