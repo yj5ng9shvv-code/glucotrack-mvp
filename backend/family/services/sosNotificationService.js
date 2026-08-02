@@ -54,6 +54,11 @@ export function createSosNotificationService({
       return recipients;
     },
 
+    async isAuthorizedSOSRecipient(patientId, caregiverId) {
+      const recipients = await authorizedCaregivers(patientId);
+      return recipients.some((recipientId) => isSameUser(recipientId, caregiverId));
+    },
+
     async retryFailedNotifications({ limit = 100 } = {}) {
       const jobs = await notificationRepository.getPendingJobs({
         includeFailed: true,
