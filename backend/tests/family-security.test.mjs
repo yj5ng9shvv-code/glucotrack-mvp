@@ -67,6 +67,7 @@ test("non-member GET /api/family is denied with 403", integrationOptions, async 
   const stranger = await login("stranger@test.com");
   const result = await request("/api/family", { token: stranger });
   assert.equal(result.status, 403, `non-member response: ${result.status} ${result.text}`);
+  assert.deepEqual(result.payload, { error: "forbidden" }, `non-member response body: ${result.text}`);
 });
 
 test("invalid JWT is rejected with 401", integrationOptions, async () => {

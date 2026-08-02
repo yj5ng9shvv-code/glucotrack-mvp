@@ -1,9 +1,17 @@
 import express from "express";
+import { FamilyAccessDeniedError } from "../services/familyService.js";
 
 export function createFamilyRouter({ familyService, memberService, invitationService }) {
   const router = express.Router();
   router.post("/create", asyncHandler(async (req,res)=>res.status(201).json(await familyService.createFamily(req.user.id))));
-  router.get("/", asyncHandler(async (req,res)=>res.json(await familyService.getFamily(req.user.id))));
+  router.get("/", asyncHandler(async (req,res)=>{
+    try {
+      res.json(await familyService.getFamily(req.user.id));
+    } catch (error) {
+      if (error instanceof FamilyAccessDeniedError) return res.status(403).json({error:"forbidden"});
+      throw error;
+    }
+  }));
   router.get("/members", asyncHandler(async (req,res)=>{const family=await familyService.getFamily(req.user.id);res.json(await memberService.getMembers(family.id));}));
   router.post("/invite", asyncHandler(async (req,res)=>res.status(201).json(await invitationService.createInvite(req.user.id,req.body?.email))));
   router.post("/invite/accept", asyncHandler(async (req,res)=>res.json(await invitationService.acceptInvite(req.user.email,req.body?.code,req.user.id))));
