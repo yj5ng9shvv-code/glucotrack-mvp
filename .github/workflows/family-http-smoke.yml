@@ -113,7 +113,10 @@ jobs:
           FAMILY_SECURITY_DB_NAME: glucotrack_test
           FAMILY_SECURITY_DB_USER: test
           FAMILY_SECURITY_DB_PASSWORD: testpass
-        run: node --test backend/tests/family-security.test.mjs
+        run: |
+          node --test backend/tests/family-security.test.mjs
+          node --test backend/tests/location-security.test.mjs
+          node --test backend/tests/location-api.test.mjs
       - if: always()
         run: |
           test -f /tmp/api.pid && kill "$(cat /tmp/api.pid)" || true
