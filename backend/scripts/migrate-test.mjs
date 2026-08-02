@@ -6,15 +6,21 @@ const { closeDatabase, initializeDatabase, pool } = await import("../db.js");
 
 try {
   await initializeDatabase();
-  const applied = await pool.query("SELECT 1 FROM schema_migrations WHERE version = $1", [25]);
-  if (!applied.rowCount) {
-    const sql = await readFile(new URL("../migrations/025_family_security_foundation.sql", import.meta.url), "utf8");
-    for (const statement of sql.split(/;\s*(?:\r?\n|$)/).map((part) => part.trim()).filter(Boolean)) {
-      await pool.query(statement);
+  const migrations = [
+    [25, "Family security foundation", "025_family_security_foundation.sql"],
+    [26, "Family link invite token hardening", "026_family_link_invite_token_hardening.sql"]
+  ];
+  for (const [version, description, file] of migrations) {
+    const applied = await pool.query("SELECT 1 FROM schema_migrations WHERE version = $1", [version]);
+    if (!applied.rowCount) {
+      const sql = await readFile(new URL(`../migrations/${file}`, import.meta.url), "utf8");
+      for (const statement of sql.split(/;\s*(?:\r?\n|$)/).map((part) => part.trim()).filter(Boolean)) {
+        await pool.query(statement);
+      }
+      await pool.query("INSERT INTO schema_migrations(version, description) VALUES($1, $2)", [version, description]);
     }
-    await pool.query("INSERT INTO schema_migrations(version, description) VALUES($1, $2)", [25, "Family security foundation"]);
   }
-  console.log(JSON.stringify({ ready: true, database, schemaVersion: 25, error: null }));
+  console.log(JSON.stringify({ ready: true, database, schemaVersion: 26, error: null }));
 } finally {
   await closeDatabase();
 }

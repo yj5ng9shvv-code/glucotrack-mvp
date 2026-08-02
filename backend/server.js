@@ -879,39 +879,58 @@ app.post("/family/invitations", asyncHandler(async (req, res) => {
   }
   const permissions = sanitizePermissions(req.body?.permissions);
   const inviteCode = randomBytes(18).toString("base64url");
+  const inviteCodeHash = hashToken(inviteCode);
   await pool.query(
     `INSERT INTO family_links(
-       owner_user_id, invite_email, invite_code, permissions, status, expires_at
+       owner_user_id, invite_email, invite_code_hash, permissions, status, expires_at
      ) VALUES($1, $2, $3, $4, 'pending', DATE_ADD(NOW(), INTERVAL 7 DAY))
      ON DUPLICATE KEY UPDATE
-       invite_code = VALUES(invite_code),
+       invite_code = NULL,
+       invite_code_hash = VALUES(invite_code_hash),
        permissions = VALUES(permissions),
        status = 'pending', caregiver_user_id = NULL,
        expires_at = VALUES(expires_at), accepted_at = NULL`,
-    [req.user.id, inviteEmail, inviteCode, permissions]
+    [req.user.id, inviteEmail, inviteCodeHash, permissions]
   );
   const result = await pool.query(
-    "SELECT id, invite_email, invite_code, permissions, status, expires_at FROM family_links WHERE owner_user_id = $1 AND invite_email = $2",
+    "SELECT id, invite_email, permissions, status, expires_at FROM family_links WHERE owner_user_id = $1 AND invite_email = $2",
     [req.user.id, inviteEmail]
   );
-  res.status(201).json({ invitation: familyLink(result.rows[0]) });
+  res.status(201).json({ invitation: { ...familyLink(result.rows[0]), inviteCode } });
 }));
 
 app.post("/family/invitations/accept", asyncHandler(async (req, res) => {
   const code = cleanText(req.body?.code, 200);
+  const codeHash = hashToken(code);
+  const attemptEmail = normalizeEmail(req.user.email);
+  const attemptIp = cleanText(req.ip, 64) || "unknown";
+  const failures = await pool.query(
+    `SELECT COUNT(*) AS count FROM family_invite_attempts
+     WHERE ip_address = $1 AND success = FALSE
+       AND attempted_at > DATE_SUB(UTC_TIMESTAMP(), INTERVAL 15 MINUTE)`,
+    [attemptIp]
+  );
+  const attempt = await pool.query(
+    "INSERT INTO family_invite_attempts(invite_code_hash, attempted_email, ip_address, success) VALUES($1, $2, $3, FALSE)",
+    [codeHash, attemptEmail, attemptIp]
+  );
+  if (Number(failures.rows[0]?.count ?? 0) >= 5) {
+    return res.status(429).json({ error: "invitation is unavailable" });
+  }
   const updated = await pool.query(
     `UPDATE family_links SET
        caregiver_user_id = $1, status = 'accepted', accepted_at = NOW()
-     WHERE invite_code = $2 AND invite_email = $3
+     WHERE invite_code_hash = $2 AND invite_email = $3
        AND status = 'pending' AND expires_at > NOW()`,
-    [req.user.id, code, req.user.email]
+    [req.user.id, codeHash, attemptEmail]
   );
   if (!updated.rowCount) {
-    return res.status(404).json({ error: "invitation is invalid, expired, or belongs to another email" });
+    return res.status(404).json({ error: "invitation is unavailable" });
   }
+  await pool.query("UPDATE family_invite_attempts SET success = TRUE WHERE id = $1", [attempt.insertId]);
   const result = await pool.query(
-    "SELECT id, owner_user_id, invite_email, permissions, status, accepted_at FROM family_links WHERE invite_code = $1 AND invite_email = $2",
-    [code, req.user.email]
+    "SELECT id, owner_user_id, invite_email, permissions, status, accepted_at FROM family_links WHERE invite_code_hash = $1 AND invite_email = $2",
+    [codeHash, attemptEmail]
   );
   res.json({ link: familyLink(result.rows[0]) });
 }));
@@ -1523,7 +1542,7 @@ function familyLink(row) {
     id: String(row.id),
     email: row.invite_email,
     fullName: row.full_name ?? null,
-    inviteCode: row.invite_code,
+    inviteCode: row.invite_code ?? null,
     permissions: row.permissions,
     status: row.status,
     expiresAt: row.expires_at,

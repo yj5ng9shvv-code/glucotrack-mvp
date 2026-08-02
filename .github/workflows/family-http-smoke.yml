@@ -108,6 +108,11 @@ jobs:
         env:
           FAMILY_SECURITY_BASE_URL: http://127.0.0.1:8787
           FAMILY_SECURITY_JWT_SECRET: glucotrack_test_family_security_secret_20260802_long_key
+          FAMILY_SECURITY_DB_HOST: 127.0.0.1
+          FAMILY_SECURITY_DB_PORT: 3306
+          FAMILY_SECURITY_DB_NAME: glucotrack_test
+          FAMILY_SECURITY_DB_USER: test
+          FAMILY_SECURITY_DB_PASSWORD: testpass
         run: node --test backend/tests/family-security.test.mjs
       - if: always()
         run: |

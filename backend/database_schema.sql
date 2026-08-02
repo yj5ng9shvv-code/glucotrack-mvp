@@ -74,7 +74,8 @@ CREATE TABLE IF NOT EXISTS family_links (
   owner_user_id BIGINT UNSIGNED NOT NULL,
   caregiver_user_id BIGINT UNSIGNED NULL,
   invite_email VARCHAR(255) NOT NULL,
-  invite_code VARCHAR(255) NOT NULL UNIQUE,
+  invite_code VARCHAR(255) NULL UNIQUE,
+  invite_code_hash CHAR(64) NULL UNIQUE,
   permissions JSON NOT NULL,
   status ENUM('pending', 'accepted', 'revoked') NOT NULL DEFAULT 'pending',
   expires_at DATETIME NOT NULL,
@@ -86,6 +87,17 @@ CREATE TABLE IF NOT EXISTS family_links (
     FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE CASCADE,
   CONSTRAINT family_links_caregiver_fk
     FOREIGN KEY (caregiver_user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS family_invite_attempts (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  invite_code_hash CHAR(64) NOT NULL,
+  attempted_email VARCHAR(255) NOT NULL,
+  ip_address VARCHAR(64) NOT NULL,
+  success BOOLEAN NOT NULL DEFAULT FALSE,
+  attempted_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY family_invite_attempts_ip_time_idx (ip_address, attempted_at),
+  KEY family_invite_attempts_code_time_idx (invite_code_hash, attempted_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS reports (

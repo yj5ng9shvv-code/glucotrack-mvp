@@ -1,11 +1,18 @@
 import assert from "node:assert/strict";
-import { createHmac } from "node:crypto";
+import { createHash, createHmac } from "node:crypto";
 import test from "node:test";
 
 const baseUrl = (process.env.FAMILY_SECURITY_BASE_URL ?? "").replace(/\/$/, "");
 const jwtSecret = process.env.FAMILY_SECURITY_JWT_SECRET ?? process.env.JWT_SECRET ?? "";
 const integration = Boolean(baseUrl);
 const integrationOptions = { skip: integration ? false : "FAMILY_SECURITY_BASE_URL is required for HTTP integration tests" };
+const testDatabase = {
+  host: process.env.FAMILY_SECURITY_DB_HOST ?? "",
+  port: Number(process.env.FAMILY_SECURITY_DB_PORT ?? 0),
+  user: process.env.FAMILY_SECURITY_DB_USER ?? "",
+  password: process.env.FAMILY_SECURITY_DB_PASSWORD ?? "",
+  database: process.env.FAMILY_SECURITY_DB_NAME ?? ""
+};
 
 async function request(path, { method = "GET", token, body } = {}) {
   const response = await fetch(`${baseUrl}${path}`, {
@@ -49,6 +56,35 @@ function expiredJwt() {
   const signingInput = `${encode({ alg: "HS256", typ: "JWT" })}.${encode({ id: "expired-test", email: "expired@test.com", exp: 1 })}`;
   const signature = createHmac("sha256", jwtSecret).update(signingInput).digest("base64url");
   return `${signingInput}.${signature}`;
+}
+
+async function expireLegacyInvite(code) {
+  assert.ok(Object.values(testDatabase).every(Boolean), "Family Security test database settings are required");
+  const mysql = await import("mysql2/promise");
+  const connection = await mysql.createConnection(testDatabase);
+  try {
+    await connection.execute(
+      "UPDATE family_links SET expires_at=DATE_SUB(UTC_TIMESTAMP(), INTERVAL 1 MINUTE) WHERE invite_code_hash=?",
+      [inviteHash(code)]
+    );
+  } finally {
+    await connection.end();
+  }
+}
+
+function inviteHash(code) {
+  return createHash("sha256").update(code).digest("hex");
+}
+
+async function createLegacyInvite(token, email = "caregiver@test.com") {
+  const result = await request("/family/invitations", {
+    method: "POST",
+    token,
+    body: { email, permissions: { glucose: true, history: true, emergency: true } }
+  });
+  assert.equal(result.status, 201, `legacy invite creation: ${result.status} ${result.text}`);
+  assert.equal(typeof result.payload?.invitation?.inviteCode, "string", `raw invite code missing: ${result.text}`);
+  return result.payload.invitation.inviteCode;
 }
 
 test("caregiver cannot delete another Family member", integrationOptions, async () => {
@@ -105,4 +141,39 @@ test("SOS unlock without a valid PIN is rejected with 403", integrationOptions, 
     body: { pin: "0000" }
   });
   assert.equal(result.status, 403, `SOS unauthorized response: ${result.status} ${result.text}`);
+});
+
+test("legacy Family invite tokens are hashed, recipient-bound, expiring, and one-time", integrationOptions, async () => {
+  const [patient, caregiver, stranger] = await Promise.all([
+    patientToken(),
+    login("caregiver@test.com"),
+    login("stranger@test.com")
+  ]);
+
+  const validCode = await createLegacyInvite(patient);
+  const valid = await request("/family/invitations/accept", { method: "POST", token: caregiver, body: { code: validCode } });
+  assert.equal(valid.status, 200, `valid invite: ${valid.status} ${valid.text}`);
+
+  const reused = await request("/family/invitations/accept", { method: "POST", token: caregiver, body: { code: validCode } });
+  assert.equal(reused.status, 404, `reused invite: ${reused.status} ${reused.text}`);
+  assert.deepEqual(reused.payload, { error: "invitation is unavailable" });
+
+  const wrongEmailCode = await createLegacyInvite(patient);
+  const wrongEmail = await request("/family/invitations/accept", { method: "POST", token: stranger, body: { code: wrongEmailCode } });
+  assert.equal(wrongEmail.status, 404, `wrong-email invite: ${wrongEmail.status} ${wrongEmail.text}`);
+  assert.deepEqual(wrongEmail.payload, { error: "invitation is unavailable" });
+
+  const invalid = await request("/family/invitations/accept", { method: "POST", token: caregiver, body: { code: "not-a-valid-invite" } });
+  assert.equal(invalid.status, 404, `invalid invite: ${invalid.status} ${invalid.text}`);
+  assert.deepEqual(invalid.payload, { error: "invitation is unavailable" });
+
+  const expiredCode = await createLegacyInvite(patient);
+  await expireLegacyInvite(expiredCode);
+  const expired = await request("/family/invitations/accept", { method: "POST", token: caregiver, body: { code: expiredCode } });
+  assert.equal(expired.status, 404, `expired invite: ${expired.status} ${expired.text}`);
+  assert.deepEqual(expired.payload, { error: "invitation is unavailable" });
+
+  const members = await request("/family/members", { token: patient });
+  assert.equal(members.status, 200, `member list: ${members.status} ${members.text}`);
+  assert.equal(members.payload?.members?.find((member) => member.email === "caregiver@test.com")?.inviteCode, null, `raw invite code leaked: ${members.text}`);
 });

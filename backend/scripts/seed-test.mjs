@@ -11,6 +11,7 @@ try {
     await pool.query("INSERT INTO users(email,password_hash,full_name) VALUES($1,$2,$3) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id), password_hash=VALUES(password_hash), full_name=VALUES(full_name)", [email, passwordHash, name]);
     users[key] = (await pool.query("SELECT id FROM users WHERE email=$1", [email])).rows[0].id;
   }
+  await pool.query("UPDATE users SET premium_status='active', premium_plan='family', subscription_status='active', subscription_expires_at=DATE_ADD(UTC_TIMESTAMP(), INTERVAL 30 DAY) WHERE id=$1", [users.patient]);
   await pool.query("INSERT INTO family_groups(patient_user_id,status) VALUES($1,'active') ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id), status='active'", [users.patient]);
   const groupId = (await pool.query("SELECT id FROM family_groups WHERE patient_user_id=$1", [users.patient])).rows[0].id;
   for (const [key, role] of [["patient", "patient"], ["caregiver", "caregiver"]]) {
