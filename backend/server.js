@@ -13,6 +13,10 @@ import { getDatabaseStatus, initializeDatabase, pool } from "./db.js";
 import { createFamilyRouter } from "./family/api/familyRoutes.js";
 import { createLocationRouter } from "./family/api/locationRoutes.js";
 import { createSosRouter } from "./family/api/sosRoutes.js";
+import { createPushDeviceRouter } from "./api/pushDeviceRoutes.js";
+import { createPushDeviceTokenRepository } from "./repositories/pushDeviceTokenRepository.js";
+import { createPushDeviceTokenService } from "./services/pushDeviceTokenService.js";
+import { createPushTokenCipher } from "./services/pushTokenCrypto.js";
 import { createFamilyRepository } from "./family/repositories/familyRepository.js";
 import { createInvitationRepository } from "./family/repositories/invitationRepository.js";
 import { createLocationRepository } from "./family/repositories/locationRepository.js";
@@ -512,9 +516,20 @@ const sosRouter = createSosRouter({
     notificationService: sosNotificationService
   })
 });
+const pushDeviceTokenService = createPushDeviceTokenService({
+  repository: createPushDeviceTokenRepository(pool.query),
+  // Keep configuration validation at registration time so environments that do
+  // not offer push registration can still start the rest of the backend.
+  tokenCipher: {
+    encrypt(token) {
+      return createPushTokenCipher(process.env.PUSH_TOKEN_ENCRYPTION_KEY).encrypt(token);
+    }
+  }
+});
 app.use("/api/family", familyRouter);
 app.use("/api/location", locationRouter);
 app.use("/api/sos", sosRouter);
+app.use("/api/devices", createPushDeviceRouter({ pushDeviceTokenService }));
 
 app.get("/auth/me", asyncHandler(async (req, res) => {
   const result = await pool.query(

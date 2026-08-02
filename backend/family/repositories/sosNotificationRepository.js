@@ -48,14 +48,15 @@ export function createSosNotificationRepository(query) {
 
     async findActivePushDevices(userId) {
       return (await query(
-        `SELECT ad.id, ad.user_id, ad.device_id, ad.platform, ad.push_token
+        `SELECT ad.id, ad.user_id, ad.device_id, ad.platform,
+                ad.push_token_encrypted
          FROM account_devices ad
          JOIN users u ON u.id = ad.user_id
          WHERE ad.user_id = $1
            AND ad.revoked_at IS NULL
            AND ad.push_revoked_at IS NULL
-           AND ad.push_token IS NOT NULL
-           AND ad.push_token <> ''
+           AND ad.push_token_encrypted IS NOT NULL
+           AND ad.push_token_encrypted <> ''
          ORDER BY ad.last_seen_at DESC, ad.id DESC`,
         [userId]
       )).rows;
@@ -64,7 +65,9 @@ export function createSosNotificationRepository(query) {
     revokePushToken(deviceId) {
       return query(
         `UPDATE account_devices
-         SET push_token = NULL, push_revoked_at = UTC_TIMESTAMP()
+         SET push_token_hash = NULL,
+             push_token_encrypted = NULL,
+             push_revoked_at = UTC_TIMESTAMP()
          WHERE id = $1 AND revoked_at IS NULL`,
         [deviceId]
       );

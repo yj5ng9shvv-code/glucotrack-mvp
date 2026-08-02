@@ -3,7 +3,8 @@ const MAX_BATCH_SIZE = 100;
 export function createPushDeliveryService({
   notificationRepository,
   sosNotificationService,
-  pushProvider
+  pushProvider,
+  tokenCipher = null
 }) {
   const providerName = pushProvider?.name ?? "abstract";
 
@@ -64,8 +65,12 @@ export function createPushDeliveryService({
         for (const device of devices) {
           try {
             if (!pushProvider?.send) throw new Error("PUSH_PROVIDER_UNAVAILABLE");
+            const token = device.push_token_encrypted
+              ? tokenCipher?.decrypt(device.push_token_encrypted)
+              : device.push_token;
+            if (!token) throw new Error("PUSH_TOKEN_DECRYPTION_UNAVAILABLE");
             await pushProvider.send({
-              token: device.push_token,
+              token,
               platform: device.platform,
               data: { type: "family_sos", event_id: String(job.sos_event_id) }
             });
