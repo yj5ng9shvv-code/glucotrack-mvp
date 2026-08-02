@@ -100,7 +100,7 @@ jobs:
             fi
           }
 
-          request create-family -X POST http://127.0.0.1:8787/api/family \
+          request create-family -X POST http://127.0.0.1:8787/api/family/create \
             -H "Authorization: Bearer $patient"
           request get-family http://127.0.0.1:8787/api/family \
             -H "Authorization: Bearer $patient"
