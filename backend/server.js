@@ -16,12 +16,14 @@ import { createSosRouter } from "./family/api/sosRoutes.js";
 import { createFamilyRepository } from "./family/repositories/familyRepository.js";
 import { createInvitationRepository } from "./family/repositories/invitationRepository.js";
 import { createLocationRepository } from "./family/repositories/locationRepository.js";
+import { createSosNotificationRepository } from "./family/repositories/sosNotificationRepository.js";
 import { createSosRepository } from "./family/repositories/sosRepository.js";
 import { createPermissionRepository } from "./family/repositories/permissionRepository.js";
 import { createFamilyService } from "./family/services/familyService.js";
 import { createFamilyInvitationService } from "./family/services/familyInvitationService.js";
 import { createFamilyMemberService } from "./family/services/familyMemberService.js";
 import { createLocationService } from "./family/services/locationService.js";
+import { createSosNotificationService } from "./family/services/sosNotificationService.js";
 import { createSosService } from "./family/services/sosService.js";
 import { createFamilyPermissionService } from "./family/services/familyPermissionService.js";
 
@@ -494,12 +496,20 @@ const locationRouter = createLocationRouter({
     locationRepository: createLocationRepository(pool.query)
   })
 });
+const sosRepository = createSosRepository(pool.query);
+const sosNotificationService = createSosNotificationService({
+  familyRepository,
+  permissionRepository,
+  sosRepository,
+  notificationRepository: createSosNotificationRepository(pool.query)
+});
 const sosRouter = createSosRouter({
   sosService: createSosService({
     familyRepository,
     permissionRepository,
-    sosRepository: createSosRepository(pool.query),
-    locationRepository: createLocationRepository(pool.query)
+    sosRepository,
+    locationRepository: createLocationRepository(pool.query),
+    notificationService: sosNotificationService
   })
 });
 app.use("/api/family", familyRouter);

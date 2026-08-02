@@ -4,7 +4,13 @@ export class SosConflictError extends Error {}
 
 const MAX_HISTORY_LIMIT = 100;
 
-export function createSosService({ familyRepository, permissionRepository, sosRepository, locationRepository = null }) {
+export function createSosService({
+  familyRepository,
+  permissionRepository,
+  sosRepository,
+  locationRepository = null,
+  notificationService = null
+}) {
   const isSameUser = (left, right) => String(left) === String(right);
 
   const requireAuthenticated = (requesterId) => {
@@ -109,7 +115,11 @@ export function createSosService({ familyRepository, permissionRepository, sosRe
         location.longitude,
         location.accuracy
       );
-      return sosRepository.getById(result.insertId);
+      const event = await sosRepository.getById(result.insertId);
+      if (notificationService && event) {
+        await notificationService.createSOSNotifications(requesterId, event.id);
+      }
+      return event;
     },
 
     async cancelSOS(requesterId, eventId) {
