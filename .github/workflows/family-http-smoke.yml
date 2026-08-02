@@ -42,10 +42,15 @@ jobs:
           sleep 3
           cat /tmp/api.log
 
-          patient=$(curl -fsS -X POST http://127.0.0.1:8787/auth/login \
+          login=$(curl -s -X POST http://127.0.0.1:8787/auth/login \
           -H "Content-Type: application/json" \
-          -d '{"email":"patient@test.com","password":"test-password"}' \
-          | node -e "let x='';process.stdin.on('data',d=>x+=d).on('end',()=>console.log(JSON.parse(x).token))")
+          -d '{"email":"patient@test.com","password":"test-password"}')
+
+           echo "LOGIN:"
+           echo "$login"
+           echo "TOKEN LENGTH:"
+           echo ${#patient}
+           patient=$(echo "$login" | node -e "let x='';process.stdin.on('data',d=>x+=d).on('end',()=>console.log(JSON.parse(x).token))")
 
           echo "TOKEN=$patient"
 
