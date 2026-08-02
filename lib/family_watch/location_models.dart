@@ -97,3 +97,45 @@ class LocationSyncState {
                 ?.toUtc(),
       );
 }
+
+class FamilyWatchTrackingState {
+  final bool enabled;
+  final bool paused;
+  final String? deviceId;
+  final String? sessionToken;
+
+  const FamilyWatchTrackingState({
+    this.enabled = false,
+    this.paused = false,
+    this.deviceId,
+    this.sessionToken,
+  });
+
+  FamilyWatchTrackingState copyWith({
+    bool? enabled,
+    bool? paused,
+    String? deviceId,
+    String? sessionToken,
+  }) =>
+      FamilyWatchTrackingState(
+        enabled: enabled ?? this.enabled,
+        paused: paused ?? this.paused,
+        deviceId: deviceId ?? this.deviceId,
+        sessionToken: sessionToken ?? this.sessionToken,
+      );
+
+  Map<String, dynamic> toJson() => {
+        'enabled': enabled,
+        'paused': paused,
+        if (deviceId != null) 'device_id': deviceId,
+        if (sessionToken != null) 'session_token': sessionToken,
+      };
+
+  factory FamilyWatchTrackingState.fromJson(Map<String, dynamic> json) =>
+      FamilyWatchTrackingState(
+        enabled: json['enabled'] == true,
+        paused: json['paused'] == true,
+        deviceId: json['device_id']?.toString(),
+        sessionToken: json['session_token']?.toString(),
+      );
+}

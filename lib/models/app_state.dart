@@ -9,6 +9,7 @@ import '../l10n/emergency_card_value_translations.dart';
 import 'diary_log_entry.dart';
 import 'sensor_reading.dart';
 import '../services/auth_service.dart';
+import '../family_watch/family_watch_tracking_service.dart';
 
 enum DiabetesType { type1, type2, gestational }
 
@@ -33,10 +34,15 @@ class AppLanguage {
 typedef EmergencyCardUpdater = Future<void> Function(AppState state);
 
 class AppState extends ChangeNotifier {
-  AppState({AuthService? authService, this.emergencyCardUpdater})
-      : _authService = authService ?? AuthService();
+  AppState({
+    AuthService? authService,
+    this.emergencyCardUpdater,
+    FamilyWatchTrackingService? familyWatchTrackingService,
+  })  : _authService = authService ?? AuthService(),
+        _familyWatchTrackingService = familyWatchTrackingService;
 
   final AuthService _authService;
+  final FamilyWatchTrackingService? _familyWatchTrackingService;
   EmergencyCardUpdater? emergencyCardUpdater;
   static const supportedLanguages = <AppLanguage>[
     AppLanguage(
@@ -503,6 +509,7 @@ class AppState extends ChangeNotifier {
   }
 
   Future<void> logout() async {
+    await _familyWatchTrackingService?.stopForLogout();
     _authenticated = false;
     _accountToken = '';
     notifyListeners();

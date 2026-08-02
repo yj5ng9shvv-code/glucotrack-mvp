@@ -33,6 +33,7 @@ class SecureLocationStorage {
 
   static const _syncStateKey = 'family_watch.location.sync_state.v1';
   static const _queueKey = 'family_watch.location.queue.v1';
+  static const _trackingStateKey = 'family_watch.location.tracking_state.v1';
   final SecureKeyValueStore _store;
 
   Future<LocationSyncState> readSyncState() async {
@@ -48,6 +49,23 @@ class SecureLocationStorage {
 
   Future<void> saveSyncState(LocationSyncState state) =>
       _store.write(_syncStateKey, jsonEncode(state.toJson()));
+
+  Future<FamilyWatchTrackingState> readTrackingState() async {
+    final raw = await _store.read(_trackingStateKey);
+    if (raw == null || raw.isEmpty) return const FamilyWatchTrackingState();
+    try {
+      return FamilyWatchTrackingState.fromJson(
+        Map<String, dynamic>.from(jsonDecode(raw) as Map),
+      );
+    } catch (_) {
+      return const FamilyWatchTrackingState();
+    }
+  }
+
+  Future<void> saveTrackingState(FamilyWatchTrackingState state) =>
+      _store.write(_trackingStateKey, jsonEncode(state.toJson()));
+
+  Future<void> clearTrackingState() => _store.delete(_trackingStateKey);
 
   Future<List<QueuedLocationUpdate>> readQueue() async {
     final raw = await _store.read(_queueKey);
@@ -70,5 +88,6 @@ class SecureLocationStorage {
   Future<void> clear() async {
     await _store.delete(_syncStateKey);
     await _store.delete(_queueKey);
+    await _store.delete(_trackingStateKey);
   }
 }

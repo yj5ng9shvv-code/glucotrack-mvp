@@ -34,9 +34,12 @@ import 'widgets/localized_text.dart';
 import 'services/subscription_service.dart';
 import 'services/emergency_service.dart';
 import 'services/cloud_sync_service.dart';
+import 'family_watch/family_watch_background_runtime.dart';
+import 'family_watch/family_watch_tracking_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await FamilyWatchBackgroundRuntime.initialize();
   await loadCoreTranslations();
   runApp(const GlukoTrackApp());
 }
@@ -52,7 +55,10 @@ class GlukoTrackApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) =>
           initialState ??
-          AppState(emergencyCardUpdater: emergencyService.updateLockScreenCard),
+          AppState(
+            emergencyCardUpdater: emergencyService.updateLockScreenCard,
+            familyWatchTrackingService: FamilyWatchTrackingService(),
+          ),
       child: AppStateLoader(
         child: Consumer<AppState>(
           builder: (context, state, _) {

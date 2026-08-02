@@ -10,6 +10,11 @@ enum FamilyLocationPermissionStatus {
 abstract class LocationPermissionGateway {
   Future<FamilyLocationPermissionStatus> status();
   Future<FamilyLocationPermissionStatus> requestForeground();
+  Future<FamilyLocationPermissionStatus> backgroundStatus();
+  Future<FamilyLocationPermissionStatus> requestBackground();
+  Future<bool> requestNotificationPermission();
+  Future<bool> isIgnoringBatteryOptimizations();
+  Future<bool> requestIgnoreBatteryOptimizations();
 }
 
 class PermissionHandlerLocationGateway implements LocationPermissionGateway {
@@ -22,6 +27,26 @@ class PermissionHandlerLocationGateway implements LocationPermissionGateway {
   @override
   Future<FamilyLocationPermissionStatus> requestForeground() async =>
       _map(await Permission.locationWhenInUse.request());
+
+  @override
+  Future<FamilyLocationPermissionStatus> backgroundStatus() async =>
+      _map(await Permission.locationAlways.status);
+
+  @override
+  Future<FamilyLocationPermissionStatus> requestBackground() async =>
+      _map(await Permission.locationAlways.request());
+
+  @override
+  Future<bool> requestNotificationPermission() async =>
+      (await Permission.notification.request()).isGranted;
+
+  @override
+  Future<bool> isIgnoringBatteryOptimizations() async =>
+      (await Permission.ignoreBatteryOptimizations.status).isGranted;
+
+  @override
+  Future<bool> requestIgnoreBatteryOptimizations() async =>
+      (await Permission.ignoreBatteryOptimizations.request()).isGranted;
 
   FamilyLocationPermissionStatus _map(PermissionStatus status) {
     if (status.isGranted || status.isLimited) {
@@ -45,4 +70,21 @@ class LocationPermissionManager {
 
   Future<FamilyLocationPermissionStatus> requestForegroundPermission() =>
       _gateway.requestForeground();
+
+  Future<FamilyLocationPermissionStatus> backgroundStatus() =>
+      _gateway.backgroundStatus();
+
+  Future<FamilyLocationPermissionStatus> requestBackgroundPermission() =>
+      _gateway.requestBackground();
+
+  Future<bool> requestNotificationPermission() =>
+      _gateway.requestNotificationPermission();
+
+  Future<bool> isIgnoringBatteryOptimizations() =>
+      _gateway.isIgnoringBatteryOptimizations();
+
+  /// Call this only from an explicit patient action; it must never run
+  /// automatically when Family Watch starts.
+  Future<bool> requestIgnoreBatteryOptimizations() =>
+      _gateway.requestIgnoreBatteryOptimizations();
 }
