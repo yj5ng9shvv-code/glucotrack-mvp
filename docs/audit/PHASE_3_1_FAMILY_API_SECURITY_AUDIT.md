@@ -1,6 +1,6 @@
 # PHASE 3.1 FAMILY WATCH API SECURITY AUDIT
 
-Date: 2026-08-02  
+Date: 2026-08-02
 Mode: audit only (static code review; no application code, tests, schema, workflow,
 commit, or push changes)
 
@@ -85,7 +85,7 @@ Evidence:
 - `backend/family/services/familyService.js:11-15`
 - `backend/family/repositories/familyRepository.js:9`
 
-Expected result: `403` for a caregiver attempting member removal.  
+Expected result: `403` for a caregiver attempting member removal.
 Current static result: mutation is permitted if the target ID belongs to the group.
 
 ### MEDIUM — Access-denied Family errors are returned as 500
@@ -96,7 +96,7 @@ error handler returns `500 {"error":"internal server error"}` for this error
 (`server.js:1162-1169`). Thus a stranger's `GET /api/family` does not return the
 required `403`.
 
-Expected result: `403`.  
+Expected result: `403`.
 Current static result: `500`.
 
 ### Legacy Family IDOR review
