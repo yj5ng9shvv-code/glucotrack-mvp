@@ -1,0 +1,1 @@
+export function createFamilyGroupService(repository) { return { createFamily: (userId) => repository.createGroup(userId), getFamily: (userId) => repository.findGroupByPatient(userId), deleteFamily: (userId) => repository.deactivateGroup(userId) }; }

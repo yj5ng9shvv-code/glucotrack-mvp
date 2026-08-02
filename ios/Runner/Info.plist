@@ -21,6 +21,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>glucotrack</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>com.googleusercontent.apps.967750323381-32r09tkmqfkssusn75ukdjmqh8f0gbs0</string>
 			</array>
 		</dict>
@@ -28,7 +36,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>GlukoTrack uses the camera to scan food photos and update your profile picture when you choose this action.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>GlukoTrack uses your location only when you request SOS location sharing or open your current location from the SOS screen.</string>
+	<string>GlukoTrack uses your location for SOS and when you choose to enable Family Watch location sharing.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>When you explicitly enable Family Watch, GlukoTrack shares your location with approved family in the background until you stop sharing.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>GlukoTrack uses the microphone to recognize voice requests and diary entries when you tap the microphone button.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -66,5 +76,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 </dict>
 </plist>

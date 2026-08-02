@@ -1,0 +1,123 @@
+# Family HTTP Smoke workflow registration
+name: Family HTTP Smoke
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/family-security-clean
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm, cache-dependency-path: backend/package-lock.json }
+      - name: Start isolated MariaDB with retry
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            if docker pull mariadb:11; then break; fi
+            if [ "$attempt" -eq 5 ]; then
+              echo "MariaDB image pull failed after $attempt attempts"
+              exit 1
+            fi
+            sleep "$((attempt * 10))"
+          done
+          docker run --detach --name family-http-smoke-mariadb \
+            --publish 127.0.0.1:3306:3306 \
+            --env MARIADB_ROOT_PASSWORD=rootpass \
+            --health-cmd='healthcheck.sh --connect --innodb_initialized' \
+            --health-interval=10s --health-timeout=5s --health-retries=30 \
+            mariadb:11
+          for attempt in {1..60}; do
+            status="$(docker inspect --format '{{.State.Health.Status}}' family-http-smoke-mariadb)"
+            if [ "$status" = healthy ]; then exit 0; fi
+            sleep 2
+          done
+          docker logs family-http-smoke-mariadb
+          exit 1
+      - run: mysql -h127.0.0.1 -uroot -prootpass -e "CREATE DATABASE glucotrack_test; CREATE USER 'test'@'%' IDENTIFIED BY 'testpass'; GRANT ALL ON glucotrack_test.* TO 'test'@'%';"
+      - run: npm ci --prefix backend
+      - run: |
+          cat > backend/.env.test <<'EOF'
+          NODE_ENV=test
+          DB_HOST=127.0.0.1
+          DB_PORT=3306
+          DB_NAME=glucotrack_test
+          DB_USER=test
+          DB_PASSWORD=testpass
+          TEST_DATABASE_HOST=127.0.0.1
+          TEST_DATABASE_PORT=3306
+          TEST_DATABASE_NAME=glucotrack_test
+          TEST_DATABASE_USER=test
+          TEST_DATABASE_PASSWORD=testpass
+          DB_AUTO_CREATE=false
+          JWT_SECRET=glucotrack_test_family_security_secret_20260802_long_key
+          PORT=8787
+          EOF
+          node --env-file=backend/.env.test backend/scripts/migrate-test.mjs
+          node --env-file=backend/.env.test backend/scripts/seed-test.mjs
+      - run: |
+          set -euo pipefail
+          node --env-file=backend/.env.test backend/server.js > /tmp/api.log 2>&1 &
+          echo $! > /tmp/api.pid
+
+          health_status=000
+          for _ in {1..20}; do
+            health_status=$(curl -sS -o /tmp/health.json -w '%{http_code}' http://127.0.0.1:8787/health || true)
+            if [ "$health_status" = "200" ]; then break; fi
+            sleep 1
+          done
+          echo "health HTTP $health_status"
+          cat /tmp/health.json 2>/dev/null || true
+          if [ "$health_status" != "200" ]; then
+            cat /tmp/api.log
+            exit 1
+          fi
+
+          login_status=$(curl -sS -o /tmp/login.json -w '%{http_code}' -X POST http://127.0.0.1:8787/auth/login \
+            -H "Content-Type: application/json" \
+            -d '{"email":"patient@test.com","password":"test-password","device":{"id":"family-http-smoke","platform":"web","name":"CI"}}')
+          echo "login HTTP $login_status"
+          cat /tmp/login.json
+          if [ "$login_status" -lt 200 ] || [ "$login_status" -ge 300 ]; then
+            cat /tmp/api.log
+            exit 1
+          fi
+          patient=$(node -e 'const fs=require("fs");const token=JSON.parse(fs.readFileSync("/tmp/login.json","utf8")).token;if(!token)throw new Error("login response has no token");process.stdout.write(token)')
+
+          request() {
+            local name="$1"
+            shift
+            local status
+            status=$(curl -sS -o "/tmp/${name}.json" -w '%{http_code}' "$@")
+            echo "$name HTTP $status"
+            cat "/tmp/${name}.json"
+            if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then
+              cat /tmp/api.log
+              exit 1
+            fi
+          }
+
+          request create-family -X POST http://127.0.0.1:8787/api/family/create \
+            -H "Authorization: Bearer $patient"
+          request get-family http://127.0.0.1:8787/api/family \
+            -H "Authorization: Bearer $patient"
+      - name: Run Family security authorization tests
+        env:
+          FAMILY_SECURITY_BASE_URL: http://127.0.0.1:8787
+          FAMILY_SECURITY_JWT_SECRET: glucotrack_test_family_security_secret_20260802_long_key
+          FAMILY_SECURITY_DB_HOST: 127.0.0.1
+          FAMILY_SECURITY_DB_PORT: 3306
+          FAMILY_SECURITY_DB_NAME: glucotrack_test
+          FAMILY_SECURITY_DB_USER: test
+          FAMILY_SECURITY_DB_PASSWORD: testpass
+        run: |
+          node --test backend/tests/family-security.test.mjs
+          node --test backend/tests/location-security.test.mjs
+          node --test backend/tests/location-api.test.mjs
+      - if: always()
+        run: |
+          test -f /tmp/api.pid && kill "$(cat /tmp/api.pid)" || true
+          docker rm --force family-http-smoke-mariadb || true

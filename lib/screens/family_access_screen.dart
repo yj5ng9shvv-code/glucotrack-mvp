@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import '../models/app_state.dart';
 import '../widgets/localized_text.dart';
 import '../services/family_access_service.dart';
+import 'family_watch_live_map_screen.dart';
 
 class FamilyAccessScreen extends StatefulWidget {
   const FamilyAccessScreen({super.key});
@@ -276,13 +277,35 @@ class _FamilyAccessScreenState extends State<FamilyAccessScreen> {
                 subtitle: Text(patient.updatedAt == null
                     ? context.l10n.t('cloudSync')
                     : '${context.l10n.t('cloudSync')}: ${context.l10n.formatDateTime(patient.updatedAt!)}'),
-                trailing: Text(
-                  patient.glucoseMmol == null
-                      ? '-'
-                      : '${patient.glucoseMmol!.toStringAsFixed(1)}\nmmol/L',
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: 17, fontWeight: FontWeight.w700),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      patient.glucoseMmol == null
+                          ? '-'
+                          : '${patient.glucoseMmol!.toStringAsFixed(1)}\nmmol/L',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          fontSize: 17, fontWeight: FontWeight.w700),
+                    ),
+                    IconButton(
+                      tooltip: context.l10n.t('ui.text.familyWatchMap'),
+                      icon: const Icon(Icons.location_on_outlined),
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => FamilyWatchLiveMapScreen(
+                            patientId: patient.id,
+                            patientName: patient.fullName.isEmpty
+                                ? patient.email
+                                : patient.fullName,
+                            token: context.read<AppState>().accountToken,
+                            onSos: () =>
+                                Navigator.of(context).pushNamed('/emergency'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
