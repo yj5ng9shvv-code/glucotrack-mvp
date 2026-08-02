@@ -12,15 +12,7 @@ on:
 jobs:
   validate-family-db:
     runs-on: ubuntu-latest
-    services:
-      mariadb:
-        image: mariadb:11
-        env:
-          MARIADB_ROOT_PASSWORD: ci_root_password
-        ports: ['3306:3306']
-        options: >-
-          --health-cmd="healthcheck.sh --connect --innodb_initialized"
-          --health-interval=10s --health-timeout=5s --health-retries=10
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,6 +20,30 @@ jobs:
           node-version: 20
           cache: npm
           cache-dependency-path: backend/package-lock.json
+      - name: Start isolated MariaDB with retry
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            if docker pull mariadb:11; then break; fi
+            if [ "$attempt" -eq 5 ]; then
+              echo "MariaDB image pull failed after $attempt attempts"
+              exit 1
+            fi
+            sleep "$((attempt * 10))"
+          done
+          docker run --detach --name family-db-validation-mariadb \
+            --publish 127.0.0.1:3306:3306 \
+            --env MARIADB_ROOT_PASSWORD=ci_root_password \
+            --health-cmd='healthcheck.sh --connect --innodb_initialized' \
+            --health-interval=10s --health-timeout=5s --health-retries=30 \
+            mariadb:11
+          for attempt in {1..60}; do
+            status="$(docker inspect --format '{{.State.Health.Status}}' family-db-validation-mariadb)"
+            if [ "$status" = healthy ]; then exit 0; fi
+            sleep 2
+          done
+          docker logs family-db-validation-mariadb
+          exit 1
       - name: Create isolated database and restricted user
         run: |
           mysql -h 127.0.0.1 -uroot -pci_root_password <<'SQL'
@@ -60,3 +76,6 @@ jobs:
           sed -n '1p' /tmp/family-validation | grep -x 3
           sed -n '2p' /tmp/family-validation | grep -x $'1\t0'
           sed -n '3p' /tmp/family-validation | grep -x 0
+      - name: Stop isolated MariaDB
+        if: always()
+        run: docker rm --force family-db-validation-mariadb || true

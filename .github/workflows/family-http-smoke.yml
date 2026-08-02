@@ -8,16 +8,35 @@ on:
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    services:
-      mariadb:
-        image: mariadb:11
-        env: { MARIADB_ROOT_PASSWORD: rootpass }
-        ports: ['3306:3306']
-        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=10s --health-timeout=5s --health-retries=10
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 20, cache: npm, cache-dependency-path: backend/package-lock.json }
+      - name: Start isolated MariaDB with retry
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4 5; do
+            if docker pull mariadb:11; then break; fi
+            if [ "$attempt" -eq 5 ]; then
+              echo "MariaDB image pull failed after $attempt attempts"
+              exit 1
+            fi
+            sleep "$((attempt * 10))"
+          done
+          docker run --detach --name family-http-smoke-mariadb \
+            --publish 127.0.0.1:3306:3306 \
+            --env MARIADB_ROOT_PASSWORD=rootpass \
+            --health-cmd='healthcheck.sh --connect --innodb_initialized' \
+            --health-interval=10s --health-timeout=5s --health-retries=30 \
+            mariadb:11
+          for attempt in {1..60}; do
+            status="$(docker inspect --format '{{.State.Health.Status}}' family-http-smoke-mariadb)"
+            if [ "$status" = healthy ]; then exit 0; fi
+            sleep 2
+          done
+          docker logs family-http-smoke-mariadb
+          exit 1
       - run: mysql -h127.0.0.1 -uroot -prootpass -e "CREATE DATABASE glucotrack_test; CREATE USER 'test'@'%' IDENTIFIED BY 'testpass'; GRANT ALL ON glucotrack_test.* TO 'test'@'%';"
       - run: npm ci --prefix backend
       - run: |
@@ -86,4 +105,6 @@ jobs:
           request get-family http://127.0.0.1:8787/api/family \
             -H "Authorization: Bearer $patient"
       - if: always()
-        run: test -f /tmp/api.pid && kill "$(cat /tmp/api.pid)" || true
+        run: |
+          test -f /tmp/api.pid && kill "$(cat /tmp/api.pid)" || true
+          docker rm --force family-http-smoke-mariadb || true
