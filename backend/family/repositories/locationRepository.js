@@ -49,6 +49,37 @@ export function createLocationRepository(query) {
          LIMIT $2`,
         [patientId, limit]
       )).rows;
+    },
+
+    async findActiveLocationGrant(patientId, familyMemberId) {
+      return (await query(
+        `SELECT id, patient_user_id, family_member_id, status, expires_at, created_at
+         FROM location_grants
+         WHERE patient_user_id = $1 AND family_member_id = $2
+           AND status = 'active'
+           AND (expires_at IS NULL OR expires_at > UTC_TIMESTAMP())`,
+        [patientId, familyMemberId]
+      )).rows[0] ?? null;
+    },
+
+    grantLocationAccess(patientId, familyMemberId, expiresAt) {
+      return query(
+        `INSERT INTO location_grants(
+           patient_user_id, family_member_id, status, expires_at, revoked_at
+         ) VALUES($1, $2, 'active', $3, NULL)
+         ON DUPLICATE KEY UPDATE
+           status = 'active', expires_at = VALUES(expires_at), revoked_at = NULL`,
+        [patientId, familyMemberId, expiresAt]
+      );
+    },
+
+    revokeLocationAccess(patientId, familyMemberId) {
+      return query(
+        `UPDATE location_grants
+         SET status = 'revoked', revoked_at = UTC_TIMESTAMP()
+         WHERE patient_user_id = $1 AND family_member_id = $2 AND status = 'active'`,
+        [patientId, familyMemberId]
+      );
     }
   };
 }
