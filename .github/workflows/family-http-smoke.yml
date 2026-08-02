@@ -21,7 +21,7 @@ jobs:
       - run: mysql -h127.0.0.1 -uroot -prootpass -e "CREATE DATABASE glucotrack_test; CREATE USER 'test'@'%' IDENTIFIED BY 'testpass'; GRANT ALL ON glucotrack_test.* TO 'test'@'%';"
       - run: npm ci --prefix backend
       - run: |
-          printf '%s\n' 'NODE_ENV=test' 'DB_HOST=127.0.0.1' 'DB_PORT=3306' 'DB_NAME=glucotrack_test' 'DB_USER=test' 'DB_PASSWORD=testpass' 'DB_AUTO_CREATE=false' 'JWT_SECRET=test_secret_only' 'PORT=8788' > backend/.env.test
+          printf '%s\n' 'NODE_ENV=test' 'DB_HOST=127.0.0.1' 'DB_PORT=3306' 'DB_NAME=glucotrack_test' 'TEST_DATABASE_NAME=glucotrack_test' 'DB_USER=test' 'DB_PASSWORD=testpass'
           node --env-file=backend/.env.test backend/scripts/migrate-test.mjs
           node --env-file=backend/.env.test backend/scripts/seed-test.mjs
       - run: |
