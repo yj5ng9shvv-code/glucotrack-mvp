@@ -36,6 +36,9 @@ import 'services/emergency_service.dart';
 import 'services/cloud_sync_service.dart';
 import 'family_watch/family_watch_background_runtime.dart';
 import 'family_watch/family_watch_tracking_service.dart';
+import 'family_watch/sos_alert_notification_handler.dart';
+import 'family_watch/sos_alert_handler.dart';
+import 'screens/family_sos_alert_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,17 +47,42 @@ Future<void> main() async {
   runApp(const GlukoTrackApp());
 }
 
-class GlukoTrackApp extends StatelessWidget {
+class GlukoTrackApp extends StatefulWidget {
   final AppState? initialState;
 
   const GlukoTrackApp({super.key, this.initialState});
+
+  @override
+  State<GlukoTrackApp> createState() => _GlukoTrackAppState();
+}
+
+class _GlukoTrackAppState extends State<GlukoTrackApp> {
+  final _navigatorKey = GlobalKey<NavigatorState>();
+  late final SosAlertNotificationHandler _sosAlertNotifications;
+
+  @override
+  void initState() {
+    super.initState();
+    _sosAlertNotifications = SosAlertNotificationHandler();
+    unawaited(_sosAlertNotifications.initialize(onTap: _openSosAlert));
+  }
+
+  Future<void> _openSosAlert(String eventId) async {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final navigator = _navigatorKey.currentState;
+      if (navigator == null) return;
+      navigator.push(MaterialPageRoute(
+        builder: (_) => FamilySosAlertEntryScreen(eventId: eventId),
+      ));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final emergencyService = AndroidEmergencyService();
     return ChangeNotifierProvider(
       create: (_) =>
-          initialState ??
+          widget.initialState ??
           AppState(
             emergencyCardUpdater: emergencyService.updateLockScreenCard,
             familyWatchTrackingService: FamilyWatchTrackingService(),
@@ -63,6 +91,7 @@ class GlukoTrackApp extends StatelessWidget {
         child: Consumer<AppState>(
           builder: (context, state, _) {
             return MaterialApp(
+              navigatorKey: _navigatorKey,
               debugShowCheckedModeBanner: false,
               title: 'GlukoTrack',
               locale: state.locale,
@@ -191,6 +220,15 @@ class GlukoTrackApp extends StatelessWidget {
                     const AppPageWithFooter(child: EmergencyScreen()),
                 '/voice-assistant': (_) =>
                     const PremiumGate2(child: VoiceAssistantScreen()),
+              },
+              onGenerateRoute: (settings) {
+                final eventId =
+                    SosAlertHandler.eventIdFromRouteName(settings.name);
+                if (eventId == null) return null;
+                return MaterialPageRoute(
+                  settings: settings,
+                  builder: (_) => FamilySosAlertEntryScreen(eventId: eventId),
+                );
               },
             );
           },

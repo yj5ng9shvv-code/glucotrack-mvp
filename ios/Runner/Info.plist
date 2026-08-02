@@ -21,6 +21,14 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>glucotrack</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>com.googleusercontent.apps.967750323381-32r09tkmqfkssusn75ukdjmqh8f0gbs0</string>
 			</array>
 		</dict>

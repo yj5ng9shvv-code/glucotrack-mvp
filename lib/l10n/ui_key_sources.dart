@@ -19,6 +19,19 @@ const uiKeySources = <String, String>{
   'ui.text.familyWatchRefreshNow': 'Refresh now',
   'ui.text.familyWatchStale': 'STALE',
   'ui.text.familyWatchTitle': 'Family Watch',
+  'ui.text.familySosAlertTime': 'Alert time',
+  'ui.text.familySosChecking': 'Checking Family Watch alert',
+  'ui.text.familySosCheckingDetail':
+      'Verifying your access before opening the SOS event.',
+  'ui.text.familySosOpenMap': 'Open live map',
+  'ui.text.familySosSignInRequired': 'Sign in required',
+  'ui.text.familySosSignInDetail':
+      'Sign in before viewing a Family Watch SOS alert.',
+  'ui.text.familySosStatus': 'Status',
+  'ui.text.familySosTitle': 'Family Watch SOS',
+  'ui.text.familySosUnavailable': 'Alert unavailable',
+  'ui.text.familySosUnavailableDetail':
+      'This SOS alert is unavailable or you no longer have access.',
   'ui.text.00ba8b4d7761':
       'Будет открыт настроенный сценарий помощи. Проверьте контакт и передачу геолокации.',
   'ui.text.00e86cb7d794': 'Connect a sensor or add a manual glucose reading.',
