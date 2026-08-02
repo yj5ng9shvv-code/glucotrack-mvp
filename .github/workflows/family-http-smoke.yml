@@ -20,7 +20,7 @@ jobs:
         with: { node-version: 20, cache: npm, cache-dependency-path: backend/package-lock.json }
       - run: mysql -h127.0.0.1 -uroot -prootpass -e "CREATE DATABASE glucotrack_test; CREATE USER 'test'@'%' IDENTIFIED BY 'testpass'; GRANT ALL ON glucotrack_test.* TO 'test'@'%';"
       - run: npm ci --prefix backend
-            - run: |
+      - run: |
           cat > backend/.env.test <<'EOF'
           NODE_ENV=test
           DB_HOST=127.0.0.1
