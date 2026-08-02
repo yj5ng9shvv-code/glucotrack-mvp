@@ -53,7 +53,7 @@ jobs:
           TEST_DATABASE_USER=test
           TEST_DATABASE_PASSWORD=testpass
           DB_AUTO_CREATE=false
-          JWT_SECRET=test_secret_only
+          JWT_SECRET=glucotrack_test_family_security_secret_20260802_long_key
           PORT=8787
           EOF
           node --env-file=backend/.env.test backend/scripts/migrate-test.mjs
