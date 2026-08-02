@@ -10,6 +10,14 @@ import Stripe from "stripe";
 import { OAuth2Client } from "google-auth-library";
 
 import { getDatabaseStatus, initializeDatabase, pool } from "./db.js";
+import { createFamilyRouter } from "./family/api/familyRoutes.js";
+import { createFamilyRepository } from "./family/repositories/familyRepository.js";
+import { createInvitationRepository } from "./family/repositories/invitationRepository.js";
+import { createPermissionRepository } from "./family/repositories/permissionRepository.js";
+import { createFamilyService } from "./family/services/familyService.js";
+import { createFamilyInvitationService } from "./family/services/familyInvitationService.js";
+import { createFamilyMemberService } from "./family/services/familyMemberService.js";
+import { createFamilyPermissionService } from "./family/services/familyPermissionService.js";
 
 const app = express();
 const upload = multer({ limits: { fileSize: bytesFromMb(envNumber("MAX_IMAGE_MB", 8)) } });
@@ -464,6 +472,15 @@ app.post("/sos/:token/unlock", asyncHandler(async (req, res) => {
 }));
 
 app.use(authGuard);
+const familyRepository = createFamilyRepository(pool.query);
+const familyMemberService = createFamilyMemberService(familyRepository);
+const familyRouter = createFamilyRouter({
+  familyService: createFamilyService(familyRepository),
+  memberService: familyMemberService,
+  invitationService: createFamilyInvitationService(createInvitationRepository(pool.query), familyRepository, familyMemberService),
+  permissionService: createFamilyPermissionService(familyRepository, createPermissionRepository(pool.query))
+});
+app.use("/api/family", familyRouter);
 
 app.get("/auth/me", asyncHandler(async (req, res) => {
   const result = await pool.query(
