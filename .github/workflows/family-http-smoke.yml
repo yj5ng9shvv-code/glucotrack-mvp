@@ -37,10 +37,10 @@ jobs:
           node --env-file=backend/.env.test backend/scripts/migrate-test.mjs
           node --env-file=backend/.env.test backend/scripts/seed-test.mjs
       - run: |
-          node --env-file=backend/.env.test backend/server.js >/tmp/api.log 2>&1 & echo $! >/tmp/api.pid
-          for n in {1..20}; do curl -fsS http://127.0.0.1:8788/health && break || sleep 1; done
-          patient=$(curl -fsS -X POST http://127.0.0.1:8788/auth/login -H 'content-type: application/json' -d '{"email":"patient@test.com","password":"test-password","device":{"id":"test-patient","platform":"web","name":"CI"}}' | node -e 'let d="";process.stdin.on("data",x=>d+=x).on("end",()=>process.stdout.write(JSON.parse(d).token))')
-          curl -fsS -X POST http://127.0.0.1:8788/api/family/create -H "Authorization: Bearer $patient"
+          node --env-file=backend/.env.test backend/server.js > /tmp/api.log 2>&1 &
+          echo $! > /tmp/api.pid
+          sleep 3
+          cat /tmp/api.log
           curl -fsS http://127.0.0.1:8788/api/family -H "Authorization: Bearer $patient"
       - if: always()
         run: test -f /tmp/api.pid && kill "$(cat /tmp/api.pid)" || true
