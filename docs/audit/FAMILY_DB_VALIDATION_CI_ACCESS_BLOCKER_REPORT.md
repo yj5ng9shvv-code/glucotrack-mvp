@@ -1,7 +1,7 @@
 # FAMILY DB VALIDATION CI ACCESS BLOCKER REPORT
 
-Workflow: Family DB Validation  
-Commit: `cedd68d`  
+Workflow: Family DB Validation
+Commit: `cedd68d`
 Branch: `feature/family-security-clean`
 
 ## Status
