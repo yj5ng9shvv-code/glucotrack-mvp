@@ -33,28 +33,57 @@ jobs:
           TEST_DATABASE_NAME=glucotrack_test
           TEST_DATABASE_USER=test
           TEST_DATABASE_PASSWORD=testpass
+          DB_AUTO_CREATE=false
+          JWT_SECRET=test_secret_only
+          PORT=8787
           EOF
           node --env-file=backend/.env.test backend/scripts/migrate-test.mjs
           node --env-file=backend/.env.test backend/scripts/seed-test.mjs
       - run: |
+          set -euo pipefail
           node --env-file=backend/.env.test backend/server.js > /tmp/api.log 2>&1 &
           echo $! > /tmp/api.pid
-          sleep 3
-          cat /tmp/api.log
 
-          login=$(curl -s -X POST http://127.0.0.1:8787/auth/login \
-          -H "Content-Type: application/json" \
-          -d '{"email":"patient@test.com","password":"test-password"}')
+          health_status=000
+          for _ in {1..20}; do
+            health_status=$(curl -sS -o /tmp/health.json -w '%{http_code}' http://127.0.0.1:8787/health || true)
+            if [ "$health_status" = "200" ]; then break; fi
+            sleep 1
+          done
+          echo "health HTTP $health_status"
+          cat /tmp/health.json 2>/dev/null || true
+          if [ "$health_status" != "200" ]; then
+            cat /tmp/api.log
+            exit 1
+          fi
 
-           echo "LOGIN:"
-           echo "$login"
-           echo "TOKEN LENGTH:"
-           echo ${#patient}
-           patient=$(echo "$login" | node -e "let x='';process.stdin.on('data',d=>x+=d).on('end',()=>console.log(JSON.parse(x).token))")
+          login_status=$(curl -sS -o /tmp/login.json -w '%{http_code}' -X POST http://127.0.0.1:8787/auth/login \
+            -H "Content-Type: application/json" \
+            -d '{"email":"patient@test.com","password":"test-password","device":{"id":"family-http-smoke","platform":"web","name":"CI"}}')
+          echo "login HTTP $login_status"
+          cat /tmp/login.json
+          if [ "$login_status" -lt 200 ] || [ "$login_status" -ge 300 ]; then
+            cat /tmp/api.log
+            exit 1
+          fi
+          patient=$(node -e 'const fs=require("fs");const token=JSON.parse(fs.readFileSync("/tmp/login.json","utf8")).token;if(!token)throw new Error("login response has no token");process.stdout.write(token)')
 
-          echo "TOKEN=$patient"
+          request() {
+            local name="$1"
+            shift
+            local status
+            status=$(curl -sS -o "/tmp/${name}.json" -w '%{http_code}' "$@")
+            echo "$name HTTP $status"
+            cat "/tmp/${name}.json"
+            if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then
+              cat /tmp/api.log
+              exit 1
+            fi
+          }
 
-          curl -i http://127.0.0.1:8787/api/family \
-          -H "Authorization: Bearer $patient"
+          request create-family -X POST http://127.0.0.1:8787/api/family \
+            -H "Authorization: Bearer $patient"
+          request get-family http://127.0.0.1:8787/api/family \
+            -H "Authorization: Bearer $patient"
       - if: always()
         run: test -f /tmp/api.pid && kill "$(cat /tmp/api.pid)" || true
