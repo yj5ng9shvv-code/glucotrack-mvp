@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'models/app_state.dart';
@@ -39,9 +40,11 @@ import 'family_watch/family_watch_tracking_service.dart';
 import 'family_watch/sos_alert_notification_handler.dart';
 import 'family_watch/sos_alert_handler.dart';
 import 'screens/family_sos_alert_screen.dart';
+import 'services/push_token_manager.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FirebaseMessaging.onBackgroundMessage(familyPushBackgroundHandler);
   await FamilyWatchBackgroundRuntime.initialize();
   await loadCoreTranslations();
   runApp(const GlukoTrackApp());
@@ -90,6 +93,9 @@ class _GlukoTrackAppState extends State<GlukoTrackApp> {
       child: AppStateLoader(
         child: Consumer<AppState>(
           builder: (context, state, _) {
+            state.configurePushNotifications(
+              onForegroundMessage: _sosAlertNotifications.handleIncomingPayload,
+            );
             return MaterialApp(
               navigatorKey: _navigatorKey,
               debugShowCheckedModeBanner: false,

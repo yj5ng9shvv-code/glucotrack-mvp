@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -9,6 +10,7 @@ import '../l10n/emergency_card_value_translations.dart';
 import 'diary_log_entry.dart';
 import 'sensor_reading.dart';
 import '../services/auth_service.dart';
+import '../services/push_token_manager.dart';
 import '../family_watch/family_watch_tracking_service.dart';
 
 enum DiabetesType { type1, type2, gestational }
@@ -38,11 +40,14 @@ class AppState extends ChangeNotifier {
     AuthService? authService,
     this.emergencyCardUpdater,
     FamilyWatchTrackingService? familyWatchTrackingService,
+    PushTokenManager? pushTokenManager,
   })  : _authService = authService ?? AuthService(),
-        _familyWatchTrackingService = familyWatchTrackingService;
+        _familyWatchTrackingService = familyWatchTrackingService,
+        _pushTokenManager = pushTokenManager ?? PushTokenManager();
 
   final AuthService _authService;
   final FamilyWatchTrackingService? _familyWatchTrackingService;
+  final PushTokenManager _pushTokenManager;
   EmergencyCardUpdater? emergencyCardUpdater;
   static const supportedLanguages = <AppLanguage>[
     AppLanguage(
@@ -413,6 +418,7 @@ class AppState extends ChangeNotifier {
 
     _loaded = true;
     notifyListeners();
+    if (_authenticated) unawaited(_registerPushDevice());
   }
 
   Future<void> register({
@@ -449,6 +455,7 @@ class AppState extends ChangeNotifier {
     await prefs.setString('accountToken', _accountToken);
     await prefs.setString('fullName', fullName);
     await prefs.setString('email', email);
+    unawaited(_registerPushDevice());
   }
 
   Future<bool> login({required String email, required String password}) async {
@@ -465,6 +472,7 @@ class AppState extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('accountEmail', _accountEmail);
     await prefs.setString('accountToken', _accountToken);
+    unawaited(_registerPushDevice());
     return true;
   }
 
@@ -483,6 +491,7 @@ class AppState extends ChangeNotifier {
     await prefs.setString('accountToken', _accountToken);
     await prefs.setString('fullName', fullName);
     await prefs.setString('email', email);
+    unawaited(_registerPushDevice());
   }
 
   Future<void> loginWithApple(
@@ -506,15 +515,27 @@ class AppState extends ChangeNotifier {
     await prefs.setString('accountToken', _accountToken);
     await prefs.setString('fullName', this.fullName);
     await prefs.setString('email', this.email);
+    unawaited(_registerPushDevice());
   }
 
   Future<void> logout() async {
+    await _pushTokenManager.unregisterDevice(accessToken: _accountToken);
     await _familyWatchTrackingService?.stopForLogout();
     _authenticated = false;
     _accountToken = '';
     notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('accountToken');
+  }
+
+  void configurePushNotifications({PushPayloadHandler? onForegroundMessage}) {
+    _pushTokenManager.setForegroundMessageHandler(onForegroundMessage);
+  }
+
+  Future<void> _registerPushDevice() {
+    return _pushTokenManager.registerDevice(
+      accessTokenProvider: () => _accountToken,
+    );
   }
 
   Future<void> useDeviceManagementToken(String token) async {
