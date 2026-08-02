@@ -1,11 +1,10 @@
 export class SosAccessDeniedError extends Error {}
 export class SosValidationError extends Error {}
 export class SosConflictError extends Error {}
-export class SosNotFoundError extends Error {}
 
 const MAX_HISTORY_LIMIT = 100;
 
-export function createSosService({ familyRepository, permissionRepository, sosRepository }) {
+export function createSosService({ familyRepository, permissionRepository, sosRepository, locationRepository = null }) {
   const isSameUser = (left, right) => String(left) === String(right);
 
   const requireAuthenticated = (requesterId) => {
@@ -41,6 +40,16 @@ export function createSosService({ familyRepository, permissionRepository, sosRe
     requireAuthenticated(requesterId);
     if (isSameUser(requesterId, patientId)) return null;
     return activeCaregiverMember(patientId, requesterId);
+  };
+
+  const forViewer = async (event, requesterId, member) => {
+    if (!event || isSameUser(requesterId, event.patient_id)) return event;
+    const permissions = await permissionRepository.get(member.id);
+    const grant = permissions?.can_view_location && locationRepository
+      ? await locationRepository.findActiveLocationGrant(event.patient_id, member.id)
+      : null;
+    if (grant) return event;
+    return { ...event, latitude: null, longitude: null, accuracy: null };
   };
 
   const optionalCoordinates = (payload = {}) => {
@@ -118,13 +127,14 @@ export function createSosService({ familyRepository, permissionRepository, sosRe
     },
 
     async getActiveSOS(requesterId, patientId) {
-      await authorizeView(requesterId, patientId);
-      return sosRepository.findActiveByPatient(patientId);
+      const member = await authorizeView(requesterId, patientId);
+      return forViewer(await sosRepository.findActiveByPatient(patientId), requesterId, member);
     },
 
     async getSOSHistory(requesterId, patientId, limit = 50) {
-      await authorizeView(requesterId, patientId);
-      return sosRepository.getSOSHistory(patientId, historyLimit(limit));
+      const member = await authorizeView(requesterId, patientId);
+      const events = await sosRepository.getSOSHistory(patientId, historyLimit(limit));
+      return Promise.all(events.map((event) => forViewer(event, requesterId, member)));
     }
   };
 }

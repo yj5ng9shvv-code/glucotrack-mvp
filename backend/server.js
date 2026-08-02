@@ -12,14 +12,17 @@ import { OAuth2Client } from "google-auth-library";
 import { getDatabaseStatus, initializeDatabase, pool } from "./db.js";
 import { createFamilyRouter } from "./family/api/familyRoutes.js";
 import { createLocationRouter } from "./family/api/locationRoutes.js";
+import { createSosRouter } from "./family/api/sosRoutes.js";
 import { createFamilyRepository } from "./family/repositories/familyRepository.js";
 import { createInvitationRepository } from "./family/repositories/invitationRepository.js";
 import { createLocationRepository } from "./family/repositories/locationRepository.js";
+import { createSosRepository } from "./family/repositories/sosRepository.js";
 import { createPermissionRepository } from "./family/repositories/permissionRepository.js";
 import { createFamilyService } from "./family/services/familyService.js";
 import { createFamilyInvitationService } from "./family/services/familyInvitationService.js";
 import { createFamilyMemberService } from "./family/services/familyMemberService.js";
 import { createLocationService } from "./family/services/locationService.js";
+import { createSosService } from "./family/services/sosService.js";
 import { createFamilyPermissionService } from "./family/services/familyPermissionService.js";
 
 const app = express();
@@ -491,8 +494,17 @@ const locationRouter = createLocationRouter({
     locationRepository: createLocationRepository(pool.query)
   })
 });
+const sosRouter = createSosRouter({
+  sosService: createSosService({
+    familyRepository,
+    permissionRepository,
+    sosRepository: createSosRepository(pool.query),
+    locationRepository: createLocationRepository(pool.query)
+  })
+});
 app.use("/api/family", familyRouter);
 app.use("/api/location", locationRouter);
+app.use("/api/sos", sosRouter);
 
 app.get("/auth/me", asyncHandler(async (req, res) => {
   const result = await pool.query(
