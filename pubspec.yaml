@@ -25,6 +25,8 @@ dependencies:
   geolocator_apple: ^2.3.14
   flutter_background_service: ^5.1.0
   flutter_local_notifications: ^17.2.4
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
   fl_chart: ^0.69.0
   qr_flutter: ^4.1.0
   cupertino_icons: ^1.0.8
