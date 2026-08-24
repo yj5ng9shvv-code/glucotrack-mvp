@@ -1,0 +1,4 @@
+storePassword=odessa1971FONTAN
+keyPassword=odessa1971FONTAN
+keyAlias=glukotrack
+storeFile=app/release.jks

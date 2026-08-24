@@ -119,8 +119,9 @@ class _RuntimeHarness extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         locale: state.locale,
-        supportedLocales:
-            AppState.supportedLanguages.map((language) => language.locale),
+        supportedLocales: AppState.supportedLanguages.map(
+          (language) => language.locale,
+        ),
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -155,8 +156,9 @@ void _expectNoMissingLocalizationText(
       .where(
         (value) =>
             value.startsWith('ui.text.') ||
-            RegExp(r'^(?:sos|family|voice|premium|cloud|doctor|ai)[A-Za-z0-9_.-]+$')
-                .hasMatch(value),
+            RegExp(
+              r'^(?:sos|family|voice|premium|cloud|doctor|ai)[A-Za-z0-9_.-]+$',
+            ).hasMatch(value),
       )
       .toList();
   expect(unresolved, isEmpty, reason: '$reason unresolved: $unresolved');

@@ -1,0 +1,1 @@
+export function createFamilyLocationService(repository) { return { grantLocationAccess: () => { throw new Error("Location grant creation is not connected to API yet"); }, revokeLocationAccess: (memberId) => repository.revokeLocation(memberId), canViewLocation: async (memberId) => Boolean(await repository.locationGrant(memberId)) }; }

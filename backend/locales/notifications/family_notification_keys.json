@@ -1,0 +1,14 @@
+[
+  "family.invitation.received",
+  "family.invitation.accepted",
+  "family.member.removed",
+  "permission.changed",
+  "sos.alert.created",
+  "sos.alert.cancelled",
+  "sos.alert.escalated_5m",
+  "sos.alert.escalated_15m",
+  "location.updated",
+  "location.unavailable",
+  "patient.low_glucose",
+  "patient.high_glucose"
+]

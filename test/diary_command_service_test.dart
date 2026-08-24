@@ -12,6 +12,7 @@ void main() {
   setUp(() {
     SharedPreferences.setMockInitialValues({});
   });
+  const l10nRu = AppLocalizations('ru');
 
   test('parses combined glucose insulin carbs state and note command', () {
     const service = DiaryCommandService();
@@ -23,7 +24,7 @@ void main() {
       'Запиши сахар 7.8, Лиспро 6 единиц, углеводы 45, после еды, чувствую слабость',
       now: now,
     )!;
-    final entry = command.toEntry(state, now);
+    final entry = command.toEntry(state, now, l10n: l10nRu);
 
     expect(entry.type, DiaryLogType.glucose);
     expect(entry.glucoseMmol, 7.8);
@@ -44,7 +45,7 @@ void main() {
       ..glucoseUnitPreference = GlucoseUnitPreference.mmolL;
 
     final entry =
-        service.parse('сахар 140')!.toEntry(state, DateTime(2026, 7, 9));
+        service.parse('сахар 140')!.toEntry(state, DateTime(2026, 7, 9), l10n: l10nRu);
 
     expect(entry.glucoseMmol, closeTo(7.77, 0.01));
   });
@@ -55,22 +56,22 @@ void main() {
 
     final lispro = service
         .parse('Запиши инсулин 6 единиц Лиспро')!
-        .toEntry(state, DateTime(2026, 7, 9));
+        .toEntry(state, DateTime(2026, 7, 9), l10n: l10nRu);
     final short = service
         .parse('Вколол 8 единиц короткого инсулина')!
-        .toEntry(state, DateTime(2026, 7, 9));
+        .toEntry(state, DateTime(2026, 7, 9), l10n: l10nRu);
     final lantus = service
         .parse('Добавь 10 единиц Лантус на ночь')!
-        .toEntry(state, DateTime(2026, 7, 9));
+        .toEntry(state, DateTime(2026, 7, 9), l10n: l10nRu);
     final carbs = service
         .parse('Съел 45 грамм углеводов')!
-        .toEntry(state, DateTime(2026, 7, 9));
+        .toEntry(state, DateTime(2026, 7, 9), l10n: l10nRu);
     final dinner = service
         .parse('На ужин было 60 углеводов')!
-        .toEntry(state, DateTime(2026, 7, 9));
+        .toEntry(state, DateTime(2026, 7, 9), l10n: l10nRu);
     final note = service
         .parse('Добавь примечание: плохо себя чувствую')!
-        .toEntry(state, DateTime(2026, 7, 9));
+        .toEntry(state, DateTime(2026, 7, 9), l10n: l10nRu);
 
     expect(lispro.insulinUnits, 6);
     expect(lispro.note, contains('Lispro'));
@@ -86,30 +87,33 @@ void main() {
   });
 
   test(
-      'parses spoken insulin dose words and does not treat bare units as glucose',
-      () {
-    const service = DiaryCommandService();
-    final state = AppState();
+    'parses spoken insulin dose words and does not treat bare units as glucose',
+    () {
+      const service = DiaryCommandService();
+      final state = AppState();
 
-    final insulin = service
-        .parse('Запиши инсулин шесть единиц')!
-        .toEntry(state, DateTime(2026, 7, 9));
+      final insulin = service
+          .parse('Запиши инсулин шесть единиц')!
+          .toEntry(state, DateTime(2026, 7, 9), l10n: l10nRu);
 
-    expect(insulin.type, DiaryLogType.insulin);
-    expect(insulin.insulinUnits, 6);
-    expect(service.parse('Запиши 145 единиц'), isNull);
-    expect(
-      service.clarificationKey('Запиши 145 единиц'),
-      'diaryVoiceAskInsulinDose',
-    );
-  });
+      expect(insulin.type, DiaryLogType.insulin);
+      expect(insulin.insulinUnits, 6);
+      expect(service.parse('Запиши 145 единиц'), isNull);
+      expect(
+        service.clarificationKey('Запиши 145 единиц'),
+        'diaryVoiceAskInsulinDose',
+      );
+    },
+  );
 
   test('parses relative time phrases', () {
     const service = DiaryCommandService();
     final now = DateTime(2026, 7, 9, 12, 30);
 
-    final yesterdayEvening =
-        service.parse('вчера вечером инсулин 6 единиц', now: now)!;
+    final yesterdayEvening = service.parse(
+      'вчера вечером инсулин 6 единиц',
+      now: now,
+    )!;
     final todayMorning = service.parse('сегодня утром сахар 6.1', now: now)!;
 
     expect(yesterdayEvening.entryTime, DateTime(2026, 7, 8, 19));
@@ -136,14 +140,15 @@ void main() {
     final state = AppState();
 
     final meal =
-        service.parse('ел хлеб и суп')!.toEntry(state, DateTime(2026, 7, 9));
+        service.parse('ел хлеб и суп')!.toEntry(state, DateTime(2026, 7, 9), l10n: l10nRu);
     final pressure =
-        service.parse('давление 130/85')!.toEntry(state, DateTime(2026, 7, 9));
+        service.parse('давление 130/85')!.toEntry(state, DateTime(2026, 7, 9), l10n: l10nRu);
 
     expect(meal.type, DiaryLogType.meal);
     expect(meal.note, contains('хлеб'));
     expect(pressure.type, DiaryLogType.note);
-    expect(pressure.title, 'Blood pressure');
+    expect(pressure.title, 'Артериальное давление');
     expect(pressure.note, contains('130/85'));
   });
 }
+

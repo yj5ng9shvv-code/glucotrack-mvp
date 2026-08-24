@@ -1,0 +1,118 @@
+--- server.js
++++ server.js
+@@ -2468,3 +2468,115 @@
+   );
+   res.json({ event: event.rows[0] ?? null });
+ }));
++
++// Compatibility endpoints for released Web clients. Nginx strips `/api/`
++// before proxying, so these handlers intentionally use the legacy paths.
++function legacySosPayload(req) {
++  const hasLatitude = req.body?.latitude !== undefined && req.body?.latitude !== null;
++  const hasLongitude = req.body?.longitude !== undefined && req.body?.longitude !== null;
++  const hasAccuracy = req.body?.accuracyMeters !== undefined && req.body?.accuracyMeters !== null;
++  const hasGlucose = req.body?.glucoseMmol !== undefined && req.body?.glucoseMmol !== null;
++  const latitude = hasLatitude ? Number(req.body.latitude) : null;
++  const longitude = hasLongitude ? Number(req.body.longitude) : null;
++  const accuracy = hasAccuracy ? Number(req.body.accuracyMeters) : null;
++  const glucose = hasGlucose ? Number(req.body.glucoseMmol) : null;
++  if (hasLatitude !== hasLongitude ||
++      (latitude !== null && (!Number.isFinite(latitude) || latitude < -90 || latitude > 90)) ||
++      (longitude !== null && (!Number.isFinite(longitude) || longitude < -180 || longitude > 180)) ||
++      (accuracy !== null && (!Number.isFinite(accuracy) || accuracy < 0)) ||
++      (glucose !== null && (!Number.isFinite(glucose) || glucose <= 0))) {
++    return null;
++  }
++  return { latitude, longitude, accuracy, glucose };
++}
++
++async function notifyLegacySosCaregivers(patientId, eventId, title, body, extra = {}) {
++  const caregivers = await pool.query(
++    `SELECT caregiver_user_id, permissions FROM family_links
++     WHERE owner_user_id = $1 AND status = 'accepted' AND caregiver_user_id IS NOT NULL`,
++    [patientId]
++  );
++  for (const caregiver of caregivers.rows) {
++    const permissions = sanitizePermissions(caregiver.permissions);
++    if (!permissions.alerts && !permissions.emergency) continue;
++    await pool.query(
++      `INSERT INTO notifications(user_id, type, title, body, metadata)
++       VALUES($1, 'sos', $2, $3, $4)`,
++      [caregiver.caregiver_user_id, title, body,
++        JSON.stringify({ eventId: String(eventId), patientId: String(patientId), ...extra })]
++    );
++  }
++}
++
++app.post("/sos/events", asyncHandler(async (req, res) => {
++  console.info("SOS_CREATE_START", { userId: req.user?.id });
++  const payload = legacySosPayload(req);
++  if (!payload) {
++    console.warn("SOS_CREATE_ERROR", { userId: req.user?.id, reason: "invalid_payload" });
++    return res.status(400).json({ error: "invalid SOS payload" });
++  }
++  const created = await pool.query(
++    `INSERT INTO sos_events(user_id, glucose_mmol, latitude, longitude, accuracy_meters)
++     VALUES($1, $2, $3, $4, $5)`,
++    [req.user.id, payload.glucose, payload.latitude, payload.longitude, payload.accuracy]
++  );
++  await notifyLegacySosCaregivers(
++    req.user.id, created.insertId, "SOS GlucoTrack",
++    "Требуется помощь: активирована экстренная тревога"
++  );
++  console.info("SOS_CREATE_SUCCESS", { userId: req.user.id, eventId: String(created.insertId) });
++  res.status(201).json({ id: String(created.insertId), event_id: String(created.insertId), status: "active" });
++}));
++
++app.post("/sos/events/:id/cancel", asyncHandler(async (req, res) => {
++  const result = await pool.query(
++    `UPDATE sos_events SET status = 'cancelled', cancelled_at = UTC_TIMESTAMP()
++     WHERE id = $1 AND user_id = $2 AND status = 'active'`,
++    [req.params.id, req.user.id]
++  );
++  if (!result.rowCount) return res.status(404).json({ error: "active SOS event not found" });
++  await notifyLegacySosCaregivers(
++    req.user.id, req.params.id, "SOS завершён",
++    "Пациент отменил экстренную тревогу", { status: "cancelled" }
++  );
++  res.json({ ok: true });
++}));
++
++app.post("/sos/events/:id/location", asyncHandler(async (req, res) => {
++  const latitude = Number(req.body?.latitude);
++  const longitude = Number(req.body?.longitude);
++  const accuracy = Number(req.body?.accuracyMeters);
++  if (!Number.isFinite(latitude) || latitude < -90 || latitude > 90 ||
++      !Number.isFinite(longitude) || longitude < -180 || longitude > 180) {
++    return res.status(400).json({ error: "invalid location" });
++  }
++  const updated = await pool.query(
++    `UPDATE sos_events SET latitude = $1, longitude = $2, accuracy_meters = $3, updated_at = UTC_TIMESTAMP()
++     WHERE id = $4 AND user_id = $5 AND status = 'active'`,
++    [latitude, longitude, Number.isFinite(accuracy) && accuracy >= 0 ? accuracy : null,
++      req.params.id, req.user.id]
++  );
++  if (!updated.rowCount) return res.status(404).json({ error: "active SOS event not found" });
++  res.json({ ok: true });
++}));
++
++app.get("/family/patients/:ownerId/sos/history", asyncHandler(async (req, res) => {
++  const access = await pool.query(
++    `SELECT permissions FROM family_links
++     JOIN users owner ON owner.id = family_links.owner_user_id
++     WHERE owner_user_id = $1 AND caregiver_user_id = $2 AND status = 'accepted'
++       AND owner.premium_plan IN ('family', 'family_semiannual', 'family_yearly')
++       AND owner.premium_status = 'active'
++       AND COALESCE(owner.subscription_expires_at, owner.premium_until) > UTC_TIMESTAMP()`,
++    [req.params.ownerId, req.user.id]
++  );
++  if (!access.rowCount || !sanitizePermissions(access.rows[0].permissions).emergency) {
++    return res.status(403).json({ error: "SOS access denied" });
++  }
++  const events = await pool.query(
++    `SELECT id, status, glucose_mmol, latitude, longitude, accuracy_meters, activated_at, cancelled_at
++     FROM sos_events WHERE user_id = $1 ORDER BY activated_at DESC LIMIT 50`,
++    [req.params.ownerId]
++  );
++  res.json({ events: events.rows });
++}));

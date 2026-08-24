@@ -19,8 +19,9 @@ void main() {
 
   setUpAll(loadCoreTranslations);
 
-  testWidgets('Profile renders keyed labels for all 30 locales',
-      (tester) async {
+  testWidgets('Profile renders keyed labels for all 30 locales', (
+    tester,
+  ) async {
     await tester.binding.setSurfaceSize(const Size(1280, 2200));
     addTearDown(() => tester.binding.setSurfaceSize(null));
 
@@ -52,44 +53,47 @@ void main() {
     }
   });
 
-  testWidgets('Romanian Profile does not show old English or Russian fallbacks',
-      (tester) async {
-    SharedPreferences.setMockInitialValues({
-      'languageCode': 'ro',
-      'onboardingCompleted': true,
-    });
-    await tester.binding.setSurfaceSize(const Size(1280, 2200));
-    addTearDown(() => tester.binding.setSurfaceSize(null));
+  testWidgets(
+    'Romanian Profile does not show old English or Russian fallbacks',
+    (tester) async {
+      SharedPreferences.setMockInitialValues({
+        'languageCode': 'ro',
+        'onboardingCompleted': true,
+      });
+      await tester.binding.setSurfaceSize(const Size(1280, 2200));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
 
-    final state = AppState()
-      ..languageCode = 'ro'
-      ..onboardingCompleted = true
-      ..premium = true;
-    await tester.pumpWidget(_ProfileHarness(state: state));
-    await tester.pumpAndSettle();
+      final state = AppState()
+        ..languageCode = 'ro'
+        ..onboardingCompleted = true
+        ..premium = true;
+      await tester.pumpWidget(_ProfileHarness(state: state));
+      await tester.pumpAndSettle();
 
-    final joined = _textData(tester).join('\n');
-    const forbidden = [
-      'Language',
-      'App language',
-      'Selected: Română. The interface updates instantly.',
-      'SOS-профиль',
-      'Медицинская информация и экстренный контакт',
-      'Экстренная карточка',
-      'Просмотр данных для экрана блокировки',
-      'Save settings',
-      'Выйти из аккаунта',
-      'Profile data and photo are stored locally',
-    ];
-    for (final text in forbidden) {
-      expect(joined.contains(text), isFalse, reason: text);
-    }
-    expect(joined.contains('Limba aplicatiei'), isTrue);
-    expect(joined.contains('Salveaza setarile'), isTrue);
-  });
+      final joined = _textData(tester).join('\n');
+      const forbidden = [
+        'Language',
+        'App language',
+        'Selected: Română. The interface updates instantly.',
+        'SOS-профиль',
+        'Медицинская информация и экстренный контакт',
+        'Экстренная карточка',
+        'Просмотр данных для экрана блокировки',
+        'Save settings',
+        'Выйти из аккаунта',
+        'Profile data and photo are stored locally',
+      ];
+      for (final text in forbidden) {
+        expect(joined.contains(text), isFalse, reason: text);
+      }
+      expect(joined.contains('Limba aplicatiei'), isTrue);
+      expect(joined.contains('Salveaza setarile'), isTrue);
+    },
+  );
 
-  testWidgets('Profile reacts to language change without restart',
-      (tester) async {
+  testWidgets('Profile reacts to language change without restart', (
+    tester,
+  ) async {
     SharedPreferences.setMockInitialValues({
       'languageCode': 'en',
       'onboardingCompleted': true,
@@ -128,8 +132,9 @@ class _ProfileHarness extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         locale: state.locale,
-        supportedLocales:
-            AppState.supportedLanguages.map((language) => language.locale),
+        supportedLocales: AppState.supportedLanguages.map(
+          (language) => language.locale,
+        ),
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

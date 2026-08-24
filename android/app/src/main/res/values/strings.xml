@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GlukoTrack</string>
+    <string name="default_web_client_id">967750323381-32r09tkmqfkssusn75ukdjmqh8f0gbs0.apps.googleusercontent.com</string>
     <string name="voice_prompt">Ask AI</string>
     <string name="voice_busy">Voice recognition is already active</string>
     <string name="voice_unavailable">Speech recognition is unavailable</string>

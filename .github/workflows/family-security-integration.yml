@@ -1,0 +1,93 @@
+name: Family Security Integration
+
+on:
+  pull_request:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/family-security-integration.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/family-security-integration.yml'
+
+jobs:
+  family-security:
+    runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb:11
+        env:
+          MARIADB_ROOT_PASSWORD: ci_root_password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Create isolated test database and user
+        run: |
+          mysql --protocol=tcp -h 127.0.0.1 -P 3306 -uroot -pci_root_password <<'SQL'
+          CREATE DATABASE glucotrack_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+          CREATE USER 'glucotrack_test_user'@'%' IDENTIFIED BY 'ci_test_password';
+          GRANT ALL PRIVILEGES ON glucotrack_test.* TO 'glucotrack_test_user'@'%';
+          FLUSH PRIVILEGES;
+          SQL
+
+      - name: Install backend dependencies
+        run: npm ci --prefix backend
+
+      - name: Configure test runtime
+        run: |
+          printf '%s\n' \
+            'NODE_ENV=test' \
+            'HOST=127.0.0.1' \
+            'PORT=8788' \
+            'TEST_DATABASE_HOST=127.0.0.1' \
+            'TEST_DATABASE_PORT=3306' \
+            'TEST_DATABASE_NAME=glucotrack_test' \
+            'TEST_DATABASE_USER=glucotrack_test_user' \
+            'TEST_DATABASE_PASSWORD=ci_test_password' \
+            'DB_AUTO_CREATE=false' \
+            'JWT_SECRET=test_ci_only_secret_which_is_long_enough_for_jwt' \
+            'SMTP_MODE=mock' \
+            'STRIPE_MODE=mock' \
+            'OPENAI_MODE=mock' > backend/.env.test
+          chmod 600 backend/.env.test
+
+      - name: Prepare schema and test users
+        run: |
+          npm run migrate:test --prefix backend
+          npm run seed:test --prefix backend
+
+      - name: Start isolated test API
+        run: |
+          npm run start:test --prefix backend > /tmp/glucotrack-test-api.log 2>&1 &
+          echo $! > /tmp/glucotrack-test-api.pid
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:8788/health | grep -q '"environment":"test"'; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/glucotrack-test-api.log
+          exit 1
+
+      - name: Run Family HTTP security suite
+        run: npm run test:family:integration --prefix backend
+
+      - name: Stop test API
+        if: always()
+        run: |
+          test -f /tmp/glucotrack-test-api.pid && kill "$(cat /tmp/glucotrack-test-api.pid)" || true

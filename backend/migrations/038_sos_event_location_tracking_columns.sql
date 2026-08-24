@@ -1,0 +1,2 @@
+ALTER TABLE sos_events ADD COLUMN IF NOT EXISTS status_updated_at DATETIME NULL;
+ALTER TABLE sos_events ADD COLUMN IF NOT EXISTS last_location_at DATETIME NULL;

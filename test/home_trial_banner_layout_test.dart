@@ -18,13 +18,7 @@ void main() {
 
   test('Russian trial ending translation has no hidden line breaks', () {
     final value = premiumTranslations['ru']!['trialEndsTomorrow']!;
-    const hiddenRunes = [
-      0x200B,
-      0x200C,
-      0x200D,
-      0x2060,
-      0xFEFF,
-    ];
+    const hiddenRunes = [0x200B, 0x200C, 0x200D, 0x2060, 0xFEFF];
 
     expect(value, isNot(contains('\n')));
     expect(value, isNot(contains('\r')));
@@ -73,9 +67,9 @@ void main() {
             );
             await tester.pump();
 
-            final title = AppLocalizations(language.code).t(
-              'trialEndsTomorrow',
-            );
+            final title = AppLocalizations(
+              language.code,
+            ).t('trialEndsTomorrow');
             expect(find.text(title), findsOneWidget);
 
             final titleBox = tester.renderObject<RenderBox>(find.text(title));

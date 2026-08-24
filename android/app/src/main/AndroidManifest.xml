@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
         android:label="${appLabel}"
         android:name="${applicationName}"
@@ -31,7 +35,29 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="https" android:host="glukotrack.com" android:pathPrefix="/app"/>
+                <data android:scheme="https" android:host="www.glukotrack.com" android:pathPrefix="/app"/>
+                <data android:scheme="https" android:host="glukotrack.com"/>
+                <data android:scheme="https" android:host="www.glukotrack.com"/>
+                <data android:scheme="glucotrack" android:host="family" android:pathPrefix="/invite"/>
+            </intent-filter>
         </activity>
+        <service
+            android:name=".LiveLocationService"
+            android:foregroundServiceType="location"
+            android:exported="false" />
+        <receiver
+            android:name=".LiveLocationBootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".EmergencyAlertActivity"
             android:excludeFromRecents="true"
@@ -61,6 +87,14 @@
         </intent>
         <intent>
             <action android:name="android.speech.RecognitionService"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="https"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="http"/>
         </intent>
     </queries>
 </manifest>

@@ -79,8 +79,13 @@ void main() {
     final state = AppState(authService: _OfflineAuthService());
     await state.load();
     state.glucoseUnitPreference = GlucoseUnitPreference.mgDl;
+    const l10n = AppLocalizations('en');
 
-    await state.recordGlucoseMeasurement(126);
+    await state.recordGlucoseMeasurement(
+      126,
+      title: '${l10n.t('journal.glucose')} ${l10n.t('journal.measurement')}',
+      note: l10n.t('journal.manual_measurement'),
+    );
 
     expect(state.glucoseMmol, closeTo(6.99, 0.01));
     expect(state.diaryEntries.first.glucoseMmol, closeTo(6.99, 0.01));
@@ -106,10 +111,14 @@ void main() {
     await state.load();
 
     expect(state.languageCode, 'en');
-    expect(AppLocalizations(state.languageCode).t('measurementHint'),
-        isNot('measurementHint'));
-    expect(AppLocalizations(state.languageCode).t('emergencyInfo'),
-        isNot('emergencyInfo'));
+    expect(
+      AppLocalizations(state.languageCode).t('measurementHint'),
+      isNot('measurementHint'),
+    );
+    expect(
+      AppLocalizations(state.languageCode).t('emergencyInfo'),
+      isNot('emergencyInfo'),
+    );
   });
 
   test('broken machine-translation markers never reach the UI', () {
@@ -123,5 +132,9 @@ void main() {
 
 class _OfflineAuthService extends AuthService {
   @override
-  Future<AuthSession?> restoreSession(String token) async => null;
+  Future<AuthSession?> restoreSession(
+    String token, {
+    String? refreshToken,
+  }) async =>
+      null;
 }

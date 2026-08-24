@@ -1,7 +1,7 @@
 name: glucotrack
 description: GlucoTrack - AI-assisted diabetes management and safety application.
 publish_to: 'none'
-version: 0.1.1+2
+version: 0.1.1+6
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
@@ -19,8 +19,14 @@ dependencies:
   url_launcher: ^6.3.1
   shared_preferences: ^2.3.2
   fl_chart: ^0.69.0
+  pdf: ^3.11.1
+  printing: ^5.13.4
   qr_flutter: ^4.1.0
   cupertino_icons: ^1.0.8
+  audioplayers: ^6.1.0
+  video_player: ^2.9.2
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
 
   web: any
   google_sign_in: 7.2.0
@@ -34,4 +40,14 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/fonts/Inter-Variable.ttf
+    - assets/images/ai-assistant.png
+    - assets/video/app-background.mp4
+    - assets/fonts/NotoSans-Variable.ttf
+    - assets/fonts/NotoSansArabic-Variable.ttf
     - assets/translations/core.json
+    - assets/audio/interface/
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Variable.ttf

@@ -23,6 +23,13 @@ export function getDatabaseStatus() {
   return { ...databaseStatus };
 }
 
+export async function closeDatabase() {
+  if (!mysqlPool) return;
+  const activePool = mysqlPool;
+  mysqlPool = null;
+  await activePool.end();
+}
+
 function createApplicationPool() {
   return mysql.createPool({
     ...databaseConfig,
@@ -144,6 +151,19 @@ async function createDatabaseIfNeeded() {
   }
 }
 
+async function addColumnIfMissing(tableName, definition) {
+  const columnName = definition.trim().split(/\s+/, 1)[0]?.replace(/`/g, "");
+  if (!columnName) throw new Error(`Invalid column definition for ${tableName}`);
+  const existing = await query(
+    `SELECT 1
+     FROM INFORMATION_SCHEMA.COLUMNS
+     WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = $1 AND COLUMN_NAME = $2
+     LIMIT 1`,
+    [tableName, columnName]
+  );
+  if (existing.rowCount) return;
+  await query(`ALTER TABLE \`${tableName}\` ADD COLUMN ${definition}`);
+}
 async function installSchema() {
   await query(`
     CREATE TABLE IF NOT EXISTS schema_migrations (
@@ -200,7 +220,7 @@ async function installSchema() {
     "glucose_unit VARCHAR(16) NULL"
   ];
   for (const definition of userColumns) {
-    await query(`ALTER TABLE users ADD COLUMN IF NOT EXISTS ${definition}`);
+    await addColumnIfMissing("users", definition);
   }
   if (trialMigrationNeeded) {
     await query(`
@@ -400,9 +420,27 @@ async function installSchema() {
     CREATE TABLE IF NOT EXISTS health_snapshots (
       user_id BIGINT UNSIGNED NOT NULL PRIMARY KEY,
       payload JSON NOT NULL,
+      schema_version INT UNSIGNED NOT NULL DEFAULT 1,
+      revision BIGINT UNSIGNED NOT NULL DEFAULT 0,
       updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
       CONSTRAINT health_snapshots_user_fk
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+  await addColumnIfMissing("health_snapshots", "schema_version INT UNSIGNED NOT NULL DEFAULT 1");
+  await addColumnIfMissing("health_snapshots", "revision BIGINT UNSIGNED NOT NULL DEFAULT 0");
+
+  await query(`
+    CREATE TABLE IF NOT EXISTS sync_changes (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      user_id BIGINT UNSIGNED NOT NULL,
+      revision BIGINT UNSIGNED NOT NULL,
+      base_revision BIGINT UNSIGNED NOT NULL,
+      payload JSON NOT NULL,
+      created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      UNIQUE KEY sync_changes_user_revision_unique (user_id, revision),
+      KEY sync_changes_user_time_idx (user_id, created_at),
+      CONSTRAINT sync_changes_user_fk FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `);
 
@@ -423,7 +461,9 @@ async function installSchema() {
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `);
-  await query("ALTER TABLE account_devices ADD COLUMN IF NOT EXISTS fingerprint_hash VARCHAR(64) NULL");
+  await addColumnIfMissing("account_devices", "fingerprint_hash VARCHAR(64) NULL");
+  await addColumnIfMissing("sos_events", "status_updated_at DATETIME NULL");
+  await addColumnIfMissing("sos_events", "last_location_at DATETIME NULL");
   await query(`
     UPDATE account_devices older
     JOIN account_devices newer
@@ -447,7 +487,8 @@ async function installSchema() {
       owner_user_id BIGINT UNSIGNED NOT NULL,
       caregiver_user_id BIGINT UNSIGNED NULL,
       invite_email VARCHAR(255) NOT NULL,
-      invite_code VARCHAR(255) NOT NULL UNIQUE,
+      invite_code VARCHAR(255) NULL UNIQUE,
+      invite_code_hash CHAR(64) NULL UNIQUE,
       permissions JSON NOT NULL,
       status ENUM('pending', 'accepted', 'revoked') NOT NULL DEFAULT 'pending',
       expires_at DATETIME NOT NULL,
@@ -459,6 +500,25 @@ async function installSchema() {
         FOREIGN KEY (owner_user_id) REFERENCES users(id) ON DELETE CASCADE,
       CONSTRAINT family_links_caregiver_fk
         FOREIGN KEY (caregiver_user_id) REFERENCES users(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  `);
+
+  await addColumnIfMissing("family_links", "email_sent TINYINT(1) NOT NULL DEFAULT 0");
+  await addColumnIfMissing("family_links", "email_sent_at DATETIME NULL");
+  await addColumnIfMissing("family_links", "email_error VARCHAR(500) NULL");
+  await addColumnIfMissing("family_links", "member_name VARCHAR(255) NULL");
+  await addColumnIfMissing("family_links", "member_role ENUM('patient','guardian','doctor') NOT NULL DEFAULT 'guardian'");
+
+  await query(`
+    CREATE TABLE IF NOT EXISTS family_invite_attempts (
+      id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      invite_code_hash CHAR(64) NOT NULL,
+      attempted_email VARCHAR(255) NOT NULL,
+      ip_address VARCHAR(64) NOT NULL,
+      success BOOLEAN NOT NULL DEFAULT FALSE,
+      attempted_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      KEY family_invite_attempts_ip_time_idx (ip_address, attempted_at),
+      KEY family_invite_attempts_code_time_idx (invite_code_hash, attempted_at)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `);
 

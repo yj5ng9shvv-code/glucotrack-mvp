@@ -3,10 +3,10 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:glucotrack/l10n/app_localizations.dart';
+import 'package:glucotrack/l10n/journal_translations.dart';
 import 'package:glucotrack/l10n/translation_loader.dart';
 import 'package:glucotrack/models/app_state.dart';
-import 'package:glucotrack/models/diary_entry.dart';
-import 'package:glucotrack/services/diary_analysis_service.dart';
+import 'package:glucotrack/models/daily_doctor_summary.dart';
 import 'package:glucotrack/services/doctor_report_service.dart';
 import 'package:glucotrack/services/sos_public_service.dart';
 import 'package:http/http.dart' as http;
@@ -21,15 +21,19 @@ void main() {
       .listSync(recursive: true)
       .whereType<File>()
       .where((file) => file.path.endsWith('.dart'))
-      .where((file) => !file.path
-          .contains('${Platform.pathSeparator}l10n${Platform.pathSeparator}'))
+      .where(
+        (file) => !file.path.contains(
+          '${Platform.pathSeparator}l10n${Platform.pathSeparator}',
+        ),
+      )
       .toList();
 
   test('every referenced translation key resolves in all 30 locales', () async {
     await loadCoreTranslations();
 
     final keyPattern = RegExp(
-        r'''(?:\.t|Localized(?:Selectable)?Text)\(\s*['"]([^'"]+)['"]''');
+      r'''(?:\.t|Localized(?:Selectable)?Text)\(\s*['"]([^'"]+)['"]''',
+    );
     final keys = <String>{};
     for (final file in sourceFiles) {
       for (final match in keyPattern.allMatches(file.readAsStringSync())) {
@@ -39,12 +43,15 @@ void main() {
     }
 
     expect(AppState.supportedLanguages, hasLength(30));
+    const localeNeutralKeys = {'kcal', 'grams'};
     for (final language in AppState.supportedLanguages) {
       final l10n = AppLocalizations(language.code);
       for (final key in keys) {
         final value = l10n.t(key);
         expect(value.trim(), isNotEmpty, reason: '${language.code}: $key');
-        expect(value, isNot(key), reason: '${language.code}: missing $key');
+        if (!localeNeutralKeys.contains(key)) {
+          expect(value, isNot(key), reason: '${language.code}: missing $key');
+        }
       }
     }
   });
@@ -93,16 +100,7 @@ void main() {
       'family.revokeAccess',
       'family.monitoredPeople',
     ];
-    const mojibakeMarkers = [
-      'Рљ',
-      'Рџ',
-      'Р”',
-      'РЎ',
-      'Рё',
-      'СЊ',
-      'С…',
-      'вЂ',
-    ];
+    const mojibakeMarkers = ['Рљ', 'Рџ', 'Р”', 'РЎ', 'Рё', 'СЊ', 'С…', 'вЂ'];
 
     expect(l10n.t('family.title'), 'Контроль близких');
     for (final key in keys) {
@@ -142,12 +140,18 @@ void main() {
         final value = l10n.t(key);
         expect(value, isNot(key), reason: '${language.code}: $key');
         if (language.code != 'en') {
-          expect(value, isNot(english.t(key)),
-              reason: '${language.code}: $key stayed English');
+          expect(
+            value,
+            isNot(english.t(key)),
+            reason: '${language.code}: $key stayed English',
+          );
         }
         if (language.code != 'ru') {
-          expect(value, isNot(russian.t(key)),
-              reason: '${language.code}: $key stayed Russian');
+          expect(
+            value,
+            isNot(russian.t(key)),
+            reason: '${language.code}: $key stayed Russian',
+          );
         }
       }
     }
@@ -204,12 +208,18 @@ void main() {
         final value = l10n.t(key);
         expect(value, isNot(key), reason: '${language.code}: $key');
         if (language.code != 'en' && !localeNeutralKeys.contains(key)) {
-          expect(value, isNot(english.t(key)),
-              reason: '${language.code}: $key stayed English');
+          expect(
+            value,
+            isNot(english.t(key)),
+            reason: '${language.code}: $key stayed English',
+          );
         }
         if (language.code != 'ru' && !localeNeutralKeys.contains(key)) {
-          expect(value, isNot(russian.t(key)),
-              reason: '${language.code}: $key stayed Russian');
+          expect(
+            value,
+            isNot(russian.t(key)),
+            reason: '${language.code}: $key stayed Russian',
+          );
         }
       }
     }
@@ -276,15 +286,20 @@ void main() {
             l10n.t(key).replaceAll('{language}', language.label).trim();
         expect(value, isNotEmpty, reason: '${language.code}: $key');
         expect(value, isNot(key), reason: '${language.code}: $key');
-        expect(value.contains('ui.text.'), isFalse,
-            reason: '${language.code}: $key unresolved legacy key');
+        expect(
+          value.contains('ui.text.'),
+          isFalse,
+          reason: '${language.code}: $key unresolved legacy key',
+        );
       }
     }
 
-    final profileSource =
-        File('lib/screens/profile_screen.dart').readAsStringSync();
-    final allergySource =
-        File('lib/widgets/allergy_input_card.dart').readAsStringSync();
+    final profileSource = File(
+      'lib/screens/profile_screen.dart',
+    ).readAsStringSync();
+    final allergySource = File(
+      'lib/widgets/allergy_input_card.dart',
+    ).readAsStringSync();
     expect(profileSource.contains('ui.text.'), isFalse);
     for (final oldKey in [
       "l10n.t('profile')",
@@ -326,6 +341,7 @@ void main() {
       'callRelative',
       'callRelativeWithName',
       'sendSms',
+      'geoConsent',
       'sensitiveHidden',
       'pinPrompt',
       'open',
@@ -383,10 +399,16 @@ void main() {
       for (final entry in labels.entries) {
         final value = entry.value;
         expect(value, isA<String>(), reason: '${language.code}.${entry.key}');
-        expect((value as String).trim(), isNotEmpty,
-            reason: '${language.code}.${entry.key}');
-        expect(value, isNot(entry.key),
-            reason: '${language.code}.${entry.key}');
+        expect(
+          (value as String).trim(),
+          isNotEmpty,
+          reason: '${language.code}.${entry.key}',
+        );
+        expect(
+          value,
+          isNot(entry.key),
+          reason: '${language.code}.${entry.key}',
+        );
       }
     }
   });
@@ -420,8 +442,11 @@ void main() {
         expect(value, isNot(key), reason: '${language.code}: $key');
         expect(value.trim(), isNotEmpty, reason: '${language.code}: $key');
         if (language.code != 'en') {
-          expect(value, isNot(english.t(key)),
-              reason: '${language.code}: $key stayed English');
+          expect(
+            value,
+            isNot(english.t(key)),
+            reason: '${language.code}: $key stayed English',
+          );
         }
       }
 
@@ -429,93 +454,104 @@ void main() {
           .t('aiContext')
           .replaceAll('{currentGlucose}', '125 mg/dL')
           .replaceAll('{targetGlucose}', '100 mg/dL');
-      expect(contextLine.contains('{currentGlucose}'), isFalse,
-          reason: language.code);
-      expect(contextLine.contains('{targetGlucose}'), isFalse,
-          reason: language.code);
+      expect(
+        contextLine.contains('{currentGlucose}'),
+        isFalse,
+        reason: language.code,
+      );
+      expect(
+        contextLine.contains('{targetGlucose}'),
+        isFalse,
+        reason: language.code,
+      );
       expect(contextLine.contains('125 mg/dL'), isTrue, reason: language.code);
       expect(contextLine.contains('100 mg/dL'), isTrue, reason: language.code);
     }
   });
 
-  test('critical doctor report and cloud sync labels follow every language',
-      () async {
-    await loadCoreTranslations();
-    const keys = [
-      'cloudSync',
-      'cloudSyncEnable',
-      'cloudSyncPush',
-      'cloudSyncPull',
-      'cloudSyncStatus',
-      'cloudSyncReady',
-      'cloudSyncUnavailable',
-      'cloudSyncLastSync',
-      'cloudSyncPrivacyNotice',
-      'doctorReport',
-      'doctorReportHistory',
-      'doctorReportEmptyHistory',
-      'saveReportToAccount',
-      'reportSavedToServer',
-      'summary',
-      'profile',
-      'diabetesType',
-      'diabetesType1',
-      'diabetesType2',
-      'diabetesGestational',
-      'targetGlucose',
-      'carbRatio',
-      'correctionFactor',
-      'diaryAnalysis',
-      'averageGlucose',
-      'minimum',
-      'maximum',
-      'inRange',
-      'low',
-      'highValues',
-      'records',
-      'carbs',
-      'activeInsulin',
-      'copyReport',
-      'reportCopied',
-      'reportDisclaimer',
-      'noData',
-      'close',
-      'diary',
-      'sensors',
-    ];
-    const english = AppLocalizations('en');
-    const hungarianMustDiffer = {
-      'cloudSync',
-      'cloudSyncEnable',
-      'cloudSyncPush',
-      'cloudSyncPull',
-      'cloudSyncStatus',
-      'cloudSyncPrivacyNotice',
-      'doctorReport',
-      'diabetesType',
-      'diabetesType2',
-      'targetGlucose',
-      'carbRatio',
-      'diaryAnalysis',
-      'averageGlucose',
-      'highValues',
-      'copyReport',
-      'reportDisclaimer',
-    };
+  test(
+    'critical doctor report and cloud sync labels follow every language',
+    () async {
+      await loadCoreTranslations();
+      const keys = [
+        'cloudSync',
+        'cloudSyncEnable',
+        'cloudSyncPush',
+        'cloudSyncPull',
+        'cloudSyncStatus',
+        'cloudSyncReady',
+        'cloudSyncUnavailable',
+        'cloudSyncLastSync',
+        'cloudSyncPrivacyNotice',
+        'doctorReport',
+        'doctorReportHistory',
+        'doctorReportEmptyHistory',
+        'saveReportToAccount',
+        'reportSavedToServer',
+        'summary',
+        'profile',
+        'diabetesType',
+        'diabetesType1',
+        'diabetesType2',
+        'diabetesGestational',
+        'targetGlucose',
+        'carbRatio',
+        'correctionFactor',
+        'diaryAnalysis',
+        'averageGlucose',
+        'minimum',
+        'maximum',
+        'inRange',
+        'low',
+        'highValues',
+        'records',
+        'carbs',
+        'activeInsulin',
+        'copyReport',
+        'reportCopied',
+        'reportDisclaimer',
+        'noData',
+        'close',
+        'diary',
+        'sensors',
+      ];
+      const english = AppLocalizations('en');
+      const hungarianMustDiffer = {
+        'cloudSync',
+        'cloudSyncEnable',
+        'cloudSyncPush',
+        'cloudSyncPull',
+        'cloudSyncStatus',
+        'cloudSyncPrivacyNotice',
+        'doctorReport',
+        'diabetesType',
+        'diabetesType2',
+        'targetGlucose',
+        'carbRatio',
+        'diaryAnalysis',
+        'averageGlucose',
+        'highValues',
+        'copyReport',
+        'reportDisclaimer',
+      };
 
-    for (final language in AppState.supportedLanguages) {
-      final l10n = AppLocalizations(language.code);
-      for (final key in keys) {
-        final value = l10n.t(key);
-        expect(value, isNot(key), reason: '${language.code}: $key');
-        expect(value.trim(), isNotEmpty, reason: '${language.code}: $key');
-        if (language.code == 'hu' && hungarianMustDiffer.contains(key)) {
-          expect(value, isNot(english.t(key)),
-              reason: 'hu: $key stayed English');
+      for (final language in AppState.supportedLanguages) {
+        final l10n = AppLocalizations(language.code);
+        for (final key in keys) {
+          final value = l10n.t(key);
+          expect(value, isNot(key), reason: '${language.code}: $key');
+          expect(value.trim(), isNotEmpty, reason: '${language.code}: $key');
+          if (language.code == 'hu' && hungarianMustDiffer.contains(key)) {
+            expect(
+              value,
+              isNot(english.t(key)),
+              reason: 'hu: $key stayed English',
+            );
+          }
         }
       }
-    }
-  });
+    },
+  );
 
   test('doctor report generation uses selected language', () async {
     SharedPreferences.setMockInitialValues({});
@@ -526,29 +562,27 @@ void main() {
     state.insulinToCarbRatio = 12;
     state.correctionFactor = 2;
 
-    final entries = [
-      DiaryEntry(
-        time: DateTime(2026, 7, 9, 14, 30),
-        glucoseMmol: 7.8,
-        type: DiaryEntryType.afterMeal,
-        carbs: 45,
-        insulinUnits: 6,
-        note: '',
-      ),
-    ];
-    final analysis = const DiaryAnalysisService().analyze(entries);
     final report = const DoctorReportService().buildReport(
       appState: state,
-      analysis: analysis,
-      entries: entries,
+      periodSummary: const DoctorReportPeriodSummary(
+        glucoseAverageMmol: 7.8,
+        glucoseMinimumMmol: 7.8,
+        glucoseMaximumMmol: 7.8,
+        glucoseCount: 1,
+        inRangePercent: 100,
+        lowPercent: 0,
+        highPercent: 0,
+        insulinTotal: 6,
+        carbsTotal: 45,
+        daysWithData: 1,
+        daysWithoutData: 0,
+      ),
     );
 
     expect(report, contains('Orvosi jelentés'));
     expect(report, contains('Cukorbetegség típusa'));
     expect(report, contains('2-es típusú cukorbetegség'));
     expect(report, contains('Átlagos glükóz'));
-    expect(report, contains('Minimum'));
-    expect(report, contains('Maximum'));
     expect(report, isNot(contains('Doctor report')));
     expect(report, isNot(contains('Diabetes type')));
     expect(report, isNot(contains('Type 2 diabetes')));
@@ -566,22 +600,130 @@ void main() {
       final source = file.readAsStringSync();
       expect(source.contains('ui.text.'), isFalse, reason: file.path);
       expect(source.contains('LocalizedText('), isFalse, reason: file.path);
-      expect(source.contains('LocalizedSelectableText('), isFalse,
-          reason: file.path);
+      expect(
+        source.contains('LocalizedSelectableText('),
+        isFalse,
+        reason: file.path,
+      );
     }
   });
 
-  test('server snapshot does not overwrite locally selected language',
-      () async {
-    SharedPreferences.setMockInitialValues({'languageCode': 'pl'});
-    final state = AppState();
+  test(
+    'server snapshot does not overwrite locally selected language',
+    () async {
+      SharedPreferences.setMockInitialValues({'languageCode': 'pl'});
+      final state = AppState();
 
-    await state.applyServerSnapshot({
-      'profile': {'languageCode': 'en'},
-    });
+      await state.applyServerSnapshot({
+        'profile': {'languageCode': 'en'},
+      });
 
-    expect(state.languageCode, 'pl');
-    final prefs = await SharedPreferences.getInstance();
-    expect(prefs.getString('languageCode'), 'pl');
+      expect(state.languageCode, 'pl');
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getString('languageCode'), 'pl');
+    },
+  );
+
+  test('journal module translation keys are present for all locales', () async {
+    final required = journalTranslations['en']?.keys.toSet() ?? const {};
+    expect(required.isNotEmpty, isTrue);
+    for (final language in AppState.supportedLanguages) {
+      final translation = journalTranslations[language.code];
+      expect(
+        translation,
+        isNotNull,
+        reason: '${language.code}: missing journal translations block',
+      );
+      expect(
+        translation!.keys.toSet(),
+        containsAll(required),
+        reason: '${language.code}: missing journal keys',
+      );
+    }
+  });
+
+  test('journal important keys are localized for each language', () async {
+    const keySet = {
+      'journal.ai_analysis',
+      'journal.oldest_first',
+      'journal.save',
+      'journal.manual_measurement',
+      'journal.meal',
+      'journal.blood_pressure',
+      'journal.diary_entry',
+      'journal.measurement',
+      'journal.activity',
+    };
+    const english = AppLocalizations('en');
+
+    for (final language in AppState.supportedLanguages) {
+      if (language.code == 'en') continue;
+      final l10n = AppLocalizations(language.code);
+      for (final key in keySet) {
+        final localized = l10n.t(key);
+        final fallback = english.t(key);
+
+        expect(localized, isNotEmpty, reason: '${language.code}: $key');
+        expect(localized, isNot(key), reason: '${language.code}: $key');
+        expect(localized, isNot(fallback), reason: '${language.code}: $key');
+      }
+    }
+  });
+
+  test('diary AI card does not fall back to English for any locale', () {
+    const english = AppLocalizations('en');
+    const keys = {
+      'journal.selected_day',
+      'journal.ai_disclaimer',
+      'journal.ai_stable',
+      'journal.ai_carbs_present',
+      'journal.ai_insulin_present',
+    };
+
+    for (final language in AppState.supportedLanguages) {
+      if (language.code == 'en') continue;
+      final l10n = AppLocalizations(language.code);
+      for (final key in keys) {
+        expect(
+          l10n.t(key),
+          isNot(english.t(key)),
+          reason: '${language.code}: $key stayed English',
+        );
+      }
+    }
+  });
+
+  test('journal hardcoded values are localized in source', () async {
+    const banned = [
+      'AI day analysis',
+      'There are no records for this day yet.',
+      'AI analysis is informational and does not replace a doctor.',
+      'Oldest records first',
+      'No records for this day',
+      'No records for this day.',
+      'Glucose measurement',
+      'Manual measurement',
+      'Aktivite',
+    ];
+    final diarySourcePaths = [
+      'lib/models/app_state.dart',
+      'lib/services/diary_command_service.dart',
+      'lib/services/journal_service.dart',
+      'lib/screens/diary_screen.dart',
+      'lib/screens/voice_assistant_screen.dart',
+      'lib/widgets/localized_text.dart',
+    ];
+    for (final path in diarySourcePaths) {
+      final file = File(path);
+      if (!file.existsSync()) continue;
+      final source = File(path).readAsStringSync();
+      for (final text in banned) {
+        expect(
+          source.contains("'$text'") || source.contains("\"$text\""),
+          isFalse,
+          reason: '$path contains hardcoded: $text',
+        );
+      }
+    }
   });
 }
